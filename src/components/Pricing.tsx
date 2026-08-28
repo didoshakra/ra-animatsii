@@ -1,13 +1,22 @@
+import {
+  ManicureIllustration,
+  CafeIllustration,
+  OfficeIllustration,
+} from "./PricingIcons";
+
 const plans = [
   {
     name: "Старт",
+    segment: "Для малого бізнесу",
     price: "від 4 000 грн",
     desc: "Короткий ролик для соцмереж",
     features: ["До 20 сек анімації", "1 персонаж", "Музика з бібліотеки", "1 раунд правок"],
     highlight: false,
+    Illustration: ManicureIllustration,
   },
   {
     name: "Бізнес",
+    segment: "Для середнього бізнесу",
     price: "від 9 000 грн",
     desc: "Пояснювальний ролик для сайту",
     features: [
@@ -18,9 +27,11 @@ const plans = [
       "Адаптація під формати",
     ],
     highlight: true,
+    Illustration: CafeIllustration,
   },
   {
     name: "Преміум",
+    segment: "Для великого бізнесу",
     price: "за розрахунком",
     desc: "Візитівка бренду або серія роликів",
     features: [
@@ -30,6 +41,7 @@ const plans = [
       "Необмежені правки в межах брифу",
     ],
     highlight: false,
+    Illustration: OfficeIllustration,
   },
 ];
 
@@ -40,7 +52,7 @@ export default function Pricing() {
         <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl text-center">
           Тарифи
         </h2>
-        <p className="mt-3 font-body text-ink/70 text-center max-w-xl mx-auto">
+        <p className="mt-3 font-body text-lg text-ink/70 text-center max-w-xl mx-auto">
           Орієнтовні пакети — фінальна вартість залежить від складності сценарію та кількості персонажів.
         </p>
 
@@ -48,45 +60,58 @@ export default function Pricing() {
           {plans.map((p) => (
             <div
               key={p.name}
-              className={`rounded-3xl p-7 flex flex-col ${
+              className={`rounded-3xl overflow-hidden flex flex-col ${
                 p.highlight
                   ? "bg-clay text-cream md:-translate-y-3 shadow-[0_8px_0_0_theme(colors.clay.deep)]"
                   : "bg-cream text-ink shadow-[0_6px_0_0_rgba(47,36,22,0.15)]"
               }`}
             >
-              <h3 className="font-display font-700 text-2xl">{p.name}</h3>
-              <p
-                className={`font-body mt-1 ${
-                  p.highlight ? "text-cream/85" : "text-ink/65"
-                }`}
-              >
-                {p.desc}
-              </p>
-              <p className="font-display font-800 text-2xl mt-5">{p.price}</p>
+              <div className="h-36 w-full">
+                <p.Illustration />
+              </div>
 
-              <ul className="mt-6 space-y-2.5 flex-1">
-                {p.features.map((f) => (
-                  <li key={f} className="font-body flex items-start gap-2">
-                    <span
-                      className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${
-                        p.highlight ? "bg-cream" : "bg-clay"
-                      }`}
-                    />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="p-7 flex flex-col flex-1">
+                <p
+                  className={`font-body font-700 text-sm uppercase tracking-wide ${
+                    p.highlight ? "text-cream/70" : "text-clay-deep"
+                  }`}
+                >
+                  {p.segment}
+                </p>
+                <h3 className="font-display font-700 text-2xl mt-1">{p.name}</h3>
+                <p
+                  className={`font-body text-lg mt-1 ${
+                    p.highlight ? "text-cream/85" : "text-ink/65"
+                  }`}
+                >
+                  {p.desc}
+                </p>
+                <p className="font-display font-800 text-2xl mt-5">{p.price}</p>
 
-              <a
-                href="#contact"
-                className={`mt-7 text-center font-display font-700 rounded-full py-3 focus-ring transition-colors ${
-                  p.highlight
-                    ? "bg-cream text-clay-deep hover:bg-cream/90"
-                    : "bg-ink text-cream hover:bg-ink/85"
-                }`}
-              >
-                Обрати пакет
-              </a>
+                <ul className="mt-6 space-y-2.5 flex-1">
+                  {p.features.map((f) => (
+                    <li key={f} className="font-body text-lg flex items-start gap-2">
+                      <span
+                        className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${
+                          p.highlight ? "bg-cream" : "bg-clay"
+                        }`}
+                      />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  className={`mt-7 text-center font-display font-700 rounded-full py-3 focus-ring transition-colors ${
+                    p.highlight
+                      ? "bg-cream text-clay-deep hover:bg-cream/90"
+                      : "bg-ink text-cream hover:bg-ink/85"
+                  }`}
+                >
+                  Обрати пакет
+                </a>
+              </div>
             </div>
           ))}
         </div>

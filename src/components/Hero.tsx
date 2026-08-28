@@ -22,7 +22,7 @@ export default function Hero() {
             <br />
             яку дивляться до кінця
           </h1>
-          <p className="mt-5 font-body text-lg text-ink/80 max-w-lg leading-relaxed">
+          <p className="mt-5 font-body text-xl text-ink/80 max-w-lg leading-relaxed">
             Малюємо теплі, живі відеоролики, які пояснюють складне просто,
             запам&rsquo;ятовуються і роблять вашу компанію&nbsp;— трохи казковою.
           </p>
@@ -42,7 +42,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <p className="mt-6 font-body text-sm text-ink/60">
+          <p className="mt-6 font-body text-base text-ink/60">
             Від сценарію до готового ролика — один автор, один стиль, без правок&nbsp;«за замовчуванням».
           </p>
         </div>

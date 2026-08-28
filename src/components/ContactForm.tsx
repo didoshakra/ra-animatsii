@@ -3,13 +3,34 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: підключити відправку заявки (напр. API route + Resend),
-    // коли будемо готові приймати реальні звернення.
-    setSent(true);
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") || ""),
+      contact: String(data.get("contact") || ""),
+      message: String(data.get("message") || ""),
+    };
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -18,18 +39,18 @@ export default function ContactForm() {
         <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
           Розкажіть про свій проєкт
         </h2>
-        <p className="mt-3 font-body text-cream/70 text-center">
+        <p className="mt-3 font-body text-lg text-cream/70 text-center">
           Відповімо протягом одного робочого дня.
         </p>
 
-        {sent ? (
+        {status === "sent" ? (
           <div className="mt-10 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
             Дякуємо! Заявку отримано — скоро з&rsquo;єднаємось із вами.
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-10 grid gap-5">
             <div>
-              <label htmlFor="name" className="font-body font-700 text-cream block mb-1.5">
+              <label htmlFor="name" className="font-body font-700 text-lg text-cream block mb-1.5">
                 Ім&rsquo;я
               </label>
               <input
@@ -37,13 +58,13 @@ export default function ContactForm() {
                 name="name"
                 type="text"
                 required
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body focus-ring placeholder:text-cream/40"
+                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
                 placeholder="Як до вас звертатись"
               />
             </div>
 
             <div>
-              <label htmlFor="contact" className="font-body font-700 text-cream block mb-1.5">
+              <label htmlFor="contact" className="font-body font-700 text-lg text-cream block mb-1.5">
                 Email або телефон
               </label>
               <input
@@ -51,13 +72,13 @@ export default function ContactForm() {
                 name="contact"
                 type="text"
                 required
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body focus-ring placeholder:text-cream/40"
+                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
                 placeholder="Куди відповісти"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="font-body font-700 text-cream block mb-1.5">
+              <label htmlFor="message" className="font-body font-700 text-lg text-cream block mb-1.5">
                 Про проєкт
               </label>
               <textarea
@@ -65,16 +86,23 @@ export default function ContactForm() {
                 name="message"
                 rows={4}
                 required
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body focus-ring placeholder:text-cream/40 resize-none"
+                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 resize-none"
                 placeholder="Що рекламуємо, для кого і коли потрібен ролик"
               />
             </div>
 
+            {status === "error" && (
+              <p className="font-body text-sun text-center">
+                Щось пішло не так. Спробуйте ще раз або напишіть нам напряму.
+              </p>
+            )}
+
             <button
               type="submit"
-              className="font-display font-700 text-lg bg-sun text-ink rounded-full py-3.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none"
+              disabled={status === "sending"}
+              className="font-display font-700 text-lg bg-sun text-ink rounded-full py-3.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
             >
-              Надіслати заявку
+              {status === "sending" ? "Надсилаємо…" : "Надіслати заявку"}
             </button>
           </form>
         )}

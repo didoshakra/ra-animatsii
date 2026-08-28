@@ -35,7 +35,7 @@ export default function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-600 text-ink/80 hover:text-clay-deep transition-colors focus-ring"
+              className="font-body font-700 text-ink/80 hover:text-clay-deep transition-colors focus-ring"
             >
               {l.label}
             </a>
@@ -83,7 +83,7 @@ export default function Header() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-body font-600 text-ink/85 py-2.5 focus-ring"
+              className="font-body font-700 text-ink/85 py-2.5 focus-ring"
             >
               {l.label}
             </a>

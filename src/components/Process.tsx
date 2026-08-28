@@ -44,7 +44,7 @@ export default function Process() {
                 <h3 className="font-display font-700 text-xl text-ink mt-5">
                   {s.title}
                 </h3>
-                <p className="font-body text-ink/75 mt-2 leading-relaxed">
+                <p className="font-body text-lg text-ink/75 mt-2 leading-relaxed">
                   {s.desc}
                 </p>
               </div>

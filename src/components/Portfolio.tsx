@@ -25,12 +25,35 @@ export default function Portfolio() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl">
           <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">
-            Формати, з якими працюємо
+            Реальний кейс
           </h2>
-          <p className="mt-4 font-body text-cream/90 text-lg leading-relaxed">
-            Портфоліо студії поповнюється — тут з&rsquo;являться готові кейси.
-            А поки покажемо, які формати роликів ми збираємо для клієнтів.
+          <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">
+            Один із перших роликів студії — для замовника Lumpex24.
           </p>
+        </div>
+
+        {/* Featured case: Lumpex24.
+            TODO: замінити плейсхолдер на реальне відео, коли буде
+            посилання (YouTube embed або файл у /public). */}
+        <div className="mt-8 bg-cream rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
+          <div className="w-full sm:w-64 aspect-video bg-ink/90 rounded-2xl flex items-center justify-center shrink-0">
+            <span className="w-16 h-16 rounded-full bg-cream/90 flex items-center justify-center">
+              <span className="ml-1 w-0 h-0 border-y-[11px] border-y-transparent border-l-[17px] border-l-ink" />
+            </span>
+          </div>
+          <div>
+            <p className="font-display font-700 text-xl text-ink">Lumpex24</p>
+            <p className="font-body text-lg text-ink/70 mt-1 leading-relaxed">
+              Рекламний ролик для соцмереж — незабаром тут з&rsquo;явиться
+              програвач з готовим відео.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-14 max-w-xl">
+          <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">
+            Формати, з якими працюємо
+          </h3>
         </div>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -49,10 +72,10 @@ export default function Portfolio() {
               <h3 className="font-display font-700 text-xl text-ink">
                 {f.title}
               </h3>
-              <p className="font-body text-sm text-clay-deep font-700 mt-1">
+              <p className="font-body text-base text-clay-deep font-700 mt-1">
                 {f.duration}
               </p>
-              <p className="font-body text-ink/75 mt-3 leading-relaxed">
+              <p className="font-body text-lg text-ink/75 mt-3 leading-relaxed">
                 {f.desc}
               </p>
             </div>
