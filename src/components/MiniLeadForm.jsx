@@ -4,9 +4,11 @@
 import Image from "next/image"
 import { useState } from "react"
 
+const PHONE_RE = /^(\+?38)?0\d{9}$/
+
 export default function MiniLeadForm() {
   const [status, setStatus] = useState("idle")
-  const [contactError, setContactError] = useState(false)
+  const [contactError, setContactError] = useState("")
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -17,10 +19,14 @@ export default function MiniLeadForm() {
     const phone = String(data.get("phone") || "").trim()
 
     if (!email && !phone) {
-      setContactError(true)
+      setContactError("Вкажіть email або телефон.")
       return
     }
-    setContactError(false)
+    if (phone && !PHONE_RE.test(phone.replace(/[\s\-()]/g, ""))) {
+      setContactError("Перевірте номер телефону, напр. +380 XX XXX XX XX")
+      return
+    }
+    setContactError("")
     setStatus("sending")
 
     const payload = {
@@ -86,7 +92,7 @@ export default function MiniLeadForm() {
                     className="w-full sm:flex-1 rounded-2xl border-2 border-ink/15 bg-white px-4 py-2.5 font-body text-base focus-ring placeholder:text-ink/40"
                   />
                 </div>
-                {contactError && <p className="font-body text-sm text-clay-deep">Вкажіть email або телефон.</p>}
+                {contactError && <p className="font-body text-sm text-clay-deep">{contactError}</p>}
                 <button
                   type="submit"
                   disabled={status === "sending"}

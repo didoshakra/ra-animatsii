@@ -9,10 +9,15 @@ const FORMATS = [
   { id: "brand", label: "Візитівка бренду" },
 ]
 
+const PHONE_RE = /^(\+?38)?0\d{9}$/
+function isValidPhone(raw) {
+  return PHONE_RE.test(raw.replace(/[\s\-()]/g, ""))
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState("idle")
   const [format, setFormat] = useState(null)
-  const [contactError, setContactError] = useState(false)
+  const [contactError, setContactError] = useState("")
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -23,10 +28,14 @@ export default function ContactForm() {
     const phone = String(data.get("phone") || "").trim()
 
     if (!email && !phone) {
-      setContactError(true)
+      setContactError("Вкажіть email або телефон — хоча б один спосіб зв'язку.")
       return
     }
-    setContactError(false)
+    if (phone && !isValidPhone(phone)) {
+      setContactError("Перевірте номер телефону, напр. +380 XX XXX XX XX")
+      return
+    }
+    setContactError("")
     setStatus("sending")
 
     const payload = {
@@ -103,11 +112,7 @@ export default function ContactForm() {
                 />
               </div>
             </div>
-            {contactError && (
-              <p className="-mt-3 font-body text-sun text-sm">
-                Вкажіть email або телефон — хоча б один спосіб зв&rsquo;язку.
-              </p>
-            )}
+            {contactError && <p className="-mt-3 font-body text-sun text-sm">{contactError}</p>}
 
             <div>
               <p className="font-body font-700 text-lg text-cream mb-2">
