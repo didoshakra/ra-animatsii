@@ -18,6 +18,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState("idle")
   const [format, setFormat] = useState(null)
   const [contactError, setContactError] = useState("")
+  const [phoneInvalid, setPhoneInvalid] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -29,13 +30,17 @@ export default function ContactForm() {
 
     if (!email && !phone) {
       setContactError("Вкажіть email або телефон — хоча б один спосіб зв'язку.")
+      setPhoneInvalid(false)
       return
     }
     if (phone && !isValidPhone(phone)) {
       setContactError("Перевірте номер телефону, напр. +380 XX XXX XX XX")
+      setPhoneInvalid(true)
+      form.querySelector("#phone")?.focus()
       return
     }
     setContactError("")
+    setPhoneInvalid(false)
     setStatus("sending")
 
     const payload = {
@@ -107,12 +112,21 @@ export default function ContactForm() {
                   id="phone"
                   name="phone"
                   type="tel"
-                  className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
+                  aria-invalid={phoneInvalid}
+                  onChange={() => phoneInvalid && setPhoneInvalid(false)}
+                  className={`w-full rounded-2xl border-2 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 ${
+                    phoneInvalid ? "border-red-400" : "border-cream/20"
+                  }`}
                   placeholder="+380 XX XXX XX XX"
                 />
               </div>
             </div>
-            {contactError && <p className="-mt-3 font-body text-sun text-sm">{contactError}</p>}
+            {contactError && (
+              <p className="-mt-3 flex items-start gap-2 rounded-xl bg-red-500/15 border border-red-400/40 px-4 py-3 font-body font-700 text-red-300 text-base">
+                <span aria-hidden="true">⚠</span>
+                {contactError}
+              </p>
+            )}
 
             <div>
               <p className="font-body font-700 text-lg text-cream mb-2">
