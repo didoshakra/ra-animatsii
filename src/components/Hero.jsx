@@ -5,7 +5,7 @@ const PERKS = ["Перша розкадровка за 48 год", "Безкош
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-sky-light pt-14 pb-24 sm:pt-20 sm:pb-32">
+    <section id="top" className="relative overflow-hidden bg-sky-light pt-14 pb-16 sm:pt-20 sm:pb-32">
       {/* Фон: кіноплівкові стрічки */}
       <Image
         src="/media/studio/hero-film-strip-bg.png"
@@ -21,8 +21,14 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-br from-sky-light/45 via-transparent to-sun-light/35"
       />
-      {/* Підсвітка під текстом зліва — світліше зліва, прозоріше праворуч */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-cream/80 via-cream/40 to-transparent" />
+      {/* Десктоп: підсвітка зліва направо */}
+      <div
+        aria-hidden="true"
+        className="hidden md:block absolute inset-0 bg-gradient-to-r from-cream/80 via-cream/40 to-transparent"
+      />
+      {/* Мобільний: рівна підсвітка на всю секцію (колонки складаються одна під одну) */}
+      <div aria-hidden="true" className="md:hidden absolute inset-0 bg-cream/70" />
+
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
         <div>
           <h1 className="font-display font-800 text-ink text-[2.1rem] sm:text-5xl lg:text-[3.4rem] leading-[1.12] sm:leading-[1.08] tracking-tight">
@@ -70,9 +76,9 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Орел — з підсвіткою, щоб виступав над строкатим фоном */}
-        <div className="relative flex justify-center md:justify-end md:-mt-[300px]">
-          <div className="relative w-[260px] h-[260px] sm:w-[340px] sm:h-[340px]">
+        {/* Орел — на мобільному одразу під заголовком, менший розмір */}
+        <div className="relative flex justify-center md:justify-end md:-mt-10 order-first md:order-last mb-4 md:mb-0">
+          <div className="relative w-[170px] h-[170px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] lg:w-[340px] lg:h-[340px]">
             <div aria-hidden="true" className="absolute inset-0 bg-sun-light rounded-blob rotate-6 blur-[2px]" />
             <div aria-hidden="true" className="absolute -inset-4 bg-cream/60 rounded-blob blur-2xl" />
             <Image

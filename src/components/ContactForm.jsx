@@ -1,55 +1,61 @@
-"use client";
+// src/components/ContactForm.jsx
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
 const FORMATS = [
   { id: "explainer", label: "Пояснювальний ролик" },
   { id: "social", label: "Ролик для соцмереж" },
   { id: "brand", label: "Візитівка бренду" },
-];
+]
 
 export default function ContactForm() {
-  const [status, setStatus] = useState("idle");
-  const [format, setFormat] = useState(null);
+  const [status, setStatus] = useState("idle")
+  const [format, setFormat] = useState(null)
+  const [contactError, setContactError] = useState(false)
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    setStatus("sending");
+    e.preventDefault()
 
-    const form = e.currentTarget;
-    const data = new FormData(form);
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const email = String(data.get("email") || "").trim()
+    const phone = String(data.get("phone") || "").trim()
+
+    if (!email && !phone) {
+      setContactError(true)
+      return
+    }
+    setContactError(false)
+    setStatus("sending")
+
     const payload = {
       name: String(data.get("name") || ""),
-      contact: String(data.get("contact") || ""),
+      email,
+      phone,
       message: String(data.get("message") || ""),
-      format: format
-        ? FORMATS.find((f) => f.id === format)?.label
-        : undefined,
-    };
+      format: format ? FORMATS.find((f) => f.id === format)?.label : undefined,
+    }
 
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      });
+      })
 
-      if (!res.ok) throw new Error("Request failed");
-      setStatus("sent");
+      if (!res.ok) throw new Error("Request failed")
+      setStatus("sent")
     } catch {
-      setStatus("error");
+      setStatus("error")
     }
   }
 
   return (
     <section id="contact" className="bg-ink py-20 sm:py-28">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
-          Розкажіть про свій проєкт
-        </h2>
-        <p className="mt-3 font-body text-lg text-cream/70 text-center">
-          Відповімо протягом одного робочого дня.
-        </p>
+        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">Розкажіть про свій проєкт</h2>
+        <p className="mt-3 font-body text-lg text-cream/70 text-center">Відповімо протягом одного робочого дня.</p>
 
         {status === "sent" ? (
           <div className="mt-10 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
@@ -71,35 +77,48 @@ export default function ContactForm() {
               />
             </div>
 
-            <div>
-              <label htmlFor="contact" className="font-body font-700 text-lg text-cream block mb-1.5">
-                Email або телефон
-              </label>
-              <input
-                id="contact"
-                name="contact"
-                type="text"
-                required
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
-                placeholder="Куди відповісти"
-              />
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label htmlFor="email" className="font-body font-700 text-lg text-cream block mb-1.5">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="font-body font-700 text-lg text-cream block mb-1.5">
+                  Телефон
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
+                  placeholder="+380 XX XXX XX XX"
+                />
+              </div>
             </div>
+            {contactError && (
+              <p className="-mt-3 font-body text-sun text-sm">
+                Вкажіть email або телефон — хоча б один спосіб зв&rsquo;язку.
+              </p>
+            )}
 
             <div>
               <p className="font-body font-700 text-lg text-cream mb-2">
-                Що плануєте?{" "}
-                <span className="font-400 text-cream/50 text-base">
-                  (необов&rsquo;язково)
-                </span>
+                Що плануєте? <span className="font-400 text-cream/50 text-base">(необов&rsquo;язково)</span>
               </p>
               <div className="flex flex-wrap gap-2.5">
                 {FORMATS.map((f) => (
                   <button
                     key={f.id}
                     type="button"
-                    onClick={() =>
-                      setFormat((cur) => (cur === f.id ? null : f.id))
-                    }
+                    onClick={() => setFormat((cur) => (cur === f.id ? null : f.id))}
                     aria-pressed={format === f.id}
                     className={`font-body font-700 text-sm sm:text-base rounded-full px-4 py-2 border-2 transition-colors focus-ring ${
                       format === f.id
@@ -144,5 +163,5 @@ export default function ContactForm() {
         )}
       </div>
     </section>
-  );
+  )
 }

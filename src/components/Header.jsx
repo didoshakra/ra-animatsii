@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from "react"
+import Image from "next/image"
 
 const links = [
   { href: "#portfolio", label: "Портфоліо" },
   { href: "#process", label: "Як працюємо" },
   { href: "#pricing", label: "Тарифи" },
   { href: "#contact", label: "Контакти" },
-];
+]
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
@@ -33,7 +33,7 @@ export default function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-700 text-base sm:text-lg text-ink/80 hover:text-clay-deep transition-colors focus-ring"
+              className="font-body font-800 text-base sm:text-lg text-ink hover:text-clay-deep transition-colors focus-ring"
             >
               {l.label}
             </a>

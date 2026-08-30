@@ -1,74 +1,47 @@
-import { NextResponse } from "next/server";
-
-// Приймає заявку з форми контактів і створює лід у SalesDrive CRM.
-// Потрібні змінні середовища (додати у Vercel → Settings → Environment Variables):
-//   SALESDRIVE_DOMAIN   — напр. raanimatsii.salesdrive.me (є значення за замовчуванням нижче)
-//   SALESDRIVE_API_KEY  — ключ з правами на створення заявок
-//     (SalesDrive → Установки → Загальні налаштування і інтеграції → Інші сервіси → API)
-
-export async function POST(req) {
-  let body;
+// src/app/api/lead/route.js
+export async function POST(request) {
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "Некоректний запит" }, { status: 400 });
-  }
+    const body = await request.json()
+    const { name, email, phone, message, format } = body
 
-  const { name, contact, message, format } = body;
+    if (!name || (!email && !phone)) {
+      return Response.json({ error: "Вкажіть ім'я та email або телефон" }, { status: 400 })
+    }
 
-  if (!name || !contact) {
-    return NextResponse.json(
-      { error: "Вкажіть ім'я та контакт" },
-      { status: 400 }
-    );
-  }
+    const apiKey = process.env.SALESDRIVE_API_KEY
+    if (!apiKey) {
+      console.error("SALESDRIVE_API_KEY не задано в env vars")
+      return Response.json({ error: "Server misconfiguration" }, { status: 500 })
+    }
 
-  const domain = process.env.SALESDRIVE_DOMAIN || "raanimatsii.salesdrive.me";
-  const apiKey = process.env.SALESDRIVE_API_KEY;
+    const host = request.headers.get("host") || ""
 
-  // Якщо CRM ще не підключена (немає ключа) — не валимо заявку,
-  // а просто повертаємо успіх, щоб форма на сайті продовжувала працювати.
-  if (!apiKey) {
-    console.warn(
-      "SalesDrive не налаштовано: відсутній SALESDRIVE_API_KEY (домен: " +
-        domain +
-        ")"
-    );
-    return NextResponse.json({ ok: true, crm: false });
-  }
-
-  try {
-    const isEmail = contact.includes("@");
-
-    const salesDriveRes = await fetch(`https://${domain}/api/order/add/`, {
+    const salesDriveRes = await fetch("https://raanimatsii.salesdrive.me/handler/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Form-Api-Key": apiKey,
+        "X-Api-Key": apiKey,
       },
       body: JSON.stringify({
-        formName: "RA Animatsii — сайт",
-        contactName: name,
-        email: isEmail ? [contact] : undefined,
-        phone: isEmail ? undefined : [contact],
-        comment: [message, format ? `Формат: ${format}` : null]
-          .filter(Boolean)
-          .join("\n"),
-        source: "ra-animatsii.vercel.app",
+        getResultData: "1",
+        fName: name,
+        email: email || "",
+        phone: phone || "",
+        comment: message || "",
+        con_comment: format || "",
+        sajt: host,
       }),
-    });
+    })
 
     if (!salesDriveRes.ok) {
-      const text = await salesDriveRes.text();
-      console.error("SalesDrive API error:", salesDriveRes.status, text);
-      // Заявку все одно вважаємо прийнятою на боці сайту —
-      // людина не повинна страждати через збій інтеграції.
-      return NextResponse.json({ ok: true, crm: false });
+      const errText = await salesDriveRes.text()
+      console.error("SalesDrive error:", salesDriveRes.status, errText)
+      return Response.json({ error: "Не вдалося передати заявку в CRM" }, { status: 502 })
     }
 
-    return NextResponse.json({ ok: true, crm: true });
+    return Response.json({ ok: true })
   } catch (err) {
-    console.error("SalesDrive request failed:", err);
-    return NextResponse.json({ ok: true, crm: false });
+    console.error("Lead API error:", err)
+    return Response.json({ error: "Internal error" }, { status: 500 })
   }
 }
