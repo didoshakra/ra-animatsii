@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 
 const VIDEO_SRC = "/media/studio/studio-promo.mp4";
-const POSTER_SRC = "/media/studio/studio-promo-poster.jpg";
+const POSTER_SRC = "/media/studio/studio-promo-poster.png";
 
 export default function StudioVideo() {
   const videoRef = useRef(null);
