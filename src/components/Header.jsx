@@ -25,9 +25,7 @@ export default function Header() {
             className="rounded-full w-9 h-9 sm:w-11 sm:h-11"
             priority
           />
-          <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight">
-            RA Анімації
-          </span>
+          <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight">RA Анімації</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -35,7 +33,7 @@ export default function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-700 text-ink/80 hover:text-clay-deep transition-colors focus-ring"
+              className="font-body font-700 text-base sm:text-lg text-ink/80 hover:text-clay-deep transition-colors focus-ring"
             >
               {l.label}
             </a>
@@ -62,11 +60,7 @@ export default function Header() {
                 open ? "translate-y-[8px] rotate-45" : ""
               }`}
             />
-            <span
-              className={`block w-6 h-[3px] bg-ink rounded-full transition-opacity ${
-                open ? "opacity-0" : ""
-              }`}
-            />
+            <span className={`block w-6 h-[3px] bg-ink rounded-full transition-opacity ${open ? "opacity-0" : ""}`} />
             <span
               className={`block w-6 h-[3px] bg-ink rounded-full transition-transform ${
                 open ? "-translate-y-[8px] -rotate-45" : ""
@@ -98,5 +92,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  );
+  )
 }
