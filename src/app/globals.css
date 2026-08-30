@@ -37,3 +37,35 @@ body {
   outline-offset: 3px;
   border-radius: 6px;
 }
+
+/* Декоративна кіноплівкова рамка навколо превʼю-кадру відео (Hero) */
+.film-frame {
+  position: relative;
+  background: #2F2416;
+  padding: 16px 10px;
+  border-radius: 22px;
+}
+.film-frame::before,
+.film-frame::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #fbf6e9 0 8px,
+    transparent 8px 18px
+  );
+  opacity: 0.85;
+}
+.film-frame::before {
+  top: 4px;
+}
+.film-frame::after {
+  bottom: 4px;
+}
+.film-frame > .film-frame-inner {
+  border-radius: 12px;
+  overflow: hidden;
+}

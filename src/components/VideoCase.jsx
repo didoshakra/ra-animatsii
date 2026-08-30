@@ -2,10 +2,8 @@
 
 import { useRef, useState } from "react";
 
-const VIDEO_URL =
-  "https://res.cloudinary.com/daov9z9qc/video/upload/v1787920721/pictures/rbuswc5buzi2gk4xanee.mp4";
-const POSTER_URL =
-  "https://res.cloudinary.com/daov9z9qc/video/upload/so_1/v1787920721/pictures/rbuswc5buzi2gk4xanee.jpg";
+const VIDEO_URL = "/media/portfolio/lumpex24.mp4";
+const POSTER_URL = "/media/portfolio/lumpex24-poster.jpg";
 
 export default function VideoCase() {
   const videoRef = useRef(null);
