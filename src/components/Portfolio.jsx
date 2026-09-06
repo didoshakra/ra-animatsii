@@ -7,7 +7,7 @@ const formats = [
     duration: "60–90 сек",
     desc: "Показуємо, як працює ваш продукт чи послуга, простими картинками замість складних слів.",
     color: "bg-sky-light",
-    VIDEO_URL: "/media/portfolio/lumpex24.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788688441/pictures/ynyyoxasgdxbdphhkjfe.mp4",
     POSTER_URL: "",
   },
   {
@@ -23,7 +23,7 @@ const formats = [
     duration: "45–60 сек",
     desc: "Історія компанії та її цінностей — для головної сторінки сайту чи презентації клієнтам.",
     color: "bg-meadow-light",
-    VIDEO_URL: "/media/portfolio/lumpex24.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788688441/pictures/ynyyoxasgdxbdphhkjfe.mp4",
     POSTER_URL: "",
   },
 ]

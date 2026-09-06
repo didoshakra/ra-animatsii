@@ -8,7 +8,7 @@ const cases = [
     desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
     soundType: "без озвучки",
     visualStyle: "плоска графіка",
-    VIDEO_URL: "/media/portfolio/lumpex24.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788688441/pictures/ynyyoxasgdxbdphhkjfe.mp4",
     POSTER_URL: "",
   },
   {
