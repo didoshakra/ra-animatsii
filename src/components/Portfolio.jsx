@@ -8,7 +8,7 @@ const formats = [
     desc: "Показуємо, як працює ваш продукт чи послуга, простими картинками замість складних слів.",
     color: "bg-sky-light",
     VIDEO_URL: "/media/portfolio/lumpex24.mp4",
-    POSTER_URL: "/media/portfolio/lumpex24-poster.jpg",
+    POSTER_URL: "",
   },
   {
     title: "Ролик  для  соцмереж",
@@ -24,7 +24,7 @@ const formats = [
     desc: "Історія компанії та її цінностей — для головної сторінки сайту чи презентації клієнтам.",
     color: "bg-meadow-light",
     VIDEO_URL: "/media/portfolio/lumpex24.mp4",
-    POSTER_URL: "/media/portfolio/lumpex24-poster.jpg",
+    POSTER_URL: "",
   },
 ]
 

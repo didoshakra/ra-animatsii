@@ -9,7 +9,7 @@ const cases = [
     soundType: "без озвучки",
     visualStyle: "плоска графіка",
     VIDEO_URL: "/media/portfolio/lumpex24.mp4",
-    POSTER_URL: "/media/portfolio/lumpex24-poster.jpg",
+    POSTER_URL: "",
   },
   {
     title: "ra-animаtsii-short",
