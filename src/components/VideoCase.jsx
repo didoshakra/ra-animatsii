@@ -36,19 +36,19 @@ const cases = [
     POSTER_URL: "",
   },
   {
-    title: "sun2_compres",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
-    soundType: "озвучка персонажів",
-    visualStyle: "live-action + анімація",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
-    POSTER_URL: "",
-  },
-  {
     title: "roduna rerk1 20sek_compres",
     desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
     soundType: "закадрове озвучення",
     visualStyle: "ізометрична графіка",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788627395/pictures/ogg5bho35hloa58fdks2.mp4",
+    POSTER_URL: "",
+  },
+  {
+    title: "sun2_compres",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    soundType: "озвучка персонажів",
+    visualStyle: "live-action + анімація",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
     POSTER_URL: "",
   },
 ]
