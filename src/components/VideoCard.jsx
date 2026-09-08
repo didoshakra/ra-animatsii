@@ -2,13 +2,15 @@
 
 import { useRef, useState } from "react"
 
-export default function VideoCard({ title, desc, videoUrl, posterUrl, duration, color, badge, meta, aspect = "16:9" }) {
+// export default function VideoCard({ title, desc, videoUrl, posterUrl, duration, color, badge, meta, aspect = "16:9" }) {
+export default function VideoCard({ title, desc, videoUrl, posterUrl, duration, color, badge, meta}) {
   const videoRef = useRef(null)
   const [playing, setPlaying] = useState(false)
   const [error, setError] = useState(false)
   const [realAspectRatio, setRealAspectRatio] = useState(null)
-  const defaultAspectRatio = aspect.replace(":", " / ")
-  const containerAspectRatio = playing && realAspectRatio ? realAspectRatio : defaultAspectRatio
+//   const defaultAspectRatio = aspect.replace(":", " / ")
+//   const containerAspectRatio = playing && realAspectRatio ? realAspectRatio : defaultAspectRatio
+const containerAspectRatio = realAspectRatio || "16 / 9"
 
   function handlePlay() {
     setPlaying(true)
