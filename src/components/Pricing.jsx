@@ -1,115 +1,115 @@
-import {
-  ManicureIllustration,
-  CafeIllustration,
-  OfficeIllustration,
-} from "./PricingIcons";
-
-const plans = [
+const tiers = [
   {
-    name: "Старт",
-    segment: "Для малого бізнесу",
-    price: "від 4 000 грн",
-    days: "5 робочих днів",
-    desc: "Короткий і яскравий ролик для соцмереж — до 20 секунд анімації з одним персонажем та музикою з бібліотеки. Швидко доносить головну думку та зупиняє погляд у стрічці Reels чи TikTok. Включає один раунд правок.",
+    name: "Базовий",
+    price: "від $150",
+    tagline: "Швидкий старт для соцмереж",
+    features: [
+      "2D-анімація",
+      "Без озвучки або мінімальна закадрова",
+      "Коротка реклама, 10–15 сек",
+      "Ідеально для TikTok / Reels / Shorts",
+    ],
+    color: "bg-sky-light",
     highlight: false,
-    Illustration: ManicureIllustration,
   },
   {
-    name: "Бізнес",
-    segment: "Для середнього бізнесу",
-    price: "від 9 000 грн",
-    days: "10 робочих днів",
-    desc: "Пояснювальний ролик до 60 секунд із до трьох персонажами та голосом диктора — розкриває цінність продукту через зв'язну історію. Підходить для сайту, презентацій і масштабної рекламної кампанії. Два раунди правок і адаптація під усі формати.",
+    name: "Стандарт",
+    price: "від $300",
+    tagline: "Найпопулярніший вибір",
+    features: [
+      "2D або проста 3D-анімація",
+      "Закадрова озвучка",
+      "Рекламний ролик, 20–30 сек",
+      "Для соцмереж, YouTube, Meta Ads",
+    ],
+    color: "bg-sun-light",
     highlight: true,
-    Illustration: CafeIllustration,
   },
   {
     name: "Преміум",
-    segment: "Для великого бізнесу",
-    price: "за розрахунком",
-    days: "15+ робочих днів",
-    desc: "Авторська візитівка бренду або серія роликів з індивідуальною тривалістю та персонажами, розробленими саме під ваш бренд. Оригінальна музика, максимальна увага до деталей і необмежені правки в межах узгодженого брифу.",
+    price: "від $500",
+    tagline: "Емоційний, преміальний рівень",
+    features: [
+      "3D-анімація або character animation",
+      "Озвучка персонажів",
+      "Візитівка бренду / Storytelling, 30–60 сек",
+      "Для сайту, презентацій, іміджевої реклами",
+    ],
+    color: "bg-meadow-light",
     highlight: false,
-    Illustration: OfficeIllustration,
   },
-];
+  {
+    name: "Індивідуальний",
+    price: "За запитом",
+    tagline: "Під ваш унікальний проєкт",
+    features: [
+      "Live-action + анімація або авторський підхід",
+      "Будь-яка тривалість і складність",
+      "Персональний сценарій та стиль",
+      "Обговорюємо деталі на консультації",
+    ],
+    color: "bg-clay-light",
+    highlight: false,
+  },
+]
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-sky-light py-20 sm:py-28">
-      <div className="max-w-5xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl text-center">
-          Тарифи
-        </h2>
-        <p className="mt-3 font-body text-lg text-ink/70 text-center max-w-xl mx-auto">
-          Орієнтовні пакети — фінальна вартість залежить від складності сценарію та кількості персонажів.
-        </p>
+    <section id="pricing" className="bg-cream py-20 sm:py-28">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="max-w-xl">
+          <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">Тарифи</h2>
+          <p className="mt-4 font-body text-ink/70 text-xl leading-relaxed">
+            Орієнтовні ціни — точну вартість погодимо на консультації, з урахуванням деталей вашого проєкту.
+          </p>
+        </div>
 
-        <div className="mt-12 flex flex-col gap-6">
-          {plans.map((p) => (
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+          {tiers.map((t) => (
             <div
-              key={p.name}
-              className={`rounded-3xl overflow-hidden flex flex-col sm:flex-row ${
-                p.highlight
-                  ? "bg-clay text-cream shadow-[0_8px_0_0_theme(colors.clay.deep)]"
-                  : "bg-cream text-ink shadow-[0_6px_0_0_rgba(47,36,22,0.15)]"
+              key={t.name}
+              className={`rounded-3xl p-6 flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)] ${
+                t.highlight ? "bg-ink text-cream ring-2 ring-sun" : "bg-white text-ink"
               }`}
             >
-              <div className="sm:w-[38%] h-44 sm:h-auto shrink-0">
-                <p.Illustration />
-              </div>
+              {t.highlight && (
+                <span className="inline-block self-start bg-sun text-ink font-body font-700 text-xs px-3 py-1 rounded-full mb-3">
+                  Популярний вибір
+                </span>
+              )}
+              <div className={`${t.color} rounded-2xl h-2 w-12 mb-4`} aria-hidden="true" />
+              <p className={`font-display font-700 text-2xl ${t.highlight ? "text-cream" : "text-ink"}`}>{t.name}</p>
+              <p className={`font-body text-sm mt-1 ${t.highlight ? "text-cream/70" : "text-ink/60"}`}>{t.tagline}</p>
+              <p className={`font-display font-800 text-3xl mt-4 ${t.highlight ? "text-cream" : "text-ink"}`}>
+                {t.price}
+              </p>
 
-              <div className="p-7 sm:p-8 flex flex-col flex-1">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <div>
-                    <p
-                      className={`font-body font-700 text-sm uppercase tracking-wide ${
-                        p.highlight ? "text-cream/70" : "text-clay-deep"
-                      }`}
-                    >
-                      {p.segment}
-                    </p>
-                    <h3 className="font-display font-700 text-2xl sm:text-3xl mt-1">
-                      {p.name}
-                    </h3>
-                  </div>
-                  <p className="font-display font-800 text-2xl sm:text-3xl">
-                    {p.price}
-                  </p>
-                </div>
-
-                <p
-                  className={`mt-4 font-body text-lg leading-relaxed ${
-                    p.highlight ? "text-cream/90" : "text-ink/75"
-                  }`}
-                >
-                  {p.desc}
-                </p>
-
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <p
-                    className={`font-body font-700 text-base ${
-                      p.highlight ? "text-cream/80" : "text-clay-deep"
+              <ul className="mt-5 flex-1 space-y-2">
+                {t.features.map((f) => (
+                  <li
+                    key={f}
+                    className={`font-body text-sm leading-relaxed flex gap-2 ${
+                      t.highlight ? "text-cream/90" : "text-ink/75"
                     }`}
                   >
-                    Термін виконання: {p.days}
-                  </p>
-                  <a
-                    href="#contact"
-                    className={`font-display font-700 rounded-full px-6 py-3 focus-ring transition-colors ${
-                      p.highlight
-                        ? "bg-cream text-clay-deep hover:bg-cream/90"
-                        : "bg-ink text-cream hover:bg-ink/85"
-                    }`}
-                  >
-                    Обрати пакет
-                  </a>
-                </div>
-              </div>
+                    <span aria-hidden="true">•</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#contact"
+                className={`mt-6 inline-flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-sm transition-colors focus-ring ${
+                  t.highlight ? "bg-sun text-ink hover:bg-sun-light" : "bg-meadow text-cream hover:bg-meadow-deep"
+                }`}
+              >
+                Обговорити проєкт
+              </a>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }

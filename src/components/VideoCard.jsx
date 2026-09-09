@@ -2,15 +2,29 @@
 
 import { useRef, useState } from "react"
 
-// export default function VideoCard({ title, desc, videoUrl, posterUrl, duration, color, badge, meta, aspect = "16:9" }) {
-export default function VideoCard({ title, desc, videoUrl, posterUrl, duration, color, badge, meta}) {
+export default function VideoCard({
+  title,
+  desc,
+  videoUrl,
+  posterUrl,
+  duration,
+  color,
+  badge,
+  meta,
+  aspect = "16:9",
+  playAspect,
+  structure,
+  suitableFor,
+}) {
   const videoRef = useRef(null)
   const [playing, setPlaying] = useState(false)
   const [error, setError] = useState(false)
   const [realAspectRatio, setRealAspectRatio] = useState(null)
-//   const defaultAspectRatio = aspect.replace(":", " / ")
-//   const containerAspectRatio = playing && realAspectRatio ? realAspectRatio : defaultAspectRatio
-const containerAspectRatio = realAspectRatio || "16 / 9"
+  const defaultAspectRatio = aspect.replace(":", " / ")
+  const explicitPlayAspectRatio = playAspect ? playAspect.replace(":", " / ") : null
+  const containerAspectRatio = playing
+    ? explicitPlayAspectRatio || realAspectRatio || defaultAspectRatio
+    : defaultAspectRatio
 
   function handlePlay() {
     setPlaying(true)
@@ -92,6 +106,8 @@ const containerAspectRatio = realAspectRatio || "16 / 9"
           {meta && <p className="font-body text-sm text-ink/50 mt-1">{meta}</p>}
           {duration && <p className="font-body text-base text-clay-deep font-700 mt-1">{duration}</p>}
           {desc && <p className="font-body text-lg text-ink/70 mt-1 leading-relaxed">{desc}</p>}
+          {structure && <p className="font-body text-sm text-meadow-deep font-700 mt-3">{structure}</p>}
+          {suitableFor && <p className="font-body text-sm text-ink/55 mt-1 leading-relaxed">{suitableFor}</p>}
         </div>
       )}
     </div>

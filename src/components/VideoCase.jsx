@@ -10,6 +10,7 @@ const cases = [
     visualStyle: "плоска графіка",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788688441/pictures/ynyyoxasgdxbdphhkjfe.mp4",
     POSTER_URL: "",
+    playAspect: "9:16",
   },
   {
     title: "ra-animаtsii-short",
@@ -18,6 +19,26 @@ const cases = [
     visualStyle: "об'ємна графіка (3D)",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1787948940/pictures/pj2ve2yzzbv8fv0xgryp.mp4",
     POSTER_URL: "",
+    playAspect: "9:16",
+  },
+
+  {
+    title: "roduna_rekgemini_9-16_16sek",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    soundType: "без озвучки",
+    visualStyle: "character animation",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
+    POSTER_URL: "",
+    playAspect: "16:9",
+  },
+  {
+    title: "roduna rerkgpt_9-16_ 20sek_compress",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    soundType: "закадрове озвучення",
+    visualStyle: "ізометрична графіка",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965660/pictures/myxlcznejrhh9xbj55m6.mp4",
+    POSTER_URL: "",
+    playAspect: "16:9",
   },
   {
     title: "sun1_compress",
@@ -26,22 +47,7 @@ const cases = [
     visualStyle: "motion graphics",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788631121/pictures/j3367j6rbnq6wh4e32iy.mp4",
     POSTER_URL: "",
-  },
-  {
-    title: "roduna_rek1_16sek_gemini_compres",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
-    soundType: "без озвучки",
-    visualStyle: "character animation",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788627256/pictures/vehu3vvhtabuahymanxr.mp4",
-    POSTER_URL: "",
-  },
-  {
-    title: "roduna rerk1 20sek_compres",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
-    soundType: "закадрове озвучення",
-    visualStyle: "ізометрична графіка",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788627395/pictures/ogg5bho35hloa58fdks2.mp4",
-    POSTER_URL: "",
+    playAspect: "16:9",
   },
   {
     title: "sun2_compres",
@@ -50,6 +56,7 @@ const cases = [
     visualStyle: "live-action + анімація",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
     POSTER_URL: "",
+    playAspect: "16:9",
   },
 ]
 
