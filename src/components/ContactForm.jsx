@@ -1,12 +1,14 @@
 // src/components/ContactForm.jsx
 "use client"
 
-import { useState } from "react"
+import { Suspense, useState } from "react"
+import { useSearchParams } from "next/navigation"
 
 const FORMATS = [
-  { id: "explainer", label: "Пояснювальний ролик" },
-  { id: "social", label: "Ролик для соцмереж" },
+  { id: "short", label: "Коротка реклама" },
+  { id: "ad", label: "Рекламний ролик" },
   { id: "brand", label: "Візитівка бренду" },
+  { id: "story", label: "Ролик-історія" },
 ]
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
@@ -14,9 +16,13 @@ function isValidPhone(raw) {
   return PHONE_RE.test(raw.replace(/[\s\-()]/g, ""))
 }
 
-export default function ContactForm() {
+function ContactFormInner() {
+  const searchParams = useSearchParams()
+  const presetFormat = searchParams.get("format")
+  const initialFormat = FORMATS.some((f) => f.id === presetFormat) ? presetFormat : null
+
   const [status, setStatus] = useState("idle")
-  const [format, setFormat] = useState(null)
+  const [format, setFormat] = useState(initialFormat)
   const [contactError, setContactError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
 
@@ -133,33 +139,34 @@ export default function ContactForm() {
                 Що плануєте? <span className="font-400 text-cream/50 text-base">(необов&rsquo;язково)</span>
               </p>
               <div className="flex flex-wrap gap-2.5">
-                {FORMATS.map((f) => (
-                  <button
-                    key={f.id}
-                    type="button"
-                    onClick={() => setFormat((cur) => (cur === f.id ? null : f.id))}
-                    aria-pressed={format === f.id}
-                    className={`font-body font-700 text-sm sm:text-base rounded-full px-4 py-2 border-2 transition-colors focus-ring ${
-                      format === f.id
-                        ? "bg-sun border-sun text-ink"
-                        : "border-cream/25 text-cream/80 hover:border-cream/50"
-                    }`}
-                  >
-                    {f.label}
-                  </button>
-                ))}
+                {FORMATS.map((f) => {
+                  const selected = format === f.id
+                  return (
+                    <button
+                      key={f.id}
+                      type="button"
+                      onClick={() => setFormat((cur) => (cur === f.id ? null : f.id))}
+                      aria-pressed={selected}
+                      className={`font-body font-700 text-sm sm:text-base rounded-full px-4 py-2 border-2 transition-colors focus-ring inline-flex items-center gap-1.5 ${
+                        selected ? "bg-sun border-sun text-ink" : "border-cream/25 text-cream/80 hover:border-cream/50"
+                      }`}
+                    >
+                      {selected && <span aria-hidden="true">✓</span>}
+                      {f.label}
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
             <div>
               <label htmlFor="message" className="font-body font-700 text-lg text-cream block mb-1.5">
-                Про проєкт
+                Про проєкт <span className="font-400 text-cream/50 text-base">(необов&rsquo;язково)</span>
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
-                required
                 className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 resize-none"
                 placeholder="Що рекламуємо, для кого і коли потрібен ролик"
               />
@@ -182,5 +189,13 @@ export default function ContactForm() {
         )}
       </div>
     </section>
+  )
+}
+
+export default function ContactForm() {
+  return (
+    <Suspense fallback={null}>
+      <ContactFormInner />
+    </Suspense>
   )
 }
