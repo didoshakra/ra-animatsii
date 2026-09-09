@@ -1,54 +1,60 @@
+import { ManicureIllustration, CafeIllustration, OfficeIllustration, CustomIllustration } from "./PricingIcons"
+
 const tiers = [
   {
     name: "Базовий",
-    price: "від $150",
+    price: "від 4 000 грн",
     tagline: "Швидкий старт для соцмереж",
+    days: "5 робочих днів",
     features: [
       "2D-анімація",
       "Без озвучки або мінімальна закадрова",
       "Коротка реклама, 10–15 сек",
       "Ідеально для TikTok / Reels / Shorts",
     ],
-    color: "bg-sky-light",
+    Illustration: ManicureIllustration,
     highlight: false,
   },
   {
     name: "Стандарт",
-    price: "від $300",
+    price: "від 9 000 грн",
     tagline: "Найпопулярніший вибір",
+    days: "10 робочих днів",
     features: [
       "2D або проста 3D-анімація",
       "Закадрова озвучка",
       "Рекламний ролик, 20–30 сек",
       "Для соцмереж, YouTube, Meta Ads",
     ],
-    color: "bg-sun-light",
+    Illustration: CafeIllustration,
     highlight: true,
   },
   {
     name: "Преміум",
-    price: "від $500",
+    price: "від 15 000 грн",
     tagline: "Емоційний, преміальний рівень",
+    days: "15 робочих днів",
     features: [
       "3D-анімація або character animation",
       "Озвучка персонажів",
       "Візитівка бренду / Storytelling, 30–60 сек",
       "Для сайту, презентацій, іміджевої реклами",
     ],
-    color: "bg-meadow-light",
+    Illustration: OfficeIllustration,
     highlight: false,
   },
   {
     name: "Індивідуальний",
     price: "За запитом",
     tagline: "Під ваш унікальний проєкт",
+    days: "15+ робочих днів",
     features: [
       "Live-action + анімація або авторський підхід",
       "Будь-яка тривалість і складність",
       "Персональний сценарій та стиль",
       "Обговорюємо деталі на консультації",
     ],
-    color: "bg-clay-light",
+    Illustration: CustomIllustration,
     highlight: false,
   },
 ]
@@ -68,44 +74,52 @@ export default function Pricing() {
           {tiers.map((t) => (
             <div
               key={t.name}
-              className={`rounded-3xl p-6 flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)] ${
+              className={`rounded-3xl overflow-hidden flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)] ${
                 t.highlight ? "bg-ink text-cream ring-2 ring-sun" : "bg-white text-ink"
               }`}
             >
-              {t.highlight && (
-                <span className="inline-block self-start bg-sun text-ink font-body font-700 text-xs px-3 py-1 rounded-full mb-3">
-                  Популярний вибір
-                </span>
-              )}
-              <div className={`${t.color} rounded-2xl h-2 w-12 mb-4`} aria-hidden="true" />
-              <p className={`font-display font-700 text-2xl ${t.highlight ? "text-cream" : "text-ink"}`}>{t.name}</p>
-              <p className={`font-body text-sm mt-1 ${t.highlight ? "text-cream/70" : "text-ink/60"}`}>{t.tagline}</p>
-              <p className={`font-display font-800 text-3xl mt-4 ${t.highlight ? "text-cream" : "text-ink"}`}>
-                {t.price}
-              </p>
+              <div className="relative h-32 shrink-0">
+                <t.Illustration />
+                {t.highlight && (
+                  <span className="absolute top-3 left-3 bg-sun text-ink font-body font-700 text-xs px-3 py-1 rounded-full">
+                    Популярний вибір
+                  </span>
+                )}
+              </div>
 
-              <ul className="mt-5 flex-1 space-y-2">
-                {t.features.map((f) => (
-                  <li
-                    key={f}
-                    className={`font-body text-sm leading-relaxed flex gap-2 ${
-                      t.highlight ? "text-cream/90" : "text-ink/75"
-                    }`}
-                  >
-                    <span aria-hidden="true">•</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="p-6 flex flex-col flex-1">
+                <p className={`font-display font-700 text-2xl ${t.highlight ? "text-cream" : "text-ink"}`}>{t.name}</p>
+                <p className={`font-body text-sm mt-1 ${t.highlight ? "text-cream/70" : "text-ink/60"}`}>{t.tagline}</p>
+                <p className={`font-display font-800 text-3xl mt-4 ${t.highlight ? "text-cream" : "text-ink"}`}>
+                  {t.price}
+                </p>
+                <p className={`font-body text-sm mt-1 font-700 ${t.highlight ? "text-cream/80" : "text-clay-deep"}`}>
+                  Термін виконання: {t.days}
+                </p>
 
-              <a
-                href="#contact"
-                className={`mt-6 inline-flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-sm transition-colors focus-ring ${
-                  t.highlight ? "bg-sun text-ink hover:bg-sun-light" : "bg-meadow text-cream hover:bg-meadow-deep"
-                }`}
-              >
-                Обговорити проєкт
-              </a>
+                <ul className="mt-5 flex-1 space-y-2">
+                  {t.features.map((f) => (
+                    <li
+                      key={f}
+                      className={`font-body text-sm leading-relaxed flex gap-2 ${
+                        t.highlight ? "text-cream/90" : "text-ink/75"
+                      }`}
+                    >
+                      <span aria-hidden="true">•</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  className={`mt-6 inline-flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-sm transition-colors focus-ring ${
+                    t.highlight ? "bg-sun text-ink hover:bg-sun-light" : "bg-meadow text-cream hover:bg-meadow-deep"
+                  }`}
+                >
+                  Обговорити проєкт
+                </a>
+              </div>
             </div>
           ))}
         </div>

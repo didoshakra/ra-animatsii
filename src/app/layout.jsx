@@ -1,3 +1,4 @@
+// layout.jsx
 import "./globals.css";
 
 const siteUrl = "https://ra-animatsii.vercel.app";

@@ -51,7 +51,7 @@ export function ManicureIllustration() {
       <rect x="126" y="48" width="10" height="14" rx="2" fill="#5FA653" stroke="#8C4F2C" strokeWidth="2.5" />
       <rect x="123" y="70" width="16" height="16" rx="3" fill="#FBF6E9" opacity="0.5" />
     </svg>
-  );
+  )
 }
 
 export function CafeIllustration() {
@@ -70,13 +70,7 @@ export function CafeIllustration() {
       />
       <ellipse cx="90" cy="55" rx="28" ry="7" fill="#8C4F2C" />
       <ellipse cx="90" cy="55" rx="22" ry="4.5" fill="#C97A4A" />
-      <path
-        d="M118 62 C134 62 134 86 118 86"
-        fill="none"
-        stroke="#8C4F2C"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
+      <path d="M118 62 C134 62 134 86 118 86" fill="none" stroke="#8C4F2C" strokeWidth="4" strokeLinecap="round" />
       {/* тарілка з випічкою */}
       <ellipse cx="150" cy="108" rx="30" ry="8" fill="#FBF6E9" stroke="#8C4F2C" strokeWidth="2.5" />
       <path
@@ -86,7 +80,7 @@ export function CafeIllustration() {
         strokeWidth="2.5"
       />
     </svg>
-  );
+  )
 }
 
 export function OfficeIllustration() {
@@ -106,7 +100,7 @@ export function OfficeIllustration() {
             rx="1.5"
             fill="#6FC3E8"
           />
-        ))
+        )),
       )}
       {/* стіл + монітор */}
       <rect x="18" y="98" width="76" height="8" rx="2" fill="#8C4F2C" />
@@ -121,5 +115,36 @@ export function OfficeIllustration() {
       <circle cx="94" cy="95" r="7" fill="#5FA653" />
       <circle cx="110" cy="95" r="7" fill="#5FA653" />
     </svg>
-  );
+  )
+}
+export function CustomIllustration() {
+  return (
+    <svg viewBox="0 0 200 140" className="w-full h-full" aria-hidden="true">
+      <rect width="200" height="140" rx="18" fill="#F3D9C4" />
+      {/* розгорнутий сувій/скетчбук */}
+      <path
+        d="M40 30 H140 C146 30 150 34 150 40 V100 C150 106 146 110 140 110 H40 C34 110 30 106 30 100 V40 C30 34 34 30 40 30 Z"
+        fill="#FBF6E9"
+        stroke="#8C4F2C"
+        strokeWidth="3"
+      />
+      {/* лінії ескізу */}
+      <path d="M50 52 H120" stroke="#C97A4A" strokeWidth="3" strokeLinecap="round" />
+      <path d="M50 66 H105" stroke="#C97A4A" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+      <path d="M50 80 H115" stroke="#C97A4A" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
+
+      {/* олівець */}
+      <path d="M132 96 L160 68 L172 80 L144 108 Z" fill="#FFC94D" stroke="#8C4F2C" strokeWidth="2.5" />
+      <path d="M160 68 L172 80" stroke="#8C4F2C" strokeWidth="2.5" />
+      <path d="M132 96 L144 108 L136 116 L124 104 Z" fill="#8C4F2C" />
+
+      {/* зірочка-акцент */}
+      <path
+        d="M168 30 L171 37 L178 38 L173 43 L174 50 L168 46 L162 50 L163 43 L158 38 L165 37 Z"
+        fill="#FFC94D"
+        stroke="#8C4F2C"
+        strokeWidth="1.5"
+      />
+    </svg>
+  )
 }

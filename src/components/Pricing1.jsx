@@ -1,3 +1,4 @@
+// Pricing1.jsx
 import {
   ManicureIllustration,
   CafeIllustration,

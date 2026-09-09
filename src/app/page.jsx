@@ -1,3 +1,4 @@
+//page.jsx
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HillDivider from "@/components/HillDivider";
@@ -6,7 +7,7 @@ import Portfolio from "@/components/Portfolio";
 import MiniLeadForm from "@/components/MiniLeadForm";
 import Process from "@/components/Process";
 import AboutTeam from "@/components/AboutTeam";
-import Pricing1 from "@/components/Pricing1";
+// import Pricing1 from "@/components/Pricing1";
 import Pricing from "@/components/Pricing";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -27,7 +28,7 @@ export default function Home() {
         <AboutTeam />
         <HillDivider fromColor="#FBF6E9" toColor="#CDEBF9" />
         <Pricing />
-        <Pricing1 />
+        {/* <Pricing1 /> */}
         <HillDivider fromColor="#CDEBF9" toColor="#2F2416" />
         <ContactForm />
       </main>
