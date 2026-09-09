@@ -5,7 +5,6 @@ import VideoCard from "./VideoCard"
 const cases = [
   {
     title: "Lumpex24",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
     soundType: "без озвучки",
     visualStyle: "плоска графіка",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788688441/pictures/ynyyoxasgdxbdphhkjfe.mp4",
@@ -14,7 +13,7 @@ const cases = [
   },
   {
     title: "ra-animаtsii-short",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Візитівка бренду",
     soundType: "закадрове озвучення",
     visualStyle: "об'ємна графіка (3D)",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1787948940/pictures/pj2ve2yzzbv8fv0xgryp.mp4",
