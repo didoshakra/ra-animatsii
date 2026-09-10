@@ -1,13 +1,15 @@
 // src/components/Hero.jsx
 import Image from "next/image"
+import { getT } from "next-i18next/server"
 
-const PERKS = ["Перша розкадровка за 48 год", "Безкоштовна консультація", "Без шаблонів"]
+export default async function Hero() {
+  const { t } = await getT("common")
+  const perks = t("hero.perks", { returnObjects: true })
 
-export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-sky-light pt-14 pb-16 sm:pt-20 sm:pb-32">
       {/* Фон: кіноплівкові стрічки  */}
-      <Image 
+      <Image
         src="/media/studio/hero-film-strip-bg.png"
         alt=""
         aria-hidden="true"
@@ -32,33 +34,30 @@ export default function Hero() {
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
         <div>
           <h1 className="font-display font-800 text-ink text-[2.1rem] sm:text-5xl lg:text-[3.4rem] leading-[1.12] sm:leading-[1.08] tracking-tight">
-            Мультяшна реклама,
+            {t("hero.titleLine1")}
             <br />
-            яку дивляться до кінця
+            {t("hero.titleLine2")}
           </h1>
-          <p className="mt-5 font-body text-xl text-ink/80 max-w-lg leading-relaxed">
-            Малюємо теплі, живі відеоролики, які пояснюють складне просто, запам&rsquo;ятовуються і роблять вашу
-            компанію&nbsp;— трохи казковою.
-          </p>
+          <p className="mt-5 font-body text-xl text-ink/80 max-w-lg leading-relaxed">{t("hero.description")}</p>
 
           <div className="mt-8 flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-3 xs:gap-4">
             <a
               href="#contact"
               className="font-display font-700 text-cream bg-meadow-deep px-7 py-3.5 rounded-full text-base sm:text-lg text-center hover:bg-meadow-deep/90 transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.ink)] active:translate-y-[3px] active:shadow-none"
             >
-              Замовити ролик
+              {t("hero.ctaPrimary")}
             </a>
             <a
               href="#portfolio"
               className="font-display font-600 text-ink px-6 py-3.5 rounded-full text-base sm:text-lg text-center border-2 border-ink/15 hover:border-clay transition-colors focus-ring bg-cream/60"
             >
-              Дивитись приклади
+              {t("hero.ctaSecondary")}
             </a>
           </div>
 
           {/* 3 короткі переваги під CTA */}
           <ul className="mt-6 flex flex-col xs:flex-row flex-wrap gap-x-6 gap-y-2">
-            {PERKS.map((perk) => (
+            {perks.map((perk) => (
               <li key={perk} className="flex items-center gap-2 font-body text-sm sm:text-base text-ink/75">
                 <span
                   aria-hidden="true"
@@ -71,9 +70,7 @@ export default function Hero() {
             ))}
           </ul>
 
-          <p className="mt-6 font-body text-base text-ink/60">
-            Від сценарію до готового ролика — один автор, один стиль, без правок&nbsp;«за замовчуванням».
-          </p>
+          <p className="mt-6 font-body text-base text-ink/60">{t("hero.footnote")}</p>
         </div>
 
         {/* Орел — на мобільному одразу під заголовком, менший розмір */}
@@ -83,7 +80,7 @@ export default function Hero() {
             <div aria-hidden="true" className="absolute -inset-4 bg-cream/60 rounded-blob blur-2xl" />
             <Image
               src="/brand/eagle.png"
-              alt="Маскот студії RA Анімації — мультяшний орел"
+              alt={t("hero.eagleAlt")}
               fill
               sizes="(max-width: 640px) 260px, 340px"
               className="object-contain relative drop-shadow-2xl p-4"

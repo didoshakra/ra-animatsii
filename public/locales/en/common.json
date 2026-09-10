@@ -1,0 +1,24 @@
+{
+  "header": {
+    "brand": "RA Animations",
+    "nav": {
+      "portfolio": "Portfolio",
+      "process": "How We Work",
+      "pricing": "Pricing",
+      "contact": "Contact"
+    },
+    "cta": "Discuss Your Project",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "titleLine1": "Cartoon ads",
+    "titleLine2": "people watch to the end",
+    "description": "We create warm, lively videos that explain complex things simply, stick in people's memory, and make your business feel just a little bit magical.",
+    "ctaPrimary": "Order a Video",
+    "ctaSecondary": "See Examples",
+    "perks": ["First storyboard in 48 hours", "Free consultation", "No templates"],
+    "footnote": "From script to finished video — one creator, one consistent style, no default-issue revisions.",
+    "eagleAlt": "RA Animations studio mascot — a cartoon eagle"
+  }
+}

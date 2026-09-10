@@ -1,8 +1,13 @@
-// layout.jsx
-import "./globals.css";
+// src/app/[lng]/layout.jsx
+import { initServerI18next, getT, getResources, generateI18nStaticParams } from "next-i18next/server"
+import { I18nProvider } from "next-i18next/client"
+import i18nConfig from "../../../i18n.config"
+import "../globals.css"
 
-const siteUrl = "https://ra-animatsii.vercel.app";
+const siteUrl = "https://ra-animatsii.vercel.app"
 
+// TODO (наступний крок): локалізувати metadata через generateMetadata(),
+// поки що лишаємо український текст як є.
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: "RA Анімації — мультяшна реклама для вашого бізнесу",
@@ -32,16 +37,31 @@ export const metadata = {
       "Малюємо теплі, живі відеоролики, які пояснюють складне просто і запам'ятовуються надовго.",
     images: ["/brand/og-image.jpg"],
   },
-};
+}
 
-export default function RootLayout({
-  children,
-}) {
+initServerI18next(i18nConfig)
+
+export async function generateStaticParams() {
+  return generateI18nStaticParams()
+}
+
+export default async function RootLayout({ children, params }) {
+  const { lng } = await params
+  const { i18n } = await getT()
+
+  if (process.env.NODE_ENV === "development") {
+    await i18n.reloadResources(i18nConfig.supportedLngs, i18nConfig.ns)
+  }
+
+  const resources = getResources(i18n)
+
   return (
-    <html lang="uk">
+    <html lang={lng}>
       <body className="font-body antialiased">
-        {children}
+        <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
+          {children}
+        </I18nProvider>
       </body>
     </html>
-  );
+  )
 }
