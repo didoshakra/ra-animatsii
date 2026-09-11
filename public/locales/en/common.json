@@ -20,5 +20,14 @@
     "perks": ["First storyboard in 48 hours", "Free consultation", "No templates"],
     "footnote": "From script to finished video — one creator, one consistent style, no default-issue revisions.",
     "eagleAlt": "RA Animations studio mascot — a cartoon eagle"
+  },
+  "studioVideo": {
+    "title": "This is how we tell our story",
+    "description": "Промо-ролик студії RA Анімації — знятий і анімований нашою командою, тим самим підходом, яким ми робимо ролики для клієнтів.",
+    "videoFallback": "Could not play here — open video",
+    "playAriaLabel": "Play the studio's promo video",
+    "ctaTitle": "Your video starts here",
+    "ctaDescription": "Submit a request — we’ll discuss the idea and get back to you with initial sketches within 48 hours.",
+    "ctaButton": "Order a video like this"
   }
 }
