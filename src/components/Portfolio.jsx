@@ -1,5 +1,6 @@
 import VideoCase from "./VideoCase"
 import VideoCard from "./VideoCard"
+import ExecutionOptions from "./ExecutionOptions"
 
 const formats = [
   {
@@ -73,12 +74,27 @@ const styleOptions = [
     desc: "Об'ємна графіка, реалістичні матеріали, ефектні сцени та сучасний вигляд. Підходить для презентації продуктів, технологій та преміальних брендів.",
   },
   {
-    title: "Character animation",
+    title: "Анімація персонажів",
     desc: "Стилізовані персонажі з живою мімікою та рухом — для емоційних історій та впізнаваних маскотів бренду.",
   },
   {
-    title: "Live-action + анімація",
+    title: "Реальна зйомка + анімація",
     desc: "Поєднання живої зйомки з графікою — коли потрібен реальний продукт чи люди в кадрі разом з анімаційними акцентами.",
+  },
+]
+
+const aspectOptions = [
+  {
+    title: "16:9 — Горизонтальний",
+    desc: "Класичний формат для YouTube, сайту, презентацій та великих екранів.",
+  },
+  {
+    title: "9:16 — Вертикальний",
+    desc: "Для Reels, TikTok та Stories — займає весь екран телефона.",
+  },
+  {
+    title: "1:1 — Квадрат",
+    desc: "Універсальний формат для стрічки Instagram і Facebook.",
   },
 ]
 
@@ -123,29 +139,9 @@ export default function Portfolio() {
           <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">Варіанти виконання</h3>
         </div>
 
-        <div className="mt-10">
-          <p className="font-body font-700 text-cream text-lg mb-4">🎙 Озвучка</p>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {voiceoverOptions.map((o) => (
-              <div key={o.title} className="bg-cream rounded-3xl p-6 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-                <p className="font-display font-700 text-lg text-ink">{o.title}</p>
-                <p className="font-body text-base text-ink/70 mt-2 leading-relaxed">{o.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <p className="font-body font-700 text-cream text-lg mb-4">🎨 Стиль</p>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {styleOptions.map((o) => (
-              <div key={o.title} className="bg-cream rounded-3xl p-6 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-                <p className="font-display font-700 text-lg text-ink">{o.title}</p>
-                <p className="font-body text-base text-ink/70 mt-2 leading-relaxed">{o.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ExecutionOptions title="🎙 Озвучка" options={voiceoverOptions} />
+        <ExecutionOptions title="🎨 Стиль" options={styleOptions} />
+        <ExecutionOptions title="📐 Формат кадру" options={aspectOptions} />
       </div>
     </section>
   )

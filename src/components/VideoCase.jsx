@@ -90,7 +90,8 @@ export default function VideoCase() {
             desc={c.desc}
             videoUrl={c.VIDEO_URL}
             posterUrl={c.POSTER_URL}
-            badge={`Кейс: ${c.title} ${c.playAspect}`}
+            badge={`Кейс: ${c.title}`}
+            aspectLabel={c.playAspect}
             meta={`${c.visualStyle} · ${c.soundType}`}
           />
         ))}

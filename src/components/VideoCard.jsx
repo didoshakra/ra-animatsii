@@ -10,6 +10,7 @@ export default function VideoCard({
   duration,
   color,
   badge,
+  aspectLabel,
   meta,
   aspect = "16:9",
   playAspect,
@@ -44,10 +45,19 @@ export default function VideoCard({
 
   return (
     <div className="bg-cream rounded-3xl p-6 flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-      {badge && (
-        <span className="inline-block self-start bg-meadow/15 text-meadow-deep font-body font-700 text-xs px-3 py-1 rounded-full mb-3">
-          {badge}
-        </span>
+      {(badge || aspectLabel) && (
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          {badge && (
+            <span className="inline-block bg-meadow/15 text-meadow-deep font-body font-700 text-xs px-3 py-1 rounded-full">
+              {badge}
+            </span>
+          )}
+          {aspectLabel && (
+            <span className="inline-block bg-clay/15 text-clay-deep font-body font-700 text-xs px-3 py-1 rounded-full">
+              {aspectLabel}
+            </span>
+          )}
+        </div>
       )}
       <div
         className={`relative w-full rounded-2xl overflow-hidden transition-[aspect-ratio] duration-300 ${
