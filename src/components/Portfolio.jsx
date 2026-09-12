@@ -11,7 +11,7 @@ const formats = [
     suitableFor: "Підходить для Reels, TikTok, YouTube Shorts та таргетованої реклами.",
     color: "bg-sky-light",
     playAspect: "16:9",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789158190/pictures/zdcj49ryuwmfrxu0sb2w.mp4",
     POSTER_URL: "",
   },
   {
@@ -21,7 +21,7 @@ const formats = [
     structure: "Міні-сюжет → проблема → рішення → бренд → CTA",
     suitableFor: "Підходить для соцмереж, YouTube, Meta Ads та рекламних кампаній.",
     color: "bg-sun-light",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965660/pictures/myxlcznejrhh9xbj55m6.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789158226/pictures/wfl4vdl4kigmz4gw2qyr.mp4",
     POSTER_URL: "",
     playAspect: "9:16",
   },

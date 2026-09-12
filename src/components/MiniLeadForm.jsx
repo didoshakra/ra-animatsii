@@ -61,7 +61,7 @@ export default function MiniLeadForm() {
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <div className="bg-cream rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 sm:gap-8 shadow-[0_6px_0_0_theme(colors.ink)]">
           <div className="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0">
-            <Image src="/brand/eagle.png" alt="" aria-hidden="true" fill className="object-contain" />
+            <Image src="/brand/eagle.png" alt="" aria-hidden="true" fill sizes="112px" className="object-contain" />
           </div>
 
           <div className="flex-1 w-full">
