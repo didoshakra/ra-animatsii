@@ -24,16 +24,18 @@ export default function StudioVideo() {
   }
 
   return (
-    <section id="studio-video" className="bg-cream py-20 sm:py-28">
+    <section id="studio-video" className="bg-cream py-14 sm:py-20">
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">
             {t("studioVideo.title")}
           </h2>
-          <p className="mt-4 font-body text-lg text-ink/75 leading-relaxed">{t("studioVideo.description")}</p>
+          <p className="mt-2 sm:mt-4 font-body text-base sm:text-lg text-ink/75 leading-relaxed">
+            {t("studioVideo.description")}
+          </p>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-[1.3fr_0.7fr] gap-8 items-center">
+        <div className="mt-6 sm:mt-10 grid md:grid-cols-[1.3fr_0.7fr] gap-4 md:gap-8 items-center">
           {/* Реальний відеоплеєр */}
           <div className="relative aspect-video rounded-3xl overflow-hidden bg-ink shadow-[0_8px_0_0_theme(colors.clay.deep)]">
             {error ? (
@@ -79,14 +81,16 @@ export default function StudioVideo() {
           </div>
 
           {/* Чесна CTA-кнопка, не імітація плеєра */}
-          <div className="flex flex-col items-start gap-4">
-            <p className="font-display font-700 text-ink text-xl sm:text-2xl leading-snug">
+          <div className="flex flex-col items-start gap-2 sm:gap-4">
+            <p className="font-display font-700 text-ink text-lg sm:text-2xl leading-snug">
               {t("studioVideo.ctaTitle")}
             </p>
-            <p className="font-body text-base text-ink/70 leading-relaxed">{t("studioVideo.ctaDescription")}</p>
+            <p className="hidden sm:block font-body text-base text-ink/70 leading-relaxed">
+              {t("studioVideo.ctaDescription")}
+            </p>
             <a
               href="#contact"
-              className="font-display font-700 text-cream bg-meadow-deep px-7 py-3.5 rounded-full text-base sm:text-lg text-center hover:bg-meadow-deep/90 transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.ink)] active:translate-y-[3px] active:shadow-none"
+              className="font-display font-700 text-cream bg-meadow-deep px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-full text-base sm:text-lg text-center hover:bg-meadow-deep/90 transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.ink)] active:translate-y-[3px] active:shadow-none"
             >
               {t("studioVideo.ctaButton")}
             </a>

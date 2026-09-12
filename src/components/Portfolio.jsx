@@ -1,4 +1,3 @@
-import VideoCase from "./VideoCase"
 import VideoCard from "./VideoCard"
 import ExecutionOptions from "./ExecutionOptions"
 
@@ -11,7 +10,7 @@ const formats = [
     suitableFor: "Підходить для Reels, TikTok, YouTube Shorts та таргетованої реклами.",
     color: "bg-sky-light",
     playAspect: "16:9",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789158190/pictures/zdcj49ryuwmfrxu0sb2w.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
     POSTER_URL: "",
   },
   {
@@ -21,7 +20,7 @@ const formats = [
     structure: "Міні-сюжет → проблема → рішення → бренд → CTA",
     suitableFor: "Підходить для соцмереж, YouTube, Meta Ads та рекламних кампаній.",
     color: "bg-sun-light",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789158226/pictures/wfl4vdl4kigmz4gw2qyr.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789195430/pictures/nciurc1gozkhaba5iajh.mp4",
     POSTER_URL: "",
     playAspect: "9:16",
   },
@@ -100,25 +99,15 @@ const aspectOptions = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="bg-meadow py-20 sm:py-28">
+    <section id="portfolio" className="bg-meadow py-14 sm:py-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl">
-          <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">Реальний кейс</h2>
-          <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">
-            Один із роликів студії — для замовника.
-          </p>
-        </div>
-
-        {/* Featured cases */}
-        <VideoCase />
-
-        <div className="mt-14 max-w-xl">
-          <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">
+          <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">
             Формати, з якими працюємо
-          </h3>
+          </h2>
         </div>
 
-        <div className="mt-12 grid sm:grid-cols-2 gap-6 items-start">
+        <div className="mt-8 sm:mt-12 grid sm:grid-cols-2 gap-6 items-start">
           {formats.map((f) => (
             <VideoCard
               key={f.title}
@@ -135,7 +124,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <div className="mt-14 max-w-xl">
+        <div className="mt-10 sm:mt-14 max-w-xl">
           <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">Варіанти виконання</h3>
         </div>
 
