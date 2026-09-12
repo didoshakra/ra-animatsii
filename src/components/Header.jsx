@@ -14,6 +14,7 @@ export default function Header() {
     { href: "#portfolio", label: t("header.nav.portfolio") },
     { href: "#process", label: t("header.nav.process") },
     { href: "#pricing", label: t("header.nav.pricing") },
+    { href: "#real-case", label: t("header.nav.case") },
     { href: "#contact", label: t("header.nav.contact") },
   ]
 
