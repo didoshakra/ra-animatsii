@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
+import { useT } from "next-i18next/client"
 
 export default function VideoCard({
   title,
@@ -17,6 +18,7 @@ export default function VideoCard({
   structure,
   suitableFor,
 }) {
+  const { t } = useT("common")
   const videoRef = useRef(null)
   const [playing, setPlaying] = useState(false)
   const [error, setError] = useState(false)
@@ -76,7 +78,7 @@ export default function VideoCard({
               <span className="w-12 h-12 rounded-full bg-cream/90 flex items-center justify-center">
                 <span className="ml-1 w-0 h-0 border-y-[9px] border-y-transparent border-l-[14px] border-l-ink" />
               </span>
-              <span className="font-body text-sm">Не вдалось відтворити тут — відкрити відео</span>
+              <span className="font-body text-sm">{t("videoCard.playFallback")}</span>
             </a>
           ) : (
             <>
@@ -97,7 +99,7 @@ export default function VideoCard({
                 <button
                   type="button"
                   onClick={handlePlay}
-                  aria-label={`Відтворити відео: ${title}`}
+                  aria-label={t("videoCard.playAriaLabel", { title })}
                   className="absolute inset-0 flex items-center justify-center bg-ink/20 hover:bg-ink/30 transition-colors focus-ring"
                 >
                   <span className="w-16 h-16 rounded-full bg-cream/90 flex items-center justify-center">

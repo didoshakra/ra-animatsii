@@ -2,13 +2,13 @@
 
 import { useState } from "react"
 
-export default function ExecutionOptions({ title, options }) {
+export default function ExecutionOptions({ title, options, hint }) {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
     <div className="mt-10">
       <p className="font-body font-700 text-cream text-lg mb-1">{title}</p>
-      <p className="font-body text-sm text-cream/60 mb-4">Натисніть на варіант, щоб побачити опис</p>
+      {hint && <p className="font-body text-sm text-cream/60 mb-4">{hint}</p>}
       <div className="flex flex-col gap-2">
         {options.map((o, i) => {
           const isOpen = openIndex === i
