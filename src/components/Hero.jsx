@@ -81,7 +81,10 @@ export default async function Hero() {
             <div aria-hidden="true" className="absolute inset-0 bg-sun-light rounded-blob rotate-6 blur-[2px]" />
             <div aria-hidden="true" className="absolute -inset-4 bg-cream/60 rounded-blob blur-2xl" />
             <Image
-              src="/brand/eagle.png"
+              //   src="/brand/eagle.png"
+              //   src="/brand/RASpark_eagle1.png"
+                src="/brand/RASpark_eagle.png"
+            //   src="/brand/RASpark_robot.png"
               alt={t("hero.eagleAlt")}
               fill
               sizes="(max-width: 640px) 120px, (max-width: 768px) 220px, 340px"

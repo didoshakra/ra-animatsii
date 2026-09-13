@@ -1,116 +1,101 @@
-// Pricing1.jsx
-import {
-  ManicureIllustration,
-  CafeIllustration,
-  OfficeIllustration,
-} from "./PricingIcons";
+// Pricing.jsx
+import { ManicureIllustration, CafeIllustration, OfficeIllustration, CustomIllustration } from "./PricingIcons"
+import { getT } from "next-i18next/server"
 
-const plans = [
-  {
-    name: "Старт",
-    segment: "Для малого бізнесу",
-    price: "від 4 000 грн",
-    days: "5 робочих днів",
-    desc: "Короткий і яскравий ролик для соцмереж — до 20 секунд анімації з одним персонажем та музикою з бібліотеки. Швидко доносить головну думку та зупиняє погляд у стрічці Reels чи TikTok. Включає один раунд правок.",
-    highlight: false,
-    Illustration: ManicureIllustration,
-  },
-  {
-    name: "Бізнес",
-    segment: "Для середнього бізнесу",
-    price: "від 9 000 грн",
-    days: "10 робочих днів",
-    desc: "Пояснювальний ролик до 60 секунд із до трьох персонажами та голосом диктора — розкриває цінність продукту через зв'язну історію. Підходить для сайту, презентацій і масштабної рекламної кампанії. Два раунди правок і адаптація під усі формати.",
-    highlight: true,
-    Illustration: CafeIllustration,
-  },
-  {
-    name: "Преміум",
-    segment: "Для великого бізнесу",
-    price: "за розрахунком",
-    days: "15+ робочих днів",
-    desc: "Авторська візитівка бренду або серія роликів з індивідуальною тривалістю та персонажами, розробленими саме під ваш бренд. Оригінальна музика, максимальна увага до деталей і необмежені правки в межах узгодженого брифу.",
-    highlight: false,
-    Illustration: OfficeIllustration,
-  },
-];
+// Структурна конфігурація тарифів (ілюстрація, підсвітка, формат для автопідсвічування
+// у формі контактів) — не текст, тому лишається поза перекладами.
+const TIER_CONFIG = [
+  { id: "base", Illustration: ManicureIllustration, highlight: false, formatId: "short" },
+  { id: "standard", Illustration: CafeIllustration, highlight: true, formatId: "ad" },
+  { id: "premium", Illustration: OfficeIllustration, highlight: false, formatId: "brand" },
+  { id: "custom", Illustration: CustomIllustration, highlight: false, formatId: "story" },
+]
 
-export default function Pricing() {
+export default async function Pricing() {
+  const { t } = await getT("common")
+  const tiersText = t("pricing.tiers", { returnObjects: true })
+  const popularBadge = t("pricing.popularBadge")
+  const durationLabel = t("pricing.durationLabel")
+  const ctaButton = t("pricing.ctaButton")
+
+  const tiers = TIER_CONFIG.map((cfg) => ({
+    ...cfg,
+    ...tiersText[cfg.id],
+  }))
+
   return (
-    <section id="pricing" className="bg-sky-light py-20 sm:py-28">
-      <div className="max-w-5xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl text-center">
-          Тарифи
-        </h2>
-        <p className="mt-3 font-body text-lg text-ink/70 text-center max-w-xl mx-auto">
-          Орієнтовні пакети — фінальна вартість залежить від складності сценарію та кількості персонажів.
-        </p>
+    <section id="pricing" className="bg-cream py-14 sm:py-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="max-w-xl">
+          <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">{t("pricing.heading")}</h2>
+          <p className="mt-4 font-body text-ink/70 text-xl leading-relaxed">{t("pricing.subheading")}</p>
+        </div>
 
-        <div className="mt-12 flex flex-col gap-6">
-          {plans.map((p) => (
-            <div
-              key={p.name}
-              className={`rounded-3xl overflow-hidden flex flex-col sm:flex-row ${
-                p.highlight
-                  ? "bg-clay text-cream shadow-[0_8px_0_0_theme(colors.clay.deep)]"
-                  : "bg-cream text-ink shadow-[0_6px_0_0_rgba(47,36,22,0.15)]"
-              }`}
-            >
-              <div className="sm:w-[38%] h-44 sm:h-auto shrink-0">
-                <p.Illustration />
-              </div>
-
-              <div className="p-7 sm:p-8 flex flex-col flex-1">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <div>
-                    <p
-                      className={`font-body font-700 text-sm uppercase tracking-wide ${
-                        p.highlight ? "text-cream/70" : "text-clay-deep"
-                      }`}
-                    >
-                      {p.segment}
-                    </p>
-                    <h3 className="font-display font-700 text-2xl sm:text-3xl mt-1">
-                      {p.name}
-                    </h3>
-                  </div>
-                  <p className="font-display font-800 text-2xl sm:text-3xl">
-                    {p.price}
-                  </p>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+          {tiers.map((tier) => {
+            const href = tier.formatId ? `/?format=${tier.formatId}#contact` : "#contact"
+            return (
+              <div
+                key={tier.id}
+                className={`rounded-3xl overflow-hidden flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)] ${
+                  tier.highlight ? "bg-ink text-cream ring-2 ring-sun" : "bg-white text-ink"
+                }`}
+              >
+                <div className="relative h-32 shrink-0">
+                  <tier.Illustration />
+                  {tier.highlight && (
+                    <span className="absolute top-3 left-3 bg-sun text-ink font-body font-700 text-xs px-3 py-1 rounded-full">
+                      {popularBadge}
+                    </span>
+                  )}
                 </div>
 
-                <p
-                  className={`mt-4 font-body text-lg leading-relaxed ${
-                    p.highlight ? "text-cream/90" : "text-ink/75"
-                  }`}
-                >
-                  {p.desc}
-                </p>
-
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <p
-                    className={`font-body font-700 text-base ${
-                      p.highlight ? "text-cream/80" : "text-clay-deep"
-                    }`}
-                  >
-                    Термін виконання: {p.days}
+                <div className="p-6 flex flex-col flex-1">
+                  <p className={`font-display font-700 text-2xl ${tier.highlight ? "text-cream" : "text-ink"}`}>
+                    {tier.name}
                   </p>
+                  <p className={`font-body text-sm mt-1 ${tier.highlight ? "text-cream/70" : "text-ink/60"}`}>
+                    {tier.tagline}
+                  </p>
+                  <p className={`font-display font-800 text-3xl mt-4 ${tier.highlight ? "text-cream" : "text-ink"}`}>
+                    {tier.price}
+                  </p>
+                  <p
+                    className={`font-body text-sm mt-1 font-700 ${tier.highlight ? "text-cream/80" : "text-clay-deep"}`}
+                  >
+                    {durationLabel} {tier.days}
+                  </p>
+
+                  <ul className="mt-5 flex-1 space-y-2">
+                    {tier.features.map((f) => (
+                      <li
+                        key={f}
+                        className={`font-body text-sm leading-relaxed flex gap-2 ${
+                          tier.highlight ? "text-cream/90" : "text-ink/75"
+                        }`}
+                      >
+                        <span aria-hidden="true">•</span>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
                   <a
-                    href="#contact"
-                    className={`font-display font-700 rounded-full px-6 py-3 focus-ring transition-colors ${
-                      p.highlight
-                        ? "bg-cream text-clay-deep hover:bg-cream/90"
-                        : "bg-ink text-cream hover:bg-ink/85"
+                    href={href}
+                    className={`mt-6 inline-flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-sm transition-colors focus-ring ${
+                      tier.highlight
+                        ? "bg-sun text-ink hover:bg-sun-light"
+                        : "bg-meadow text-cream hover:bg-meadow-deep"
                     }`}
                   >
-                    Обрати пакет
+                    {ctaButton}
                   </a>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
-  );
+  )
 }

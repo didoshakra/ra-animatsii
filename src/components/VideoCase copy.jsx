@@ -5,7 +5,7 @@ import VideoCard from "./VideoCard"
 const cases = [
   {
     title: "Lumpex24",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RASpark.",
     soundType: "без озвучки",
     visualStyle: "плоска графіка",
     aspect: "16:9",
@@ -14,7 +14,7 @@ const cases = [
   },
   {
     title: "ra-animаtsii-short",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RASpark.",
     soundType: "закадрове озвучення",
     visualStyle: "об'ємна графіка (3D)",
     aspect: "9:16",
@@ -23,7 +23,7 @@ const cases = [
   },
   {
     title: "sun1_compress",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RASpark.",
     soundType: "озвучка персонажів",
     visualStyle: "motion graphics",
     aspect: "9:16",
@@ -32,7 +32,7 @@ const cases = [
   },
   {
     title: "roduna_rek1_16sek_gemini_compres",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RASpark.",
     soundType: "без озвучки",
     visualStyle: "character animation",
     aspect: "9:16",
@@ -41,7 +41,7 @@ const cases = [
   },
   {
     title: "roduna rerk1 20sek_compres",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RASpark.",
     soundType: "закадрове озвучення",
     visualStyle: "ізометрична графіка",
     aspect: "9:16",
@@ -50,7 +50,7 @@ const cases = [
   },
   {
     title: "sun2_compres",
-    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RA Анімації.",
+    desc: "Рекламний ролик для соцмереж, знятий та анімований студією RASpark.",
     soundType: "озвучка персонажів",
     visualStyle: "live-action + анімація",
     aspect: "9:16",

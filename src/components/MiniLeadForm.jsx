@@ -3,10 +3,12 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import { useT } from "next-i18next/client"
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
 
 export default function MiniLeadForm() {
+  const { t } = useT("common")
   const [status, setStatus] = useState("idle")
   const [contactError, setContactError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
@@ -20,12 +22,12 @@ export default function MiniLeadForm() {
     const phone = String(data.get("phone") || "").trim()
 
     if (!email && !phone) {
-      setContactError("Вкажіть email або телефон.")
+      setContactError(t("miniLeadForm.missingContactError"))
       setPhoneInvalid(false)
       return
     }
     if (phone && !PHONE_RE.test(phone.replace(/[\s\-()]/g, ""))) {
-      setContactError("Перевірте номер телефону, напр. +380 XX XXX XX XX")
+      setContactError(t("miniLeadForm.invalidPhoneError"))
       setPhoneInvalid(true)
       form.querySelector('[name="phone"]')?.focus()
       return
@@ -65,15 +67,11 @@ export default function MiniLeadForm() {
           </div>
 
           <div className="flex-1 w-full">
-            <p className="font-display font-700 text-ink text-xl sm:text-2xl leading-snug">Хочете такий ролик?</p>
-            <p className="font-body text-ink/70 text-base mt-1">
-              Залиште ім&rsquo;я й контакт — відповімо протягом дня.
-            </p>
+            <p className="font-display font-700 text-ink text-xl sm:text-2xl leading-snug">{t("miniLeadForm.title")}</p>
+            <p className="font-body text-ink/70 text-base mt-1">{t("miniLeadForm.description")}</p>
 
             {status === "sent" ? (
-              <p className="mt-4 font-body text-lg text-meadow-deep font-700">
-                Дякуємо! Заявку отримано — скоро з&rsquo;єднаємось.
-              </p>
+              <p className="mt-4 font-body text-lg text-meadow-deep font-700">{t("miniLeadForm.successMessage")}</p>
             ) : (
               <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -81,19 +79,19 @@ export default function MiniLeadForm() {
                     name="name"
                     type="text"
                     required
-                    placeholder="Ім'я"
+                    placeholder={t("miniLeadForm.namePlaceholder")}
                     className="w-full sm:flex-1 rounded-2xl border-2 border-ink/15 bg-white px-4 py-2.5 font-body text-base focus-ring placeholder:text-ink/40"
                   />
                   <input
                     name="email"
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("miniLeadForm.emailPlaceholder")}
                     className="w-full sm:flex-1 rounded-2xl border-2 border-ink/15 bg-white px-4 py-2.5 font-body text-base focus-ring placeholder:text-ink/40"
                   />
                   <input
                     name="phone"
                     type="tel"
-                    placeholder="Телефон"
+                    placeholder={t("miniLeadForm.phonePlaceholder")}
                     aria-invalid={phoneInvalid}
                     onChange={() => phoneInvalid && setPhoneInvalid(false)}
                     className={`w-full sm:flex-1 rounded-2xl border-2 bg-white px-4 py-2.5 font-body text-base focus-ring placeholder:text-ink/40 ${
@@ -112,13 +110,13 @@ export default function MiniLeadForm() {
                   disabled={status === "sending"}
                   className="font-display font-700 text-cream bg-meadow-deep px-6 py-2.5 rounded-full text-base hover:bg-meadow-deep/90 transition-colors focus-ring disabled:opacity-60"
                 >
-                  {status === "sending" ? "Надсилаємо…" : "Надіслати"}
+                  {status === "sending" ? t("miniLeadForm.sendingButton") : t("miniLeadForm.submitButton")}
                 </button>
               </form>
             )}
 
             {status === "error" && (
-              <p className="mt-2 font-body text-sm text-clay-deep">Щось пішло не так. Спробуйте ще раз.</p>
+              <p className="mt-2 font-body text-sm text-clay-deep">{t("miniLeadForm.errorMessage")}</p>
             )}
           </div>
         </div>

@@ -1,23 +1,23 @@
-"use client";
+"use client"
 
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
 
 // const VIDEO_SRC = "/media/studio/studio-promo.mp4";
 const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1788450019/pictures/hadxijdnt1xqxmy2shee.mp4"
 const POSTER_SRC = "/media/studio/studio-promo-poster.png"
 
 export default function StudioVideo() {
-  const videoRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
-  const [error, setError] = useState(false);
+  const videoRef = useRef(null)
+  const [playing, setPlaying] = useState(false)
+  const [error, setError] = useState(false)
 
   function handlePlay() {
-    setPlaying(true);
-    const el = videoRef.current;
-    if (!el) return;
-    const result = el.play();
+    setPlaying(true)
+    const el = videoRef.current
+    if (!el) return
+    const result = el.play()
     if (result && typeof result.catch === "function") {
-      result.catch(() => setError(true));
+      result.catch(() => setError(true))
     }
   }
 
@@ -29,8 +29,8 @@ export default function StudioVideo() {
             Так ми розповідаємо про себе
           </h2>
           <p className="mt-4 font-body text-lg text-ink/75 leading-relaxed">
-            Промо-ролик студії RA Анімації — знятий і анімований нашою
-            командою, тим самим підходом, яким ми робимо ролики для клієнтів.
+            Промо-ролик студії RASpark — знятий і анімований нашою командою, тим самим підходом, яким ми робимо ролики
+            для клієнтів.
           </p>
         </div>
 
@@ -47,9 +47,7 @@ export default function StudioVideo() {
                 <span className="w-14 h-14 rounded-full bg-cream/90 flex items-center justify-center">
                   <span className="ml-1 w-0 h-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-ink" />
                 </span>
-                <span className="font-body text-sm">
-                  Не вдалось відтворити тут — відкрити відео
-                </span>
+                <span className="font-body text-sm">Не вдалось відтворити тут — відкрити відео</span>
               </a>
             ) : (
               <>
@@ -87,8 +85,7 @@ export default function StudioVideo() {
               Ваше відео починається тут
             </p>
             <p className="font-body text-base text-ink/70 leading-relaxed">
-              Залиште заявку — обговоримо ідею й повернемось із першими
-              ескізами протягом 48 годин.
+              Залиште заявку — обговоримо ідею й повернемось із першими ескізами протягом 48 годин.
             </p>
             <a
               href="#contact"
@@ -100,5 +97,5 @@ export default function StudioVideo() {
         </div>
       </div>
     </section>
-  );
+  )
 }

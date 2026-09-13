@@ -23,7 +23,10 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5 focus-ring" onClick={() => setOpen(false)}>
           <Image
-            src="/brand/eagle.png"
+            // src="/brand/eagle.png"
+            // src="/brand/RASpark_eagle1.png"
+            src="/brand/RASpark_eagle.png"
+            // src="/brand/RASpark_robot.png"
             alt={t("header.brand")}
             width={40}
             height={40}
