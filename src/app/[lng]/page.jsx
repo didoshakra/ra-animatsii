@@ -22,10 +22,12 @@ export default function Home() {
         <HillDivider fromColor="#FBF6E9" toColor="#5FA653" />
         <Portfolio />
         <MiniLeadForm />
-        <HillDivider fromColor="#3F7A38" toColor="#FBF6E9" />
+        {/* <HillDivider fromColor="#3F7A38" toColor="#FBF6E9" /> */}
+        <HillDivider fromColor="#3F7A38" toColor="#CDEBF9" />
         <Process />
         <AboutTeam />
-        <HillDivider fromColor="#FBF6E9" toColor="#CDEBF9" />
+        {/* <HillDivider fromColor="#FBF6E9" toColor="#CDEBF9" /> */}
+        <HillDivider fromColor="#CDEBF9" toColor="#5FA653" />
         <Pricing />
         <HillDivider fromColor="#FBF6E9" toColor="#5FA653" />
         <RealCase />
