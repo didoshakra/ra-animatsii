@@ -7,7 +7,7 @@ export default async function Hero() {
   const perks = t("hero.perks", { returnObjects: true })
 
   return (
-    <section id="top" className="relative overflow-hidden bg-sky-light pt-10 pb-10 sm:pt-14 sm:pb-20">
+    <section id="top" className="relative overflow-hidden bg-sky-300 pt-10 pb-10 sm:pt-14 sm:pb-20">
       {/* Фон: кіноплівкові стрічки  */}
       <Image
         src="/media/studio/hero-film-strip-bg.png"
@@ -21,7 +21,8 @@ export default async function Hero() {
       {/* Кольорова підсвітка поверх фото — додає атмосфери, а не просто вибілює */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-sky-light/45 via-transparent to-sun-light/35"
+        // className="absolute inset-0 bg-gradient-to-br from-sky-light/45 via-transparent to-sun-light/35"
+        className="absolute inset-0 bg-gradient-to-br from-sky-900/45 via-transparent to-sun-light/35"
       />
       {/* Десктоп: підсвітка зліва направо */}
       <div

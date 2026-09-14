@@ -1,4 +1,4 @@
-// src/components/Process.jsx
+// src/components/Process.jsx//Шлях від ідеї до ролика
 const steps = [
   {
     n: "01",
@@ -108,7 +108,8 @@ function StepIcon({ type }) {
 
 export default function Process() {
   return (
-    <section id="process" className="bg-cream py-20 sm:py-28">
+    // <section id="process" className="bg-cream py-20 sm:py-28">
+    <section id="process" className="bg-sky-100 py-20 sm:py-28">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <p className="font-display font-700 text-clay-deep text-center uppercase tracking-wide text-sm">
           Навіщо анімація?

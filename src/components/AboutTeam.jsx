@@ -1,3 +1,4 @@
+//// src/components/AboutTeam.jsx // Команда персонажів на вашому боці
 import Image from "next/image"
 import { getT } from "next-i18next/server"
 
@@ -5,7 +6,8 @@ export default async function AboutTeam() {
   const { t } = await getT("common")
 
   return (
-    <section className="bg-cream py-14 sm:py-20">
+    // <section className="bg-cream py-14 sm:py-20">
+    <section className="bg-sky-200 py-14 sm:py-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">{t("aboutTeam.title")}</h2>
