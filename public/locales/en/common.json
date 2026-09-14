@@ -1,6 +1,6 @@
 {
   "header": {
-    "brand": "RASpark",
+    "brand": "RASparks",
     "nav": {
       "portfolio": "Portfolio",
       "process": "How We Work",
@@ -20,11 +20,11 @@
     "ctaSecondary": "View Examples",
     "perks": ["First storyboard in 48h", "Free consultation", "No templates"],
     "footnote": "From script to final video — one creator, one style, no default edits.",
-    "eagleAlt": "RASpark studio mascot — a cartoon eagle"
+    "eagleAlt": "RASparks studio mascot — a cartoon eagle"
   },
   "studioVideo": {
     "title": "This is how we tell our story",
-    "description": "RASpark studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
+    "description": "RASparks studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
     "videoFallback": "Unable to play here — open video",
     "playAriaLabel": "Play studio promo video",
     "ctaTitle": "Your video starts here",
@@ -34,7 +34,7 @@
   "aboutTeam": {
     "title": "A team of characters on your side",
     "description": "Behind every video stands a team — scriptwriter, animator, and voice actor work together to make your business story speak the language of animation.",
-    "imageAlt": "RASpark studio character team together with the founder in a cartoon office"
+    "imageAlt": "RASparks studio character team together with the founder in a cartoon office"
   },
   "footer": {
     "rights": "All rights reserved."
