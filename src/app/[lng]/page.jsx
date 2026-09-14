@@ -23,11 +23,11 @@ export default function Home() {
         <Portfolio />
         <MiniLeadForm />
         {/* <HillDivider fromColor="#3F7A38" toColor="#FBF6E9" /> */}
-        <HillDivider fromColor="#3F7A38" toColor="#CDEBF9" />
+        <HillDivider fromColor="#3F7A38" toColor="#bae6fd" />
         <Process />
         <AboutTeam />
         {/* <HillDivider fromColor="#FBF6E9" toColor="#CDEBF9" /> */}
-        <HillDivider fromColor="#CDEBF9" toColor="#5FA653" />
+        <HillDivider fromColor="#bae6fd" toColor="#5FA653" />
         <Pricing />
         <HillDivider fromColor="#FBF6E9" toColor="#5FA653" />
         <RealCase />
