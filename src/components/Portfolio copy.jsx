@@ -48,35 +48,31 @@ export default async function Portfolio() {
   }))
 
   return (
-    <section id="portfolio" className="bg-meadow pb-8 sm:pb-8">
-      <div className="bg-meadow-light py-10 sm:py-10">
-        <div className=" max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="max-w-xl">
-            <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">
-              {t("portfolio.formatsHeading")}
-            </h2>
-          </div>
-
-          <div className="mt-8 sm:mt-12 grid sm:grid-cols-2 gap-6 items-start">
-            {formats.map((f) => (
-              <VideoCard
-                key={f.id}
-                title={f.title}
-                desc={f.desc}
-                structure={f.structure}
-                suitableFor={f.suitableFor}
-                videoUrl={f.VIDEO_URL}
-                posterUrl={f.POSTER_URL}
-                duration={f.duration}
-                color={f.color}
-                playAspect={f.playAspect}
-              />
-            ))}
-          </div>
+    <section id="portfolio" className="bg-meadow py-14 sm:py-20">
+      <div className="bg-meadow-light max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="max-w-xl">
+          <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">
+            {t("portfolio.formatsHeading")}
+          </h2>
         </div>
-      </div>
-      {/* <div className=""> */}
-      <div className=" max-w-6xl mx-auto px-5 sm:px-8">
+
+        <div className="mt-8 sm:mt-12 grid sm:grid-cols-2 gap-6 items-start">
+          {formats.map((f) => (
+            <VideoCard
+              key={f.id}
+              title={f.title}
+              desc={f.desc}
+              structure={f.structure}
+              suitableFor={f.suitableFor}
+              videoUrl={f.VIDEO_URL}
+              posterUrl={f.POSTER_URL}
+              duration={f.duration}
+              color={f.color}
+              playAspect={f.playAspect}
+            />
+          ))}
+        </div>
+
         <div className="mt-10 sm:mt-14 max-w-xl">
           <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">
             {t("portfolio.executionHeading")}
@@ -87,7 +83,6 @@ export default async function Portfolio() {
         <ExecutionOptions title={t("portfolio.styleGroupTitle")} options={styleOptions} hint={accordionHint} />
         <ExecutionOptions title={t("portfolio.aspectGroupTitle")} options={aspectOptions} hint={accordionHint} />
       </div>
-      {/* </div> */}
     </section>
   )
 }
