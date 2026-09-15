@@ -19,29 +19,26 @@ export default function Header() {
   ]
 
   return (
-    // <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
     <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5 focus-ring" onClick={() => setOpen(false)}>
           <Image
-            src="/brand/RASpark_eagle.png"
+            src="/brand/eagle.png"
             alt={t("header.brand")}
             width={40}
             height={40}
             className="rounded-full w-9 h-9 sm:w-11 sm:h-11"
             priority
           />
-          <span className="font-display font-extrabold text-lg sm:text-xl text-ink tracking-tight">
-            {t("header.brand")}
-          </span>
+          <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight">{t("header.brand")}</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-bold text-base sm:text-lg text-ink hover:text-clay-deep transition-colors focus-ring"
+              className="font-body font-800 text-sm lg:text-lg text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
             >
               {l.label}
             </a>
@@ -53,7 +50,7 @@ export default function Header() {
 
           <a
             href="#contact"
-            className="hidden sm:inline-block font-semibold font-800 text-sm sm:text-base bg-clay text-cream px-4 sm:px-5 py-2.5 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
+            className="hidden lg:inline-block font-display font-600 text-sm sm:text-base bg-clay text-cream px-4 sm:px-5 py-2.5 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
           >
             {t("header.cta")}
           </a>
