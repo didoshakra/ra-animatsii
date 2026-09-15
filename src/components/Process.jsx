@@ -1,36 +1,18 @@
-// src/components/Process.jsx//Шлях від ідеї до ролика
-const steps = [
-  {
-    n: "01",
-    icon: "brief",
-    title: "Бриф і сценарій",
-    desc: "Обговорюємо мету ролика та аудиторію, пишемо короткий сценарій і погоджуємо його з вами.",
-  },
-  {
-    n: "02",
-    icon: "storyboard",
-    title: "Розкадровка",
-    desc: "Малюємо ключові кадри ролика — ви бачите структуру та стиль ще до анімації.",
-  },
-  {
-    n: "03",
-    icon: "animation",
-    title: "Анімація й озвучення",
-    desc: "Оживляємо персонажів, додаємо музику та голос диктора.",
-  },
-  {
-    n: "04",
-    icon: "final",
-    title: "Готовий ролик",
-    desc: "Передаємо файл у потрібних форматах під сайт, соцмережі чи презентацію.",
-  },
+import { getT } from "next-i18next/server"
+
+// Структурна конфігурація (не текст) — номер, іконка, фоновий колір.
+const STEP_CONFIG = [
+  { n: "01", icon: "brief" },
+  { n: "02", icon: "storyboard" },
+  { n: "03", icon: "animation" },
+  { n: "04", icon: "final" },
 ]
 
-const WHY_POINTS = [
-  { title: "Привертає увагу з перших секунд", icon: "spark", bg: "bg-sun" },
-  { title: "Пояснює складне за 30–60 секунд", icon: "clock", bg: "bg-sky" },
-  { title: "Підвищує довіру й продажі", icon: "heart", bg: "bg-clay" },
-  { title: "Працює 24/7 без вихідних", icon: "loop", bg: "bg-meadow-deep" },
+const WHY_CONFIG = [
+  { id: "spark", icon: "spark", bg: "bg-sun" },
+  { id: "clock", icon: "clock", bg: "bg-sky" },
+  { id: "heart", icon: "heart", bg: "bg-clay" },
+  { id: "loop", icon: "loop", bg: "bg-meadow-deep" },
 ]
 
 function WhyIcon({ type }) {
@@ -106,17 +88,30 @@ function StepIcon({ type }) {
   }
 }
 
-export default function Process() {
+export default async function Process() {
+  const { t } = await getT("common")
+  const whyPointsText = t("process.whyPoints", { returnObjects: true })
+  const stepsText = t("process.steps", { returnObjects: true })
+
+  const whyPoints = WHY_CONFIG.map((cfg) => ({
+    ...cfg,
+    title: whyPointsText[cfg.id],
+  }))
+
+  const steps = STEP_CONFIG.map((cfg) => ({
+    ...cfg,
+    ...stepsText[cfg.n],
+  }))
+
   return (
-    // <section id="process" className="bg-cream py-20 sm:py-28">
-    <section id="process" className="bg-sky-100 py-20 sm:py-28">
+    <section id="process" className="bg-cream py-14 sm:py-20">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <p className="font-display font-700 text-clay-deep text-center uppercase tracking-wide text-sm">
-          Навіщо анімація?
+          {t("process.whyLabel")}
         </p>
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-          {WHY_POINTS.map((point) => (
-            <div key={point.title} className="flex flex-col items-center text-center gap-3">
+          {whyPoints.map((point) => (
+            <div key={point.id} className="flex flex-col items-center text-center gap-3">
               <div
                 className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full ${point.bg} text-cream flex items-center justify-center shadow-[0_4px_0_0_rgba(47,36,22,0.25)]`}
               >
@@ -132,7 +127,7 @@ export default function Process() {
         </div>
 
         <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl text-center mt-16">
-          Шлях від ідеї до ролика
+          {t("process.pathHeading")}
         </h2>
 
         <div className="mt-14 relative">

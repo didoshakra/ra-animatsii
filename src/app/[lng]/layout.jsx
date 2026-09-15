@@ -10,20 +10,20 @@ const siteUrl = "https://ra-animatsii.vercel.app"
 // поки що лишаємо український текст як є.
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: "RASparks — мультяшна реклама для вашого бізнесу",
+  title: "RA Spark — мультяшна реклама для вашого бізнесу",
   description:
-    "Студія RASparks створює теплі мультяшні відеоролики, які пояснюють, продають і запам'ятовуються. Розкажемо історію вашого бізнесу мовою анімації.",
+    "Студія RA Spark створює теплі мультяшні відеоролики, які пояснюють, продають і запам'ятовуються. Розкажемо історію вашого бізнесу мовою анімації.",
   openGraph: {
-    title: "RASparks — мультяшна реклама для вашого бізнесу",
+    title: "RA Spark — мультяшна реклама для вашого бізнесу",
     description: "Малюємо теплі, живі відеоролики, які пояснюють складне просто і запам'ятовуються надовго.",
     url: siteUrl,
-    siteName: "RASparks",
+    siteName: "RA Spark",
     images: [
       {
         url: "/brand/og-image.jpg",
         width: 1424,
         height: 752,
-        alt: "RASparks — реклама для бізнесу",
+        alt: "RA Spark — реклама для бізнесу",
       },
     ],
     locale: "uk_UA",
@@ -31,7 +31,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "RASparks — мультяшна реклама для вашого бізнесу",
+    title: "RA Spark — мультяшна реклама для вашого бізнесу",
     description: "Малюємо теплі, живі відеоролики, які пояснюють складне просто і запам'ятовуються надовго.",
     images: ["/brand/og-image.jpg"],
   },

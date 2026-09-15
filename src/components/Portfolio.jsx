@@ -48,9 +48,9 @@ export default async function Portfolio() {
   }))
 
   return (
-    <section id="portfolio" className="bg-meadow pb-8 sm:pb-8">
+    <section id="portfolio" className="bg-meadow pb-14 sm:pb-20">
       <div className="bg-meadow-light py-10 sm:py-10">
-        <div className=" max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="bg-meadow-light py-10 sm:py-14">
           <div className="max-w-xl">
             <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">
               {t("portfolio.formatsHeading")}
@@ -76,7 +76,7 @@ export default async function Portfolio() {
         </div>
       </div>
       {/* <div className=""> */}
-      <div className=" max-w-6xl mx-auto px-5 sm:px-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-14">
         <div className="mt-10 sm:mt-14 max-w-xl">
           <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">
             {t("portfolio.executionHeading")}

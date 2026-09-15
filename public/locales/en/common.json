@@ -1,11 +1,11 @@
 {
   "header": {
-    "brand": "RASparks",
+    "brand": "RA Spark",
     "nav": {
       "portfolio": "Portfolio",
       "process": "How We Work",
       "pricing": "Pricing",
-      "case":"Case",
+      "case": "Case",
       "contact": "Contact"
     },
     "cta": "Discuss Project",
@@ -20,11 +20,11 @@
     "ctaSecondary": "View Examples",
     "perks": ["First storyboard in 48h", "Free consultation", "No templates"],
     "footnote": "From script to final video — one creator, one style, no default edits.",
-    "eagleAlt": "RASparks studio mascot — a cartoon eagle"
+    "eagleAlt": "RA Spark studio mascot — a cartoon eagle"
   },
   "studioVideo": {
     "title": "This is how we tell our story",
-    "description": "RASparks studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
+    "description": "RA Spark studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
     "videoFallback": "Unable to play here — open video",
     "playAriaLabel": "Play studio promo video",
     "ctaTitle": "Your video starts here",
@@ -34,7 +34,7 @@
   "aboutTeam": {
     "title": "A team of characters on your side",
     "description": "Behind every video stands a team — scriptwriter, animator, and voice actor work together to make your business story speak the language of animation.",
-    "imageAlt": "RASparks studio character team together with the founder in a cartoon office"
+    "imageAlt": "RA Spark studio character team together with the founder in a cartoon office"
   },
   "footer": {
     "rights": "All rights reserved."
@@ -239,5 +239,33 @@
   "videoCard": {
     "playFallback": "Unable to play here — open video",
     "playAriaLabel": "Play video: {{title}}"
+  },
+  "process": {
+    "whyLabel": "Why animation?",
+    "pathHeading": "From idea to video",
+    "whyPoints": {
+      "spark": "Grabs attention from the first seconds",
+      "clock": "Explains complex things in 30–60 seconds",
+      "heart": "Boosts trust and sales",
+      "loop": "Works 24/7 without days off"
+    },
+    "steps": {
+      "01": {
+        "title": "Brief and script",
+        "desc": "We discuss the video's goal and audience, write a short script, and approve it with you."
+      },
+      "02": {
+        "title": "Storyboard",
+        "desc": "We sketch key frames — you see the structure and style even before animation."
+      },
+      "03": {
+        "title": "Animation and voiceover",
+        "desc": "We bring characters to life, add music and a voiceover."
+      },
+      "04": {
+        "title": "Ready video",
+        "desc": "We deliver the file in the required formats for your website, social media, or presentation."
+      }
+    }
   }
 }
