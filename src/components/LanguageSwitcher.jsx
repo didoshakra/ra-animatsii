@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
           type="button"
           onClick={() => switchLocale(lng)}
           aria-pressed={currentLng === lng}
-          className={`font-body font-700 text-sm px-2.5 py-1.5 rounded-full transition-colors focus-ring ${
+          className={`font-body font-semibold text-sm px-2.5 py-1.5 rounded-full transition-colors focus-ring ${
             currentLng === lng ? "bg-clay text-cream" : "text-ink/60 hover:text-ink"
           }`}
         >

@@ -38,7 +38,7 @@ export default function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-800 text-sm lg:text-lg text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
+              className="font-body font-bold text-sm lg:text-lg text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
             >
               {l.label}
             </a>

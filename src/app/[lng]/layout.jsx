@@ -4,8 +4,7 @@ import { I18nProvider } from "next-i18next/client"
 import i18nConfig from "../../../i18n.config"
 import "../globals.css"
 
-const siteUrl = "https://ra-animatsii.vercel.app"
-// TODO: замінити siteUrl на "https://raspark.com", коли домен буде підключено до Vercel.
+const siteUrl = "https://www.raspark.com"
 
 export async function generateMetadata({ params }) {
   const { lng } = await params
@@ -20,6 +19,13 @@ export async function generateMetadata({ params }) {
     metadataBase: new URL(siteUrl),
     title,
     description,
+    alternates: {
+      canonical: lng === "en" ? `${siteUrl}/en` : siteUrl,
+      languages: {
+        "uk-UA": siteUrl,
+        "en-US": `${siteUrl}/en`,
+      },
+    },
     openGraph: {
       title,
       description: ogDescription,

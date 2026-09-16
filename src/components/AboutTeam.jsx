@@ -18,7 +18,8 @@ export default async function AboutTeam() {
 
         <div className="mt-6 sm:mt-10 rounded-3xl overflow-hidden shadow-[0_8px_0_0_theme(colors.clay.deep)]">
           <Image
-            src="/brand/og-image.jpg"
+            // src="/brand/og-image.jpg"
+            src="/brand/SEO-OG-RASpark.jpg"
             alt={t("aboutTeam.imageAlt")}
             width={1424}
             height={752}

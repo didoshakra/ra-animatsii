@@ -1,5 +1,5 @@
 // src/app/sitemap.js
-const siteUrl = "https://ra-animatsii.vercel.app"
+const siteUrl = "https://www.raspark.com"
 // TODO: замінити siteUrl на "https://raspark.com", коли домен буде підключено до Vercel.
 
 export default function sitemap() {
