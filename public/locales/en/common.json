@@ -267,5 +267,11 @@
         "desc": "We deliver the file in the required formats for your website, social media, or presentation."
       }
     }
+  },
+  "metadata": {
+    "title": "RASpark — Cartoon-style advertisement for your business",
+    "description": "RASpark Studio creates warm, cartoon-style videos that explain, sell, and leave a lasting impression. We will tell your business's story through the language of animation.",
+    "ogDescription": "We create warm, engaging videos that explain complex concepts simply and leave a lasting impression.",
+    "ogImageAlt": "RASpark — advertising for business."
   }
 }

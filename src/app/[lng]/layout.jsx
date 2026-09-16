@@ -5,36 +5,44 @@ import i18nConfig from "../../../i18n.config"
 import "../globals.css"
 
 const siteUrl = "https://ra-animatsii.vercel.app"
+// TODO: замінити siteUrl на "https://raspark.com", коли домен буде підключено до Vercel.
 
-// TODO (наступний крок): локалізувати metadata через generateMetadata(),
-// поки що лишаємо український текст як є.
-export const metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "RA Spark — мультяшна реклама для вашого бізнесу",
-  description:
-    "Студія RA Spark створює теплі мультяшні відеоролики, які пояснюють, продають і запам'ятовуються. Розкажемо історію вашого бізнесу мовою анімації.",
-  openGraph: {
-    title: "RA Spark — мультяшна реклама для вашого бізнесу",
-    description: "Малюємо теплі, живі відеоролики, які пояснюють складне просто і запам'ятовуються надовго.",
-    url: siteUrl,
-    siteName: "RA Spark",
-    images: [
-      {
-        url: "/brand/og-image.jpg",
-        width: 1424,
-        height: 752,
-        alt: "RA Spark — реклама для бізнесу",
-      },
-    ],
-    locale: "uk_UA",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "RA Spark — мультяшна реклама для вашого бізнесу",
-    description: "Малюємо теплі, живі відеоролики, які пояснюють складне просто і запам'ятовуються надовго.",
-    images: ["/brand/og-image.jpg"],
-  },
+export async function generateMetadata({ params }) {
+  const { lng } = await params
+  const { t } = await getT("common")
+
+  const title = t("metadata.title")
+  const description = t("metadata.description")
+  const ogDescription = t("metadata.ogDescription")
+  const ogImageAlt = t("metadata.ogImageAlt")
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    openGraph: {
+      title,
+      description: ogDescription,
+      url: lng === "en" ? `${siteUrl}/en` : siteUrl,
+      siteName: "RASpark",
+      images: [
+        {
+          url: "/brand/og-image.jpg",
+          width: 1424,
+          height: 752,
+          alt: ogImageAlt,
+        },
+      ],
+      locale: lng === "en" ? "en_US" : "uk_UA",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: ogDescription,
+      images: ["/brand/og-image.jpg"],
+    },
+  }
 }
 
 initServerI18next(i18nConfig)
