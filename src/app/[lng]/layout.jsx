@@ -4,7 +4,7 @@ import { I18nProvider } from "next-i18next/client"
 import i18nConfig from "../../../i18n.config"
 import "../globals.css"
 
-const siteUrl = "https://www.raspark.com"
+const siteUrl = "https://raspark.com"
 
 export async function generateMetadata({ params }) {
   const { lng } = await params
