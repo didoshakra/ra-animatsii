@@ -2,6 +2,7 @@
 import { initServerI18next, getT, getResources, generateI18nStaticParams } from "next-i18next/server"
 import { I18nProvider } from "next-i18next/client"
 import i18nConfig from "../../../i18n.config"
+import StructuredData from "@/components/StructuredData"
 import "../globals.css"
 
 const siteUrl = "https://raspark.com"
@@ -70,6 +71,7 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={lng}>
       <body className="font-body antialiased">
+        <StructuredData />
         <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
           {children}
         </I18nProvider>
