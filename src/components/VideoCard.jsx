@@ -114,7 +114,7 @@ export default function VideoCard({
 
       {(title || desc || duration) && (
         <div className="mt-5">
-          {title && <p className="font-display font-700 text-xl text-ink">{title}</p>}
+          {title && <h3 className="font-display font-700 text-xl text-ink">{title}</h3>}
           {meta && <p className="font-body text-sm text-ink/50 mt-1">{meta}</p>}
           {duration && <p className="font-body text-base text-clay-deep font-700 mt-1">{duration}</p>}
           {desc && <p className="font-body text-lg text-ink/70 mt-1 leading-relaxed">{desc}</p>}

@@ -75,7 +75,7 @@ export default async function RootLayout({ children, params }) {
         <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
           {children}
         </I18nProvider>
-      </body>
+      </body>   
     </html>
   )
 }

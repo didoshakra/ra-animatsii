@@ -268,6 +268,33 @@
       }
     }
   },
+  "contactForm": {
+    "heading": "Розкажіть про свій проєкт",
+    "subheading": "Відповімо протягом одного робочого дня.",
+    "nameLabel": "Ім'я",
+    "namePlaceholder": "Як до вас звертатись",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "phoneLabel": "Телефон",
+    "phonePlaceholder": "+380 XX XXX XX XX",
+    "successMessage": "Дякуємо! Заявку отримано — скоро з'єднаємось із вами.",
+    "missingContactError": "Вкажіть email або телефон — хоча б один спосіб зв'язку.",
+    "invalidPhoneError": "Перевірте номер телефону, напр. +380 XX XXX XX XX",
+    "formatsLabel": "Що плануєте?",
+    "formatsOptional": "(необов'язково)",
+    "messageLabel": "Про проєкт",
+    "messageOptional": "(необов'язково)",
+    "messagePlaceholder": "Що рекламуємо, для кого і коли потрібен ролик",
+    "errorMessage": "Щось пішло не так. Спробуйте ще раз або напишіть нам напряму.",
+    "submitButton": "Надіслати заявку",
+    "sendingButton": "Надсилаємо…",
+    "formats": {
+      "short": "Коротка реклама",
+      "ad": "Рекламний ролик",
+      "brand": "Візитівка бренду",
+      "story": "Ролик-історія"
+    }
+  },
   "metadata": {
     "title": "Студія AI-анімації та реклами для бізнесу | RA Spark",
     "description": "Створюємо AI-рекламні відео для бізнесу: 2D, 3D та анімація персонажів. Ролики для TikTok, Instagram, YouTube та рекламних кампаній.",

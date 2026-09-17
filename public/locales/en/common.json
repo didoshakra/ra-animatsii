@@ -5,7 +5,7 @@
       "portfolio": "Portfolio",
       "process": "How We Work",
       "pricing": "Pricing",
-      "case": "Case",
+      "case": "Case Study",
       "contact": "Contact"
     },
     "cta": "Discuss Project",
@@ -13,35 +13,35 @@
     "menuClose": "Close Menu"
   },
   "hero": {
-    "titleLine1": "AI Advertising for Business",
-    "titleLine2": "that people watch till the end",
-    "description": "We create warm, vibrant video clips that explain complex things simply, stick in memory, and add a touch of fairy-tale magic to your company.",
-    "ctaPrimary": "Order Video",
+    "titleLine1": "AI Advertising for Business,",
+    "titleLine2": "Watched to the End",
+    "description": "We create AI video ads for businesses — from short clips for social media to vibrant animated brand stories.",
+    "ctaPrimary": "Order a Video",
     "ctaSecondary": "View Examples",
     "perks": ["First storyboard in 48h", "Free consultation", "No templates"],
-    "footnote": "From script to final video — one creator, one style, no default edits.",
-    "eagleAlt": "RA Spark studio mascot — a cartoon eagle"
+    "footnote": "From script to final video — one creator, one style, no \"default\" revisions.",
+    "eagleAlt": "RA Spark studio mascot — cartoon eagle"
   },
   "studioVideo": {
-    "title": "This is how we tell our story",
+    "title": "This Is How We Tell Our Story",
     "description": "RA Spark studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
-    "videoFallback": "Unable to play here — open video",
+    "videoFallback": "Couldn't play here — open video",
     "playAriaLabel": "Play studio promo video",
-    "ctaTitle": "Your video starts here",
-    "ctaDescription": "Leave a request — we'll discuss the idea and get back with first sketches within 48 hours.",
-    "ctaButton": "Order a Video Like This"
+    "ctaTitle": "Your Video Starts Here",
+    "ctaDescription": "Leave a request — we'll discuss the idea and return with initial sketches within 48 hours.",
+    "ctaButton": "Order a Similar Video"
   },
   "aboutTeam": {
-    "title": "A team of characters on your side",
-    "description": "Behind every video stands a team — scriptwriter, animator, and voice actor work together to make your business story speak the language of animation.",
+    "title": "A Team of Characters on Your Side",
+    "description": "Behind every video is a team — scriptwriter, animator, and voiceover artist working together to make your business story speak the language of animation.",
     "imageAlt": "RA Spark studio character team together with the founder in a cartoon office"
   },
   "footer": {
     "rights": "All rights reserved."
   },
   "miniLeadForm": {
-    "title": "Want a video like this?",
-    "description": "Leave your name and contact info — we'll reply within a day.",
+    "title": "Want a Video Like This?",
+    "description": "Leave your name and contact — we'll reply within a day.",
     "namePlaceholder": "Name",
     "emailPlaceholder": "Email",
     "phonePlaceholder": "Phone",
@@ -50,23 +50,23 @@
     "successMessage": "Thank you! Request received — we'll connect soon.",
     "errorMessage": "Something went wrong. Please try again.",
     "missingContactError": "Please provide an email or phone number.",
-    "invalidPhoneError": "Check the phone number, e.g. +380 XX XXX XX XX"
+    "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX"
   },
   "pricing": {
     "heading": "Pricing",
-    "subheading": "Estimated prices — exact cost will be agreed upon during consultation, taking your project details into account.",
+    "subheading": "Estimated prices — exact cost will be agreed upon during the consultation, taking your project details into account.",
     "durationLabel": "Execution time:",
-    "popularBadge": "Popular choice",
+    "popularBadge": "Popular Choice",
     "ctaButton": "Discuss Project",
     "tiers": {
       "base": {
         "name": "Base",
         "price": "from 4,000 UAH",
         "tagline": "Quick start for social media",
-        "days": "5 working days",
+        "days": "5 business days",
         "features": [
           "2D animation",
-          "No voiceover or minimal voiceover",
+          "No voiceover or minimal background voice",
           "Short ad, 10–15 sec",
           "Ideal for TikTok / Reels / Shorts"
         ]
@@ -75,33 +75,33 @@
         "name": "Standard",
         "price": "from 9,000 UAH",
         "tagline": "Most popular choice",
-        "days": "10 working days",
+        "days": "10 business days",
         "features": [
           "2D or simple 3D animation",
           "Voiceover",
-          "Commercial video, 20–30 sec",
+          "Video ad, 20–30 sec",
           "For social media, YouTube, Meta Ads"
         ]
       },
       "premium": {
         "name": "Premium",
         "price": "from 15,000 UAH",
-        "tagline": "Emotional, premium tier",
-        "days": "15 working days",
+        "tagline": "Emotional, premium level",
+        "days": "15 business days",
         "features": [
           "3D animation or character animation",
           "Character voiceover",
           "Brand showcase / Storytelling, 30–60 sec",
-          "For website, presentations, image ads"
+          "For website, presentations, image advertising"
         ]
       },
       "custom": {
         "name": "Custom",
-        "price": "Upon request",
+        "price": "On request",
         "tagline": "For your unique project",
-        "days": "15+ working days",
+        "days": "15+ business days",
         "features": [
-          "Live-action + animation or custom approach",
+          "Live-action + animation or bespoke approach",
           "Any duration and complexity",
           "Personal script and style",
           "Discuss details during consultation"
@@ -120,16 +120,16 @@
       "short": {
         "title": "01. Short Ad",
         "duration": "10–15 sec",
-        "desc": "Grab attention from the first seconds, showcase the product, and give a clear reason to pay attention to it.",
+        "desc": "Hook attention from the first seconds, showcase the product, and give a clear reason to pay attention to it.",
         "structure": "Hook → product/service → benefit → CTA",
         "suitableFor": "Suitable for Reels, TikTok, YouTube Shorts, and targeted ads."
       },
       "ad": {
-        "title": "02. Commercial Video",
+        "title": "02. Video Ad",
         "duration": "20–30 sec",
-        "desc": "A short story showing the client's problem, offering a solution, and driving action.",
+        "desc": "A short story showing the client's problem, offering a solution, and leading to action.",
         "structure": "Mini-plot → problem → solution → brand → CTA",
-        "suitableFor": "Suitable for social media, YouTube, Meta Ads, and ad campaigns."
+        "suitableFor": "Suitable for social media, YouTube, Meta Ads, and advertising campaigns."
       },
       "brand": {
         "title": "03. Brand Showcase",
@@ -141,7 +141,7 @@
       "story": {
         "title": "04. Story Video",
         "duration": "30–60 sec",
-        "desc": "Turning advertising into a small story people want to watch till the end. Characters, plot, and emotions work for your brand.",
+        "desc": "Turning advertising into a small story people want to watch to the end. Characters, plot, and emotions work for your brand.",
         "structure": "Character → situation → conflict → solution → brand",
         "suitableFor": "Suitable for creative advertising, social media, YouTube, and brand awareness."
       }
@@ -152,18 +152,18 @@
         "desc": "Music, sound effects, animation, and on-screen text."
       },
       {
-        "title": "Voiceover",
-        "desc": "Professional voice tells the story and highlights main product benefits."
+        "title": "Background Voiceover",
+        "desc": "Professional voice tells the story and highlights key product benefits."
       },
       {
         "title": "Character Voiceover",
-        "desc": "Characters interact, joke, and tell the story — for a more lively and emotional ad."
+        "desc": "Characters talk to each other, joke, and tell the story — for a livelier and more emotional ad."
       }
     ],
     "styleOptions": [
       {
         "title": "2D Animation",
-        "desc": "Bright, light, and dynamic style. Great for social media, explainer, and creative commercial videos."
+        "desc": "Bright, light, and dynamic style. Great for social media, explainer videos, and creative ads."
       },
       {
         "title": "3D Animation",
@@ -171,11 +171,11 @@
       },
       {
         "title": "Character Animation",
-        "desc": "Stylized characters with lively facial expressions and movement — for emotional stories and recognizable brand mascots."
+        "desc": "Stylized characters with expressive mimicry and movement — for emotional stories and recognizable brand mascots."
       },
       {
-        "title": "Live-action + Animation",
-        "desc": "Combining live footage with graphics — when you need a real product or people in frame alongside animated accents."
+        "title": "Live-Action + Animation",
+        "desc": "Combining live footage with graphics — when you need a real product or people in the frame alongside animated accents."
       }
     ],
     "aspectOptions": [
@@ -194,55 +194,55 @@
     ]
   },
   "realCase": {
-    "heading": "Real Case",
-    "description": "One of the studio's videos for a client.",
+    "heading": "Real Case Study",
+    "description": "One of the studio's videos — for a client.",
     "badgePrefix": "Case:",
     "cases": {
       "case1": {
         "title": "100-ok",
         "desc": "Short ad",
         "soundType": "Character voiceover",
-        "visualStyle": "volumetric graphics (3D)"
+        "visualStyle": "3D volumetric graphics"
       },
       "case2": {
         "title": "100-ok",
         "desc": "Short ad",
         "soundType": "Character voiceover",
-        "visualStyle": "volumetric graphics (3D)"
+        "visualStyle": "3D volumetric graphics"
       },
       "case3": {
         "title": "Rodyna Bakery",
-        "desc": "Commercial video for social media",
+        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "volumetric graphics (3D)"
+        "visualStyle": "3D volumetric graphics"
       },
       "case4": {
         "title": "Rodyna Bakery 2",
-        "desc": "Commercial video for social media",
+        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "volumetric graphics (3D)"
+        "visualStyle": "3D volumetric graphics"
       },
       "case5": {
         "title": "Solar",
-        "desc": "Commercial video for social media 9:16",
+        "desc": "9:16 video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "volumetric graphics (3D)"
+        "visualStyle": "3D volumetric graphics"
       },
       "case6": {
         "title": "Solar 2",
-        "desc": "Commercial video for social media",
+        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "volumetric graphics (3D)"
+        "visualStyle": "3D volumetric graphics"
       }
     }
   },
   "videoCard": {
-    "playFallback": "Unable to play here — open video",
+    "playFallback": "Couldn't play here — open video",
     "playAriaLabel": "Play video: {{title}}"
   },
   "process": {
-    "whyLabel": "Why animation?",
-    "pathHeading": "From idea to video",
+    "whyLabel": "Why Animation?",
+    "pathHeading": "The Path from Idea to Video",
     "whyPoints": {
       "spark": "Grabs attention from the first seconds",
       "clock": "Explains complex things in 30–60 seconds",
@@ -251,27 +251,54 @@
     },
     "steps": {
       "01": {
-        "title": "Brief and script",
-        "desc": "We discuss the video's goal and audience, write a short script, and approve it with you."
+        "title": "Brief & Script",
+        "desc": "We discuss video goals and audience, write a short script, and approve it with you."
       },
       "02": {
         "title": "Storyboard",
-        "desc": "We sketch key frames — you see the structure and style even before animation."
+        "desc": "We draw key frames of the video — you see the structure and style before animation."
       },
       "03": {
-        "title": "Animation and voiceover",
-        "desc": "We bring characters to life, add music and a voiceover."
+        "title": "Animation & Voiceover",
+        "desc": "We bring characters to life, add music and voiceover."
       },
       "04": {
-        "title": "Ready video",
-        "desc": "We deliver the file in the required formats for your website, social media, or presentation."
+        "title": "Final Video",
+        "desc": "We deliver the file in the required formats for website, social media, or presentation."
       }
     }
   },
+  "contactForm": {
+    "heading": "Tell Us About Your Project",
+    "subheading": "We'll reply within one business day.",
+    "nameLabel": "Name",
+    "namePlaceholder": "How to address you",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "+380 XX XXX XX XX",
+    "successMessage": "Thank you! Request received — we'll connect with you soon.",
+    "missingContactError": "Please provide an email or phone number — at least one communication method.",
+    "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX",
+    "formatsLabel": "What are you planning?",
+    "formatsOptional": "(optional)",
+    "messageLabel": "About the Project",
+    "messageOptional": "(optional)",
+    "messagePlaceholder": "What we are advertising, for whom, and when the video is needed",
+    "errorMessage": "Something went wrong. Please try again or message us directly.",
+    "submitButton": "Send Request",
+    "sendingButton": "Sending…",
+    "formats": {
+      "short": "Short Ad",
+      "ad": "Video Ad",
+      "brand": "Brand Showcase",
+      "story": "Story Video"
+    }
+  },
   "metadata": {
-    "title": "RASpark — Cartoon-style advertisement for your business",
-    "description": "RASpark Studio creates warm, cartoon-style videos that explain, sell, and leave a lasting impression. We will tell your business's story through the language of animation.",
-    "ogDescription": "We create warm, engaging videos that explain complex concepts simply and leave a lasting impression.",
-    "ogImageAlt": "RASpark — advertising for business."
+    "title": "AI Animation & Business Video Advertising Studio | RA Spark",
+    "description": "We create AI video ads for business: 2D, 3D, and character animation. Videos for TikTok, Instagram, YouTube, and ad campaigns.",
+    "ogDescription": "We create AI video advertising for business — vibrant 2D, 3D, and character animation videos for social media, YouTube, and ad campaigns.",
+    "ogImageAlt": "RA Spark — AI Business Advertising Studio"
   }
 }

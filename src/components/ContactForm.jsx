@@ -3,13 +3,9 @@
 
 import { Suspense, useState } from "react"
 import { useSearchParams } from "next/navigation"
+import { useT } from "next-i18next/client"
 
-const FORMATS = [
-  { id: "short", label: "Коротка реклама" },
-  { id: "ad", label: "Рекламний ролик" },
-  { id: "brand", label: "Візитівка бренду" },
-  { id: "story", label: "Ролик-історія" },
-]
+const FORMATS = [{ id: "short" }, { id: "ad" }, { id: "brand" }, { id: "story" }]
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
 function isValidPhone(raw) {
@@ -17,6 +13,7 @@ function isValidPhone(raw) {
 }
 
 function ContactFormInner() {
+  const { t } = useT("common")
   const searchParams = useSearchParams()
   const presetFormat = searchParams.get("format")
   const initialFormat = FORMATS.some((f) => f.id === presetFormat) ? presetFormat : null
@@ -35,12 +32,12 @@ function ContactFormInner() {
     const phone = String(data.get("phone") || "").trim()
 
     if (!email && !phone) {
-      setContactError("Вкажіть email або телефон — хоча б один спосіб зв'язку.")
+      setContactError(t("contactForm.missingContactError"))
       setPhoneInvalid(false)
       return
     }
     if (phone && !isValidPhone(phone)) {
-      setContactError("Перевірте номер телефону, напр. +380 XX XXX XX XX")
+      setContactError(t("contactForm.invalidPhoneError"))
       setPhoneInvalid(true)
       form.querySelector("#phone")?.focus()
       return
@@ -54,7 +51,7 @@ function ContactFormInner() {
       email,
       phone,
       message: String(data.get("message") || ""),
-      format: format ? FORMATS.find((f) => f.id === format)?.label : undefined,
+      format: format ? t(`contactForm.formats.${format}`) : undefined,
     }
 
     try {
@@ -74,18 +71,20 @@ function ContactFormInner() {
   return (
     <section id="contact" className="bg-ink py-20 sm:py-28">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">Розкажіть про свій проєкт</h2>
-        <p className="mt-3 font-body text-lg text-cream/70 text-center">Відповімо протягом одного робочого дня.</p>
+        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
+          {t("contactForm.heading")}
+        </h2>
+        <p className="mt-3 font-body text-lg text-cream/70 text-center">{t("contactForm.subheading")}</p>
 
         {status === "sent" ? (
           <div className="mt-10 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
-            Дякуємо! Заявку отримано — скоро з&rsquo;єднаємось із вами.
+            {t("contactForm.successMessage")}
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-10 grid gap-5">
             <div>
               <label htmlFor="name" className="font-body font-700 text-lg text-cream block mb-1.5">
-                Ім&rsquo;я
+                {t("contactForm.nameLabel")}
               </label>
               <input
                 id="name"
@@ -93,26 +92,26 @@ function ContactFormInner() {
                 type="text"
                 required
                 className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
-                placeholder="Як до вас звертатись"
+                placeholder={t("contactForm.namePlaceholder")}
               />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="email" className="font-body font-700 text-lg text-cream block mb-1.5">
-                  Email
+                  {t("contactForm.emailLabel")}
                 </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
                   className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
-                  placeholder="you@example.com"
+                  placeholder={t("contactForm.emailPlaceholder")}
                 />
               </div>
               <div>
                 <label htmlFor="phone" className="font-body font-700 text-lg text-cream block mb-1.5">
-                  Телефон
+                  {t("contactForm.phoneLabel")}
                 </label>
                 <input
                   id="phone"
@@ -123,7 +122,7 @@ function ContactFormInner() {
                   className={`w-full rounded-2xl border-2 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 ${
                     phoneInvalid ? "border-red-400" : "border-cream/20"
                   }`}
-                  placeholder="+380 XX XXX XX XX"
+                  placeholder={t("contactForm.phonePlaceholder")}
                 />
               </div>
             </div>
@@ -136,7 +135,8 @@ function ContactFormInner() {
 
             <div>
               <p className="font-body font-700 text-lg text-cream mb-2">
-                Що плануєте? <span className="font-400 text-cream/50 text-base">(необов&rsquo;язково)</span>
+                {t("contactForm.formatsLabel")}{" "}
+                <span className="font-400 text-cream/50 text-base">{t("contactForm.formatsOptional")}</span>
               </p>
               <div className="flex flex-wrap gap-2.5">
                 {FORMATS.map((f) => {
@@ -152,7 +152,7 @@ function ContactFormInner() {
                       }`}
                     >
                       {selected && <span aria-hidden="true">✓</span>}
-                      {f.label}
+                      {t(`contactForm.formats.${f.id}`)}
                     </button>
                   )
                 })}
@@ -161,29 +161,26 @@ function ContactFormInner() {
 
             <div>
               <label htmlFor="message" className="font-body font-700 text-lg text-cream block mb-1.5">
-                Про проєкт <span className="font-400 text-cream/50 text-base">(необов&rsquo;язково)</span>
+                {t("contactForm.messageLabel")}{" "}
+                <span className="font-400 text-cream/50 text-base">{t("contactForm.messageOptional")}</span>
               </label>
               <textarea
                 id="message"
                 name="message"
                 rows={4}
                 className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 resize-none"
-                placeholder="Що рекламуємо, для кого і коли потрібен ролик"
+                placeholder={t("contactForm.messagePlaceholder")}
               />
             </div>
 
-            {status === "error" && (
-              <p className="font-body text-sun text-center">
-                Щось пішло не так. Спробуйте ще раз або напишіть нам напряму.
-              </p>
-            )}
+            {status === "error" && <p className="font-body text-sun text-center">{t("contactForm.errorMessage")}</p>}
 
             <button
               type="submit"
               disabled={status === "sending"}
               className="font-display font-700 text-lg bg-sun text-ink rounded-full py-3.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
             >
-              {status === "sending" ? "Надсилаємо…" : "Надіслати заявку"}
+              {status === "sending" ? t("contactForm.sendingButton") : t("contactForm.submitButton")}
             </button>
           </form>
         )}
