@@ -1,11 +1,15 @@
+
 "use client"
 
 import { useRef, useState } from "react"
 import { useT } from "next-i18next/client"
+import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 
-// const VIDEO_SRC = "/media/studio/studio-promo.mp4";
-const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1788450019/pictures/hadxijdnt1xqxmy2shee.mp4"
-const POSTER_SRC = "/media/studio/studio-promo-poster.png"
+const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1789651263/pictures/uw3xjhrdwnrz4jr9tcws.mp4"
+const POSTER_SRC = getCloudinaryPoster(VIDEO_SRC)
+const VIDEO_DURATION_SECONDS = 63
+
+const siteUrl = "https://raspark.com"
 
 export default function StudioVideo() {
   const { t } = useT("common")
@@ -23,8 +27,22 @@ export default function StudioVideo() {
     }
   }
 
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: t("studioVideo.title"),
+    description: t("studioVideo.description"),
+    thumbnailUrl: [POSTER_SRC],
+    uploadDate: getCloudinaryUploadDate(VIDEO_SRC),
+    duration: secondsToIsoDuration(VIDEO_DURATION_SECONDS),
+    contentUrl: VIDEO_SRC,
+    embedUrl: `${siteUrl}/#studio-video`,
+    publisher: { "@id": `${siteUrl}/#organization` },
+  }
+
   return (
     <section id="studio-video" className="bg-cream py-14 sm:py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }} />
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">
