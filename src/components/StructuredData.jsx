@@ -22,11 +22,13 @@ export default async function StructuredData() {
     name: "RASpark",
     url: siteUrl,
     logo: `${siteUrl}/brand/RASpark_eagle.png`,
+    image: `${siteUrl}/brand/SEO-OG-RASpark.jpg`,
     email: "raspark1954@gmail.com",
     telephone: "+380503739048",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Kalush",
+      postalCode: "77300",
       addressRegion: "Ivano-Frankivsk",
       addressCountry: "UA",
     },
