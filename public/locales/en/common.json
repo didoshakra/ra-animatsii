@@ -295,6 +295,11 @@
       "story": "Story Video"
     }
   },
+  "structuredData": {
+    "serviceName": "AI advertising and animated videos for business",
+    "serviceType": "Video Production and Animation",
+    "offerCatalogName": "Video production rates"
+  },
   "metadata": {
     "title": "AI Animation & Business Video Advertising Studio | RA Spark",
     "description": "We create AI video ads for business: 2D, 3D, and character animation. Videos for TikTok, Instagram, YouTube, and ad campaigns.",

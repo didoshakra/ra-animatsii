@@ -61,13 +61,13 @@ export default async function StructuredData() {
   const serviceSchema = {
     "@type": "Service",
     "@id": `${siteUrl}/#service`,
-    name: "AI-реклама та анімаційні відео для бізнесу",
-    serviceType: "Відеопродакшн та анімація",
+    name: t("structuredData.serviceName"),
+    serviceType: t("structuredData.serviceType"),
     provider: { "@id": `${siteUrl}/#organization` },
     areaServed: "UA",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Тарифи на відеовиробництво",
+      name: t("structuredData.offerCatalogName"),
       itemListElement: offers,
     },
   }
