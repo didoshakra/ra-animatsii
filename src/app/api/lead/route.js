@@ -8,34 +8,33 @@ export async function POST(request) {
       return Response.json({ error: "Вкажіть ім'я та email або телефон" }, { status: 400 })
     }
 
-    const apiKey = process.env.SALESDRIVE_API_KEY
-    if (!apiKey) {
-      console.error("SALESDRIVE_API_KEY не задано в env vars")
+    const webhookUrl = process.env.N8N_LEAD_WEBHOOK_URL
+    if (!webhookUrl) {
+      console.error("N8N_LEAD_WEBHOOK_URL не задано в env vars")
       return Response.json({ error: "Server misconfiguration" }, { status: 500 })
     }
 
     const host = request.headers.get("host") || ""
 
-    const salesDriveRes = await fetch("https://raanimatsii.salesdrive.me/handler/", {
+    const n8nRes = await fetch(webhookUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Api-Key": apiKey,
       },
       body: JSON.stringify({
-        getResultData: "1",
-        fName: name,
+        name,
         email: email || "",
         phone: phone || "",
-        comment: message || "",
-        con_comment: format || "",
-        sajt: host,
+        message: message || "",
+        format: format || "",
+        source_host: host,
+        submitted_at: new Date().toISOString(),
       }),
     })
 
-    if (!salesDriveRes.ok) {
-      const errText = await salesDriveRes.text()
-      console.error("SalesDrive error:", salesDriveRes.status, errText)
+    if (!n8nRes.ok) {
+      const errText = await n8nRes.text()
+      console.error("n8n webhook error:", n8nRes.status, errText)
       return Response.json({ error: "Не вдалося передати заявку в CRM" }, { status: 502 })
     }
 
