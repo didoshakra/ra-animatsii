@@ -48,7 +48,7 @@ function ContactFormInner() {
       return
     }
 
-    // Телефон вказано, але він невалідний — завжди блокуємо, це основний канал
+    // Телефон вказано, але він невалідний — блокуємо
     if (rawPhone && !phoneOk) {
       setContactError(t("contactForm.invalidPhoneError"))
       setPhoneInvalid(true)
@@ -57,8 +57,8 @@ function ContactFormInner() {
       return
     }
 
-    // Email вказано, невалідний, і телефону взагалі немає — блокуємо
-    if (rawEmail && !emailOk && !phoneOk) {
+    // Email заповнений, але невалідний — завжди блокуємо, незалежно від телефону
+    if (rawEmail && !emailOk) {
       setContactError(t("contactForm.invalidEmailError"))
       setEmailInvalid(true)
       setPhoneInvalid(false)
@@ -66,7 +66,7 @@ function ContactFormInner() {
       return
     }
 
-    // Якщо дійшли сюди: телефон валідний (або відсутній) І (email валідний або битий email ігноруємо, бо є телефон)
+    // Тут: email або порожній, або валідний; телефон або порожній, або валідний — все ок
     setContactError("")
     setPhoneInvalid(false)
     setEmailInvalid(false)

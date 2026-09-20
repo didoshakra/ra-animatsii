@@ -46,13 +46,14 @@ export default function MiniLeadForm() {
       form.querySelector('[name="phone"]')?.focus()
       return
     }
-    if (rawEmail && !emailOk && !phoneOk) {
+    if (rawEmail && !emailOk) {
       setContactError(t("miniLeadForm.invalidEmailError"))
       setEmailInvalid(true)
       setPhoneInvalid(false)
       form.querySelector('[name="email"]')?.focus()
       return
     }
+
     setContactError("")
     setPhoneInvalid(false)
     setEmailInvalid(false)
