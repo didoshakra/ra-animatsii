@@ -8,8 +8,13 @@ import { useT } from "next-i18next/client"
 const FORMATS = [{ id: "short" }, { id: "ad" }, { id: "brand" }, { id: "story" }]
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
 function isValidPhone(raw) {
   return PHONE_RE.test(raw.replace(/[\s\-()]/g, ""))
+}
+function isValidEmail(raw) {
+  return EMAIL_RE.test(raw.trim())
 }
 
 function ContactFormInner() {
@@ -22,34 +27,55 @@ function ContactFormInner() {
   const [format, setFormat] = useState(initialFormat)
   const [contactError, setContactError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
 
     const form = e.currentTarget
     const data = new FormData(form)
-    const email = String(data.get("email") || "").trim()
-    const phone = String(data.get("phone") || "").trim()
+    const rawEmail = String(data.get("email") || "").trim()
+    const rawPhone = String(data.get("phone") || "").trim()
 
-    if (!email && !phone) {
+    const phoneOk = rawPhone && isValidPhone(rawPhone)
+    const emailOk = rawEmail && isValidEmail(rawEmail)
+
+    // Немає жодного заповненого способу зв'язку
+    if (!rawEmail && !rawPhone) {
       setContactError(t("contactForm.missingContactError"))
       setPhoneInvalid(false)
+      setEmailInvalid(false)
       return
     }
-    if (phone && !isValidPhone(phone)) {
+
+    // Телефон вказано, але він невалідний — завжди блокуємо, це основний канал
+    if (rawPhone && !phoneOk) {
       setContactError(t("contactForm.invalidPhoneError"))
       setPhoneInvalid(true)
+      setEmailInvalid(false)
       form.querySelector("#phone")?.focus()
       return
     }
+
+    // Email вказано, невалідний, і телефону взагалі немає — блокуємо
+    if (rawEmail && !emailOk && !phoneOk) {
+      setContactError(t("contactForm.invalidEmailError"))
+      setEmailInvalid(true)
+      setPhoneInvalid(false)
+      form.querySelector("#email")?.focus()
+      return
+    }
+
+    // Якщо дійшли сюди: телефон валідний (або відсутній) І (email валідний або битий email ігноруємо, бо є телефон)
     setContactError("")
     setPhoneInvalid(false)
+    setEmailInvalid(false)
     setStatus("sending")
 
     const payload = {
       name: String(data.get("name") || ""),
-      email,
-      phone,
+      email: emailOk ? rawEmail : "",
+      phone: phoneOk ? rawPhone : "",
       message: String(data.get("message") || ""),
       format: format ? t(`contactForm.formats.${format}`) : undefined,
     }
@@ -105,7 +131,11 @@ function ContactFormInner() {
                   id="email"
                   name="email"
                   type="email"
-                  className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
+                  aria-invalid={emailInvalid}
+                  onChange={() => emailInvalid && setEmailInvalid(false)}
+                  className={`w-full rounded-2xl border-2 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 ${
+                    emailInvalid ? "border-red-400" : "border-cream/20"
+                  }`}
                   placeholder={t("contactForm.emailPlaceholder")}
                 />
               </div>

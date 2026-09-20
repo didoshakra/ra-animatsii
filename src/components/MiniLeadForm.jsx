@@ -6,40 +6,62 @@ import { useState } from "react"
 import { useT } from "next-i18next/client"
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
+function isValidPhone(raw) {
+  return PHONE_RE.test(raw.replace(/[\s\-()]/g, ""))
+}
+function isValidEmail(raw) {
+  return EMAIL_RE.test(raw.trim())
+}
 
 export default function MiniLeadForm() {
   const { t } = useT("common")
   const [status, setStatus] = useState("idle")
   const [contactError, setContactError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
 
   async function handleSubmit(e) {
     e.preventDefault()
 
     const form = e.currentTarget
     const data = new FormData(form)
-    const email = String(data.get("email") || "").trim()
-    const phone = String(data.get("phone") || "").trim()
+    const rawEmail = String(data.get("email") || "").trim()
+    const rawPhone = String(data.get("phone") || "").trim()
 
-    if (!email && !phone) {
+    const phoneOk = rawPhone && isValidPhone(rawPhone)
+    const emailOk = rawEmail && isValidEmail(rawEmail)
+
+    if (!rawEmail && !rawPhone) {
       setContactError(t("miniLeadForm.missingContactError"))
       setPhoneInvalid(false)
+      setEmailInvalid(false)
       return
     }
-    if (phone && !PHONE_RE.test(phone.replace(/[\s\-()]/g, ""))) {
+    if (rawPhone && !phoneOk) {
       setContactError(t("miniLeadForm.invalidPhoneError"))
       setPhoneInvalid(true)
+      setEmailInvalid(false)
       form.querySelector('[name="phone"]')?.focus()
+      return
+    }
+    if (rawEmail && !emailOk && !phoneOk) {
+      setContactError(t("miniLeadForm.invalidEmailError"))
+      setEmailInvalid(true)
+      setPhoneInvalid(false)
+      form.querySelector('[name="email"]')?.focus()
       return
     }
     setContactError("")
     setPhoneInvalid(false)
+    setEmailInvalid(false)
     setStatus("sending")
 
     const payload = {
       name: String(data.get("name") || ""),
-      email,
-      phone,
+      email: emailOk ? rawEmail : "",
+      phone: phoneOk ? rawPhone : "",
       message: "Швидка заявка з міні-форми (після портфоліо)",
     }
 
@@ -93,7 +115,11 @@ export default function MiniLeadForm() {
                     name="email"
                     type="email"
                     placeholder={t("miniLeadForm.emailPlaceholder")}
-                    className="w-full sm:flex-1 rounded-2xl border-2 border-ink/15 bg-white px-4 py-2.5 font-body text-base focus-ring placeholder:text-ink/40"
+                    aria-invalid={emailInvalid}
+                    onChange={() => emailInvalid && setEmailInvalid(false)}
+                    className={`w-full sm:flex-1 rounded-2xl border-2 bg-white px-4 py-2.5 font-body text-base focus-ring placeholder:text-ink/40 ${
+                      emailInvalid ? "border-red-400" : "border-ink/15"
+                    }`}
                   />
                   <input
                     name="phone"

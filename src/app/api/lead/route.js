@@ -1,12 +1,32 @@
 // src/app/api/lead/route.js
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+const PHONE_RE = /^(\+?38)?0\d{9}$/
+
 export async function POST(request) {
   try {
     const body = await request.json()
     const { name, email, phone, message, format } = body
 
-    if (!name || (!email && !phone)) {
-      return Response.json({ error: "Вкажіть ім'я та email або телефон" }, { status: 400 })
+    const rawEmail = String(email || "").trim()
+    const rawPhone = String(phone || "").trim()
+
+    const validPhone = rawPhone && PHONE_RE.test(rawPhone.replace(/[\s\-()]/g, ""))
+    const validEmail = rawEmail && EMAIL_RE.test(rawEmail)
+
+    if (!name) {
+      return Response.json({ error: "Вкажіть ім'я" }, { status: 400 })
     }
+
+    if (!validEmail && !validPhone) {
+      // Немає жодного робочого контакту — відхиляємо з чіткою причиною
+      if (rawEmail && !validEmail && !rawPhone) {
+        return Response.json({ error: "Некоректний email" }, { status: 400 })
+      }
+      return Response.json({ error: "Вкажіть коректний email або телефон" }, { status: 400 })
+    }
+
+    // Якщо телефон валідний, а email — ні, просто не відправляємо биту адресу далі
+    const cleanEmail = validEmail ? rawEmail : ""
 
     const webhookUrl = process.env.N8N_LEAD_WEBHOOK_URL
     if (!webhookUrl) {
@@ -23,8 +43,8 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         name,
-        email: email || "",
-        phone: phone || "",
+        email: cleanEmail,
+        phone: validPhone ? rawPhone : "",
         message: message || "",
         format: format || "",
         source_host: host,
