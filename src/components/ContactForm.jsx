@@ -26,6 +26,7 @@ function ContactFormInner() {
   const [status, setStatus] = useState("idle")
   const [format, setFormat] = useState(initialFormat)
   const [contactError, setContactError] = useState("")
+  const [serverError, setServerError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
   const [emailInvalid, setEmailInvalid] = useState(false)
 
@@ -40,7 +41,6 @@ function ContactFormInner() {
     const phoneOk = rawPhone && isValidPhone(rawPhone)
     const emailOk = rawEmail && isValidEmail(rawEmail)
 
-    // Немає жодного заповненого способу зв'язку
     if (!rawEmail && !rawPhone) {
       setContactError(t("contactForm.missingContactError"))
       setPhoneInvalid(false)
@@ -48,7 +48,6 @@ function ContactFormInner() {
       return
     }
 
-    // Телефон вказано, але він невалідний — блокуємо
     if (rawPhone && !phoneOk) {
       setContactError(t("contactForm.invalidPhoneError"))
       setPhoneInvalid(true)
@@ -57,7 +56,6 @@ function ContactFormInner() {
       return
     }
 
-    // Email заповнений, але невалідний — завжди блокуємо, незалежно від телефону
     if (rawEmail && !emailOk) {
       setContactError(t("contactForm.invalidEmailError"))
       setEmailInvalid(true)
@@ -66,10 +64,10 @@ function ContactFormInner() {
       return
     }
 
-    // Тут: email або порожній, або валідний; телефон або порожній, або валідний — все ок
     setContactError("")
     setPhoneInvalid(false)
     setEmailInvalid(false)
+    setServerError("")
     setStatus("sending")
 
     const payload = {
@@ -86,10 +84,17 @@ function ContactFormInner() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       })
+      const resJson = await res.json().catch(() => null)
 
-      if (!res.ok) throw new Error("Request failed")
+      if (!res.ok) {
+        setServerError(resJson?.error || t("contactForm.errorMessage"))
+        setStatus("error")
+        return
+      }
+
       setStatus("sent")
     } catch {
+      setServerError(t("contactForm.errorMessage"))
       setStatus("error")
     }
   }
@@ -203,7 +208,9 @@ function ContactFormInner() {
               />
             </div>
 
-            {status === "error" && <p className="font-body text-sun text-center">{t("contactForm.errorMessage")}</p>}
+            {status === "error" && (
+              <p className="font-body text-sun text-center">{serverError || t("contactForm.errorMessage")}</p>
+            )}
 
             <button
               type="submit"

@@ -19,6 +19,7 @@ export default function MiniLeadForm() {
   const { t } = useT("common")
   const [status, setStatus] = useState("idle")
   const [contactError, setContactError] = useState("")
+  const [serverError, setServerError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
   const [emailInvalid, setEmailInvalid] = useState(false)
 
@@ -57,6 +58,7 @@ export default function MiniLeadForm() {
     setContactError("")
     setPhoneInvalid(false)
     setEmailInvalid(false)
+    setServerError("")
     setStatus("sending")
 
     const payload = {
@@ -72,11 +74,18 @@ export default function MiniLeadForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       })
+      const resJson = await res.json().catch(() => null)
 
-      if (!res.ok) throw new Error("Request failed")
+      if (!res.ok) {
+        setServerError(resJson?.error || t("miniLeadForm.errorMessage"))
+        setStatus("error")
+        return
+      }
+
       setStatus("sent")
       form.reset()
     } catch {
+      setServerError(t("miniLeadForm.errorMessage"))
       setStatus("error")
     }
   }
@@ -150,7 +159,7 @@ export default function MiniLeadForm() {
             )}
 
             {status === "error" && (
-              <p className="mt-2 font-body text-sm text-clay-deep">{t("miniLeadForm.errorMessage")}</p>
+              <p className="mt-2 font-body text-sm text-clay-deep">{serverError || t("miniLeadForm.errorMessage")}</p>
             )}
           </div>
         </div>

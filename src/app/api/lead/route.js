@@ -17,16 +17,13 @@ export async function POST(request) {
       return Response.json({ error: "Вкажіть ім'я" }, { status: 400 })
     }
 
-    if (!validEmail && !validPhone) {
-      // Немає жодного робочого контакту — відхиляємо з чіткою причиною
-      if (rawEmail && !validEmail && !rawPhone) {
-        return Response.json({ error: "Некоректний email" }, { status: 400 })
-      }
-      return Response.json({ error: "Вкажіть коректний email або телефон" }, { status: 400 })
+    if (rawEmail && !validEmail) {
+      return Response.json({ error: "Некоректний email" }, { status: 400 })
     }
 
-    // Якщо телефон валідний, а email — ні, просто не відправляємо биту адресу далі
-    const cleanEmail = validEmail ? rawEmail : ""
+    if (!validEmail && !validPhone) {
+      return Response.json({ error: "Вкажіть коректний email або телефон" }, { status: 400 })
+    }
 
     const webhookUrl = process.env.N8N_LEAD_WEBHOOK_URL
     if (!webhookUrl) {
@@ -43,8 +40,8 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         name,
-        email: cleanEmail,
-        phone: validPhone ? rawPhone : "",
+        email: rawEmail,
+        phone: rawPhone,
         message: message || "",
         format: format || "",
         source_host: host,
@@ -52,10 +49,20 @@ export async function POST(request) {
       }),
     })
 
-    if (!n8nRes.ok) {
-      const errText = await n8nRes.text()
-      console.error("n8n webhook error:", n8nRes.status, errText)
-      return Response.json({ error: "Не вдалося передати заявку в CRM" }, { status: 502 })
+    const responseText = await n8nRes.text()
+    let responseJson = null
+    try {
+      responseJson = JSON.parse(responseText)
+    } catch {
+      // не JSON — лишаємо null, обробимо нижче
+    }
+
+    // Помилка або по HTTP-статусу, або по полю error:true в тілі відповіді
+    if (!n8nRes.ok || (responseJson && responseJson.error)) {
+      console.error("n8n webhook error:", n8nRes.status, responseText)
+      const message =
+        (responseJson && (responseJson.message || responseJson.error)) || "Не вдалося передати заявку в CRM"
+      return Response.json({ error: message }, { status: n8nRes.ok ? 400 : 502 })
     }
 
     return Response.json({ ok: true })
