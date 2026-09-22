@@ -76,8 +76,9 @@ function ContactFormInner() {
       email: emailOk ? rawEmail : "",
       phone: phoneOk ? rawPhone : "",
       message: String(data.get("message") || ""),
-    //   format: format ? t(`contactForm.formats.${format}`) : undefined,
+      //   format: format ? t(`contactForm.formats.${format}`) : undefined,
       format: format || undefined,
+      company: String(data.get("company") || ""),
     }
 
     try {
@@ -128,7 +129,6 @@ function ContactFormInner() {
                 placeholder={t("contactForm.namePlaceholder")}
               />
             </div>
-
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="email" className="font-body font-700 text-lg text-cream block mb-1.5">
@@ -171,6 +171,20 @@ function ContactFormInner() {
             )}
 
             <div>
+              <label htmlFor="company" className="font-body font-700 text-lg text-cream block mb-1.5">
+                {t("contactForm.companyLabel")}{" "}
+                <span className="font-400 text-cream/50 text-base">{t("contactForm.companyOptional")}</span>
+              </label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
+                placeholder={t("contactForm.companyPlaceholder")}
+              />
+            </div>
+
+            <div>
               <p className="font-body font-700 text-lg text-cream mb-2">
                 {t("contactForm.formatsLabel")}{" "}
                 <span className="font-400 text-cream/50 text-base">{t("contactForm.formatsOptional")}</span>
@@ -195,7 +209,6 @@ function ContactFormInner() {
                 })}
               </div>
             </div>
-
             <div>
               <label htmlFor="message" className="font-body font-700 text-lg text-cream block mb-1.5">
                 {t("contactForm.messageLabel")}{" "}
@@ -209,11 +222,9 @@ function ContactFormInner() {
                 placeholder={t("contactForm.messagePlaceholder")}
               />
             </div>
-
             {status === "error" && (
               <p className="font-body text-sun text-center">{serverError || t("contactForm.errorMessage")}</p>
             )}
-
             <button
               type="submit"
               disabled={status === "sending"}

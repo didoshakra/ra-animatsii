@@ -293,7 +293,10 @@
       "commercial": "Video Ad",
       "brand_card": "Brand Showcase",
       "video_story": "Story Video"
-    }
+    },
+    "companyLabel": "Company",
+    "companyOptional": "(optional)",
+    "companyPlaceholder": "Company or brand name"
   },
   "structuredData": {
     "serviceName": "AI advertising and animated videos for business",

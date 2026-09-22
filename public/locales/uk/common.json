@@ -293,7 +293,10 @@
       "commercial": "Рекламний ролик",
       "brand_card": "Візитівка бренду",
       "video_story": "Ролик-історія"
-    }
+    },
+    "companyLabel": "Компанія",
+    "companyOptional": "(необов'язково)",
+    "companyPlaceholder": "Назва компанії або бренду"
   },
   "structuredData": {
     "serviceName": "AI-реклама та анімаційні відео для бізнесу",
