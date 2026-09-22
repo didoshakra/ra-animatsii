@@ -289,10 +289,10 @@
     "submitButton": "Send Request",
     "sendingButton": "Sending…",
     "formats": {
-      "short": "Short Ad",
-      "ad": "Video Ad",
-      "brand": "Brand Showcase",
-      "story": "Story Video"
+      "short_advertisement": "Short Ad",
+      "commercial": "Video Ad",
+      "brand_card": "Brand Showcase",
+      "video_story": "Story Video"
     }
   },
   "structuredData": {

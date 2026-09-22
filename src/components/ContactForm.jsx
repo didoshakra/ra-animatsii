@@ -5,7 +5,8 @@ import { Suspense, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useT } from "next-i18next/client"
 
-const FORMATS = [{ id: "short" }, { id: "ad" }, { id: "brand" }, { id: "story" }]
+// const FORMATS = [{ id: "short" }, { id: "ad" }, { id: "brand" }, { id: "story" }]
+const FORMATS = [{ id: "short_advertisement" }, { id: "commercial" }, { id: "brand_card" }, { id: "video_story" }]
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -75,7 +76,8 @@ function ContactFormInner() {
       email: emailOk ? rawEmail : "",
       phone: phoneOk ? rawPhone : "",
       message: String(data.get("message") || ""),
-      format: format ? t(`contactForm.formats.${format}`) : undefined,
+    //   format: format ? t(`contactForm.formats.${format}`) : undefined,
+      format: format || undefined,
     }
 
     try {

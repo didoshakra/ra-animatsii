@@ -289,10 +289,10 @@
     "submitButton": "Надіслати заявку",
     "sendingButton": "Надсилаємо…",
     "formats": {
-      "short": "Коротка реклама",
-      "ad": "Рекламний ролик",
-      "brand": "Візитівка бренду",
-      "story": "Ролик-історія"
+      "short_advertisement": "Коротка реклама",
+      "commercial": "Рекламний ролик",
+      "brand_card": "Візитівка бренду",
+      "video_story": "Ролик-історія"
     }
   },
   "structuredData": {
