@@ -280,7 +280,7 @@
     "successMessage": "Дякуємо! Заявку отримано — скоро з'єднаємось із вами.",
     "missingContactError": "Вкажіть email або телефон — хоча б один спосіб зв'язку.",
     "invalidPhoneError": "Перевірте номер телефону, напр. +380 XX XXX XX XX",
-    "formatsLabel": "Що плануєте?",
+    "formatsLabel": "Тип ролика",
     "formatsOptional": "(необов'язково)",
     "messageLabel": "Про проєкт",
     "messageOptional": "(необов'язково)",
