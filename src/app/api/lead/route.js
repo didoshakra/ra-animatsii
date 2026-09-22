@@ -5,7 +5,7 @@ const PHONE_RE = /^(\+?38)?0\d{9}$/
 export async function POST(request) {
   try {
     const body = await request.json()
-    const { name, email, phone, message, format } = body
+    const { name, email, phone, message, format, company } = body
 
     const rawEmail = String(email || "").trim()
     const rawPhone = String(phone || "").trim()
@@ -44,6 +44,7 @@ export async function POST(request) {
         phone: rawPhone,
         message: message || "",
         format: format || "",
+        company: company || "",
         source_host: host,
         submitted_at: new Date().toISOString(),
       }),
