@@ -33,8 +33,8 @@ const FORMAT_CONFIG = [
     color: "bg-sky-light",
     // playAspect: "16:9",
     playAspect: "9:16",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790173879/pictures/uvsbcobudhtciyjoulim.mp4",
-    VIDEO_URL: "https://res.cloudin/ary.com/daov9z9qc/video/upload/v1790176803/pictures/tnovxgdtvzr1uzqwfjle.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790173879/pictures/uvsbcobudhtciyjoulim.mp4",
+    // VIDEO_URL: "https://res.cloudin/ary.com/daov9z9qc/video/upload/v1790176803/pictures/tnovxgdtvzr1uzqwfjle.mp4",
     durationSeconds: 56,
   },
 ]
