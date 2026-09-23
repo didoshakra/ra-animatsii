@@ -32,8 +32,8 @@ const FORMAT_CONFIG = [
     id: "story",
     color: "bg-sky-light",
     playAspect: "16:9",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1787948940/pictures/pj2ve2yzzbv8fv0xgryp.mp4",
-    durationSeconds: 10,
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790173879/pictures/uvsbcobudhtciyjoulim.mp4",
+    durationSeconds: 56,
   },
 ]
 
