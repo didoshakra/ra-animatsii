@@ -25,6 +25,7 @@
   "studioVideo": {
     "title": "Так ми розповідаємо про себе",
     "description": "Промо-ролик студії RA Spark — знятий і анімований нашою командою, тим самим підходом, яким ми робимо ролики для клієнтів.",
+    "videoSrc": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790402831/pictures/rowior4jjx8khgngbgxq.mp4",
     "videoFallback": "Не вдалось відтворити тут — відкрити відео",
     "playAriaLabel": "Відтворити промо-відео студії",
     "ctaTitle": "Ваше відео починається тут",

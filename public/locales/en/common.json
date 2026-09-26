@@ -25,6 +25,7 @@
   "studioVideo": {
     "title": "This Is How We Tell Our Story",
     "description": "RA Spark studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
+    "videoSrc": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790444983/pictures/zq2mwzphqgwi7zoabpiq.mp4",
     "videoFallback": "Couldn't play here — open video",
     "playAriaLabel": "Play studio promo video",
     "ctaTitle": "Your Video Starts Here",
