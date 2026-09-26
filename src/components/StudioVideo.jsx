@@ -5,9 +5,11 @@ import { useRef, useState } from "react"
 import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 
-const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1789651263/pictures/uw3xjhrdwnrz4jr9tcws.mp4"
+// ---- const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1789651263/pictures/uw3xjhrdwnrz4jr9tcws.mp4"
+// --- const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1790401369/pictures/f4dn0o0qn5avrdvml5hx.mp4"
+const VIDEO_SRC = "https://res.cloudinary.com/daov9z9qc/video/upload/v1790402831/pictures/rowior4jjx8khgngbgxq.mp4"
 const POSTER_SRC = getCloudinaryPoster(VIDEO_SRC)
-const VIDEO_DURATION_SECONDS = 63
+const VIDEO_DURATION_SECONDS = 66
 
 const siteUrl = "https://raspark.com"
 
