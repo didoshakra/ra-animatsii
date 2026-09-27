@@ -123,7 +123,8 @@
         "duration": "10–15 сек",
         "desc": "Зачепити увагу з перших секунд, показати продукт і дати чітку причину звернути увагу саме на нього.",
         "structure": "Hook → товар/послуга → вигода → CTA",
-        "suitableFor": "Підходить для Reels, TikTok, YouTube Shorts та таргетованої реклами."
+        "suitableFor": "Підходить для Reels, TikTok, YouTube Shorts та таргетованої реклами.",
+        "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4"
       },
       "ad": {
         "title": "02. Рекламний ролик",
@@ -203,37 +204,43 @@
         "title": "100-ok",
         "desc": "Коротка реклама",
         "soundType": "Озвучка персонажів",
-        "visualStyle": "об'ємна графіка (3D)"
+        "visualStyle": "об'ємна графіка (3D)",
+        "videoUrl": ""
       },
       "case2": {
         "title": "100-ok",
         "desc": "Коротка реклама",
         "soundType": "Озвучка персонажів",
-        "visualStyle": "об'ємна графіка (3D)"
+        "visualStyle": "об'ємна графіка (3D)",
+        "videoUrl": ""
       },
       "case3": {
         "title": "Пекарня Родина",
         "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
-        "visualStyle": "об'ємна графіка (3D)"
+        "visualStyle": "об'ємна графіка (3D)",
+        "videoUrl": ""
       },
       "case4": {
         "title": "Пекарня Родина 2",
         "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
-        "visualStyle": "об'ємна графіка (3D)"
+        "visualStyle": "об'ємна графіка (3D)",
+        "videoUrl": ""
       },
       "case5": {
-        "title": "Solar",
+        "title": "Магазин «Продукти»",
         "desc": "Рекламний ролик для соцмереж 9:16",
         "soundType": "Озвучка персонажів",
-        "visualStyle": "об'ємна графіка (3D)"
+        "visualStyle": "об'ємна графіка (3D)",
+        "videoUrl": ""
       },
       "case6": {
         "title": "Solar 2",
         "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
-        "visualStyle": "об'ємна графіка (3D)"
+        "visualStyle": "об'ємна графіка (3D)",
+        "videoUrl": ""
       }
     }
   },

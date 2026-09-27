@@ -58,11 +58,16 @@ export default function VideoCase() {
   const casesText = t("realCase.cases", { returnObjects: true })
   const badgePrefix = t("realCase.badgePrefix")
 
-  const cases = CASE_CONFIG.map((cfg) => ({
-    ...cfg,
-    ...casesText[cfg.id],
-    POSTER_URL: getCloudinaryPoster(cfg.VIDEO_URL),
-  }))
+  const cases = CASE_CONFIG.map((cfg) => {
+    const text = casesText[cfg.id] || {}
+    const videoUrl = text.videoUrl || cfg.VIDEO_URL
+    return {
+      ...cfg,
+      ...text,
+      VIDEO_URL: videoUrl,
+      POSTER_URL: getCloudinaryPoster(videoUrl),
+    }
+  })
 
   const videoSchemas = cases.map((c) => ({
     "@context": "https://schema.org",

@@ -46,11 +46,16 @@ export default async function Portfolio() {
   const aspectOptions = t("portfolio.aspectOptions", { returnObjects: true })
   const accordionHint = t("portfolio.accordionHint")
 
-  const formats = FORMAT_CONFIG.map((cfg) => ({
-    ...cfg,
-    ...formatsText[cfg.id],
-    POSTER_URL: getCloudinaryPoster(cfg.VIDEO_URL),
-  }))
+  const formats = FORMAT_CONFIG.map((cfg) => {
+    const text = formatsText[cfg.id] || {}
+    const videoUrl = text.videoUrl || cfg.VIDEO_URL
+    return {
+      ...cfg,
+      ...text,
+      VIDEO_URL: videoUrl,
+      POSTER_URL: getCloudinaryPoster(videoUrl),
+    }
+  })
 
   const videoSchemas = formats.map((f) => ({
     "@context": "https://schema.org",

@@ -25,7 +25,7 @@
   "studioVideo": {
     "title": "This Is How We Tell Our Story",
     "description": "RA Spark studio promo video — shot and animated by our team, using the exact same approach we apply to client videos.",
-    "videoSrc": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790444983/pictures/zq2mwzphqgwi7zoabpiq.mp4",
+    "videoSrc": "",
     "videoFallback": "Couldn't play here — open video",
     "playAriaLabel": "Play studio promo video",
     "ctaTitle": "Your Video Starts Here",
@@ -123,28 +123,32 @@
         "duration": "10–15 sec",
         "desc": "Hook attention from the first seconds, showcase the product, and give a clear reason to pay attention to it.",
         "structure": "Hook → product/service → benefit → CTA",
-        "suitableFor": "Suitable for Reels, TikTok, YouTube Shorts, and targeted ads."
+        "suitableFor": "Suitable for Reels, TikTok, YouTube Shorts, and targeted ads.",
+        "videoUrl": ""
       },
       "ad": {
         "title": "02. Video Ad",
         "duration": "20–30 sec",
         "desc": "A short story showing the client's problem, offering a solution, and leading to action.",
         "structure": "Mini-plot → problem → solution → brand → CTA",
-        "suitableFor": "Suitable for social media, YouTube, Meta Ads, and advertising campaigns."
+        "suitableFor": "Suitable for social media, YouTube, Meta Ads, and advertising campaigns.",
+        "videoUrl": ""
       },
       "brand": {
         "title": "03. Brand Showcase",
         "duration": "30–60 sec",
         "desc": "Briefly and vividly telling who you are, what you do, and why your brand is worth attention.",
         "structure": "Who we are → what we do → why us → emotional ending",
-        "suitableFor": "Suitable for website, social media, presentations, and image advertising."
+        "suitableFor": "Suitable for website, social media, presentations, and image advertising.",
+        "videoUrl": ""
       },
       "story": {
         "title": "04. Story Video",
         "duration": "30–60 sec",
         "desc": "Turning advertising into a small story people want to watch to the end. Characters, plot, and emotions work for your brand.",
         "structure": "Character → situation → conflict → solution → brand",
-        "suitableFor": "Suitable for creative advertising, social media, YouTube, and brand awareness."
+        "suitableFor": "Suitable for creative advertising, social media, YouTube, and brand awareness.",
+        "videoUrl": ""
       }
     },
     "voiceoverOptions": [
@@ -203,37 +207,43 @@
         "title": "100-ok",
         "desc": "Short ad",
         "soundType": "Character voiceover",
-        "visualStyle": "3D volumetric graphics"
+        "visualStyle": "3D volumetric graphics",
+        "videoUrl": ""
       },
       "case2": {
         "title": "100-ok",
         "desc": "Short ad",
         "soundType": "Character voiceover",
-        "visualStyle": "3D volumetric graphics"
+        "visualStyle": "3D volumetric graphics",
+        "videoUrl": ""
       },
       "case3": {
         "title": "Rodyna Bakery",
         "desc": "Video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "3D volumetric graphics"
+        "visualStyle": "3D volumetric graphics",
+        "videoUrl": ""
       },
       "case4": {
         "title": "Rodyna Bakery 2",
         "desc": "Video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "3D volumetric graphics"
+        "visualStyle": "3D volumetric graphics",
+        "videoUrl": ""
       },
       "case5": {
         "title": "Solar",
         "desc": "9:16 video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "3D volumetric graphics"
+        "visualStyle": "3D volumetric graphics",
+        "videoUrl": ""
       },
       "case6": {
-        "title": "Solar 2",
+        "title": "Solar ",
         "desc": "Video ad for social media",
         "soundType": "Character voiceover",
-        "visualStyle": "3D volumetric graphics"
+        "visualStyle": "3D volumetric graphics",
+        "videoUrl": ""
       }
     }
   },
