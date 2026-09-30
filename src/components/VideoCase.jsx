@@ -41,14 +41,15 @@ const CASE_CONFIG = [
   {
     id: "case5",
     // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788631121/pictures/j3367j6rbnq6wh4e32iy.mp4",
-     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790491351/pictures/lgmgaflpis95js0axmbx.mp4",
+    //  VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790491351/pictures/lgmgaflpis95js0axmbx.mp4",
+    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790772832/pictures/ytthl0dtuu7v9v8rvt1o.mp4",
     playAspect: "9:16",
-    durationSeconds: 8,
+    durationSeconds: 24,
   },
   {
     id: "case6",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
-    playAspect: "16:9",
+    playAspect: "9:16",
     durationSeconds: 10,
   },
 ]
