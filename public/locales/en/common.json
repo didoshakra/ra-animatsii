@@ -62,7 +62,7 @@
     "tiers": {
       "base": {
         "name": "Base",
-        "price": "from 4,000 UAH",
+        "price": "from 99 $",
         "tagline": "Quick start for social media",
         "days": "5 business days",
         "features": [
@@ -74,7 +74,7 @@
       },
       "standard": {
         "name": "Standard",
-        "price": "from 9,000 UAH",
+        "price": "from 219 $",
         "tagline": "Most popular choice",
         "days": "10 business days",
         "features": [
@@ -86,7 +86,7 @@
       },
       "premium": {
         "name": "Premium",
-        "price": "from 15,000 UAH",
+        "price": "from 369 $",
         "tagline": "Emotional, premium level",
         "days": "15 business days",
         "features": [
@@ -98,7 +98,7 @@
       },
       "custom": {
         "name": "Custom",
-        "price": "On request",
+        "price": "Custom quote",
         "tagline": "For your unique project",
         "days": "15+ business days",
         "features": [
