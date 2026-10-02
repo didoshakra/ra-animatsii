@@ -12,7 +12,7 @@ const FORMAT_CONFIG = [
     color: "bg-sky-light",
     playAspect: "9:16",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
-    durationSeconds: 14,
+    durationSeconds: 16,
   },
   {
     id: "ad",
@@ -34,7 +34,7 @@ const FORMAT_CONFIG = [
     // playAspect: "16:9",
     playAspect: "9:16",
     VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790173879/pictures/uvsbcobudhtciyjoulim.mp4",
-    durationSeconds: 56,
+    durationSeconds: 34,
   },
 ]
 
