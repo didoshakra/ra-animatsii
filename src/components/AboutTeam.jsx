@@ -1,4 +1,4 @@
-//// src/components/AboutTeam.jsx // Команда персонажів на вашому боці
+// src/components/AboutTeam.jsx // Команда персонажів на вашому боці
 import Image from "next/image"
 import { getT } from "next-i18next/server"
 

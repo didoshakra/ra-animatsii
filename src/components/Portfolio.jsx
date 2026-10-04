@@ -2,6 +2,7 @@ import VideoCard from "./VideoCard"
 import ExecutionOptions from "./ExecutionOptions"
 import { getT } from "next-i18next/server"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
+import ukCommon from "../../public/locales/uk/common.json"
 
 const siteUrl = "https://raspark.com"
 
@@ -11,7 +12,6 @@ const FORMAT_CONFIG = [
     id: "short",
     color: "bg-sky-light",
     playAspect: "9:16",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
     durationSeconds: 16,
   },
   {
@@ -19,13 +19,12 @@ const FORMAT_CONFIG = [
     color: "bg-sun-light",
     playAspect: "9:16",
     VIDEO_URL: "",
-    durationSeconds: 38,
+    durationSeconds: 32,
   },
   {
     id: "brand",
     color: "bg-meadow-light",
     playAspect: "16:9",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790972182/pictures/wvz0orsuvsyv9fwnx3m7.mp4",
     durationSeconds: 35,
   },
   {
@@ -33,7 +32,6 @@ const FORMAT_CONFIG = [
     color: "bg-sky-light",
     // playAspect: "16:9",
     playAspect: "9:16",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1791030999/pictures/ypybdjigzci5qcmadrhn.mp4",
     durationSeconds: 34,
   },
 ]
@@ -46,9 +44,11 @@ export default async function Portfolio() {
   const aspectOptions = t("portfolio.aspectOptions", { returnObjects: true })
   const accordionHint = t("portfolio.accordionHint")
 
+  const ukFormats = ukCommon.portfolio.formats
+
   const formats = FORMAT_CONFIG.map((cfg) => {
     const text = formatsText[cfg.id] || {}
-    const videoUrl = text.videoUrl || cfg.VIDEO_URL
+    const videoUrl = text.videoUrl || ukFormats[cfg.id]?.videoUrl || ""
     return {
       ...cfg,
       ...text,

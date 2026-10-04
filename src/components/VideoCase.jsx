@@ -3,38 +3,33 @@
 import VideoCard from "./VideoCard"
 import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
+import ukCommon from "../../public/locales/uk/common.json"
 
 const siteUrl = "https://raspark.com"
 
 // Структурні поля кейсів (не текст) — відео, постер, співвідношення сторін.
 const CASE_CONFIG = [
-  // {
-  //   id: "lumpex24",
-  //   VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788688441/pictures/ynyyoxasgdxbdphhkjfe.mp4",
-  //   POSTER_URL: "",
-  //   playAspect: "9:16",
-  // },
   {
     id: "case1",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065442/pictures/ucq1ljbxqe0cnj5locpm.mp4",
+    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065442/pictures/ucq1ljbxqe0cnj5locpm.mp4",
     playAspect: "16:9",
-    durationSeconds: 10,
+    durationSeconds: 19,
   },
   {
     id: "case2",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065469/pictures/atls4zfubslslzse40j8.mp4",
+    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065469/pictures/atls4zfubslslzse40j8.mp4",
     playAspect: "9:16",
     durationSeconds: 8,
   },
   {
     id: "case3",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
+    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
     playAspect: "9:16",
     durationSeconds: 14,
   },
   {
     id: "case4",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965660/pictures/myxlcznejrhh9xbj55m6.mp4",
+    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965660/pictures/myxlcznejrhh9xbj55m6.mp4",
     playAspect: "9:16",
     durationSeconds: 18,
   },
@@ -42,13 +37,13 @@ const CASE_CONFIG = [
     id: "case5",
     // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788631121/pictures/j3367j6rbnq6wh4e32iy.mp4",
     //  VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790491351/pictures/lgmgaflpis95js0axmbx.mp4",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790772832/pictures/ytthl0dtuu7v9v8rvt1o.mp4",
+    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790772832/pictures/ytthl0dtuu7v9v8rvt1o.mp4",
     playAspect: "9:16",
     durationSeconds: 24,
   },
   {
     id: "case6",
-    VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
+    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
     playAspect: "9:16",
     durationSeconds: 10,
   },
@@ -59,9 +54,11 @@ export default function VideoCase() {
   const casesText = t("realCase.cases", { returnObjects: true })
   const badgePrefix = t("realCase.badgePrefix")
 
+  const ukCases = ukCommon.realCase.cases
+
   const cases = CASE_CONFIG.map((cfg) => {
     const text = casesText[cfg.id] || {}
-    const videoUrl = text.videoUrl || cfg.VIDEO_URL
+    const videoUrl = text.videoUrl || ukCases[cfg.id]?.videoUrl || ""
     return {
       ...cfg,
       ...text,
