@@ -77,12 +77,7 @@
         "price": "from 219 $",
         "tagline": "Most popular choice",
         "days": "10 business days",
-        "features": [
-          "2D, 3D animation",
-          "Voiceover",
-          "Video ad, 20–30 sec",
-          "For social media, YouTube, Meta Ads"
-        ]
+        "features": ["2D, 3D animation", "Voiceover", "Video ad, 20–30 sec", "For social media, YouTube, Meta Ads"]
       },
       "premium": {
         "name": "Premium",
@@ -211,12 +206,13 @@
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791049656/pictures/lpp45lltrreexttuui2m.mp4"
       },
       "case2": {
-        "title": "100-ok",
-        "desc": "Short ad",
+        "title": "Beauty salon «Sunflower»",
+        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
-        "videoUrl": ""
+        "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791220505/pictures/guhtomjady0e983e3r0o.mp4"
       },
+
       "case3": {
         "title": "Rodyna Bakery",
         "desc": "Video ad for social media",
@@ -232,15 +228,15 @@
         "videoUrl": ""
       },
       "case5": {
-        "title": "Solar",
+        "title": "Shop «Products»",
         "desc": "video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": ""
       },
       "case6": {
-        "title": "Solar ",
-        "desc": "Video ad for social media",
+        "title": "100-ok",
+        "desc": "Short ad",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": ""

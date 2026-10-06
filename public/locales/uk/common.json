@@ -204,20 +204,20 @@
     "badgePrefix": "Кейс:",
     "cases": {
       "case1": {
-         "title": "Зоомагазин «Чотири лапи»",
+        "title": "Зоомагазин «Чотири лапи»",
         "desc": "Коротка реклама",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791049632/pictures/nyfljulhzwrx8vfcwkmz.mp4"
-
       },
       "case2": {
-        "title": "100-ok",
-        "desc": "Коротка реклама",
+        "title": "Салон краси «Соняшник»",
+        "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
-        "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065469/pictures/atls4zfubslslzse40j8.mp4"
+        "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791220466/pictures/zevpd6y2kdcywc18pvpp.mp4"
       },
+
       "case3": {
         "title": "Пекарня Родина",
         "desc": "Рекламний ролик для соцмереж",
@@ -240,11 +240,11 @@
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790772832/pictures/ytthl0dtuu7v9v8rvt1o.mp4"
       },
       "case6": {
-        "title": "Solar 2",
-        "desc": "Рекламний ролик для соцмереж",
+        "title": "100-ok",
+        "desc": "Коротка реклама",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
-        "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4"
+        "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065469/pictures/atls4zfubslslzse40j8.mp4"
       }
     }
   },

@@ -11,41 +11,33 @@ const siteUrl = "https://raspark.com"
 const CASE_CONFIG = [
   {
     id: "case1",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065442/pictures/ucq1ljbxqe0cnj5locpm.mp4",
     playAspect: "16:9",
     durationSeconds: 19,
   },
   {
     id: "case2",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065469/pictures/atls4zfubslslzse40j8.mp4",
     playAspect: "9:16",
-    durationSeconds: 8,
+    durationSeconds: 17,
   },
   {
     id: "case3",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965604/pictures/tecdcduffhrzpao2ifvn.mp4",
     playAspect: "9:16",
     durationSeconds: 14,
   },
   {
     id: "case4",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788965660/pictures/myxlcznejrhh9xbj55m6.mp4",
     playAspect: "9:16",
     durationSeconds: 18,
   },
   {
     id: "case5",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788631121/pictures/j3367j6rbnq6wh4e32iy.mp4",
-    //  VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790491351/pictures/lgmgaflpis95js0axmbx.mp4",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1790772832/pictures/ytthl0dtuu7v9v8rvt1o.mp4",
     playAspect: "9:16",
     durationSeconds: 24,
   },
   {
     id: "case6",
-    // VIDEO_URL: "https://res.cloudinary.com/daov9z9qc/video/upload/v1788628852/pictures/jeem8w4fqt2ssohdtrdi.mp4",
     playAspect: "9:16",
-    durationSeconds: 10,
+    durationSeconds: 8,
   },
 ]
 

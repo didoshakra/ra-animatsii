@@ -4,6 +4,7 @@ import { I18nProvider } from "next-i18next/client"
 import i18nConfig from "../../../i18n.config"
 import StructuredData from "@/components/StructuredData"
 import "../globals.css"
+import PageViewTracker from "../components/PageViewTracker"
 
 const siteUrl = "https://raspark.com"
 
@@ -72,10 +73,11 @@ export default async function RootLayout({ children, params }) {
     <html lang={lng}>
       <body className="font-body antialiased">
         <StructuredData />
+        <PageViewTracker />
         <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
           {children}
         </I18nProvider>
-      </body>   
+      </body>
     </html>
   )
 }
