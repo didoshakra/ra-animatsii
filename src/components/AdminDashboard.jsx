@@ -16,19 +16,19 @@ function Card({ label, value }) {
 function Section({ title, children }) {
   return (
     <section className="rounded-xl border border-black/10 bg-white/70 p-4">
-      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
+      <h2 className="mb-3 text- font-semibold">{title}</h2>
       {children}
     </section>
   );
 }
 
 function BarList({ rows, extra }) {
-  if (!rows || rows.length === 0) return <p className="text-sm opacity-50">Поки немає даних</p>;
+  if (!rows || rows.length === 0) return <p className="text-base opacity-50">Поки немає даних</p>;
   const max = Math.max(1, ...rows.map((r) => r.views));
   return (
     <ul className="space-y-2">
       {rows.map((r) => (
-        <li key={r.name} className="text-sm">
+        <li key={r.name} className="text-base">
           <div className="flex justify-between gap-3">
             <span className="truncate">{r.name || '—'}</span>
             <span className="shrink-0 tabular-nums">
@@ -117,10 +117,10 @@ export default function AdminDashboard() {
   }, [days]);
 
   if (error === 'denied') {
-    return <main className="p-6 text-sm">Немає доступу.</main>;
+    return <main className="p-6 text-base">Немає доступу.</main>;
   }
   if (error === 'error') {
-    return <main className="p-6 text-sm">Не вдалося завантажити статистику. Спробуй оновити сторінку.</main>;
+    return <main className="p-6 text-base">Не вдалося завантажити статистику. Спробуй оновити сторінку.</main>;
   }
 
   const s = data?.summary;
@@ -134,7 +134,7 @@ export default function AdminDashboard() {
             <button
               key={p}
               onClick={() => setDays(p)}
-              className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
+              className={`rounded-lg border border-black/10 px-3 py-1 text-base ${
                 days === p ? 'bg-black text-white' : 'bg-white/70'
               }`}
             >
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {loading && !data && <p className="text-sm opacity-60">Завантаження…</p>}
+      {loading && !data && <p className="text-base opacity-60">Завантаження…</p>}
 
       {data && (
         <div className={loading ? 'space-y-4 opacity-60' : 'space-y-4'}>
