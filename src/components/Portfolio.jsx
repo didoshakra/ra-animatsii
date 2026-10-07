@@ -18,8 +18,7 @@ const FORMAT_CONFIG = [
     id: "ad",
     color: "bg-sun-light",
     playAspect: "9:16",
-    VIDEO_URL: "",
-    durationSeconds: 32,
+    durationSeconds: 27,
   },
   {
     id: "brand",
