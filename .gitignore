@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+docs-private/
 /node_modules
 /.pnp
 .pnp.*
@@ -16,6 +17,9 @@
 # next.js
 /.next/
 /out/
+
+# docs-private-різні інструкції
+/docs-private/
 
 # production
 /build
