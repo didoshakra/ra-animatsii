@@ -1,4 +1,3 @@
-// track/route
 import { neon } from "@neondatabase/serverless"
 
 const sql = neon(process.env.DATABASE_URL)
@@ -27,11 +26,12 @@ export async function POST(req) {
   const referrer = body?.referrer ? String(body.referrer).slice(0, 500) : null
   const visitorId = body?.visitorId ? String(body.visitorId).slice(0, 64) : null
   const country = req.headers.get("x-vercel-ip-country")
+  const userAgent = ua.slice(0, 300)
 
   try {
     await sql`
-      INSERT INTO page_views (path, referrer, visitor_id, country)
-      VALUES (${path}, ${referrer}, ${visitorId}, ${country})
+      INSERT INTO page_views (path, referrer, visitor_id, country, user_agent)
+      VALUES (${path}, ${referrer}, ${visitorId}, ${country}, ${userAgent})
     `
   } catch (e) {
     console.error("track error", e)

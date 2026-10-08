@@ -7,7 +7,7 @@ const PERIODS = [7, 30, 90]
 function Card({ label, value }) {
   return (
     <div className="rounded-xl border border-black/10 bg-white/70 p-4">
-      <div className="text- opacity-60">{label}</div>
+      <div className="text-xs opacity-60">{label}</div>
       <div className="mt-1 text-2xl font-semibold">{value ?? "—"}</div>
     </div>
   )
@@ -16,19 +16,19 @@ function Card({ label, value }) {
 function Section({ title, children }) {
   return (
     <section className="rounded-xl border border-black/10 bg-white/70 p-4">
-      <h2 className="mb-3 text-base font-semibold">{title}</h2>
+      <h2 className="mb-3 text-sm font-semibold">{title}</h2>
       {children}
     </section>
   )
 }
 
 function BarList({ rows, extra }) {
-  if (!rows || rows.length === 0) return <p className="text-base opacity-50">Поки немає даних</p>
+  if (!rows || rows.length === 0) return <p className="text-sm opacity-50">Поки немає даних</p>
   const max = Math.max(1, ...rows.map((r) => r.views))
   return (
     <ul className="space-y-2">
       {rows.map((r) => (
-        <li key={r.name} className="text-base">
+        <li key={r.name} className="text-sm">
           <div className="flex justify-between gap-3">
             <span className="truncate">{r.name || "—"}</span>
             <span className="shrink-0 tabular-nums">
@@ -74,7 +74,7 @@ function DailyChart({ daily }) {
           )
         })}
       </svg>
-      <div className="mt-1 flex justify-between text-sm opacity-50">
+      <div className="mt-1 flex justify-between text-xs opacity-50">
         <span>{daily[0].day}</span>
         <span>макс. {max} / день</span>
         <span>{daily[daily.length - 1].day}</span>
@@ -117,10 +117,10 @@ export default function AdminDashboard() {
   }, [days])
 
   if (error === "denied") {
-    return <main className="p-6 text-base">Немає доступу.</main>
+    return <main className="p-6 text-sm">Немає доступу.</main>
   }
   if (error === "error") {
-    return <main className="p-6 text-base">Не вдалося завантажити статистику. Спробуй оновити сторінку.</main>
+    return <main className="p-6 text-sm">Не вдалося завантажити статистику. Спробуй оновити сторінку.</main>
   }
 
   const s = data?.summary
@@ -134,7 +134,7 @@ export default function AdminDashboard() {
             <button
               key={p}
               onClick={() => setDays(p)}
-              className={`rounded-lg border border-black/10 px-3 py-1 text-base ${
+              className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
                 days === p ? "bg-black text-white" : "bg-white/70"
               }`}
             >
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {loading && !data && <p className="text-base opacity-60">Завантаження…</p>}
+      {loading && !data && <p className="text-sm opacity-60">Завантаження…</p>}
 
       {data && (
         <div className={loading ? "space-y-4 opacity-60" : "space-y-4"}>
@@ -176,13 +176,14 @@ export default function AdminDashboard() {
 
           <Section title="Останні 20 переглядів">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm">
+              <table className="w-full text-left text-xs">
                 <thead className="opacity-60">
                   <tr>
                     <th className="pb-2 pr-3">Час</th>
                     <th className="pb-2 pr-3">Сторінка</th>
                     <th className="pb-2 pr-3">Джерело</th>
-                    <th className="pb-2">Країна</th>
+                    <th className="pb-2 pr-3">Країна</th>
+                    <th className="pb-2">Браузер (User-Agent)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -191,7 +192,10 @@ export default function AdminDashboard() {
                       <td className="whitespace-nowrap py-1 pr-3">{new Date(r.created_at).toLocaleString("uk-UA")}</td>
                       <td className="py-1 pr-3">{r.path}</td>
                       <td className="max-w-[220px] truncate py-1 pr-3">{r.referrer || "—"}</td>
-                      <td className="py-1">{r.country || "—"}</td>
+                      <td className="py-1 pr-3">{r.country || "—"}</td>
+                      <td className="max-w-[260px] truncate py-1" title={r.user_agent || ""}>
+                        {r.user_agent || "—"}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

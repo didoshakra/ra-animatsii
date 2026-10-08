@@ -1,28 +1,28 @@
-import { neon } from '@neondatabase/serverless';
-import { isAdmin } from '../../../lib/adminAuth';
+import { neon } from "@neondatabase/serverless"
+import { isAdmin } from "../../../lib/adminAuth"
 
-const sql = neon(process.env.DATABASE_URL);
+const sql = neon(process.env.DATABASE_URL)
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic"
 
-const TZ = 'Europe/Kyiv';
+const TZ = "Europe/Kyiv"
 
 // Список дат (YYYY-MM-DD) за останні n днів, включно із сьогодні
 function lastDays(n) {
-  const out = [];
+  const out = []
   for (let i = n - 1; i >= 0; i--) {
-    out.push(new Date(Date.now() - i * 86400000).toLocaleDateString('sv-SE', { timeZone: TZ }));
+    out.push(new Date(Date.now() - i * 86400000).toLocaleDateString("sv-SE", { timeZone: TZ }))
   }
-  return out;
+  return out
 }
 
 export async function GET(req) {
-  if (!isAdmin(req)) return new Response(null, { status: 404 });
+  if (!isAdmin(req)) return new Response(null, { status: 404 })
 
-  const { searchParams } = new URL(req.url);
-  const requested = Number(searchParams.get('days'));
-  const days = [7, 30, 90].includes(requested) ? requested : 7;
-  const host = (req.headers.get('host') ?? '').replace(/^www\./, '').replace(/:\d+$/, '');
+  const { searchParams } = new URL(req.url)
+  const requested = Number(searchParams.get("days"))
+  const days = [7, 30, 90].includes(requested) ? requested : 7
+  const host = (req.headers.get("host") ?? "").replace(/^www\./, "").replace(/:\d+$/, "")
 
   try {
     const [summary, daily, pages, sources, countries, langs, recent] = await Promise.all([
@@ -74,25 +74,23 @@ export async function GET(req) {
         GROUP BY 1 ORDER BY 2 DESC LIMIT 5
       `,
       sql`
-        SELECT created_at, path, referrer, country
+        SELECT created_at, path, referrer, country, user_agent
         FROM page_views
         ORDER BY created_at DESC
         LIMIT 20
       `,
-    ]);
+    ])
 
     // Заповнюємо дні без переглядів нулями
-    const byDay = new Map(daily.map((r) => [r.day, r]));
+    const byDay = new Map(daily.map((r) => [r.day, r]))
     const dailyFilled = lastDays(days).map((day) => ({
       day,
       views: byDay.get(day)?.views ?? 0,
       visitors: byDay.get(day)?.visitors ?? 0,
-    }));
+    }))
 
     // Прибираємо внутрішні переходи (referrer = твій же сайт)
-    const externalSources = sources
-      .filter((s) => s.name.replace(/^www\./, '') !== host)
-      .slice(0, 10);
+    const externalSources = sources.filter((s) => s.name.replace(/^www\./, "") !== host).slice(0, 10)
 
     return Response.json(
       {
@@ -105,10 +103,10 @@ export async function GET(req) {
         langs,
         recent,
       },
-      { headers: { 'Cache-Control': 'no-store' } }
-    );
+      { headers: { "Cache-Control": "no-store" } },
+    )
   } catch (e) {
-    console.error('stats error', e);
-    return new Response(null, { status: 500 });
+    console.error("stats error", e)
+    return new Response(null, { status: 500 })
   }
 }
