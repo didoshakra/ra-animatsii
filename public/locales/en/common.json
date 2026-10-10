@@ -38,7 +38,9 @@
     "imageAlt": "RA Spark studio character team together with the founder in a cartoon office"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "contactTitle": "Contact us directly",
+    "telegram": "Message on Telegram"
   },
   "miniLeadForm": {
     "title": "Want a Video Like This?",
@@ -199,7 +201,7 @@
     "badgePrefix": "Case:",
     "cases": {
       "case1": {
-        "title": "Pet shop «Paws & Tials»",
+        "title": "Pet shop «Paws & Tails»",
         "desc": "Short ad",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
@@ -229,7 +231,7 @@
       },
       "case5": {
         "title": "Shop «Products»",
-        "desc": "video ad for social media",
+        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": ""
@@ -287,7 +289,7 @@
     "successMessage": "Thank you! Request received — we'll connect with you soon.",
     "missingContactError": "Please provide an email or phone number — at least one communication method.",
     "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX",
-    "formatsLabel": "Roller type",
+    "formatsLabel": "Video type",
     "formatsOptional": "(optional)",
     "messageLabel": "About the Project",
     "messageOptional": "(optional)",

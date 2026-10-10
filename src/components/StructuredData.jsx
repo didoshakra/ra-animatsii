@@ -2,12 +2,18 @@
 import { getT } from "next-i18next/server"
 
 const siteUrl = "https://raspark.com"
+const contactEmail = "hello@raspark.com"
 
 // Витягує перше число з тексту ціни ("від 4 000 грн" -> "4000").
 // Повертає null, якщо чисел немає (напр. "За запитом").
 function extractPriceDigits(priceText) {
   const digits = String(priceText || "").replace(/[^\d]/g, "")
   return digits.length > 0 ? digits : null
+}
+
+// Визначає валюту за текстом ціни: "from 99 $" -> USD, "від 4 000 грн" -> UAH.
+function detectCurrency(priceText) {
+  return String(priceText || "").includes("$") ? "USD" : "UAH"
 }
 
 const TIER_IDS = ["base", "standard", "premium", "custom"]
@@ -23,8 +29,13 @@ export default async function StructuredData() {
     url: siteUrl,
     logo: `${siteUrl}/brand/RASpark_eagle.png`,
     image: `${siteUrl}/brand/SEO-OG-RASpark.jpg`,
-    email: "raspark1954@gmail.com",
-    telephone: "+380503739048",
+    email: contactEmail,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: contactEmail,
+      availableLanguage: ["uk", "en"],
+    },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Kalush",
@@ -52,7 +63,7 @@ export default async function StructuredData() {
       offer.priceSpecification = {
         "@type": "UnitPriceSpecification",
         price: priceDigits,
-        priceCurrency: "UAH",
+        priceCurrency: detectCurrency(tier.price),
         minPrice: priceDigits,
       }
     }
