@@ -5,7 +5,6 @@ import i18nConfig from "../../../i18n.config"
 import StructuredData from "@/components/StructuredData"
 import "../globals.css"
 import PageViewTracker from "../../components/PageViewTracker"
-import AdminStats from "../../components/AdminStats"
 const siteUrl = "https://raspark.com"
 
 export async function generateMetadata({ params }) {
@@ -77,7 +76,6 @@ export default async function RootLayout({ children, params }) {
         <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
           {children}
         </I18nProvider>
-        <AdminStats />
       </body>
     </html>
   )
