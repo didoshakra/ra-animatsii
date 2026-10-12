@@ -77,10 +77,7 @@ export default async function StructuredData() {
     name: t("structuredData.serviceName"),
     serviceType: t("structuredData.serviceType"),
     provider: { "@id": `${siteUrl}/#organization` },
-    areaServed: [
-      { "@type": "Country", name: "Ukraine" },
-      { "@type": "Place", name: "Worldwide" },
-    ],
+    areaServed: "UA",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: t("structuredData.offerCatalogName"),
