@@ -1,15 +1,14 @@
 import { neon } from "@neondatabase/serverless"
+import { isBot } from "@/lib/bots"
 
 const sql = neon(process.env.DATABASE_URL)
-
-const BOT_RE = /bot|crawl|spider|slurp|preview|headless|lighthouse|facebookexternalhit|curl|wget|python-requests/i
 
 export async function POST(req) {
   const ua = req.headers.get("user-agent") ?? ""
   const cookie = req.headers.get("cookie") ?? ""
 
-  // Пропускаємо ботів і твої візити
-  if (!ua || BOT_RE.test(ua) || cookie.includes("no_track=1")) {
+  // Явних ботів і ваші візити не пишемо
+  if (isBot(ua) || cookie.includes("no_track=1")) {
     return new Response(null, { status: 204 })
   }
 
