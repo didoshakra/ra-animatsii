@@ -13,10 +13,10 @@ export default async function Footer() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 ">
           <p className="font-body text-cream/70 text-sm">{t("footer.contactTitle")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
             <a
               href={`mailto:${EMAIL}`}
-              className="font-body text-cream text-sm hover:text-clay transition-colors focus-ring"
+              className="font-body font-700 text-sun text-lg sm:text-xl hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
             >
               {EMAIL}
             </a>
@@ -24,7 +24,7 @@ export default async function Footer() {
               href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-cream text-sm hover:text-clay transition-colors focus-ring"
+              className="font-body font-700 text-sun text-lg sm:text-xl hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
             >
               {t("footer.telegram")}
             </a>

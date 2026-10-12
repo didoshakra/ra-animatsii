@@ -5,6 +5,7 @@ import { useRef, useState } from "react"
 import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 import ukCommon from "../../public/locales/uk/common.json"
+import { useVideoTracking } from "@/lib/useVideoTracking"
 
 const VIDEO_DURATION_SECONDS = 66
 
@@ -15,6 +16,7 @@ export default function StudioVideo() {
   const VIDEO_SRC = t("studioVideo.videoSrc") || ukCommon.studioVideo.videoSrc
   const POSTER_SRC = getCloudinaryPoster(VIDEO_SRC)
   const videoRef = useRef(null)
+  useVideoTracking(videoRef, VIDEO_SRC, t("studioVideo.title")) // новий рядок
   const [playing, setPlaying] = useState(false)
   const [error, setError] = useState(false)
 

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react"
 import { useT } from "next-i18next/client"
+import { useVideoTracking } from "@/lib/useVideoTracking"
 
 export default function VideoCard({
   title,
@@ -20,6 +21,7 @@ export default function VideoCard({
 }) {
   const { t } = useT("common")
   const videoRef = useRef(null)
+  useVideoTracking(videoRef, videoUrl, title || badge) // новий рядок одразу після videoRef
   const [playing, setPlaying] = useState(false)
   const [error, setError] = useState(false)
   const [realAspectRatio, setRealAspectRatio] = useState(null)
