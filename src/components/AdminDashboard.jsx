@@ -4,6 +4,19 @@ import { useEffect, useState } from "react"
 
 const PERIODS = [7, 30, 90]
 
+const SECTION_NAMES = {
+  top: "Головна",
+  "studio-video": "Відео студії",
+  portfolio: "Портфоліо",
+  "mini-lead": "Міні-форма",
+  process: "Як працюємо",
+  "about-team": "Команда",
+  pricing: "Тарифи",
+  "real-case": "Кейси",
+  contact: "Контакти",
+}
+const sectionName = (id) => SECTION_NAMES[id] || id
+
 function Card({ label, value }) {
   return (
     <div className="rounded-xl border border-black/10 bg-white/70 p-4">
@@ -34,6 +47,51 @@ function BarList({ rows, extra }) {
             <span className="shrink-0 tabular-nums">
               {r.views}
               {extra ? ` · ${r[extra]}` : ""}
+            </span>
+          </div>
+          <div className="mt-1 h-1.5 rounded bg-black/10">
+            <div className="h-1.5 rounded bg-black/50" style={{ width: `${(r.views / max) * 100}%` }} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+// Секції: скільки візитів дійшло, середній час, скільки разів вийшли з цієї секції
+function SectionsList({ rows }) {
+  if (!rows || rows.length === 0) return <p className="text-sm opacity-50">Поки немає даних</p>
+  const max = Math.max(1, ...rows.map((r) => r.views))
+  return (
+    <ul className="space-y-2">
+      {rows.map((r) => (
+        <li key={r.name} className="text-sm">
+          <div className="flex justify-between gap-3">
+            <span className="truncate">{sectionName(r.name)}</span>
+            <span className="shrink-0 tabular-nums">
+              {r.views} візитів · ~{r.avg_seconds}с · вийшли: {r.exits}
+            </span>
+          </div>
+          <div className="mt-1 h-1.5 rounded bg-black/10">
+            <div className="h-1.5 rounded bg-black/50" style={{ width: `${(r.views / max) * 100}%` }} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function VideosList({ rows }) {
+  if (!rows || rows.length === 0) return <p className="text-sm opacity-50">Поки ніхто не дивився</p>
+  const max = Math.max(1, ...rows.map((r) => r.views))
+  return (
+    <ul className="space-y-2">
+      {rows.map((r) => (
+        <li key={r.id} className="text-sm">
+          <div className="flex justify-between gap-3">
+            <span className="truncate">{r.name || r.id}</span>
+            <span className="shrink-0 tabular-nums">
+              {r.views} · ~{r.avg_seconds}с · ~{r.avg_percent}%
             </span>
           </div>
           <div className="mt-1 h-1.5 rounded bg-black/10">
@@ -83,17 +141,62 @@ function DailyChart({ daily }) {
   )
 }
 
+function Sessions({ sessions }) {
+  if (!sessions || sessions.length === 0) {
+    return <p className="text-sm opacity-50">Поки немає даних (збираються з моменту оновлення сайту)</p>
+  }
+  return (
+    <ul className="space-y-3">
+      {sessions.map((s) => (
+        <li key={s.session_id} className="rounded-lg border border-black/5 bg-white/60 p-3 text-xs">
+          <div className="flex flex-wrap justify-between gap-2 opacity-70">
+            <span>
+              {new Date(s.last_at).toLocaleString("uk-UA")} · {s.country || "—"} · браузер{" "}
+              {String(s.visitor_id || "—").slice(0, 6)}
+            </span>
+            <span>скрол до {s.scroll ?? 0}%</span>
+          </div>
+
+          <div className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm">
+            {s.sections.length === 0 && <span className="opacity-50">секції не фіксувались</span>}
+            {s.sections.map((sec, i) => (
+              <span key={sec.id} className="flex items-center gap-1.5">
+                {i > 0 && <span className="opacity-40">→</span>}
+                <span className={sec.is_last ? "font-semibold" : ""}>
+                  {sectionName(sec.id)} {sec.seconds}с{sec.is_last ? " (вийшов)" : ""}
+                </span>
+              </span>
+            ))}
+          </div>
+
+          {s.videos.length > 0 && (
+            <ul className="mt-2 space-y-0.5 text-sm">
+              {s.videos.map((v) => (
+                <li key={v.id}>
+                  ▶ {v.label || v.id} — {v.seconds}с, {v.percent ?? 0}%
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function AdminDashboard() {
   const [days, setDays] = useState(7)
+  const [filter, setFilter] = useState("all") // 'all' | 'clean'
   const [data, setData] = useState(null)
   const [error, setError] = useState(null) // 'denied' | 'error'
-  const [loading, setLoading] = useState(true)
+
+  // Завантаження виводимо з даних: поки відповідь не збігається з обраним періодом/фільтром
+  const loading = !data || data.days !== days || data.filter !== filter
 
   useEffect(() => {
     let cancelled = false
-    setLoading(true)
 
-    fetch(`/api/stats?days=${days}`, { cache: "no-store" })
+    fetch(`/api/stats?days=${days}&filter=${filter}`, { cache: "no-store" })
       .then((r) => {
         if (r.status === 404) throw new Error("denied")
         if (!r.ok) throw new Error("error")
@@ -107,14 +210,11 @@ export default function AdminDashboard() {
       .catch((e) => {
         if (!cancelled) setError(e.message === "denied" ? "denied" : "error")
       })
-      .finally(() => {
-        if (!cancelled) setLoading(false)
-      })
 
     return () => {
       cancelled = true
     }
-  }, [days])
+  }, [days, filter])
 
   if (error === "denied") {
     return <main className="p-6 text-sm">Немає доступу.</main>
@@ -129,18 +229,36 @@ export default function AdminDashboard() {
     <main className="mx-auto max-w-5xl space-y-4 p-4 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-xl font-semibold">📊 Статистика сайту</h1>
-        <div className="flex gap-1">
-          {PERIODS.map((p) => (
-            <button
-              key={p}
-              onClick={() => setDays(p)}
-              className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
-                days === p ? "bg-black text-white" : "bg-white/70"
-              }`}
-            >
-              {p} днів
-            </button>
-          ))}
+        <div className="flex flex-wrap gap-3">
+          <div className="flex gap-1">
+            {[
+              ["all", "Всі"],
+              ["clean", "Без підозрілих"],
+            ].map(([key, label]) => (
+              <button
+                key={key}
+                onClick={() => setFilter(key)}
+                className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
+                  filter === key ? "bg-black text-white" : "bg-white/70"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-1">
+            {PERIODS.map((p) => (
+              <button
+                key={p}
+                onClick={() => setDays(p)}
+                className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
+                  days === p ? "bg-black text-white" : "bg-white/70"
+                }`}
+              >
+                {p} днів
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -172,7 +290,17 @@ export default function AdminDashboard() {
             <Section title="Мови сайту">
               <BarList rows={data.langs} />
             </Section>
+            <Section title="Секції (візитів · середній час · виходів)">
+              <SectionsList rows={data.topSections} />
+            </Section>
+            <Section title="Відео (глядачів · сер. час · сер. %)">
+              <VideosList rows={data.topVideos} />
+            </Section>
           </div>
+
+          <Section title="Поведінка: останні 15 візитів">
+            <Sessions sessions={data.sessions} />
+          </Section>
 
           <Section title="Останні 20 переглядів">
             <div className="overflow-x-auto">
@@ -180,6 +308,7 @@ export default function AdminDashboard() {
                 <thead className="opacity-60">
                   <tr>
                     <th className="pb-2 pr-3">Час</th>
+                    <th className="pb-2 pr-3">Тип</th>
                     <th className="pb-2 pr-3">Сторінка</th>
                     <th className="pb-2 pr-3">Джерело</th>
                     <th className="pb-2 pr-3">Країна</th>
@@ -190,6 +319,12 @@ export default function AdminDashboard() {
                   {data.recent.map((r, i) => (
                     <tr key={i} className="border-t border-black/5">
                       <td className="whitespace-nowrap py-1 pr-3">{new Date(r.created_at).toLocaleString("uk-UA")}</td>
+                      <td
+                        className="py-1 pr-3 text-center font-semibold"
+                        title={r.suspicious ? "Підозрілий: 3+ перегляди з одного браузера за 30 с" : ""}
+                      >
+                        {r.suspicious ? "*" : ""}
+                      </td>
                       <td className="py-1 pr-3">{r.path}</td>
                       <td className="max-w-[220px] truncate py-1 pr-3">{r.referrer || "—"}</td>
                       <td className="py-1 pr-3">{r.country || "—"}</td>
@@ -201,6 +336,9 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
             </div>
+            <p className="mt-2 text-xs opacity-60">
+              * — підозрілий: 3 і більше переглядів з одного браузера за 30 секунд.
+            </p>
           </Section>
         </div>
       )}

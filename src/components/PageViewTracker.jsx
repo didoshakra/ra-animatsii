@@ -2,27 +2,21 @@
 
 import { useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
+import { getVisitorId, startEngagement, observeSections } from "@/lib/engagement"
 
-function getVisitorId() {
-  try {
-    let id = localStorage.getItem("vid")
-    if (!id) {
-      id = crypto.randomUUID()
-      localStorage.setItem("vid", id)
-    }
-    return id
-  } catch {
-    return ""
-  }
+function trackingAllowed() {
+  if (process.env.NODE_ENV !== "production") return false
+  if (document.cookie.includes("no_track=1")) return false
+  return true
 }
 
 export default function PageViewTracker() {
   const pathname = usePathname()
   const prevPath = useRef(null)
 
+  // Перегляди сторінок
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") return
-    if (document.cookie.includes("no_track=1")) return
+    if (!trackingAllowed()) return
 
     // Перша сторінка візиту: справжнє джерело (Google, Instagram тощо).
     // Далі: попередня сторінка цього ж сайту, щоб джерело не повторювалось.
@@ -39,6 +33,25 @@ export default function PageViewTracker() {
       }),
       keepalive: true,
     }).catch(() => {})
+  }, [pathname])
+
+  // Таймери, скрол, відправка при закритті вкладки (один раз)
+  useEffect(() => {
+    if (!trackingAllowed()) return
+    return startEngagement()
+  }, [])
+
+  // Спостерігач за секціями; перепідключається при зміні сторінки/мови
+  useEffect(() => {
+    if (!trackingAllowed()) return
+    let stop = null
+    const timer = setTimeout(() => {
+      stop = observeSections()
+    }, 300)
+    return () => {
+      clearTimeout(timer)
+      if (stop) stop()
+    }
   }, [pathname])
 
   return null
