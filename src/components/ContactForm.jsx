@@ -29,6 +29,7 @@ function ContactFormInner() {
   const [contactError, setContactError] = useState("")
   const [serverError, setServerError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
 
   // Тариф у блоці цін повідомляє, який формат підсвітити
   useEffect(() => {
