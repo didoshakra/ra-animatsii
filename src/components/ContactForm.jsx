@@ -18,10 +18,10 @@ function isValidEmail(raw) {
   return EMAIL_RE.test(raw.trim())
 }
 
-const labelCls = "font-body font-700 text-base text-cream block mb-1"
-const optionalCls = "font-400 text-cream/50 text-sm"
+const labelCls = "font-body font-700 text-sm text-cream block mb-0.5"
+const optionalCls = "font-400 text-cream/50 text-xs"
 const fieldCls =
-  "w-full rounded-xl border-2 bg-cream/5 text-cream px-3.5 py-2.5 font-body text-base focus-ring placeholder:text-cream/40"
+  "w-full rounded-xl border-2 bg-cream/5 text-cream px-3.5 py-2 font-body text-base focus-ring placeholder:text-cream/40"
 
 function ContactFormInner() {
   const { t } = useT("common")
@@ -137,20 +137,20 @@ function ContactFormInner() {
   }
 
   return (
-    <section id="contact" className="bg-ink py-12 sm:py-16">
+    <section id="contact" className="bg-ink py-8 sm:py-10">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
+        <h2 className="font-display font-800 text-cream text-2xl sm:text-3xl text-center">
           {t("contactForm.heading")}
         </h2>
-        <p className="mt-2 font-body text-base sm:text-lg text-cream/70 text-center">{t("contactForm.subheading")}</p>
+        <p className="mt-1 font-body text-sm sm:text-base text-cream/70 text-center">{t("contactForm.subheading")}</p>
 
         {status === "sent" ? (
           <div className="mt-8 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
             {t("contactForm.successMessage")}
           </div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate className="mt-6 grid gap-3.5">
-            <div className="grid sm:grid-cols-2 gap-3.5">
+          <form onSubmit={handleSubmit} noValidate className="mt-4 grid gap-3">
+            <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="name" className={labelCls}>
                   {t("contactForm.nameLabel")}
@@ -181,7 +181,7 @@ function ContactFormInner() {
               </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-3.5">
+            <div className="grid sm:grid-cols-2 gap-3">
               <div>
                 <label htmlFor="email" className={labelCls}>
                   {t("contactForm.emailLabel")}
@@ -244,7 +244,7 @@ function ContactFormInner() {
               <textarea
                 id="message"
                 name="message"
-                rows={3}
+                rows={2}
                 className={`${fieldCls} border-cream/20 resize-none`}
                 placeholder={t("contactForm.messagePlaceholder")}
               />
@@ -264,7 +264,7 @@ function ContactFormInner() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="font-display font-700 text-base sm:text-lg bg-sun text-ink rounded-full py-3 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
+              className="font-display font-700 text-base sm:text-lg bg-sun text-ink rounded-full py-2.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
             >
               {status === "sending" ? t("contactForm.sendingButton") : t("contactForm.submitButton")}
             </button>
