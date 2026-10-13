@@ -21,7 +21,7 @@ export default function Home() {
         <StudioVideo />
         <HillDivider fromColor="#FBF6E9" toColor="#5FA653" />
         <Portfolio />
-        <MiniLeadForm />
+        {/* <MiniLeadForm /> */}
         {/* <HillDivider fromColor="#3F7A38" toColor="#FBF6E9" /> */}
         <HillDivider fromColor="#3F7A38" toColor="#bae6fd" />
         <Process />

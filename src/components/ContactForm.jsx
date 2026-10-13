@@ -1,7 +1,7 @@
 // src/components/ContactForm.jsx
 "use client"
 
-import { Suspense, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useT } from "next-i18next/client"
 
@@ -29,7 +29,15 @@ function ContactFormInner() {
   const [contactError, setContactError] = useState("")
   const [serverError, setServerError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
-  const [emailInvalid, setEmailInvalid] = useState(false)
+
+  // Тариф у блоці цін повідомляє, який формат підсвітити
+  useEffect(() => {
+    const onSelect = (e) => {
+      if (FORMATS.some((f) => f.id === e.detail)) setFormat(e.detail)
+    }
+    window.addEventListener("select-format", onSelect)
+    return () => window.removeEventListener("select-format", onSelect)
+  }, [])
 
   async function handleSubmit(e) {
     e.preventDefault()

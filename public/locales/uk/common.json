@@ -53,7 +53,8 @@
     "successMessage": "Дякуємо! Заявку отримано — скоро з'єднаємось.",
     "errorMessage": "Щось пішло не так. Спробуйте ще раз.",
     "missingContactError": "Вкажіть email або телефон.",
-    "invalidPhoneError": "Перевірте номер телефону, напр. +380 XX XXX XX XX"
+    "invalidPhoneError": "Перевірте номер телефону, напр. +380 XX XXX XX XX",
+    "invalidEmailError": "Перевірте email, напр. you@example.com"
   },
   "pricing": {
     "heading": "Тарифи",

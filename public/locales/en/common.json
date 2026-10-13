@@ -289,6 +289,7 @@
     "successMessage": "Thank you! Request received — we'll connect with you soon.",
     "missingContactError": "Please provide an email or phone number — at least one communication method.",
     "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX",
+    "invalidEmailError": "Перевірте email, напр. you@example.com",
     "formatsLabel": "Video type",
     "formatsOptional": "(optional)",
     "messageLabel": "About the Project",

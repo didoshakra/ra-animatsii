@@ -1,14 +1,16 @@
 // Pricing.jsx
 import { ManicureIllustration, CafeIllustration, OfficeIllustration, CustomIllustration } from "./PricingIcons"
+import PricingCta from "./PricingCta"
 import { getT } from "next-i18next/server"
 
 // Структурна конфігурація тарифів (ілюстрація, підсвітка, формат для автопідсвічування
 // у формі контактів) — не текст, тому лишається поза перекладами.
+// formatId має збігатися з FORMATS у ContactForm.jsx; для індивідуального тарифу формат не підставляємо.
 const TIER_CONFIG = [
-  { id: "base", Illustration: ManicureIllustration, highlight: false, formatId: "short" },
-  { id: "standard", Illustration: CafeIllustration, highlight: true, formatId: "ad" },
-  { id: "premium", Illustration: OfficeIllustration, highlight: false, formatId: "brand" },
-  { id: "custom", Illustration: CustomIllustration, highlight: false, formatId: "story" },
+  { id: "base", Illustration: ManicureIllustration, highlight: false, formatId: "short_advertisement" },
+  { id: "standard", Illustration: CafeIllustration, highlight: true, formatId: "commercial" },
+  { id: "premium", Illustration: OfficeIllustration, highlight: false, formatId: "brand_card" },
+  { id: "custom", Illustration: CustomIllustration, highlight: false, formatId: null },
 ]
 
 export default async function Pricing() {
@@ -33,7 +35,6 @@ export default async function Pricing() {
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {tiers.map((tier) => {
-            const href = tier.formatId ? `/?format=${tier.formatId}#contact` : "#contact"
             return (
               <div
                 key={tier.id}
@@ -80,8 +81,8 @@ export default async function Pricing() {
                     ))}
                   </ul>
 
-                  <a
-                    href={href}
+                  <PricingCta
+                    formatId={tier.formatId}
                     className={`mt-6 inline-flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-sm transition-colors focus-ring ${
                       tier.highlight
                         ? "bg-sun text-ink hover:bg-sun-light"
@@ -89,7 +90,7 @@ export default async function Pricing() {
                     }`}
                   >
                     {ctaButton}
-                  </a>
+                  </PricingCta>
                 </div>
               </div>
             )
