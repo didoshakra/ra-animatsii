@@ -58,7 +58,7 @@
   "pricing": {
     "heading": "Pricing",
     "formatLabel": "Формат:",
-    "subheading": "Estimated prices — exact cost will be agreed upon during the consultation, taking your project details into account.",
+    "subheading": "Order before the end of November and get 25% off. Indicative prices — we'll agree the exact cost during a consultation, based on your project details. ",
     "durationLabel": "Execution time:",
     "popularBadge": "Popular Choice",
     "ctaButton": "Discuss Project",
@@ -299,6 +299,7 @@
     "errorMessage": "Something went wrong. Please try again or message us directly.",
     "submitButton": "Send Request",
     "sendingButton": "Sending…",
+    "formatPlaceholder": "Not selected",
     "formats": {
       "short_advertisement": "Short Ad",
       "commercial": "Video Ad",

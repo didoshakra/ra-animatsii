@@ -1,11 +1,11 @@
-//src/components/ContactForm.jsx
+// src/components/ContactForm.jsx
 "use client"
 
-import { Suspense, useEffect, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useT } from "next-i18next/client"
 
-// const FORMATS = [{ id: "short" }, { id: "ad" }, { id: "brand" }, { id: "story" }]
+// ID мають збігатися з formatId у Pricing.jsx
 const FORMATS = [{ id: "short_advertisement" }, { id: "commercial" }, { id: "brand_card" }, { id: "video_story" }]
 
 const PHONE_RE = /^(\+?38)?0\d{9}$/
@@ -17,6 +17,11 @@ function isValidPhone(raw) {
 function isValidEmail(raw) {
   return EMAIL_RE.test(raw.trim())
 }
+
+const labelCls = "font-body font-700 text-base text-cream block mb-1"
+const optionalCls = "font-400 text-cream/50 text-sm"
+const fieldCls =
+  "w-full rounded-xl border-2 bg-cream/5 text-cream px-3.5 py-2.5 font-body text-base focus-ring placeholder:text-cream/40"
 
 function ContactFormInner() {
   const { t } = useT("common")
@@ -30,6 +35,8 @@ function ContactFormInner() {
   const [serverError, setServerError] = useState("")
   const [phoneInvalid, setPhoneInvalid] = useState(false)
   const [emailInvalid, setEmailInvalid] = useState(false)
+  const [errorTick, setErrorTick] = useState(0)
+  const errorRef = useRef(null)
 
   // Тариф у блоці цін повідомляє, який формат підсвітити
   useEffect(() => {
@@ -39,6 +46,19 @@ function ContactFormInner() {
     window.addEventListener("select-format", onSelect)
     return () => window.removeEventListener("select-format", onSelect)
   }, [])
+
+  // Після кожної помилки прокручуємо до повідомлення над кнопкою
+  useEffect(() => {
+    if (errorTick > 0 && errorRef.current) {
+      errorRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+    }
+  }, [errorTick])
+
+  const errorText = contactError || (status === "error" ? serverError || t("contactForm.errorMessage") : "")
+
+  function bumpError() {
+    setErrorTick((n) => n + 1)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -53,8 +73,10 @@ function ContactFormInner() {
 
     if (!rawEmail && !rawPhone) {
       setContactError(t("contactForm.missingContactError"))
-      setPhoneInvalid(false)
-      setEmailInvalid(false)
+      setPhoneInvalid(true)
+      setEmailInvalid(true)
+      form.querySelector("#phone")?.focus({ preventScroll: true })
+      bumpError()
       return
     }
 
@@ -62,7 +84,8 @@ function ContactFormInner() {
       setContactError(t("contactForm.invalidPhoneError"))
       setPhoneInvalid(true)
       setEmailInvalid(false)
-      form.querySelector("#phone")?.focus()
+      form.querySelector("#phone")?.focus({ preventScroll: true })
+      bumpError()
       return
     }
 
@@ -70,7 +93,8 @@ function ContactFormInner() {
       setContactError(t("contactForm.invalidEmailError"))
       setEmailInvalid(true)
       setPhoneInvalid(false)
-      form.querySelector("#email")?.focus()
+      form.querySelector("#email")?.focus({ preventScroll: true })
+      bumpError()
       return
     }
 
@@ -85,7 +109,6 @@ function ContactFormInner() {
       email: emailOk ? rawEmail : "",
       phone: phoneOk ? rawPhone : "",
       message: String(data.get("message") || ""),
-      //   format: format ? t(`contactForm.formats.${format}`) : undefined,
       format: format || undefined,
       company: String(data.get("company") || ""),
     }
@@ -101,6 +124,7 @@ function ContactFormInner() {
       if (!res.ok) {
         setServerError(resJson?.error || t("contactForm.errorMessage"))
         setStatus("error")
+        bumpError()
         return
       }
 
@@ -108,136 +132,139 @@ function ContactFormInner() {
     } catch {
       setServerError(t("contactForm.errorMessage"))
       setStatus("error")
+      bumpError()
     }
   }
 
   return (
-    <section id="contact" className="bg-ink py-20 sm:py-28">
+    <section id="contact" className="bg-ink py-12 sm:py-16">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
         <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
           {t("contactForm.heading")}
         </h2>
-        <p className="mt-3 font-body text-lg text-cream/70 text-center">{t("contactForm.subheading")}</p>
+        <p className="mt-2 font-body text-base sm:text-lg text-cream/70 text-center">{t("contactForm.subheading")}</p>
 
         {status === "sent" ? (
-          <div className="mt-10 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
+          <div className="mt-8 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
             {t("contactForm.successMessage")}
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-10 grid gap-5">
-            <div>
-              <label htmlFor="name" className="font-body font-700 text-lg text-cream block mb-1.5">
-                {t("contactForm.nameLabel")}
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
-                placeholder={t("contactForm.namePlaceholder")}
-              />
-            </div>
-            <div className="grid sm:grid-cols-2 gap-5">
+          <form onSubmit={handleSubmit} noValidate className="mt-6 grid gap-3.5">
+            <div className="grid sm:grid-cols-2 gap-3.5">
               <div>
-                <label htmlFor="email" className="font-body font-700 text-lg text-cream block mb-1.5">
+                <label htmlFor="name" className={labelCls}>
+                  {t("contactForm.nameLabel")}
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  className={`${fieldCls} border-cream/20`}
+                  placeholder={t("contactForm.namePlaceholder")}
+                />
+              </div>
+              <div>
+                <label htmlFor="company" className={labelCls}>
+                  {t("contactForm.companyLabel")}{" "}
+                  <span className={optionalCls}>{t("contactForm.companyOptional")}</span>
+                </label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  className={`${fieldCls} border-cream/20`}
+                  placeholder={t("contactForm.companyPlaceholder")}
+                />
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-3.5">
+              <div>
+                <label htmlFor="email" className={labelCls}>
                   {t("contactForm.emailLabel")}
                 </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
                   aria-invalid={emailInvalid}
                   onChange={() => emailInvalid && setEmailInvalid(false)}
-                  className={`w-full rounded-2xl border-2 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 ${
-                    emailInvalid ? "border-red-400" : "border-cream/20"
-                  }`}
+                  className={`${fieldCls} ${emailInvalid ? "border-red-400" : "border-cream/20"}`}
                   placeholder={t("contactForm.emailPlaceholder")}
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="font-body font-700 text-lg text-cream block mb-1.5">
+                <label htmlFor="phone" className={labelCls}>
                   {t("contactForm.phoneLabel")}
                 </label>
                 <input
                   id="phone"
                   name="phone"
                   type="tel"
+                  autoComplete="tel"
                   aria-invalid={phoneInvalid}
                   onChange={() => phoneInvalid && setPhoneInvalid(false)}
-                  className={`w-full rounded-2xl border-2 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 ${
-                    phoneInvalid ? "border-red-400" : "border-cream/20"
-                  }`}
+                  className={`${fieldCls} ${phoneInvalid ? "border-red-400" : "border-cream/20"}`}
                   placeholder={t("contactForm.phonePlaceholder")}
                 />
               </div>
             </div>
-            {contactError && (
-              <p className="-mt-3 flex items-start gap-2 rounded-xl bg-red-500/15 border border-red-400/40 px-4 py-3 font-body font-700 text-red-300 text-base">
-                <span aria-hidden="true">⚠</span>
-                {contactError}
-              </p>
-            )}
 
             <div>
-              <label htmlFor="company" className="font-body font-700 text-lg text-cream block mb-1.5">
-                {t("contactForm.companyLabel")}{" "}
-                <span className="font-400 text-cream/50 text-base">{t("contactForm.companyOptional")}</span>
+              <label htmlFor="format" className={labelCls}>
+                {t("contactForm.formatsLabel")} <span className={optionalCls}>{t("contactForm.formatsOptional")}</span>
               </label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40"
-                placeholder={t("contactForm.companyPlaceholder")}
-              />
+              <select
+                id="format"
+                name="format"
+                value={format ?? ""}
+                onChange={(e) => setFormat(e.target.value || null)}
+                style={{ colorScheme: "dark" }}
+                className={`${fieldCls} border-cream/20`}
+              >
+                <option value="" className="bg-ink text-cream">
+                  {t("contactForm.formatPlaceholder")}
+                </option>
+                {FORMATS.map((f) => (
+                  <option key={f.id} value={f.id} className="bg-ink text-cream">
+                    {t(`contactForm.formats.${f.id}`)}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
-              <p className="font-body font-700 text-lg text-cream mb-2">
-                {t("contactForm.formatsLabel")}{" "}
-                <span className="font-400 text-cream/50 text-base">{t("contactForm.formatsOptional")}</span>
-              </p>
-              <div className="flex flex-wrap gap-2.5">
-                {FORMATS.map((f) => {
-                  const selected = format === f.id
-                  return (
-                    <button
-                      key={f.id}
-                      type="button"
-                      onClick={() => setFormat((cur) => (cur === f.id ? null : f.id))}
-                      aria-pressed={selected}
-                      className={`font-body font-700 text-sm sm:text-base rounded-full px-4 py-2 border-2 transition-colors focus-ring inline-flex items-center gap-1.5 ${
-                        selected ? "bg-sun border-sun text-ink" : "border-cream/25 text-cream/80 hover:border-cream/50"
-                      }`}
-                    >
-                      {selected && <span aria-hidden="true">✓</span>}
-                      {t(`contactForm.formats.${f.id}`)}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="font-body font-700 text-lg text-cream block mb-1.5">
-                {t("contactForm.messageLabel")}{" "}
-                <span className="font-400 text-cream/50 text-base">{t("contactForm.messageOptional")}</span>
+              <label htmlFor="message" className={labelCls}>
+                {t("contactForm.messageLabel")} <span className={optionalCls}>{t("contactForm.messageOptional")}</span>
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows={4}
-                className="w-full rounded-2xl border-2 border-cream/20 bg-cream/5 text-cream px-4 py-3 font-body text-lg focus-ring placeholder:text-cream/40 resize-none"
+                rows={3}
+                className={`${fieldCls} border-cream/20 resize-none`}
                 placeholder={t("contactForm.messagePlaceholder")}
               />
             </div>
-            {status === "error" && (
-              <p className="font-body text-sun text-center">{serverError || t("contactForm.errorMessage")}</p>
+
+            {errorText && (
+              <p
+                ref={errorRef}
+                role="alert"
+                className="flex items-start gap-2 rounded-xl bg-red-500/15 border border-red-400/40 px-4 py-2.5 font-body font-700 text-red-300 text-sm sm:text-base"
+              >
+                <span aria-hidden="true">⚠</span>
+                {errorText}
+              </p>
             )}
+
             <button
               type="submit"
               disabled={status === "sending"}
-              className="font-display font-700 text-lg bg-sun text-ink rounded-full py-3.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
+              className="font-display font-700 text-base sm:text-lg bg-sun text-ink rounded-full py-3 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
             >
               {status === "sending" ? t("contactForm.sendingButton") : t("contactForm.submitButton")}
             </button>
