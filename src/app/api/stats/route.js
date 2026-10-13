@@ -1,3 +1,4 @@
+// scr/app/api/stats/route.js
 import { neon } from "@neondatabase/serverless"
 import { isAdmin } from "../../../lib/adminAuth"
 

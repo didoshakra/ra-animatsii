@@ -5,7 +5,7 @@
       "portfolio": "Portfolio",
       "process": "How We Work",
       "pricing": "Pricing",
-      "case": "Case Study",
+      "case": "Examples",
       "contact": "Contact"
     },
     "cta": "Discuss Project",
@@ -18,7 +18,7 @@
     "description": "We create AI video ads for businesses — from short clips for social media to vibrant animated brand stories.",
     "ctaPrimary": "Order a Video",
     "ctaSecondary": "View Examples",
-    "perks": ["First storyboard in 48h", "Free consultation", "No templates"],
+    "perks": ["First storyboard in 48h", "Free consultation", "No templates","25% off until the end of November"],
     "footnote": "From script to final video — one creator, one style, no \"default\" revisions.",
     "eagleAlt": "RA Spark studio mascot — cartoon eagle"
   },
@@ -57,6 +57,7 @@
   },
   "pricing": {
     "heading": "Pricing",
+    "formatLabel": "Формат:",
     "subheading": "Estimated prices — exact cost will be agreed upon during the consultation, taking your project details into account.",
     "durationLabel": "Execution time:",
     "popularBadge": "Popular Choice",
@@ -196,8 +197,8 @@
     ]
   },
   "realCase": {
-    "heading": "Real Case Study",
-    "description": "One of the studio's videos — for a client.",
+    "heading": "Examples of our work",
+    "description": "Demo videos for different types of business: this is how your ad could look.",
     "badgePrefix": "Case:",
     "cases": {
       "case1": {
@@ -289,7 +290,7 @@
     "successMessage": "Thank you! Request received — we'll connect with you soon.",
     "missingContactError": "Please provide an email or phone number — at least one communication method.",
     "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX",
-    "invalidEmailError": "Перевірте email, напр. you@example.com",
+    "invalidEmailError": "Check your email, e.g. you@example.com",
     "formatsLabel": "Video type",
     "formatsOptional": "(optional)",
     "messageLabel": "About the Project",

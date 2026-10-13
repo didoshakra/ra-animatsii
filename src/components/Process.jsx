@@ -1,3 +1,4 @@
+// components/Process.jsx
 import { getT } from "next-i18next/server"
 
 // Структурна конфігурація (не текст) — номер, іконка, фоновий колір.

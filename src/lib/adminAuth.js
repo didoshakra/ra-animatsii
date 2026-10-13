@@ -1,3 +1,4 @@
+//lib/adminAuth.js
 import crypto from 'crypto';
 
 // Токен = sha256 від ADMIN_KEY. Сам ключ у cookie не зберігається.

@@ -1,3 +1,4 @@
+// components/RealCase.jsx
 import VideoCase from "./VideoCase"
 import { getT } from "next-i18next/server"
 

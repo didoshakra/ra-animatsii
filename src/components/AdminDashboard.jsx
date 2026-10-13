@@ -1,3 +1,4 @@
+// components/AdminDashboard.jsx
 "use client"
 
 import { useEffect, useState } from "react"
@@ -12,7 +13,7 @@ const SECTION_NAMES = {
   process: "Як працюємо",
   "about-team": "Команда",
   pricing: "Тарифи",
-  "real-case": "Кейси",
+  "real-case": "Приклади",
   contact: "Контакти",
 }
 const sectionName = (id) => SECTION_NAMES[id] || id

@@ -1,3 +1,4 @@
+// scr/app/api/track/route.js
 import { neon } from "@neondatabase/serverless"
 import { isBot } from "@/lib/bots"
 

@@ -1,3 +1,4 @@
+// scr/[lng]/admin/page.jsx
 import AdminDashboard from '../../../components/AdminDashboard';
 
 export const metadata = {

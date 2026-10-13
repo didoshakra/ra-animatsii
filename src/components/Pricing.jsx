@@ -1,4 +1,4 @@
-// Pricing.jsx
+// components/Pricing.jsx
 import { ManicureIllustration, CafeIllustration, OfficeIllustration, CustomIllustration } from "./PricingIcons"
 import PricingCta from "./PricingCta"
 import { getT } from "next-i18next/server"
@@ -18,6 +18,7 @@ export default async function Pricing() {
   const tiersText = t("pricing.tiers", { returnObjects: true })
   const popularBadge = t("pricing.popularBadge")
   const durationLabel = t("pricing.durationLabel")
+  const formatLabel = t("pricing.formatLabel")
   const ctaButton = t("pricing.ctaButton")
 
   const tiers = TIER_CONFIG.map((cfg) => ({
@@ -66,6 +67,15 @@ export default async function Pricing() {
                   >
                     {durationLabel} {tier.days}
                   </p>
+                  {tier.formatId && (
+                    <p
+                      className={`font-body text-sm mt-1 font-700 ${
+                        tier.highlight ? "text-cream/80" : "text-clay-deep"
+                      }`}
+                    >
+                      {formatLabel} {t(`contactForm.formats.${tier.formatId}`)}
+                    </p>
+                  )}
 
                   <ul className="mt-5 flex-1 space-y-2">
                     {tier.features.map((f) => (

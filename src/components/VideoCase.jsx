@@ -1,3 +1,4 @@
+// components/VideoCase.jsx
 "use client"
 
 import VideoCard from "./VideoCard"

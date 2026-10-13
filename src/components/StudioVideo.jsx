@@ -1,4 +1,5 @@
 
+// components/StudioVideo.jsx
 "use client"
 
 import { useRef, useState } from "react"

@@ -1,3 +1,4 @@
+// components/Footer.js
 import Image from "next/image"
 import { getT } from "next-i18next/server"
 import AdminStats from "@/components/AdminStats"

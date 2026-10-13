@@ -1,3 +1,4 @@
+// components/HillDivider.jsx
 // Хвиляста лінія пагорба — сигнатурний елемент бренду, що відсилає
 // до пейзажу з логотипу студії.
 export default function HillDivider({ fromColor, toColor, flip = false }) {
