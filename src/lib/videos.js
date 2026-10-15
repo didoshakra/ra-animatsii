@@ -15,8 +15,18 @@ export const VIDEOS = [
     format: "short",
     aspect: "9:16",
     durationSeconds: 16,
+    name: { uk: "Пекарня «Родина»", en: "Rodyna Bakery" },
   },
-  { id: "hvostyky", from: "formats", key: "ad", niche: "pet-store", format: "ad", aspect: "9:16", durationSeconds: 27 },
+  {
+    id: "hvostyky",
+    from: "formats",
+    key: "ad",
+    niche: "pet-store",
+    format: "ad",
+    aspect: "9:16",
+    durationSeconds: 27,
+    name: { uk: "Зоомагазин «Хвостики»", en: "Pet shop «Khvostyky»" },
+  },
   {
     id: "wood",
     from: "formats",
@@ -25,9 +35,18 @@ export const VIDEOS = [
     format: "brand",
     aspect: "9:16",
     durationSeconds: 35,
+    name: { uk: "Меблі «Wood»", en: "Furniture «Wood»" },
   },
-  { id: "pekari", from: "formats", key: "story", niche: "cafe", format: "story", aspect: "9:16", durationSeconds: 34 },
-
+  {
+    id: "pekari",
+    from: "formats",
+    key: "story",
+    niche: "cafe",
+    format: "story",
+    aspect: "9:16",
+    durationSeconds: 34,
+    name: { uk: "Кав'ярня «Pekari»", en: "Café «Pekari»" },
+  },
   // --- блок «Приклади» ---
   {
     id: "four-paws",

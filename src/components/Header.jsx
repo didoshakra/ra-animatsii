@@ -8,20 +8,24 @@ import LanguageSwitcher from "./LanguageSwitcher"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const { t } = useT("common")
+//   const { t } = useT("common")
+const { t, i18n } = useT("common")
+const base = i18n.language === "en" ? "/en" : ""
+const home = base || "/"
 
   const links = [
-    { href: "#portfolio", label: t("header.nav.portfolio") },
-    { href: "#process", label: t("header.nav.process") },
-    { href: "#pricing", label: t("header.nav.pricing") },
-    { href: "#real-case", label: t("header.nav.case") },
-    { href: "#contact", label: t("header.nav.contact") },
+    { href: `${base}/services`, label: t("header.nav.services") },
+    { href: `${home}#portfolio`, label: t("header.nav.portfolio") },
+    { href: `${home}#process`, label: t("header.nav.process") },
+    { href: `${home}#pricing`, label: t("header.nav.pricing") },
+    { href: `${home}#real-case`, label: t("header.nav.case") },
+    { href: `${home}#contact`, label: t("header.nav.contact") },
   ]
 
   return (
     <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5 focus-ring" onClick={() => setOpen(false)}>
+        <a href={home} className="flex items-center gap-2.5 focus-ring" onClick={() => setOpen(false)}>
           <Image
             src="/brand/RASpark_eagle.png"
             alt={t("header.brand")}
