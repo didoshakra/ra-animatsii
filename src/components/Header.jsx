@@ -19,7 +19,7 @@ const home = base || "/"
     { href: `${home}#process`, label: t("header.nav.process") },
     { href: `${home}#pricing`, label: t("header.nav.pricing") },
     // { href: `${home}#real-case`, label: t("header.nav.case") },
-    { href: `${home}/examples`, label: t("header.nav.case") },
+    { href: `${base}/examples`, label: t("header.nav.case") },
     { href: `${home}#contact`, label: t("header.nav.contact") },
   ]
 
