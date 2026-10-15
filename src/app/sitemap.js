@@ -1,5 +1,5 @@
 // src/app/sitemap.js
-const siteUrl = "https://raspark.com"
+import { siteUrl } from "@/lib/site"
 
 export default function sitemap() {
   return [

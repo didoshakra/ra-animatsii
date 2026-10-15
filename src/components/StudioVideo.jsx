@@ -7,10 +7,9 @@ import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 import ukCommon from "../../public/locales/uk/common.json"
 import { useVideoTracking } from "@/lib/useVideoTracking"
+import { siteUrl } from "@/lib/site"
 
 const VIDEO_DURATION_SECONDS = 66
-
-const siteUrl = "https://raspark.com"
 
 export default function StudioVideo() {
   const { t } = useT("common")

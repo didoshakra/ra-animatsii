@@ -5,7 +5,7 @@ import i18nConfig from "../../../i18n.config"
 import StructuredData from "@/components/StructuredData"
 import "../globals.css"
 import PageViewTracker from "../../components/PageViewTracker"
-const siteUrl = "https://raspark.com"
+import { siteUrl } from "@/lib/site"
 
 export async function generateMetadata({ params }) {
   const { lng } = await params

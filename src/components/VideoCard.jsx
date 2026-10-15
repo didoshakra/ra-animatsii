@@ -1,4 +1,4 @@
-// components/VideoCard.jsx
+// src/components/VideoCard.jsx
 "use client"
 
 import { useRef, useState } from "react"
@@ -19,6 +19,7 @@ export default function VideoCard({
   playAspect,
   structure,
   suitableFor,
+  runtime,
 }) {
   const { t } = useT("common")
   const videoRef = useRef(null)
@@ -50,7 +51,7 @@ export default function VideoCard({
 
   return (
     <div className="bg-cream rounded-3xl p-6 flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-      {(badge || aspectLabel) && (
+      {(badge || aspectLabel || runtime) && (
         <div className="flex flex-wrap items-center gap-2 mb-3">
           {badge && (
             <span className="inline-block bg-meadow/15 text-meadow-deep font-body font-700 text-xs px-3 py-1 rounded-full">
@@ -60,6 +61,11 @@ export default function VideoCard({
           {aspectLabel && (
             <span className="inline-block bg-clay/15 text-clay-deep font-body font-700 text-xs px-3 py-1 rounded-full">
               {aspectLabel}
+            </span>
+          )}
+          {runtime && (
+            <span className="inline-block bg-ink/10 text-ink/70 font-body font-700 text-xs px-3 py-1 rounded-full">
+              ▶ {runtime}
             </span>
           )}
         </div>

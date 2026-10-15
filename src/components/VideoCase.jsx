@@ -1,46 +1,12 @@
-// components/VideoCase.jsx
+// src/components/VideoCase.jsx
 "use client"
 
 import VideoCard from "./VideoCard"
 import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
+import { siteUrl } from "@/lib/site"
+import { videosFrom, formatRuntime } from "@/lib/videos"
 import ukCommon from "../../public/locales/uk/common.json"
-
-const siteUrl = "https://raspark.com"
-
-// Структурні поля кейсів (не текст) — відео, постер, співвідношення сторін.
-const CASE_CONFIG = [
-  {
-    id: "case1",
-    playAspect: "16:9",
-    durationSeconds: 19,
-  },
-  {
-    id: "case2",
-    playAspect: "9:16",
-    durationSeconds: 17,
-  },
-  {
-    id: "case3",
-    playAspect: "9:16",
-    durationSeconds: 8,
-  },
-  {
-    id: "case4",
-    playAspect: "9:16",
-    durationSeconds: 18,
-  },
-  {
-    id: "case5",
-    playAspect: "9:16",
-    durationSeconds: 24,
-  },
-  {
-    id: "case6",
-    playAspect: "9:16",
-    durationSeconds: 18,
-  },
-]
 
 export default function VideoCase() {
   const { t } = useT("common")
@@ -49,11 +15,11 @@ export default function VideoCase() {
 
   const ukCases = ukCommon.realCase.cases
 
-  const cases = CASE_CONFIG.map((cfg) => {
-    const text = casesText[cfg.id] || {}
-    const videoUrl = text.videoUrl || ukCases[cfg.id]?.videoUrl || ""
+  const cases = videosFrom("cases").map((v) => {
+    const text = casesText[v.key] || {}
+    const videoUrl = text.videoUrl || ukCases[v.key]?.videoUrl || ""
     return {
-      ...cfg,
+      ...v,
       ...text,
       VIDEO_URL: videoUrl,
       POSTER_URL: getCloudinaryPoster(videoUrl),
@@ -77,7 +43,7 @@ export default function VideoCase() {
     <div className="mt-8 bg-ink rounded-3xl p-6 sm:p-8">
       {videoSchemas.map((schema, i) => (
         <script
-          key={CASE_CONFIG[i].id}
+          key={cases[i].id}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
@@ -91,7 +57,8 @@ export default function VideoCase() {
             videoUrl={c.VIDEO_URL}
             posterUrl={c.POSTER_URL}
             badge={`${badgePrefix} ${c.title}`}
-            aspectLabel={c.playAspect}
+            aspectLabel={c.aspect}
+            runtime={formatRuntime(c.durationSeconds)}
             meta={`${c.visualStyle} · ${c.soundType}`}
           />
         ))}

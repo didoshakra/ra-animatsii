@@ -1,5 +1,5 @@
 // src/app/robots.js
-const siteUrl = "https://raspark.com"
+import { siteUrl } from "@/lib/site"
 
 export default function robots() {
   return {

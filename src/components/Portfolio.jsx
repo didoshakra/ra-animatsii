@@ -1,40 +1,19 @@
-// components/Portfolio.jsx
+// src/components/Portfolio.jsx
 import VideoCard from "./VideoCard"
 import ExecutionOptions from "./ExecutionOptions"
 import { getT } from "next-i18next/server"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
+import { siteUrl } from "@/lib/site"
+import { videosFrom, formatRuntime } from "@/lib/videos"
 import ukCommon from "../../public/locales/uk/common.json"
 
-const siteUrl = "https://raspark.com"
-
-// Структурні поля форматів (не текст) — колір фону, відео, співвідношення сторін.
-const FORMAT_CONFIG = [
-  {
-    id: "short",
-    color: "bg-sky-light",
-    playAspect: "9:16",
-    durationSeconds: 16,
-  },
-  {
-    id: "ad",
-    color: "bg-sun-light",
-    playAspect: "9:16",
-    durationSeconds: 27,
-  },
-  {
-    id: "brand",
-    color: "bg-meadow-light",
-    playAspect: "16:9",
-    durationSeconds: 35,
-  },
-  {
-    id: "story",
-    color: "bg-sky-light",
-    // playAspect: "16:9",
-    playAspect: "9:16",
-    durationSeconds: 34,
-  },
-]
+// Лише оформлення: колір фону картки формату
+const FORMAT_COLORS = {
+  short: "bg-sky-light",
+  ad: "bg-sun-light",
+  brand: "bg-meadow-light",
+  story: "bg-sky-light",
+}
 
 export default async function Portfolio() {
   const { t } = await getT("common")
@@ -46,12 +25,13 @@ export default async function Portfolio() {
 
   const ukFormats = ukCommon.portfolio.formats
 
-  const formats = FORMAT_CONFIG.map((cfg) => {
-    const text = formatsText[cfg.id] || {}
-    const videoUrl = text.videoUrl || ukFormats[cfg.id]?.videoUrl || ""
+  const formats = videosFrom("formats").map((v) => {
+    const text = formatsText[v.key] || {}
+    const videoUrl = text.videoUrl || ukFormats[v.key]?.videoUrl || ""
     return {
-      ...cfg,
+      ...v,
       ...text,
+      color: FORMAT_COLORS[v.key],
       VIDEO_URL: videoUrl,
       POSTER_URL: getCloudinaryPoster(videoUrl),
     }
@@ -74,7 +54,7 @@ export default async function Portfolio() {
     <section id="portfolio" className="bg-meadow pb-14 sm:pb-20">
       {videoSchemas.map((schema, i) => (
         <script
-          key={FORMAT_CONFIG[i].id}
+          key={formats[i].id}
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
@@ -98,14 +78,14 @@ export default async function Portfolio() {
                 videoUrl={f.VIDEO_URL}
                 posterUrl={f.POSTER_URL}
                 duration={f.duration}
+                runtime={formatRuntime(f.durationSeconds)}
                 color={f.color}
-                playAspect={f.playAspect}
+                playAspect={f.aspect}
               />
             ))}
           </div>
         </div>
       </div>
-      {/* <div className=""> */}
       <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-10 sm:pt-14">
         <div className="mt-10 sm:mt-14 max-w-xl">
           <h3 className="font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">
@@ -117,7 +97,6 @@ export default async function Portfolio() {
         <ExecutionOptions title={t("portfolio.styleGroupTitle")} options={styleOptions} hint={accordionHint} />
         <ExecutionOptions title={t("portfolio.aspectGroupTitle")} options={aspectOptions} hint={accordionHint} />
       </div>
-      {/* </div> */}
     </section>
   )
 }

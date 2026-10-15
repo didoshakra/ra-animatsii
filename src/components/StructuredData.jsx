@@ -1,7 +1,7 @@
 // src/components/StructuredData.jsx
 import { getT } from "next-i18next/server"
+import { siteUrl } from "@/lib/site"
 
-const siteUrl = "https://raspark.com"
 const contactEmail = "hello@raspark.com"
 
 // Витягує перше число з тексту ціни ("від 4 000 грн" -> "4000").
