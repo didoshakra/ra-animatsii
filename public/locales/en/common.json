@@ -71,7 +71,7 @@
         "features": [
           "2D, 3D animation",
           "No voiceover or minimal background voice",
-          "Short ad, 10–15 sec",
+          "Short ad, 10–20 sec",
           "Ideal for TikTok / Reels / Shorts"
         ]
       },
@@ -118,7 +118,7 @@
     "formats": {
       "short": {
         "title": "01. Short Ad",
-        "duration": "10–15 sec",
+        "duration": "10–20 sec",
         "desc": "Hook attention from the first seconds, showcase the product, and give a clear reason to pay attention to it.",
         "structure": "Hook → product/service → benefit → CTA",
         "suitableFor": "Suitable for Reels, TikTok, YouTube Shorts, and targeted ads.",
