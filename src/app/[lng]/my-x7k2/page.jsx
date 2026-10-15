@@ -1,4 +1,4 @@
-//exclude-me/page
+//exclude-me/page це і є my-x7k2//page
 "use client"
 
 import { useEffect } from "react"

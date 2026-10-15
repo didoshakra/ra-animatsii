@@ -23,7 +23,7 @@ const CASE_CONFIG = [
   {
     id: "case3",
     playAspect: "9:16",
-    durationSeconds: 14,
+    durationSeconds: 8,
   },
   {
     id: "case4",
