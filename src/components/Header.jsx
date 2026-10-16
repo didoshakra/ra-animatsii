@@ -24,8 +24,8 @@ const links = [
 
   return (
     <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
-        <a href={home} className="flex items-center gap-2.5 focus-ring" onClick={() => setOpen(false)}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
+        <a href={home} className="flex items-center gap-2.5 shrink-0 focus-ring" onClick={() => setOpen(false)}>
           <Image
             src="/brand/RASpark_eagle.png"
             alt={t("header.brand")}
@@ -34,25 +34,27 @@ const links = [
             className="rounded-full w-9 h-9 sm:w-11 sm:h-11"
             priority
           />
-          <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight">{t("header.brand")}</span>
+          <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight whitespace-nowrap">
+            {t("header.brand")}
+          </span>
         </a>
-        <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-8 md:ml-6 lg:ml-8">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 md:ml-6">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-bold text-sm xl:text-lg text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
+              className="font-body font-bold text-sm lg:text-base text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
             >
               {l.label}
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <LanguageSwitcher />
 
           <a
             href="#contact"
-            className="hidden xl:inline-block font-display font-600 text-sm sm:text-base bg-clay text-cream px-4 sm:px-5 py-2.5 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
+            className="hidden xl:inline-block whitespace-nowrap font-display font-600 text-sm bg-clay text-cream px-4 py-2 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
           >
             {t("header.cta")}
           </a>
