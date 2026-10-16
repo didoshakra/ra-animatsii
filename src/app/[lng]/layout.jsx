@@ -6,6 +6,7 @@ import StructuredData from "@/components/StructuredData"
 import "../globals.css"
 import PageViewTracker from "../../components/PageViewTracker"
 import { siteUrl } from "@/lib/site"
+import AttributionCapture from "../../components/AttributionCapture"
 
 export async function generateMetadata({ params }) {
   const { lng } = await params
@@ -74,6 +75,7 @@ export default async function RootLayout({ children, params }) {
       <body className="font-body antialiased">
         <StructuredData />
         <PageViewTracker />
+        <AttributionCapture />
         <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
           {children}
         </I18nProvider>

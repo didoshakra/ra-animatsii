@@ -8,6 +8,7 @@ import { FORMATS } from "@/lib/pages"
 import { localizedPath, pageMetadata } from "@/lib/seo"
 import { VIDEOS } from "@/lib/videos"
 import { resolveVideos } from "@/lib/videoData"
+import PricingCta from "@/components/PricingCta"
 
 export function generateStaticParams() {
   return FORMATS.map((f) => ({ slug: f.slug }))
@@ -62,12 +63,13 @@ export default async function FormatPage({ params }) {
         </p>
         <p className="mt-1 font-body text-cream/70 text-sm">{c.priceNote}</p>
 
-        <a
-          href="#contact"
+        <PricingCta
+          formatId={fmt.formId}
+          source={`service:${slug}`}
           className="mt-6 inline-block font-display font-600 text-base bg-clay text-cream px-6 py-3 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
         >
           {c.orderCta}
-        </a>
+        </PricingCta>
       </div>
 
       <h2 className="mt-12 font-display font-700 text-cream text-2xl sm:text-3xl">{c.examplesOfFormat}</h2>

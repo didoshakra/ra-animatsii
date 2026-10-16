@@ -1,12 +1,15 @@
-// components/PricingCta.jsx
+// src/components/PricingCta.jsx
 "use client"
 
-// Звичайне посилання на #contact (миттєва прокрутка без перезавантаження, мова не губиться).
-// Окремо повідомляє форму, який тип ролика підсвітити.
-export default function PricingCta({ formatId, className, children }) {
+// Посилання на #contact. Повідомляє форму, який формат обрати і з якої кнопки прийшов клік.
+export default function PricingCta({ formatId, source, className, children }) {
   function handleClick() {
-    if (formatId) {
-      window.dispatchEvent(new CustomEvent("select-format", { detail: formatId }))
+    if (formatId || source) {
+      window.dispatchEvent(
+        new CustomEvent("select-format", {
+          detail: { formatId: formatId || null, source: source || "" },
+        }),
+      )
     }
   }
 

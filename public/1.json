@@ -1,0 +1,70 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "name",
+              "type": "string",
+              "value": "={{ $json.body.name }}"
+            },
+            {
+              "id": "a2",
+              "name": "email",
+              "type": "string",
+              "value": "={{ $json.body.email }}"
+            },
+            {
+              "id": "a3",
+              "name": "phone",
+              "type": "string",
+              "value": "={{ $json.body.phone }}"
+            },
+            {
+              "id": "a4",
+              "name": "message",
+              "type": "string",
+              "value": "={{ $json.body.message }}"
+            },
+            {
+              "id": "a5",
+              "name": "format",
+              "type": "string",
+              "value": "={{ $json.body.format }}"
+            },
+            {
+              "id": "a6",
+              "name": "source_host",
+              "type": "string",
+              "value": "={{ $json.body.source_host }}"
+            },
+            {
+              "id": "f945945f-5c5f-4d02-876b-749a02973193",
+              "name": "company",
+              "value": "={{ $json.body.company }}",
+              "type": "string"
+            },
+          ]
+        },
+        "options": {}
+      },
+      "id": "ad97ffd0-45e7-4ef2-abb9-047f18c1e241",
+      "name": "Map fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-112, -80]
+    }
+  ],
+  "connections": {
+    "Map fields": {
+      "main": [[]]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd7bf56f81630ed24362e4e3a5d75f310afab74b3b04b98383ebec63664b4130"
+  }
+}

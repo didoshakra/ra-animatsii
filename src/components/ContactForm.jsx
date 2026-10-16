@@ -4,6 +4,7 @@
 import { Suspense, useEffect, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useT } from "next-i18next/client"
+import { getAttribution } from "@/lib/attribution"
 
 // ID мають збігатися з formatId у Pricing.jsx
 const FORMATS = [{ id: "short_advertisement" }, { id: "commercial" }, { id: "brand_card" }, { id: "video_story" }]
@@ -24,7 +25,7 @@ const fieldCls =
   "w-full rounded-xl border-2 bg-cream/5 text-cream px-3.5 py-2 font-body text-base focus-ring placeholder:text-cream/40"
 
 function ContactFormInner() {
-  const { t } = useT("common")
+  const { t, i18n } = useT("common")
   const searchParams = useSearchParams()
   const presetFormat = searchParams.get("format")
   const initialFormat = FORMATS.some((f) => f.id === presetFormat) ? presetFormat : null
@@ -36,12 +37,17 @@ function ContactFormInner() {
   const [phoneInvalid, setPhoneInvalid] = useState(false)
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [errorTick, setErrorTick] = useState(0)
+  const [source, setSource] = useState("")
   const errorRef = useRef(null)
+
 
   // Тариф у блоці цін повідомляє, який формат підсвітити
   useEffect(() => {
     const onSelect = (e) => {
-      if (FORMATS.some((f) => f.id === e.detail)) setFormat(e.detail)
+      const d = e.detail
+      const id = typeof d === "string" ? d : d?.formatId
+      if (id && FORMATS.some((f) => f.id === id)) setFormat(id)
+      if (d && typeof d === "object" && d.source) setSource(d.source)
     }
     window.addEventListener("select-format", onSelect)
     return () => window.removeEventListener("select-format", onSelect)
@@ -67,6 +73,13 @@ function ContactFormInner() {
     const data = new FormData(form)
     const rawEmail = String(data.get("email") || "").trim()
     const rawPhone = String(data.get("phone") || "").trim()
+    const rawName = String(data.get("name") || "").trim()
+    if (!rawName) {
+      setContactError(t("contactForm.missingNameError"))
+      form.querySelector("#name")?.focus({ preventScroll: true })
+      bumpError()
+      return
+    }
 
     const phoneOk = rawPhone && isValidPhone(rawPhone)
     const emailOk = rawEmail && isValidEmail(rawEmail)
@@ -111,6 +124,11 @@ function ContactFormInner() {
       message: String(data.get("message") || ""),
       format: format || undefined,
       company: String(data.get("company") || ""),
+      lang: i18n.language,
+      page: window.location.pathname,
+      source,
+      attribution: getAttribution(),
+      website: String(data.get("website") || ""),
     }
 
     try {
@@ -155,6 +173,14 @@ function ContactFormInner() {
                 <label htmlFor="name" className={labelCls}>
                   {t("contactForm.nameLabel")}
                 </label>
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 <input
                   id="name"
                   name="name"

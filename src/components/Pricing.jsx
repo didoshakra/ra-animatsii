@@ -96,7 +96,8 @@ export default async function Pricing() {
                   </ul>
 
                   <PricingCta
-                    formatId={tier.formatId}
+                    formatId={tier.formId ?? tier.formatId}
+                    source={`pricing:${tier.id}`}
                     className={`mt-6 inline-flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-sm transition-colors focus-ring ${
                       tier.highlight
                         ? "bg-sun text-ink hover:bg-sun-light"

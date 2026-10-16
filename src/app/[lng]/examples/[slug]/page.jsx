@@ -3,10 +3,11 @@ import { notFound } from "next/navigation"
 import PageShell from "@/components/PageShell"
 import VideoGrid from "@/components/VideoGrid"
 import { getContent } from "@/lib/content"
-import { NICHES } from "@/lib/pages"
 import { localizedPath, pageMetadata } from "@/lib/seo"
 import { VIDEOS } from "@/lib/videos"
 import { resolveVideos } from "@/lib/videoData"
+import PricingCta from "@/components/PricingCta"
+import { FORMATS, NICHES } from "@/lib/pages"   // замість імпорту лише NICHES
 
 function findNiche(slug, c) {
   const niche = NICHES.find((n) => n.slug === slug && n.page)
@@ -40,6 +41,7 @@ export default async function NichePage({ params }) {
     VIDEOS.filter((v) => v.niche === slug),
     lng,
   )
+  const formId = FORMATS.find((f) => f.key === videos[0]?.format)?.formId ?? null
   const others = NICHES.filter((n) => n.page && n.slug !== slug && c.niches[n.slug])
 
   const crumbs = [
@@ -54,12 +56,13 @@ export default async function NichePage({ params }) {
         <h1 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">{page.h1}</h1>
         <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">{page.lead}</p>
         <p className="mt-3 font-body text-cream/80 text-base">{c.demoNote}</p>
-        <a
-          href="#contact"
+        <PricingCta
+          formatId={formId}
+          source={`example:${slug}`}
           className="mt-6 inline-block font-display font-600 text-base bg-clay text-cream px-6 py-3 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
         >
           {c.orderCta}
-        </a>
+        </PricingCta>
       </div>
 
       <VideoGrid videos={videos} badge={c.exampleBadge} />

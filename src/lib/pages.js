@@ -6,10 +6,10 @@ export const SITE_LAST_UPDATE = "2026-10-15"
 
 // key = ключ у portfolio.formats, tier = ключ у pricing.tiers
 export const FORMATS = [
-  { slug: "short-ad", key: "short", tier: "base" },
-  { slug: "ad-video", key: "ad", tier: "standard" },
-  { slug: "brand-video", key: "brand", tier: "premium" },
-  { slug: "story-video", key: "story", tier: "premium" },
+  { slug: "short-ad", key: "short", tier: "base", formId: "short_advertisement" },
+  { slug: "ad-video", key: "ad", tier: "standard", formId: "commercial" },
+  { slug: "brand-video", key: "brand", tier: "premium", formId: "brand_card" },
+  { slug: "story-video", key: "story", tier: "premium", formId: "video_story" },
 ]
 
 // page: true = окрема сторінка /examples/<slug>. Потрібен запис у content.js (niches).

@@ -2,13 +2,36 @@
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const PHONE_RE = /^(\+?38)?0\d{9}$/
 
+// Назви для менеджера (українською)
+const FORMAT_LABELS = {
+  short_advertisement: "Коротка реклама",
+  commercial: "Рекламний ролик",
+  brand_card: "Візитівка бренду",
+  video_story: "Ролик-історія",
+}
+
+const clip = (v, max) =>
+  String(v ?? "")
+    .trim()
+    .slice(0, max)
+
 export async function POST(request) {
   try {
     const body = await request.json()
-    const { name, email, phone, message, format, company } = body
 
-    const rawEmail = String(email || "").trim()
-    const rawPhone = String(phone || "").trim()
+    // Приховане поле-пастка: люди його не бачать, боти заповнюють.
+    if (clip(body.website, 200)) return Response.json({ ok: true })
+
+    const name = clip(body.name, 100)
+    const rawEmail = clip(body.email, 254)
+    const rawPhone = clip(body.phone, 30)
+    const message = clip(body.message, 2000)
+    const company = clip(body.company, 150)
+    const format = Object.hasOwn(FORMAT_LABELS, body.format) ? body.format : ""
+    const lang = body.lang === "en" ? "en" : "uk"
+    const page = clip(body.page, 200)
+    const source = clip(body.source, 100)
+    const a = body.attribution && typeof body.attribution === "object" ? body.attribution : {}
 
     const validPhone = rawPhone && PHONE_RE.test(rawPhone.replace(/[\s\-()]/g, ""))
     const validEmail = rawEmail && EMAIL_RE.test(rawEmail)
@@ -16,11 +39,9 @@ export async function POST(request) {
     if (!name) {
       return Response.json({ error: "Вкажіть ім'я" }, { status: 400 })
     }
-
     if (rawEmail && !validEmail) {
       return Response.json({ error: "Некоректний email" }, { status: 400 })
     }
-
     if (!validEmail && !validPhone) {
       return Response.json({ error: "Вкажіть коректний email або телефон" }, { status: 400 })
     }
@@ -35,16 +56,23 @@ export async function POST(request) {
 
     const n8nRes = await fetch(webhookUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
         email: rawEmail,
         phone: rawPhone,
-        message: message || "",
-        format: format || "",
-        company: company || "",
+        message,
+        company,
+        format,
+        format_label: FORMAT_LABELS[format] || "",
+        lang,
+        page,
+        source,
+        utm_source: clip(a.utm_source, 100),
+        utm_medium: clip(a.utm_medium, 100),
+        utm_campaign: clip(a.utm_campaign, 150),
+        referrer: clip(a.referrer, 300),
+        landing: clip(a.landing, 300),
         source_host: host,
         submitted_at: new Date().toISOString(),
       }),
@@ -55,15 +83,14 @@ export async function POST(request) {
     try {
       responseJson = JSON.parse(responseText)
     } catch {
-      // не JSON — лишаємо null, обробимо нижче
+      // не JSON: лишаємо null
     }
 
-    // Помилка або по HTTP-статусу, або по полю error:true в тілі відповіді
     if (!n8nRes.ok || (responseJson && responseJson.error)) {
       console.error("n8n webhook error:", n8nRes.status, responseText)
-      const message =
+      const errMsg =
         (responseJson && (responseJson.message || responseJson.error)) || "Не вдалося передати заявку в CRM"
-      return Response.json({ error: message }, { status: n8nRes.ok ? 400 : 502 })
+      return Response.json({ error: errMsg }, { status: n8nRes.ok ? 400 : 502 })
     }
 
     return Response.json({ ok: true })

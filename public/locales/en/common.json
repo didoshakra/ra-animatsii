@@ -289,6 +289,7 @@
     "phoneLabel": "Phone",
     "phonePlaceholder": "+380 XX XXX XX XX",
     "successMessage": "Thank you! Request received — we'll connect with you soon.",
+    "missingNameError": "Please enter your name.",
     "missingContactError": "Please provide an email or phone number — at least one communication method.",
     "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX",
     "invalidEmailError": "Check your email, e.g. you@example.com",
