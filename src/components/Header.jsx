@@ -13,15 +13,14 @@ const { t, i18n } = useT("common")
 const base = i18n.language === "en" ? "/en" : ""
 const home = base || "/"
 
-  const links = [
-    { href: `${base}/services`, label: t("header.nav.services") },
-    { href: `${home}#portfolio`, label: t("header.nav.portfolio") },
-    { href: `${home}#process`, label: t("header.nav.process") },
-    { href: `${home}#pricing`, label: t("header.nav.pricing") },
-    // { href: `${home}#real-case`, label: t("header.nav.case") },
-    { href: `${base}/examples`, label: t("header.nav.case") },
-    { href: `${home}#contact`, label: t("header.nav.contact") },
-  ]
+const links = [
+  { href: `${base}/services`, label: t("header.nav.services") },
+  { href: `${home}#portfolio`, label: t("header.nav.portfolio") },
+  { href: `${home}#process`, label: t("header.nav.process") },
+  { href: `${home}#pricing`, label: t("header.nav.pricing") },
+  { href: `${base}/examples`, label: t("header.nav.case") },
+  { href: "#contact", label: t("header.nav.contact") },
+]
 
   return (
     <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
@@ -37,25 +36,23 @@ const home = base || "/"
           />
           <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight">{t("header.brand")}</span>
         </a>
-
-        <nav className="hidden md:flex items-center gap-4 lg:gap-8">
+        <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-8 md:ml-6 lg:ml-8">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-bold text-sm lg:text-lg text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
+              className="font-body font-bold text-sm xl:text-lg text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
             >
               {l.label}
             </a>
           ))}
         </nav>
-
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
 
           <a
             href="#contact"
-            className="hidden lg:inline-block font-display font-600 text-sm sm:text-base bg-clay text-cream px-4 sm:px-5 py-2.5 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
+            className="hidden xl:inline-block font-display font-600 text-sm sm:text-base bg-clay text-cream px-4 sm:px-5 py-2.5 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
           >
             {t("header.cta")}
           </a>
