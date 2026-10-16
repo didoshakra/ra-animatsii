@@ -2,6 +2,7 @@
 import { ManicureIllustration, CafeIllustration, OfficeIllustration, CustomIllustration } from "./PricingIcons"
 import PricingCta from "./PricingCta"
 import { getT } from "next-i18next/server"
+import PromoNote from "./PromoNote"
 
 // Структурна конфігурація тарифів (ілюстрація, підсвітка, формат для автопідсвічування
 // у формі контактів) — не текст, тому лишається поза перекладами.
@@ -32,6 +33,9 @@ export default async function Pricing() {
         <div className="max-w-xl">
           <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">{t("pricing.heading")}</h2>
           <p className="mt-4 font-body text-ink/70 text-xl leading-relaxed">{t("pricing.subheading")}</p>
+          <div className="mt-4">
+            <PromoNote />
+          </div>
         </div>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">

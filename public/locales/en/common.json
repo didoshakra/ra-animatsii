@@ -19,8 +19,8 @@
     "description": "We create AI video ads for businesses — from short clips for social media to vibrant animated brand stories.",
     "ctaPrimary": "Order a Video",
     "ctaSecondary": "View Examples",
-    "perks": ["First storyboard in 48h", "Free consultation", "No templates","25% off until the end of November"],
-    "footnote": "From script to final video — one creator, one style, no \"default\" revisions.",
+    "perks": ["First storyboard in 48h", "Free consultation", "No templates"],
+    "footnote": "From script to final video — one creator, one style.",
     "eagleAlt": "RA Spark studio mascot — cartoon eagle"
   },
   "studioVideo": {
@@ -58,8 +58,8 @@
   },
   "pricing": {
     "heading": "Pricing",
-    "formatLabel": "Формат:",
-    "subheading": "Order before the end of November and get 25% off. Indicative prices — we'll agree the exact cost during a consultation, based on your project details. ",
+    "formatLabel": "Format:",
+    "subheading": "Indicative prices — we'll agree the exact cost during a consultation, based on your project details.",
     "durationLabel": "Execution time:",
     "popularBadge": "Popular Choice",
     "ctaButton": "Discuss Project",
@@ -321,5 +321,6 @@
     "description": "AI video ads for businesses, including 2D, 3D and character animation. Promotional videos for TikTok, Instagram, YouTube and digital campaigns.",
     "ogDescription": "Creative AI video ads for businesses, featuring 2D, 3D and character animation by RA Spark.",
     "ogImageAlt": "RA Spark — AI video advertising for businesses"
-  }
+  },
+  "promo": { "text": "{{percent}}% off until December 31, 2026" }
 }

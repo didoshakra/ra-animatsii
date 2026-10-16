@@ -1,6 +1,7 @@
 // src/components/Hero.jsx
 import Image from "next/image"
 import { getT } from "next-i18next/server"
+import PromoNote from "./PromoNote"
 
 export default async function Hero() {
   const { t } = await getT("common")
@@ -72,7 +73,9 @@ export default async function Hero() {
               </li>
             ))}
           </ul>
-
+          <div className="mt-4 sm:mt-5">
+            <PromoNote />
+          </div>
           <p className="hidden sm:block mt-6 font-body text-base text-ink/60">{t("hero.footnote")}</p>
         </div>
 
