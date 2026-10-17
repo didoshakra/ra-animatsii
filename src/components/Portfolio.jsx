@@ -6,6 +6,7 @@ import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } fr
 import { siteUrl } from "@/lib/site"
 import { videosFrom, formatRuntime } from "@/lib/videos"
 import ukCommon from "../../public/locales/uk/common.json"
+import { FORMATS } from "@/lib/pages"
 
 // Лише оформлення: колір фону картки формату
 const FORMAT_COLORS = {
@@ -81,6 +82,8 @@ export default async function Portfolio() {
                 runtime={formatRuntime(f.durationSeconds)}
                 color={f.color}
                 playAspect={f.aspect}
+                ctaFormatId={FORMATS.find((x) => x.key === f.key)?.formId ?? null}
+                ctaSource={`format:${f.key}`}
               />
             ))}
           </div>

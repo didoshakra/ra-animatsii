@@ -33,14 +33,27 @@ function ContactFormInner() {
   const [contactInvalid, setContactInvalid] = useState(false)
   const [errorTick, setErrorTick] = useState(0)
   const errorRef = useRef(null)
+  const [message, setMessage] = useState("")
+  const messageRef = useRef("")
+  const autoFilledRef = useRef(false) // true, якщо в полі лише наша автопідстановка
 
-  // Кнопки на сторінках повідомляють, який формат обрати і звідки клік
+  // Кнопки на сторінках повідомляють, який формат обрати, звідки клік і що підставити в повідомлення
   useEffect(() => {
     const onSelect = (e) => {
       const d = e.detail
       const id = typeof d === "string" ? d : d?.formatId
       if (id && FORMATS.some((f) => f.id === id)) setFormat(id)
       if (d && typeof d === "object" && d.source) setSource(d.source)
+
+      // Підставляємо лише в порожнє поле або поверх попередньої автопідстановки
+      if (d && typeof d === "object" && d.prefill) {
+        if (!messageRef.current.trim() || autoFilledRef.current) {
+          messageRef.current = d.prefill
+          autoFilledRef.current = true
+          setMessage(d.prefill)
+          setMoreOpen(true)
+        }
+      }
     }
     window.addEventListener("select-format", onSelect)
     return () => window.removeEventListener("select-format", onSelect)
@@ -269,6 +282,12 @@ function ContactFormInner() {
                     id="message"
                     name="message"
                     rows={3}
+                    value={message}
+                    onChange={(e) => {
+                      messageRef.current = e.target.value
+                      autoFilledRef.current = false
+                      setMessage(e.target.value)
+                    }}
                     className={`${fieldCls} border-cream/20 resize-none`}
                     placeholder={t("contactForm.messagePlaceholder")}
                   />

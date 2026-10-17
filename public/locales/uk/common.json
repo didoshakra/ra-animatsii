@@ -206,7 +206,7 @@
   "realCase": {
     "heading": "Приклади наших робіт",
     "description": "Демо-ролики для різних видів бізнесу: так може виглядати ваша реклама.",
-    "badgePrefix": "Кейс:",
+    "badgePrefix": "Приклад:",
     "cases": {
       "case1": {
         "title": "Зоомагазин «Чотири лапи»",
@@ -255,7 +255,8 @@
   },
   "videoCard": {
     "playFallback": "Не вдалось відтворити тут — відкрити відео",
-    "playAriaLabel": "Відтворити відео: {{title}}"
+    "playAriaLabel": "Відтворити відео: {{title}}",
+    "wantSimilar": "Хочете такий ролик?"
   },
   "process": {
     "whyLabel": "Навіщо анімація?",
@@ -287,10 +288,10 @@
   },
   "contactForm": {
     "heading": "Напишіть нам:",
-"orDivider": "або залиште контакт — відповімо протягом одного робочого дня",
-"moreToggle": "Додати деталі проєкту",
-"lessToggle": "Сховати деталі",
-"emailLabel": "Наш Email:",
+    "orDivider": "або залиште контакт — відповімо протягом одного робочого дня",
+    "moreToggle": "Додати деталі проєкту",
+    "lessToggle": "Сховати деталі",
+    "emailLabel": "Наш Email:",
     "subheading": "Напишіть нам напряму або залиште контакт — відповімо протягом одного робочого дня.",
     "missingContactError": "Вкажіть, як з вами зв'язатися.",
     "invalidContactError": "Вкажіть @нік у Telegram, email або номер телефону.",
@@ -325,7 +326,8 @@
     },
     "companyLabel": "Компанія",
     "companyOptional": "(необов'язково)",
-    "companyPlaceholder": "Назва компанії або бренду"
+    "companyPlaceholder": "Назва компанії або бренду",
+    "prefillVideo": "Хочу ролик, схожий на: {{name}}"
   },
   "structuredData": {
     "serviceName": "AI-реклама та анімаційні відео для бізнесу",

@@ -200,7 +200,7 @@
   "realCase": {
     "heading": "Examples of our work",
     "description": "Demo videos for different types of business: this is how your ad could look.",
-    "badgePrefix": "Case:",
+    "badgePrefix": "Example:",
     "cases": {
       "case1": {
         "title": "Pet shop «Paws & Tails»",
@@ -249,7 +249,8 @@
   },
   "videoCard": {
     "playFallback": "Couldn't play here — open video",
-    "playAriaLabel": "Play video: {{title}}"
+    "playAriaLabel": "Play video: {{title}}",
+    "wantSimilar": "Want a video like this?"
   },
   "process": {
     "whyLabel": "Why Animation?",
@@ -324,7 +325,8 @@
     },
     "companyLabel": "Company",
     "companyOptional": "(optional)",
-    "companyPlaceholder": "Company or brand name"
+    "companyPlaceholder": "Company or brand name",
+    "prefillVideo": "I'd like a video similar to: {{name}}"
   },
   "structuredData": {
     "serviceName": "AI advertising and animated videos for business",

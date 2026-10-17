@@ -1,13 +1,14 @@
 // src/components/PricingCta.jsx
 "use client"
 
-// Посилання на #contact. Повідомляє форму, який формат обрати і з якої кнопки прийшов клік.
-export default function PricingCta({ formatId, source, className, children }) {
+// Посилання на #contact. Повідомляє форму, який формат обрати, з якої кнопки клік
+// і (необов'язково) який текст підставити в поле «Про проєкт».
+export default function PricingCta({ formatId, source, prefill, className, children }) {
   function handleClick() {
-    if (formatId || source) {
+    if (formatId || source || prefill) {
       window.dispatchEvent(
         new CustomEvent("select-format", {
-          detail: { formatId: formatId || null, source: source || "" },
+          detail: { formatId: formatId || null, source: source || "", prefill: prefill || "" },
         }),
       )
     }

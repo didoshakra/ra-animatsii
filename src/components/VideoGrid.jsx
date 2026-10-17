@@ -1,6 +1,7 @@
 // src/components/VideoGrid.jsx
 import VideoCard from "./VideoCard"
 import { formatRuntime } from "@/lib/videos"
+import { FORMATS } from "@/lib/pages"
 
 export default function VideoGrid({ videos, badge }) {
   return (
@@ -16,6 +17,9 @@ export default function VideoGrid({ videos, badge }) {
             aspectLabel={v.aspect}
             runtime={formatRuntime(v.durationSeconds)}
             meta={v.meta}
+            ctaFormatId={FORMATS.find((f) => f.key === v.format)?.formId ?? null}
+            ctaSource={`video:${v.id}`}
+            ctaVideoName={v.displayTitle}
           />
         ))}
       </div>

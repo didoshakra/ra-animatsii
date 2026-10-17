@@ -4,6 +4,7 @@
 import { useRef, useState } from "react"
 import { useT } from "next-i18next/client"
 import { useVideoTracking } from "@/lib/useVideoTracking"
+import PricingCta from "./PricingCta"
 
 export default function VideoCard({
   title,
@@ -20,6 +21,9 @@ export default function VideoCard({
   structure,
   suitableFor,
   runtime,
+  ctaFormatId,
+  ctaSource,
+  ctaVideoName,
 }) {
   const { t } = useT("common")
   const videoRef = useRef(null)
@@ -129,6 +133,22 @@ export default function VideoCard({
           {desc && <p className="font-body text-lg text-ink/70 mt-1 leading-relaxed">{desc}</p>}
           {structure && <p className="font-body text-sm text-meadow-deep font-700 mt-3">{structure}</p>}
           {suitableFor && <p className="font-body text-sm text-ink/55 mt-1 leading-relaxed">{suitableFor}</p>}
+        </div>
+      )}
+      {ctaSource && (
+        <div className="mt-4">
+          <PricingCta
+            formatId={ctaFormatId}
+            source={ctaSource}
+            prefill={
+              ctaVideoName
+                ? t("contactForm.prefillVideo", { name: ctaVideoName, interpolation: { escapeValue: false } })
+                : ""
+            }
+            className="inline-flex items-center justify-center rounded-full border-2 border-clay-deep text-clay-deep font-body font-700 text-sm px-4 py-2 hover:bg-clay hover:text-cream hover:border-clay transition-colors focus-ring"
+          >
+            {t("videoCard.wantSimilar")}
+          </PricingCta>
         </div>
       )}
     </div>
