@@ -128,6 +128,8 @@
         "duration": "8–20 сек",
         "desc": "Зачепити увагу з перших секунд, показати продукт і дати чітку причину звернути увагу саме на нього.",
         "structure": "Hook → товар/послуга → вигода → CTA",
+        "label": "Коротка реклама",
+        "clientName": "Пекарня «Родина»",
         "suitableFor": "Підходить для Reels, TikTok, YouTube Shorts та таргетованої реклами.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790883781/pictures/gyzt2m3hiyd4c1fc8xbq.mp4"
       },
@@ -136,6 +138,8 @@
         "duration": "20–30 сек",
         "desc": "Невелика історія, яка показує проблему клієнта, пропонує рішення та підводить до дії.",
         "structure": "Міні-сюжет → проблема → рішення → бренд → CTA",
+        "label": "Рекламний ролик",
+        "clientName": "Зоомагазин «Хвостики»",
         "suitableFor": "Підходить для соцмереж, YouTube, Meta Ads та рекламних кампаній.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791395585/pictures/zsyv7u4kyhulk0sdwt2d.mp4"
       },
@@ -144,6 +148,8 @@
         "duration": "30–60 сек",
         "desc": "Коротко та яскраво розповідаємо, хто ви, чим займаєтесь і чому саме ваш бренд вартий уваги.",
         "structure": "Хто ми → що робимо → чому ми → емоційне завершення",
+        "label": "Візитівка бренду",
+        "clientName": "Меблі «Wood»",
         "suitableFor": "Підходить для сайту, соцмереж, презентацій та іміджевої реклами.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790972182/pictures/wvz0orsuvsyv9fwnx3m7.mp4"
       },
@@ -152,6 +158,8 @@
         "duration": "30–60 сек",
         "desc": "Перетворюємо рекламу на маленьку історію, яку хочеться додивитися до кінця. Персонажі, сюжет і емоції працюють на ваш бренд.",
         "structure": "Персонаж → ситуація → конфлікт → рішення → бренд",
+        "label": "Ролик-історія",
+        "clientName": "Кав'ярня «Pekari»",
         "suitableFor": "Підходить для креативної реклами, соцмереж, YouTube та побудови впізнаваності бренду.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791030999/pictures/ypybdjigzci5qcmadrhn.mp4"
       }

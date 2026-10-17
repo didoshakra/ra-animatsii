@@ -6,6 +6,7 @@ import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 import { siteUrl } from "@/lib/site"
 import { videosFrom, formatRuntime } from "@/lib/videos"
+import { FORMATS } from "@/lib/pages"
 import ukCommon from "../../public/locales/uk/common.json"
 
 export default function VideoCase() {
@@ -21,6 +22,9 @@ export default function VideoCase() {
     return {
       ...v,
       ...text,
+      // Підпис формату береться з одного місця: portfolio.formats.<format>.label
+      desc: t(`portfolio.formats.${v.format}.label`),
+      formId: FORMATS.find((f) => f.key === v.format)?.formId ?? null,
       VIDEO_URL: videoUrl,
       POSTER_URL: getCloudinaryPoster(videoUrl),
     }
@@ -60,6 +64,9 @@ export default function VideoCase() {
             aspectLabel={c.aspect}
             runtime={formatRuntime(c.durationSeconds)}
             meta={`${c.visualStyle} · ${c.soundType}`}
+            ctaFormatId={c.formId}
+            ctaSource={`video:${c.id}`}
+            ctaVideoName={c.title}
           />
         ))}
       </div>

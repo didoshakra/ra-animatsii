@@ -17,7 +17,7 @@ export async function resolveVideos(list, lng) {
     const videoUrl = text.videoUrl || ukText.videoUrl || ""
     return {
       ...v,
-      displayTitle: v.name?.[L] || text.title || ukText.title || "",
+      displayTitle: text.clientName || text.title || ukText.clientName || ukText.title || "",
       meta: text.visualStyle && text.soundType ? `${text.visualStyle} · ${text.soundType}` : undefined,
       VIDEO_URL: videoUrl,
       POSTER_URL: getCloudinaryPoster(videoUrl),

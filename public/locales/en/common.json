@@ -122,6 +122,8 @@
         "duration": "8–20 sec",
         "desc": "Hook attention from the first seconds, showcase the product, and give a clear reason to pay attention to it.",
         "structure": "Hook → product/service → benefit → CTA",
+        "label": "Short ad",
+        "clientName": "Rodyna Bakery",
         "suitableFor": "Suitable for Reels, TikTok, YouTube Shorts, and targeted ads.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790883814/pictures/jnocujvxrojvnr4n0nnm.mp4"
       },
@@ -130,6 +132,8 @@
         "duration": "20–30 sec",
         "desc": "A short story showing the client's problem, offering a solution, and leading to action.",
         "structure": "Mini-plot → problem → solution → brand → CTA",
+        "label": "Ad video",
+        "clientName": "Pet shop «Khvostyky»",
         "suitableFor": "Suitable for social media, YouTube, Meta Ads, and advertising campaigns.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791395614/pictures/fomtmvm6k5r0iolkyftz.mp4"
       },
@@ -138,6 +142,8 @@
         "duration": "30–60 sec",
         "desc": "Briefly and vividly telling who you are, what you do, and why your brand is worth attention.",
         "structure": "Who we are → what we do → why us → emotional ending",
+        "label": "Brand card",
+        "clientName": "Furniture «Wood»",
         "suitableFor": "Suitable for website, social media, presentations, and image advertising.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790972482/pictures/zjn5fjszmimtd0cwmryw.mp4"
       },
@@ -146,6 +152,8 @@
         "duration": "30–60 sec",
         "desc": "Turning advertising into a small story people want to watch to the end. Characters, plot, and emotions work for your brand.",
         "structure": "Character → situation → conflict → solution → brand",
+        "label": "Story video",
+        "clientName": "Café «Pekari»",
         "suitableFor": "Suitable for creative advertising, social media, YouTube, and brand awareness.",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1790946947/pictures/sftufwka1riii8un7v3v.mp4"
       }

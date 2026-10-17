@@ -1,9 +1,10 @@
 // src/lib/videos.js
-// Єдине джерело структурних даних про ролики.
-// Тексти (title, desc) і videoUrl лишаються в public/locales/*/common.json:
+// Єдине джерело структурних даних про ролики (без текстів).
+// Тексти (title, clientName, label) і videoUrl лежать у public/locales/*/common.json:
 //   from: "formats" -> portfolio.formats.<key>
 //   from: "cases"   -> realCase.cases.<key>
-// niche / format потрібні для сторінок /examples/<niche> і /services/<format> (етап 2).
+// format = ключ формату з FORMATS у lib/pages.js (short | ad | brand | story).
+// Підпис формату на картках береться з portfolio.formats.<format>.label, тому розбіжностей не буде.
 
 export const VIDEOS = [
   // --- блок «Формати» ---
@@ -15,18 +16,8 @@ export const VIDEOS = [
     format: "short",
     aspect: "9:16",
     durationSeconds: 16,
-    name: { uk: "Пекарня «Родина»", en: "Rodyna Bakery" },
   },
-  {
-    id: "hvostyky",
-    from: "formats",
-    key: "ad",
-    niche: "pet-store",
-    format: "ad",
-    aspect: "9:16",
-    durationSeconds: 27,
-    name: { uk: "Зоомагазин «Хвостики»", en: "Pet shop «Khvostyky»" },
-  },
+  { id: "hvostyky", from: "formats", key: "ad", niche: "pet-store", format: "ad", aspect: "9:16", durationSeconds: 27 },
   {
     id: "wood",
     from: "formats",
@@ -35,25 +26,15 @@ export const VIDEOS = [
     format: "brand",
     aspect: "9:16",
     durationSeconds: 35,
-    name: { uk: "Меблі «Wood»", en: "Furniture «Wood»" },
   },
-  {
-    id: "pekari",
-    from: "formats",
-    key: "story",
-    niche: "cafe",
-    format: "story",
-    aspect: "9:16",
-    durationSeconds: 34,
-    name: { uk: "Кав'ярня «Pekari»", en: "Café «Pekari»" },
-  },
+  { id: "pekari", from: "formats", key: "story", niche: "cafe", format: "story", aspect: "9:16", durationSeconds: 34 },
   // --- блок «Приклади» ---
   {
     id: "four-paws",
     from: "cases",
     key: "case1",
     niche: "pet-store",
-    format: "ad",
+    format: "short",
     aspect: "16:9",
     durationSeconds: 19,
   },
@@ -65,7 +46,7 @@ export const VIDEOS = [
     format: "short",
     aspect: "9:16",
     durationSeconds: 17,
-  }, // ? формат
+  },
   {
     id: "stock-100ok",
     from: "cases",
@@ -74,7 +55,7 @@ export const VIDEOS = [
     format: "short",
     aspect: "9:16",
     durationSeconds: 8,
-  }, // ? формат
+  },
   {
     id: "rodyna-2",
     from: "cases",
@@ -84,8 +65,17 @@ export const VIDEOS = [
     aspect: "9:16",
     durationSeconds: 18,
   },
-  { id: "produkty", from: "cases", key: "case5", niche: "grocery", format: "ad", aspect: "9:16", durationSeconds: 23 }, // ? формат
-  { id: "poseidon", from: "cases", key: "case6", niche: "pool", format: "short", aspect: "9:16", durationSeconds: 18 }, // ? формат
+  // TODO: після скорочення ролика змінити 23 на 20 (межа «Короткої реклами» 8-20 сек)
+  {
+    id: "produkty",
+    from: "cases",
+    key: "case5",
+    niche: "grocery",
+    format: "short",
+    aspect: "9:16",
+    durationSeconds: 23,
+  },
+  { id: "poseidon", from: "cases", key: "case6", niche: "pool", format: "short", aspect: "9:16", durationSeconds: 18 },
 ]
 
 export function videosFrom(group) {
