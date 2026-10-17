@@ -145,30 +145,25 @@ function ContactFormInner() {
         ) : (
           <>
             {/* Прямий зв'язок */}
-            <div className="mt-5 grid sm:grid-cols-2 gap-4 items-center">
+            <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-3">
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${directBtnCls} bg-sun text-ink hover:bg-sun-light`}
+                className="font-body font-700 text-sun text-xl sm:text-2xl py-1 hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
               >
                 {t("contactForm.directTelegram")}
               </a>
-              <p className="font-body text-cream text-lg text-center sm:text-left">
-                {t("contactForm.emailLabel")}{" "}
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="font-700 text-sun underline underline-offset-4 hover:text-sun-light break-all focus-ring"
-                >
-                  {CONTACT_EMAIL}
-                </a>
-              </p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="font-body font-700 text-sun text-xl sm:text-2xl py-1 break-all hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
+              >
+                {CONTACT_EMAIL}
+              </a>
             </div>
-
             <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl text-center">
               {t("contactForm.orDivider")}
             </h3>
-
             {/* Коротка форма */}
             <form onSubmit={handleSubmit} noValidate className="mt-4 grid gap-3">
               <input
