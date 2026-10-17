@@ -32,9 +32,7 @@ function ContactFormInner() {
   const [serverError, setServerError] = useState("")
   const [contactInvalid, setContactInvalid] = useState(false)
   const [errorTick, setErrorTick] = useState(0)
-  const [copied, setCopied] = useState(false)
   const errorRef = useRef(null)
-  const copyTimer = useRef(null)
 
   // Кнопки на сторінках повідомляють, який формат обрати і звідки клік
   useEffect(() => {
@@ -55,23 +53,10 @@ function ContactFormInner() {
     }
   }, [errorTick])
 
-  useEffect(() => () => clearTimeout(copyTimer.current), [])
-
   const errorText = contactError || (status === "error" ? serverError || t("contactForm.errorMessage") : "")
 
   function bumpError() {
     setErrorTick((n) => n + 1)
-  }
-
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(CONTACT_EMAIL)
-      setCopied(true)
-      clearTimeout(copyTimer.current)
-      copyTimer.current = setTimeout(() => setCopied(false), 2500)
-    } catch {
-      // буфер недоступний: адреса видима, її можна виділити вручну
-    }
   }
 
   async function handleSubmit(e) {
@@ -160,7 +145,7 @@ function ContactFormInner() {
         ) : (
           <>
             {/* Прямий зв'язок */}
-            <div className="mt-5 grid sm:grid-cols-2 gap-3">
+            <div className="mt-5 grid sm:grid-cols-2 gap-4 items-center">
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
@@ -169,22 +154,15 @@ function ContactFormInner() {
               >
                 {t("contactForm.directTelegram")}
               </a>
-              <div className="flex gap-2">
+              <p className="font-body text-cream text-lg text-center sm:text-left">
+                {t("contactForm.emailLabel")}{" "}
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className={`${directBtnCls} flex-1 min-w-0 border-2 border-cream/30 text-cream hover:border-sun hover:text-sun`}
+                  className="font-700 text-sun underline underline-offset-4 hover:text-sun-light break-all focus-ring"
                 >
-                  <span className="truncate">{CONTACT_EMAIL}</span>
+                  {CONTACT_EMAIL}
                 </a>
-                <button
-                  type="button"
-                  onClick={copyEmail}
-                  aria-live="polite"
-                  className="shrink-0 rounded-full border-2 border-cream/30 px-4 font-body font-700 text-sm text-cream hover:border-sun hover:text-sun transition-colors focus-ring"
-                >
-                  {copied ? t("contactForm.copiedEmail") : t("contactForm.copyEmail")}
-                </button>
-              </div>
+              </p>
             </div>
 
             <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl text-center">
