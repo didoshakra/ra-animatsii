@@ -45,7 +45,18 @@
               "name": "company",
               "value": "={{ $json.body.company }}",
               "type": "string"
-            },
+            },{ "id": "b1", "name": "format_label", "type": "string", "value": "={{ $json.body.format_label }}" },
+{ "id": "b2", "name": "lang", "type": "string", "value": "={{ $json.body.lang }}" },
+{ "id": "b3", "name": "page", "type": "string", "value": "={{ $json.body.page }}" },
+{ "id": "b4", "name": "source", "type": "string", "value": "={{ $json.body.source }}" },
+{ "id": "b5", "name": "utm_source", "type": "string", "value": "={{ $json.body.utm_source }}" },
+{ "id": "b6", "name": "utm_medium", "type": "string", "value": "={{ $json.body.utm_medium }}" },
+{ "id": "b7", "name": "utm_campaign", "type": "string", "value": "={{ $json.body.utm_campaign }}" },
+{ "id": "b8", "name": "referrer", "type": "string", "value": "={{ $json.body.referrer }}" },
+{ "id": "b9", "name": "landing", "type": "string", "value": "={{ $json.body.landing }}" },
+{ "id": "c1", "name": "contact", "type": "string", "value": "={{ $json.body.contact }}" },
+{ "id": "c2", "name": "contact_type", "type": "string", "value": "={{ $json.body.contact_type }}" },
+{ "id": "c3", "name": "telegram", "type": "string", "value": "={{ $json.body.telegram }}" }
           ]
         },
         "options": {}
@@ -54,12 +65,17 @@
       "name": "Map fields",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
-      "position": [-112, -80]
+      "position": [
+        -112,
+        -80
+      ]
     }
   ],
   "connections": {
     "Map fields": {
-      "main": [[]]
+      "main": [
+        []
+      ]
     }
   },
   "pinData": {},

@@ -1,6 +1,5 @@
 // src/app/api/lead/route.js
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-const PHONE_RE = /^(\+?38)?0\d{9}$/
+import { parseContact } from "@/lib/contact"
 
 // Назви для менеджера (українською)
 const FORMAT_LABELS = {
@@ -23,8 +22,7 @@ export async function POST(request) {
     if (clip(body.website, 200)) return Response.json({ ok: true })
 
     const name = clip(body.name, 100)
-    const rawEmail = clip(body.email, 254)
-    const rawPhone = clip(body.phone, 30)
+    const rawContact = clip(body.contact, 254)
     const message = clip(body.message, 2000)
     const company = clip(body.company, 150)
     const format = Object.hasOwn(FORMAT_LABELS, body.format) ? body.format : ""
@@ -33,17 +31,16 @@ export async function POST(request) {
     const source = clip(body.source, 100)
     const a = body.attribution && typeof body.attribution === "object" ? body.attribution : {}
 
-    const validPhone = rawPhone && PHONE_RE.test(rawPhone.replace(/[\s\-()]/g, ""))
-    const validEmail = rawEmail && EMAIL_RE.test(rawEmail)
-
     if (!name) {
       return Response.json({ error: "Вкажіть ім'я" }, { status: 400 })
     }
-    if (rawEmail && !validEmail) {
-      return Response.json({ error: "Некоректний email" }, { status: 400 })
+    if (!rawContact) {
+      return Response.json({ error: "Вкажіть, як з вами зв'язатися" }, { status: 400 })
     }
-    if (!validEmail && !validPhone) {
-      return Response.json({ error: "Вкажіть коректний email або телефон" }, { status: 400 })
+
+    const parsed = parseContact(rawContact)
+    if (!parsed) {
+      return Response.json({ error: "Вкажіть @нік у Telegram, email або номер телефону" }, { status: 400 })
     }
 
     const webhookUrl = process.env.N8N_LEAD_WEBHOOK_URL
@@ -59,8 +56,11 @@ export async function POST(request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
-        email: rawEmail,
-        phone: rawPhone,
+        contact: parsed.value,
+        contact_type: parsed.type, // email | telegram | phone
+        email: parsed.type === "email" ? parsed.value : "",
+        phone: parsed.type === "phone" ? parsed.value : "",
+        telegram: parsed.type === "telegram" ? parsed.value : "",
         message,
         company,
         format,

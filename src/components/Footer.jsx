@@ -2,9 +2,10 @@
 import Image from "next/image"
 import { getT } from "next-i18next/server"
 import AdminStats from "@/components/AdminStats"
+import { CONTACT_EMAIL as EMAIL, TELEGRAM_URL } from "@/lib/contacts"
 
-const EMAIL = "hello@raspark.com"
-const TELEGRAM_URL = "https://t.me/RomanDidoshak"
+// const EMAIL = "hello@raspark.com"
+// const TELEGRAM_URL = "https://t.me/RomanDidoshak"
 
 export default async function Footer() {
   const { t } = await getT("common")
