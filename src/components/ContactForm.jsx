@@ -32,7 +32,9 @@ function ContactFormInner() {
   const [serverError, setServerError] = useState("")
   const [contactInvalid, setContactInvalid] = useState(false)
   const [errorTick, setErrorTick] = useState(0)
+  const [copied, setCopied] = useState(false)
   const errorRef = useRef(null)
+  const copyTimer = useRef(null)
 
   // Кнопки на сторінках повідомляють, який формат обрати і звідки клік
   useEffect(() => {
@@ -53,10 +55,23 @@ function ContactFormInner() {
     }
   }, [errorTick])
 
+  useEffect(() => () => clearTimeout(copyTimer.current), [])
+
   const errorText = contactError || (status === "error" ? serverError || t("contactForm.errorMessage") : "")
 
   function bumpError() {
     setErrorTick((n) => n + 1)
+  }
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL)
+      setCopied(true)
+      clearTimeout(copyTimer.current)
+      copyTimer.current = setTimeout(() => setCopied(false), 2500)
+    } catch {
+      // буфер недоступний: адреса видима, її можна виділити вручну
+    }
   }
 
   async function handleSubmit(e) {
@@ -134,10 +149,9 @@ function ContactFormInner() {
   return (
     <section id="contact" className="bg-ink py-8 sm:py-10">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-cream text-2xl sm:text-3xl text-center">
+        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
           {t("contactForm.heading")}
         </h2>
-        <p className="mt-1 font-body text-sm sm:text-base text-cream/70 text-center">{t("contactForm.subheading")}</p>
 
         {status === "sent" ? (
           <div className="mt-8 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
@@ -155,18 +169,30 @@ function ContactFormInner() {
               >
                 {t("contactForm.directTelegram")}
               </a>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className={`${directBtnCls} border-2 border-cream/30 text-cream hover:border-sun hover:text-sun`}
-              >
-                {CONTACT_EMAIL}
-              </a>
+              <div className="flex gap-2">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className={`${directBtnCls} flex-1 min-w-0 border-2 border-cream/30 text-cream hover:border-sun hover:text-sun`}
+                >
+                  <span className="truncate">{CONTACT_EMAIL}</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  aria-live="polite"
+                  className="shrink-0 rounded-full border-2 border-cream/30 px-4 font-body font-700 text-sm text-cream hover:border-sun hover:text-sun transition-colors focus-ring"
+                >
+                  {copied ? t("contactForm.copiedEmail") : t("contactForm.copyEmail")}
+                </button>
+              </div>
             </div>
 
-            <p className="mt-5 font-body text-sm text-cream/60 text-center">{t("contactForm.orDivider")}</p>
+            <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl text-center">
+              {t("contactForm.orDivider")}
+            </h3>
 
             {/* Коротка форма */}
-            <form onSubmit={handleSubmit} noValidate className="mt-3 grid gap-3">
+            <form onSubmit={handleSubmit} noValidate className="mt-4 grid gap-3">
               <input
                 type="text"
                 name="website"
@@ -175,23 +201,6 @@ function ContactFormInner() {
                 aria-hidden="true"
                 className="absolute -left-[9999px] h-0 w-0 opacity-0"
               />
-
-              {format && (
-                <p className="flex flex-wrap items-center gap-2 font-body text-sm text-cream/80">
-                  <span>{t("contactForm.selectedFormat")}</span>
-                  <span className="inline-flex items-center gap-2 bg-sun text-ink font-700 rounded-full pl-3 pr-1.5 py-1">
-                    {t(`contactForm.formats.${format}`)}
-                    <button
-                      type="button"
-                      onClick={() => setFormat(null)}
-                      aria-label={t("contactForm.removeFormat")}
-                      className="w-5 h-5 rounded-full bg-ink/15 hover:bg-ink/30 flex items-center justify-center text-xs focus-ring"
-                    >
-                      ✕
-                    </button>
-                  </span>
-                </p>
-              )}
 
               <div className="grid sm:grid-cols-2 gap-3">
                 <div>
@@ -232,7 +241,9 @@ function ContactFormInner() {
                 aria-controls="contact-more"
                 className="justify-self-start font-body font-700 text-sm text-sun hover:text-sun-light underline underline-offset-4 focus-ring"
               >
-                {moreOpen ? t("contactForm.lessToggle") : t("contactForm.moreToggle")}
+                {moreOpen
+                  ? t("contactForm.lessToggle")
+                  : `${t("contactForm.moreToggle")}${format ? ` · ${t(`contactForm.formats.${format}`)}` : ""}`}
               </button>
 
               {/* Розширена частина: лишається в DOM, щоб не губити введене при згортанні */}
