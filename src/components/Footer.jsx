@@ -8,39 +8,27 @@ import { CONTACT_EMAIL as EMAIL, TELEGRAM_URL } from "@/lib/contacts"
 // const TELEGRAM_URL = "https://t.me/RomanDidoshak"
 
 export default async function Footer() {
-  const { t } = await getT("common")
-
+   const { t, i18n } = await getT("common")
+   const privacyHref = i18n.language === "en" ? "/en/privacy" : "/privacy"
   return (
     <footer className="bg-ink py-8 border-t border-cream/10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col gap-6">
-        {/* <div className="flex flex-col sm:flex-row items-center justify-between gap-3 ">
-          <p className="font-body text-cream/70 text-sm">{t("footer.contactTitle")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="font-body font-700 text-sun text-lg sm:text-xl hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
-            >
-              {EMAIL}
-            </a>
-            <a
-              href={TELEGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body font-700 text-sun text-lg sm:text-xl hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
-            >
-              {t("footer.telegram")}
-            </a>
-          </div>
-        </div> */}
-
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
           <div className="flex items-center gap-2.5">
             <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={32} height={32} className="rounded-full" />
             <span className="font-display font-700 text-cream">RA Spark</span>
           </div>
-          <p className="font-body text-cream/50 text-sm">
-            © {new Date().getFullYear()} RA Spark. {t("footer.rights")}
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-x-6 gap-y-1">
+            <a
+              href={privacyHref}
+              className="font-body text-cream/50 text-sm underline underline-offset-2 hover:text-cream transition-colors focus-ring"
+            >
+              {t("footer.privacy")}
+            </a>
+            <p className="font-body text-cream/50 text-sm">
+              © {new Date().getFullYear()} RA Spark. {t("footer.rights")}
+            </p>
+          </div>
         </div>
 
         <AdminStats />

@@ -41,7 +41,8 @@
   "footer": {
     "rights": "All rights reserved.",
     "contactTitle": "Contact us directly",
-    "telegram": "Message on Telegram"
+    "telegram": "Message on Telegram",
+    "privacy": "Privacy policy"
   },
   "miniLeadForm": {
     "title": "Want a Video Like This?",
@@ -334,7 +335,9 @@
     "companyLabel": "Company",
     "companyOptional": "(optional)",
     "companyPlaceholder": "Company or brand name",
-    "prefillVideo": "I'd like a video similar to: {{name}}"
+    "prefillVideo": "I'd like a video similar to: {{name}}",
+    "consentPrefix": "By sending the request you agree to data processing under our",
+    "consentLink": "privacy policy"
   },
   "stickyCta": {
     "label": "Order a video"

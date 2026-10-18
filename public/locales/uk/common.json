@@ -41,7 +41,8 @@
   "footer": {
     "rights": "Усі права захищено.",
     "contactTitle": "Пишіть нам напряму",
-    "telegram": "Написати в Telegram"
+    "telegram": "Написати в Telegram",
+    "privacy": "Політика конфіденційності"
   },
   "miniLeadForm": {
     "title": "Хочете такий ролик?",
@@ -335,7 +336,9 @@
     "companyLabel": "Компанія",
     "companyOptional": "(необов'язково)",
     "companyPlaceholder": "Назва компанії або бренду",
-    "prefillVideo": "Хочу ролик, схожий на: {{name}}"
+    "prefillVideo": "Хочу ролик, схожий на: {{name}}",
+    "consentPrefix": "Надсилаючи заявку, ви погоджуєтесь на обробку даних згідно з",
+    "consentLink": "політикою конфіденційності"
   },
   "stickyCta": {
     "label": "Замовити ролик"

@@ -312,6 +312,15 @@ function ContactFormInner() {
               >
                 {status === "sending" ? t("contactForm.sendingButton") : t("contactForm.submitButton")}
               </button>
+              <p className="font-body text-xs text-cream/60 text-center leading-snug">
+                {t("contactForm.consentPrefix")}{" "}
+                <a
+                  href={i18n.language === "en" ? "/en/privacy" : "/privacy"}
+                  className="underline underline-offset-2 hover:text-cream focus-ring"
+                >
+                  {t("contactForm.consentLink")}
+                </a>
+              </p>
             </form>
           </>
         )}

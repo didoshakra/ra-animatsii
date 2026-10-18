@@ -31,5 +31,6 @@ export function allPaths() {
     ...FORMATS.map((f) => ({ path: `/services/${f.slug}`, priority: 0.8 })),
     { path: "/examples", priority: 0.7 },
     ...NICHES.filter((n) => n.page).map((n) => ({ path: `/examples/${n.slug}`, priority: 0.6 })),
+    { path: "/privacy", priority: 0.3 },
   ]
 }
