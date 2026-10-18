@@ -38,15 +38,7 @@ export const VIDEOS = [
     aspect: "16:9",
     durationSeconds: 19,
   },
-  {
-    id: "sunflower",
-    from: "cases",
-    key: "case2",
-    niche: "salon",
-    format: "short",
-    aspect: "9:16",
-    durationSeconds: 17,
-  },
+  { id: "sunflower", from: "cases", key: "case2", niche: "salon", format: "ad", aspect: "9:16", durationSeconds: 17 },
   {
     id: "stock-100ok",
     from: "cases",
@@ -65,16 +57,7 @@ export const VIDEOS = [
     aspect: "9:16",
     durationSeconds: 18,
   },
-  // TODO: після скорочення ролика змінити 23 на 20 (межа «Короткої реклами» 8-20 сек)
-  {
-    id: "produkty",
-    from: "cases",
-    key: "case5",
-    niche: "grocery",
-    format: "short",
-    aspect: "9:16",
-    durationSeconds: 23,
-  },
+  { id: "produkty", from: "cases", key: "case5", niche: "grocery", format: "ad", aspect: "9:16", durationSeconds: 23 },
   { id: "poseidon", from: "cases", key: "case6", niche: "pool", format: "short", aspect: "9:16", durationSeconds: 18 },
 ]
 

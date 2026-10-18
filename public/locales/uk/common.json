@@ -44,23 +44,10 @@
     "telegram": "Написати в Telegram",
     "privacy": "Політика конфіденційності"
   },
-  "miniLeadForm": {
-    "title": "Хочете такий ролик?",
-    "description": "Залиште ім'я й контакт — відповімо протягом дня.",
-    "namePlaceholder": "Ім'я",
-    "emailPlaceholder": "Email",
-    "phonePlaceholder": "Телефон",
-    "submitButton": "Надіслати",
-    "sendingButton": "Надсилаємо…",
-    "successMessage": "Дякуємо! Заявку отримано — скоро з'єднаємось.",
-    "errorMessage": "Щось пішло не так. Спробуйте ще раз.",
-    "missingContactError": "Вкажіть email або телефон.",
-    "invalidPhoneError": "Перевірте номер телефону, напр. +380 XX XXX XX XX",
-    "invalidEmailError": "Перевірте email, напр. you@example.com"
-  },
+
   "pricing": {
     "heading": "Тарифи",
-    "formatLabel": "Формат:",
+    "formatLabel": "Тип ролика:",
     "subheading": "Орієнтовні ціни — точну вартість погодимо на консультації, з урахуванням деталей вашого проєкту.",
     "durationLabel": "Термін виконання:",
     "popularBadge": "Популярний вибір",
@@ -86,7 +73,7 @@
         "features": [
           "2D, 3D-анімація",
           "Закадрова озвучка",
-          "Рекламний ролик, 20–30 сек",
+          "Рекламний ролик, 16–30 сек",
           "Для соцмереж, YouTube, Meta Ads"
         ]
       },
@@ -117,7 +104,7 @@
     }
   },
   "portfolio": {
-    "formatsHeading": "Формати, з якими працюємо",
+    "formatsHeading": "Типи роликів, з якими працюємо",
     "executionHeading": "Варіанти виконання",
     "accordionHint": "Натисніть на варіант, щоб побачити опис",
     "voiceoverGroupTitle": "🎙 Озвучка",
@@ -136,7 +123,7 @@
       },
       "ad": {
         "title": "02. Рекламний ролик",
-        "duration": "20–30 сек",
+        "duration": "16–30 сек",
         "desc": "Невелика історія, яка показує проблему клієнта, пропонує рішення та підводить до дії.",
         "structure": "Міні-сюжет → проблема → рішення → бренд → CTA",
         "label": "Рекламний ролик",
@@ -219,14 +206,12 @@
     "cases": {
       "case1": {
         "title": "Зоомагазин «Чотири лапи»",
-        "desc": "Коротка реклама",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791049632/pictures/nyfljulhzwrx8vfcwkmz.mp4"
       },
       "case2": {
         "title": "Салон краси «Соняшник»",
-        "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791220466/pictures/zevpd6y2kdcywc18pvpp.mp4"
@@ -234,28 +219,24 @@
 
       "case3": {
         "title": "Стокова база «100-ok»",
-        "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1789065469/pictures/atls4zfubslslzse40j8.mp4"
       },
       "case4": {
         "title": "Пекарня «Родина» 2",
-        "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791566370/pictures/zcjgjqfuuslcg3mumihl.mp4"
       },
       "case5": {
         "title": "Магазин «Продукти»",
-        "desc": "Рекламний ролик для соцмереж",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791715346/pictures/b4tk4eldkdip62ym6fme.mp4"
       },
       "case6": {
         "title": "Басейн «Посейдон»",
-        "desc": "Коротка реклама",
         "soundType": "Озвучка персонажів",
         "visualStyle": "об'ємна графіка (3D)",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791552114/pictures/uszlr0menofincffpdu9.mp4"
@@ -300,24 +281,15 @@
     "orDivider": "або залиште контакт — відповімо протягом одного робочого дня",
     "moreToggle": "Додати деталі проєкту",
     "lessToggle": "Сховати деталі",
-    "emailLabel": "Наш Email:",
-    "subheading": "Напишіть нам напряму або залиште контакт — відповімо протягом одного робочого дня.",
     "missingContactError": "Вкажіть, як з вами зв'язатися.",
     "invalidContactError": "Вкажіть @нік у Telegram, email або номер телефону.",
     "directTelegram": "Написати в Telegram",
     "contactLabel": "Як з вами зв'язатися",
     "contactPlaceholder": "Telegram (@нік), email або телефон",
-    "selectedFormat": "Обрано:",
-    "removeFormat": "Прибрати формат",
     "nameLabel": "Ім'я",
     "namePlaceholder": "Як до вас звертатись",
-    "emailPlaceholder": "you@example.com",
-    "phoneLabel": "Телефон",
-    "phonePlaceholder": "+380 XX XXX XX XX",
     "successMessage": "Дякуємо! Заявку отримано — скоро з'єднаємось із вами.",
     "missingNameError": "Вкажіть ім'я.",
-    "invalidPhoneError": "Перевірте номер телефону, напр. +380 XX XXX XX XX",
-    "invalidEmailError": "Перевірте email, напр. you@example.com",
     "formatsLabel": "Тип ролика",
     "formatsOptional": "(необов'язково)",
     "messageLabel": "Про проєкт",

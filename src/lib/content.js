@@ -7,23 +7,23 @@ const uk = {
   priceLabel: "Орієнтовна вартість",
   priceNote: "Це орієнтир: точну вартість погодимо на консультації з урахуванням деталей проєкту.",
   moreLabel: "Докладніше",
-  otherFormats: "Інші формати",
-  examplesOfFormat: "Приклади цього формату",
+  otherFormats: "Інші типи роликів",
+  examplesOfFormat: "Приклади цього типу",
   exampleBadge: "Демо-приклад",
   demoNote:
     "Це демо-приклади, створені студією RA Spark, а не виконані замовлення клієнтів. Так може виглядати ваша реклама.",
   services: {
     metaTitle: "Послуги: AI-реклама й анімаційні ролики для бізнесу | RA Spark",
     metaDescription:
-      "Чотири формати рекламних відео: коротка реклама, рекламний ролик, візитівка бренду й ролик-історія. 2D, 3D та анімація персонажів.",
+      "Чотири типи рекламних відео: коротка реклама, рекламний ролик, візитівка бренду й ролик-історія. 2D, 3D та анімація персонажів.",
     h1: "Послуги: рекламні ролики для бізнесу",
     intro:
-      "Оберіть формат за завданням: швидка реклама для соцмереж, ролик із міні-сюжетом, візитівка бренду або повноцінна історія з персонажами.",
+      "Оберіть тип ролика за завданням: швидка реклама для соцмереж, ролик із міні-сюжетом, візитівка бренду або повноцінна історія з персонажами.",
   },
   formats: {
     short: {
       h1: "Коротка реклама для Reels, TikTok і Shorts",
-      metaTitle: "Коротка AI-реклама для Reels, TikTok, Shorts | RA Spark",
+      metaTitle: "Рекламний ролик для бізнесу, 16–30 секунд | RA Spark",
       metaDescription:
         "Короткі рекламні відео до 20 секунд: зачіпка, товар, вигода й заклик до дії. 2D і 3D анімація, перша розкадровка за 48 годин.",
     },
@@ -103,23 +103,23 @@ const en = {
   priceLabel: "Indicative price",
   priceNote: "This is a guide: we agree the exact cost during a consultation, based on your project details.",
   moreLabel: "Learn more",
-  otherFormats: "Other formats",
-  examplesOfFormat: "Examples of this format",
+  otherFormats: "Other video types",
+  examplesOfFormat: "Examples of this type",
   exampleBadge: "Demo example",
   demoNote:
     "These are demo examples created by RA Spark, not completed client projects. This is how your ad could look.",
   services: {
     metaTitle: "Services: AI Video Ads and Animated Videos for Business | RA Spark",
     metaDescription:
-      "Four video ad formats: short ad, video ad, brand showcase and story video. 2D, 3D and character animation.",
+      "Four video ad types: short ad, video ad, brand showcase and story video. 2D, 3D and character animation.",
     h1: "Services: video ads for business",
     intro:
-      "Choose a format by goal: a quick ad for social media, a video with a mini-plot, a brand showcase or a full story with characters.",
+      "Choose a video type by goal: a quick ad for social media, a video with a mini-plot, a brand showcase or a full story with characters.",
   },
   formats: {
     short: {
       h1: "Short video ads for Reels, TikTok and Shorts",
-      metaTitle: "Short AI Video Ads for Reels, TikTok, Shorts | RA Spark",
+      metaTitle: "Animated Video Ad for Business, 16–30 sec | RA Spark",
       metaDescription:
         "Short video ads up to 20 seconds: a hook, the product, the benefit and a call to action. 2D and 3D animation, first storyboard within 48 hours.",
     },

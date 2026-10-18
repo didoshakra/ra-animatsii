@@ -44,22 +44,10 @@
     "telegram": "Message on Telegram",
     "privacy": "Privacy policy"
   },
-  "miniLeadForm": {
-    "title": "Want a Video Like This?",
-    "description": "Leave your name and contact — we'll reply within a day.",
-    "namePlaceholder": "Name",
-    "emailPlaceholder": "Email",
-    "phonePlaceholder": "Phone",
-    "submitButton": "Send",
-    "sendingButton": "Sending…",
-    "successMessage": "Thank you! Request received — we'll connect soon.",
-    "errorMessage": "Something went wrong. Please try again.",
-    "missingContactError": "Please provide an email or phone number.",
-    "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX"
-  },
+
   "pricing": {
     "heading": "Pricing",
-    "formatLabel": "Format:",
+    "formatLabel": "Type:",
     "subheading": "Indicative prices — we'll agree the exact cost during a consultation, based on your project details.",
     "durationLabel": "Execution time:",
     "popularBadge": "Popular Choice",
@@ -82,7 +70,7 @@
         "price": "from 219 $",
         "tagline": "Most popular choice",
         "days": "10 business days",
-        "features": ["2D, 3D animation", "Voiceover", "Video ad, 20–30 sec", "For social media, YouTube, Meta Ads"]
+        "features": ["2D, 3D animation", "Voiceover", "Video ad, 16–30 sec", "For social media, YouTube, Meta Ads"]
       },
       "premium": {
         "name": "Premium",
@@ -111,7 +99,7 @@
     }
   },
   "portfolio": {
-    "formatsHeading": "Formats We Work With",
+    "formatsHeading": "Video Types We Work With",
     "executionHeading": "Execution Options",
     "accordionHint": "Click on an option to see description",
     "voiceoverGroupTitle": "🎙 Voiceover",
@@ -130,7 +118,7 @@
       },
       "ad": {
         "title": "02. Video Ad",
-        "duration": "20–30 sec",
+        "duration": "16–30 sec",
         "desc": "A short story showing the client's problem, offering a solution, and leading to action.",
         "structure": "Mini-plot → problem → solution → brand → CTA",
         "label": "Ad video",
@@ -213,14 +201,12 @@
     "cases": {
       "case1": {
         "title": "Pet shop «Paws & Tails»",
-        "desc": "Short ad",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791049656/pictures/lpp45lltrreexttuui2m.mp4"
       },
       "case2": {
         "title": "Beauty salon «Sunflower»",
-        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791220505/pictures/guhtomjady0e983e3r0o.mp4"
@@ -228,28 +214,24 @@
 
       "case3": {
         "title": "Overstock items «100-ok»",
-        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": ""
       },
       "case4": {
         "title": "Rodyna «Pekary»",
-        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791566394/pictures/r228g0fbtuinappogsld.mp4"
       },
       "case5": {
         "title": "Shop «Products»",
-        "desc": "Video ad for social media",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791715370/pictures/azjsbccgmb6oxoysuupn.mp4"
       },
       "case6": {
         "title": "«Poseidon» Pool",
-        "desc": "Short ad",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791552144/pictures/aofmwtkxgaphe3ny6ekk.mp4"
@@ -294,29 +276,15 @@
     "orDivider": "or leave your contact — we'll reply within one business day",
     "moreToggle": "Add project details",
     "lessToggle": "Hide details",
-    "emailLabel": "Our email:",
-    "head": "How would you like to get in touch?",
-    "subheading": "Message us directly or leave your contact — we'll reply within one business day.",
     "missingContactError": "Please tell us how to reach you.",
     "invalidContactError": "Enter a Telegram @username, an email or a phone number.",
     "directTelegram": "Message on Telegram",
-    "orDivid": "or leave your contact — we'll reach out ourselves",
     "contactLabel": "How to reach you",
     "contactPlaceholder": "Telegram (@username), email or phone",
-    "moreTog": "Tell us more about the project",
-    "lessTog": "Hide details",
-    "selectedFormat": "Selected:",
-    "removeFormat": "Remove format",
     "nameLabel": "Name",
     "namePlaceholder": "How to address you",
-    "emailLa": "Email",
-    "emailPlaceholder": "you@example.com",
-    "phoneLabel": "Phone",
-    "phonePlaceholder": "+380 XX XXX XX XX",
     "successMessage": "Thank you! Request received — we'll connect with you soon.",
     "missingNameError": "Please enter your name.",
-    "invalidPhoneError": "Check phone number, e.g. +380 XX XXX XX XX",
-    "invalidEmailError": "Check your email, e.g. you@example.com",
     "formatsLabel": "Video type",
     "formatsOptional": "(optional)",
     "messageLabel": "About the Project",
