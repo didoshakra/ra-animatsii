@@ -337,6 +337,9 @@
     "companyPlaceholder": "Назва компанії або бренду",
     "prefillVideo": "Хочу ролик, схожий на: {{name}}"
   },
+  "stickyCta": {
+    "label": "Замовити ролик"
+  },
   "structuredData": {
     "serviceName": "AI-реклама та анімаційні відео для бізнесу",
     "serviceType": "Відеопродакшн та анімація",

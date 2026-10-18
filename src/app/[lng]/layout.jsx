@@ -7,6 +7,7 @@ import "../globals.css"
 import PageViewTracker from "../../components/PageViewTracker"
 import { siteUrl } from "@/lib/site"
 import AttributionCapture from "../../components/AttributionCapture"
+import StickyOrderButton from "@/components/StickyOrderButton"
 
 export async function generateMetadata({ params }) {
   const { lng } = await params
@@ -78,6 +79,7 @@ export default async function RootLayout({ children, params }) {
         <AttributionCapture />
         <I18nProvider fallbackLanguage={i18nConfig.fallbackLng} language={lng} resources={resources}>
           {children}
+          <StickyOrderButton />
         </I18nProvider>
       </body>
     </html>

@@ -336,6 +336,9 @@
     "companyPlaceholder": "Company or brand name",
     "prefillVideo": "I'd like a video similar to: {{name}}"
   },
+  "stickyCta": {
+    "label": "Order a video"
+  },
   "structuredData": {
     "serviceName": "AI advertising and animated videos for business",
     "serviceType": "Video Production and Animation",
