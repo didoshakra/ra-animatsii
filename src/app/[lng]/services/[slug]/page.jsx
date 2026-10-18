@@ -52,39 +52,44 @@ export default async function FormatPage({ params }) {
 
   return (
     <PageShell lng={lng} crumbs={crumbs}>
-      <div className="max-w-2xl">
-        <h1 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">{page.h1}</h1>
-        <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">{text.desc}</p>
-        <p className="mt-4 font-body text-cream font-700 text-lg">{text.structure}</p>
-        <p className="mt-2 font-body text-cream/80 text-lg leading-relaxed">{text.suitableFor}</p>
+      <div className="grid md:grid-cols-[1.5fr_1fr] gap-5 md:gap-10 items-start">
+        <div>
+          <h1 className="font-display font-800 text-cream text-2xl sm:text-4xl leading-tight">{page.h1}</h1>
+          <p className="mt-3 font-body text-cream/90 text-lg leading-relaxed">{text.desc}</p>
+          <p className="mt-3 font-body text-cream/80 text-base leading-relaxed">
+            <span className="font-700 text-cream">{text.structure}</span> · {text.suitableFor}
+          </p>
+        </div>
 
-        <p className="mt-6 font-body text-cream text-lg">
-          <span className="font-700">{c.priceLabel}:</span> {tier.price} · {durationLabel} {tier.days}
-        </p>
-        <p className="mt-1 font-body text-cream/70 text-sm">{c.priceNote}</p>
-
-        <PricingCta
-          formatId={fmt.formId}
-          source={`service:${slug}`}
-          className="mt-6 inline-block font-display font-600 text-base bg-clay text-cream px-6 py-3 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
-        >
-          {c.orderCta}
-        </PricingCta>
+        <div className="bg-cream rounded-3xl p-5 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
+          <p className="font-display font-800 text-ink text-2xl">{tier.price}</p>
+          <p className="mt-1 font-body font-700 text-clay-deep text-sm">
+            {durationLabel} {tier.days}
+          </p>
+          <p className="mt-2 font-body text-ink/60 text-xs leading-snug">{c.priceNote}</p>
+          <PricingCta
+            formatId={fmt.formId}
+            source={`service:${slug}`}
+            className="mt-4 flex w-full items-center justify-center font-display font-600 text-base bg-clay text-cream px-6 py-3 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
+          >
+            {c.orderCta}
+          </PricingCta>
+        </div>
       </div>
 
-      <h2 className="mt-12 font-display font-700 text-cream text-2xl sm:text-3xl">{c.examplesOfFormat}</h2>
-      <p className="mt-2 font-body text-cream/80 text-base">{c.demoNote}</p>
+      <h2 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl">{c.examplesOfFormat}</h2>
+      <p className="mt-1 font-body text-cream/80 text-sm">{c.demoNote}</p>
       <VideoGrid videos={videos} badge={c.exampleBadge} />
 
-      <h2 className="mt-12 font-display font-700 text-cream text-2xl sm:text-3xl">{c.otherFormats}</h2>
-      <ul className="mt-4 flex flex-wrap gap-3">
+      <h2 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl">{c.otherFormats}</h2>
+      <ul className="mt-3 flex flex-wrap gap-2">
         {others.map((f) => (
           <li key={f.slug}>
             <a
               href={localizedPath(lng, `/services/${f.slug}`)}
-              className="inline-block bg-cream text-ink font-body font-700 px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
+              className="inline-block bg-cream text-ink font-body font-700 text-sm px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
             >
-              {c.formats[f.key].h1}
+              {t(`portfolio.formats.${f.key}.label`)}
             </a>
           </li>
         ))}
