@@ -1,6 +1,9 @@
 // src/components/StructuredData.jsx
 import { getT } from "next-i18next/server"
-import { siteUrl } from "@/lib/site"
+import { siteUrl, siteName, siteAlternateName } from "@/lib/site"
+import { CONTACT_EMAIL } from "@/lib/contacts"
+
+const contactEmail = CONTACT_EMAIL
 
 const contactEmail = "hello@raspark.com"
 
@@ -25,7 +28,8 @@ export default async function StructuredData() {
   const organizationSchema = {
     "@type": "Organization",
     "@id": `${siteUrl}/#organization`,
-    name: "RASpark",
+    name: siteName,
+    alternateName: siteAlternateName,
     url: siteUrl,
     logo: `${siteUrl}/brand/RASpark_eagle.png`,
     image: `${siteUrl}/brand/SEO-OG-RASpark.jpg`,

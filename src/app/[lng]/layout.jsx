@@ -5,9 +5,9 @@ import i18nConfig from "../../../i18n.config"
 import StructuredData from "@/components/StructuredData"
 import "../globals.css"
 import PageViewTracker from "../../components/PageViewTracker"
-import { siteUrl } from "@/lib/site"
 import AttributionCapture from "../../components/AttributionCapture"
 import StickyOrderButton from "@/components/StickyOrderButton"
+import { siteUrl, siteName } from "@/lib/site"
 
 export async function generateMetadata({ params }) {
   const { lng } = await params
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
       title,
       description: ogDescription,
       url: lng === "en" ? `${siteUrl}/en` : siteUrl,
-      siteName: "RASpark",
+      siteName,
       images: [
         {
           url: "/brand/og-image.jpg",

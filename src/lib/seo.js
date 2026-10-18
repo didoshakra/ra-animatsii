@@ -1,5 +1,5 @@
 // src/lib/seo.js
-import { siteUrl } from "./site"
+import { siteUrl, siteName } from "./site"
 
 // uk без префікса, en з /en
 export function localizedPath(lng, path = "") {
@@ -33,7 +33,7 @@ export function pageMetadata({ lng, path = "", title, description }) {
       title,
       description,
       url,
-      siteName: "RASpark",
+      siteName,
       images: [{ url: "/brand/og-image.jpg", width: 1424, height: 752 }],
       locale: lng === "en" ? "en_US" : "uk_UA",
       type: "website",
