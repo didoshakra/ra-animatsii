@@ -18,16 +18,33 @@ export default function StickyOrderButton() {
 
   useEffect(() => {
     if (isHidden) return
-    const target = document.getElementById("contact")
-    if (!target) {
-      setFormVisible(false)
-      return
+
+    let io = null
+    let mo = null
+
+    const attach = () => {
+      const target = document.getElementById("contact")
+      if (!target) return false
+      io = new IntersectionObserver(([entry]) => setFormVisible(entry.isIntersecting), {
+        threshold: 0.1,
+      })
+      io.observe(target)
+      return true
     }
-    const observer = new IntersectionObserver(([entry]) => setFormVisible(entry.isIntersecting), {
-      threshold: 0.1,
-    })
-    observer.observe(target)
-    return () => observer.disconnect()
+
+    // Якщо форми ще немає в DOM (Suspense), чекаємо її появи
+    if (!attach()) {
+      setFormVisible(false)
+      mo = new MutationObserver(() => {
+        if (attach()) mo.disconnect()
+      })
+      mo.observe(document.body, { childList: true, subtree: true })
+    }
+
+    return () => {
+      io?.disconnect()
+      mo?.disconnect()
+    }
   }, [pathname, isHidden])
 
   if (isHidden) return null
