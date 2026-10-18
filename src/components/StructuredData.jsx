@@ -5,8 +5,6 @@ import { CONTACT_EMAIL } from "@/lib/contacts"
 
 const contactEmail = CONTACT_EMAIL
 
-const contactEmail = "hello@raspark.com"
-
 // Витягує перше число з тексту ціни ("від 4 000 грн" -> "4000").
 // Повертає null, якщо чисел немає (напр. "За запитом").
 function extractPriceDigits(priceText) {
