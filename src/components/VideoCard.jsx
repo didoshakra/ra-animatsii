@@ -100,7 +100,7 @@ export default function VideoCard({
                 poster={posterUrl}
                 controls={playing}
                 playsInline
-                preload="metadata"
+                preload="none"
                 className="w-full h-full object-contain"
                 onPause={() => setPlaying(false)}
                 onError={() => setError(true)}

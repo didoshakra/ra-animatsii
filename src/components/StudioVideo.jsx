@@ -78,7 +78,7 @@ export default function StudioVideo() {
                   poster={POSTER_SRC}
                   controls={playing}
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   className="w-full h-full object-cover"
                   onPause={() => setPlaying(false)}
                   onError={() => setError(true)}

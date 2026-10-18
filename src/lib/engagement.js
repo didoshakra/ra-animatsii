@@ -7,11 +7,12 @@ const SECTION_IDS = [
   "top",
   "studio-video",
   "portfolio",
-  "mini-lead",
   "process",
   "about-team",
   "pricing",
   "real-case",
+  "page-content",
+  "page-videos",
   "contact",
 ]
 const ENDPOINT = "/api/track-engagement"

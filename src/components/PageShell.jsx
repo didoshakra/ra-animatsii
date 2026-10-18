@@ -17,11 +17,11 @@ export default function PageShell({ lng, crumbs, children }) {
             <Breadcrumbs lng={lng} items={crumbs} />
           </div>
         </div>
-          <HillDivider fromColor="#FBF6E9" toColor="#5FA653" compact />
-        <section className="bg-meadow pt-2 pb-8 sm:pb-12">
+        <HillDivider fromColor="#FBF6E9" toColor="#5FA653" compact />
+        <section id="page-content" className="bg-meadow pt-2 pb-8 sm:pb-12">
           <div className="max-w-6xl mx-auto px-5 sm:px-8">{children}</div>
         </section>
-          <HillDivider fromColor="#5FA653" toColor="#2F2416" compact />
+        <HillDivider fromColor="#5FA653" toColor="#2F2416" compact />
         <ContactForm />
       </main>
       <Footer />

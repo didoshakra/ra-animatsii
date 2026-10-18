@@ -5,6 +5,9 @@ const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_c
 // Зберігає перше входження в сесії (UTM, реферер, перша сторінка).
 export function captureAttribution() {
   try {
+    const cleanPath = window.location.pathname.replace(/^\/(en|uk)(?=\/|$)/, "")
+    if (cleanPath.startsWith("/admin") || cleanPath.startsWith("/exclude-me")) return
+
     if (sessionStorage.getItem(KEY)) return
 
     const params = new URLSearchParams(window.location.search)

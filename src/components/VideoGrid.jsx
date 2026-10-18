@@ -5,7 +5,7 @@ import { FORMATS } from "@/lib/pages"
 
 export default function VideoGrid({ videos, badge }) {
   return (
-    <div className="mt-8 bg-ink rounded-3xl p-6 sm:p-8">
+    <div id="page-videos" className="mt-8 bg-ink rounded-3xl p-6 sm:p-8">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
         {videos.map((v) => (
           <VideoCard
