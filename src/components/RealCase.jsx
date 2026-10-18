@@ -6,7 +6,7 @@ export default async function RealCase() {
   const { t } = await getT("common")
 
   return (
-    <section id="real-case" className="bg-meadow py-14 sm:py-20">
+    <section id="real-case" className="bg-meadow py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl">
           <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">

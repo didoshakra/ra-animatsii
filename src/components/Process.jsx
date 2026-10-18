@@ -105,7 +105,7 @@ export default async function Process() {
   }))
 
   return (
-    <section id="process" className="bg-cream py-14 sm:py-20">
+    <section id="process" className="bg-cream py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <p className="font-display font-700 text-clay-deep text-center uppercase tracking-wide text-sm">
           {t("process.whyLabel")}
@@ -131,7 +131,7 @@ export default async function Process() {
           {t("process.pathHeading")}
         </h2>
 
-        <div className="mt-14 relative">
+        <div className="mt-10 relative">
           {/* дорога, що з'єднує етапи — відсилає до звивистої стежки на банері студії */}
           <div
             aria-hidden="true"
