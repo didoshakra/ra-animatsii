@@ -147,23 +147,24 @@ function ContactFormInner() {
   return (
     <section id="contact" className="bg-ink py-8 sm:py-10">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl text-center">
+        <h2 className="font-display font-800 text-cream text-2xl sm:text-3xl text-center">
           {t("contactForm.heading")}
         </h2>
 
         {status === "sent" ? (
-          <div className="mt-8 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
+          <div className="mt-3 bg-meadow text-cream rounded-3xl p-8 text-center font-body text-lg">
             {t("contactForm.successMessage")}
           </div>
         ) : (
           <>
             {/* Прямий зв'язок */}
-            <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-3">
+            <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-3
+            ">
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body font-700 text-sun text-xl sm:text-2xl py-1 hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
+                className="font-body font-700 text-sun text-xl sm:text-xl py-1 hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
               >
                 ✈️{t("contactForm.directTelegram")}
               </a>
@@ -174,10 +175,10 @@ function ContactFormInner() {
                 📧{CONTACT_EMAIL}
               </a>
             </div>
-            <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl text-center">
+            <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-xl text-center">
               {t("contactForm.orDivider")}
             </h3>
-            {/* Коротка форма */}                           
+            {/* Коротка форма */}
             <form onSubmit={handleSubmit} noValidate className="mt-4 grid gap-3">
               <input
                 type="text"
