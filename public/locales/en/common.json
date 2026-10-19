@@ -200,7 +200,7 @@
     "badgePrefix": "Example:",
     "cases": {
       "case1": {
-        "title": "Pet shop «Paws & Tails»",
+        "title": "Pet shop «Four Paws»",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": "https://res.cloudinary.com/daov9z9qc/video/upload/v1791049656/pictures/lpp45lltrreexttuui2m.mp4"
@@ -213,7 +213,7 @@
       },
 
       "case3": {
-        "title": "Overstock items «100-ok»",
+        "title": "Stock outlet «100-ok»",
         "soundType": "Character voiceover",
         "visualStyle": "3D volumetric graphics",
         "videoUrl": ""
@@ -276,10 +276,10 @@
     "orDivider": "or leave your contact — we'll reply within one business day",
     "moreToggle": "Add project details",
     "lessToggle": "Hide details",
-    "missingContactError": "Please tell us how to reach you.",
+    "missingContactError": "Provide a contact for the response.",
     "invalidContactError": "Enter a Telegram @username, an email or a phone number.",
     "directTelegram": "Message on Telegram",
-    "contactLabel": "How to reach you",
+    "contactLabel": "Contact for response",
     "contactPlaceholder": "Telegram (@username), email or phone",
     "nameLabel": "Name",
     "namePlaceholder": "How to address you",
@@ -320,6 +320,5 @@
     "description": "AI video ads for businesses, including 2D, 3D and character animation. Promotional videos for TikTok, Instagram, YouTube and digital campaigns.",
     "ogDescription": "Creative AI video ads for businesses, featuring 2D, 3D and character animation by RA Spark.",
     "ogImageAlt": "RA Spark — AI video advertising for businesses"
-  },
-  "promo": { "text": "{{percent}}% off until December 31, 2026" }
+  }
 }

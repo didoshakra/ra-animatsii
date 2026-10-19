@@ -11,9 +11,10 @@ export default async function Footer() {
    const { t, i18n } = await getT("common")
    const privacyHref = i18n.language === "en" ? "/en/privacy" : "/privacy"
   return (
-    <footer className="bg-ink py-8 border-t border-cream/10">
+    // <footer className="bg-ink py-0 border-t border-cream/10">
+    <footer className="bg-ink py-0 border-t border-cream/10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col gap-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
           <div className="flex items-center gap-2.5">
             <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={32} height={32} className="rounded-full" />
             <span className="font-display font-700 text-cream">RA Spark</span>
@@ -30,7 +31,6 @@ export default async function Footer() {
             </p>
           </div>
         </div>
-
         <AdminStats />
       </div>
     </footer>

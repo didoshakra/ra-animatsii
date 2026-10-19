@@ -9,6 +9,7 @@ import Pricing from "@/components/Pricing"
 import RealCase from "@/components/RealCase"
 import ContactForm from "@/components/ContactForm"
 import Footer from "@/components/Footer"
+import HomeHub from "@/components/HomeHub"
 
 export default function Home() {
   return (
@@ -34,5 +35,5 @@ export default function Home() {
       </main>
       <Footer />
     </>
-  ) 
+  )
 }

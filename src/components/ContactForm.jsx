@@ -165,19 +165,19 @@ function ContactFormInner() {
                 rel="noopener noreferrer"
                 className="font-body font-700 text-sun text-xl sm:text-2xl py-1 hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
               >
-                {t("contactForm.directTelegram")}
+                ✈️{t("contactForm.directTelegram")}
               </a>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="font-body font-700 text-sun text-xl sm:text-2xl py-1 break-all hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
               >
-                {CONTACT_EMAIL}
+                📧{CONTACT_EMAIL}
               </a>
             </div>
             <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl text-center">
               {t("contactForm.orDivider")}
             </h3>
-            {/* Коротка форма */}
+            {/* Коротка форма */}                           
             <form onSubmit={handleSubmit} noValidate className="mt-4 grid gap-3">
               <input
                 type="text"
@@ -191,7 +191,7 @@ function ContactFormInner() {
               <div className="grid sm:grid-cols-2 gap-3">
                 <div>
                   <label htmlFor="name" className={labelCls}>
-                    {t("contactForm.nameLabel")}
+                    {t("contactForm.nameLabel")}*
                   </label>
                   <input
                     id="name"
@@ -204,7 +204,7 @@ function ContactFormInner() {
                 </div>
                 <div>
                   <label htmlFor="contact" className={labelCls}>
-                    {t("contactForm.contactLabel")}
+                    {t("contactForm.contactLabel")}*
                   </label>
                   <input
                     id="contact"
