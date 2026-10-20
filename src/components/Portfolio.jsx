@@ -102,21 +102,21 @@ export default async function Portfolio() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
             <div className="max-w-2xl">
-              <p className="font-body font-700 text-sm uppercase tracking-wider text-meadow-deep">
+              <p className="font-body font-bold text-sm uppercase tracking-wider text-meadow-deep">
                 {t("portfolio.eyebrow")}
               </p>
 
-              <h2 className="mt-2 font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">
+              <h2 className="mt-2 font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
                 {t("portfolio.formatsHeading")}
               </h2>
 
-              <p className="mt-4 font-body text-ink/70 text-base sm:text-lg leading-relaxed">
+              <p className="mt-4 font-body text-ink/80 text-base sm:text-lg leading-relaxed">
                 {t("portfolio.formatsSubheading")}
               </p>
             </div>
 
             <div className="shrink-0">
-              <div className="inline-flex rounded-2xl bg-white/80 px-4 py-3 text-sm text-ink/75 shadow-sm">
+              <div className="inline-flex rounded-2xl bg-white/90 px-4 py-3 text-sm text-ink/75 shadow-sm">
                 {promoText}
               </div>
             </div>
@@ -160,11 +160,11 @@ export default async function Portfolio() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-8 sm:pt-10">
         <div className="grid lg:grid-cols-[0.8fr_1.6fr] gap-6 lg:gap-10 items-start">
           <div>
-            <p className="font-body font-700 text-sm uppercase tracking-wider text-cream/80">
+            <p className="font-body font-bold text-sm uppercase tracking-wider text-cream/90">
               {t("portfolio.executionEyebrow")}
             </p>
 
-            <h3 className="mt-2 font-display font-700 text-cream text-2xl sm:text-3xl leading-tight">
+            <h3 className="mt-2 font-display font-bold text-cream text-2xl sm:text-3xl leading-tight">
               {t("portfolio.executionHeading")}
             </h3>
 

@@ -29,7 +29,7 @@ export default async function ServicesPage({ params }) {
   return (
     <PageShell lng={lng} crumbs={crumbs}>
       <div className="max-w-3xl">
-        <h1 className="font-display font-800 text-cream text-2xl sm:text-4xl leading-tight">{c.services.h1}</h1>
+        <h1 className="font-display font-extrabold text-cream text-2xl sm:text-4xl leading-tight">{c.services.h1}</h1>
         <p className="mt-3 font-body text-cream/90 text-lg leading-relaxed">{c.services.intro}</p>
       </div>
 
@@ -43,13 +43,13 @@ export default async function ServicesPage({ params }) {
               href={localizedPath(lng, `/services/${f.slug}`)}
               className="group bg-cream rounded-3xl p-5 flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)] hover:-translate-y-0.5 transition-transform focus-ring"
             >
-              <h2 className="font-display font-700 text-lg text-ink leading-snug">{text.title}</h2>
-              <p className="mt-1 font-body text-sm text-clay-deep font-700">
+              <h2 className="font-display font-bold text-lg text-ink leading-snug">{text.title}</h2>
+              <p className="mt-1 font-body text-sm text-clay-deep font-bold">
                 {text.duration} · {tier.price}
               </p>
-              <p className="mt-2 font-body text-base text-ink/70 leading-relaxed line-clamp-3">{text.desc}</p>
+              <p className="mt-2 font-body text-base text-ink/80 leading-relaxed line-clamp-3">{text.desc}</p>
               <span className="mt-auto pt-4">
-                <span className="flex w-full items-center justify-center rounded-full bg-meadow text-cream font-body font-700 text-sm px-4 py-2.5 group-hover:bg-meadow-deep transition-colors">
+                <span className="flex w-full items-center justify-center rounded-full bg-meadow text-cream font-body font-bold text-sm px-4 py-2.5 group-hover:bg-meadow-deep transition-colors">
                   {c.moreLabel} →
                 </span>
               </span>

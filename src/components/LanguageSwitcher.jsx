@@ -34,7 +34,7 @@ export default function LanguageSwitcher() {
           onClick={() => switchLocale(lng)}
           aria-pressed={currentLng === lng}
           className={`font-body font-semibold text-sm px-2.5 py-1.5 rounded-full transition-colors focus-ring ${
-            currentLng === lng ? "bg-clay text-cream" : "text-ink/60 hover:text-ink"
+            currentLng === lng ? "bg-clay text-cream" : "text-ink/70 hover:text-ink"
           }`}
         >
           {LABELS[lng] ?? lng.toUpperCase()}

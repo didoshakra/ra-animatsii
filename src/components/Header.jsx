@@ -8,19 +8,19 @@ import LanguageSwitcher from "./LanguageSwitcher"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-//   const { t } = useT("common")
-const { t, i18n } = useT("common")
-const base = i18n.language === "en" ? "/en" : ""
-const home = base || "/"
+  //   const { t } = useT("common")
+  const { t, i18n } = useT("common")
+  const base = i18n.language === "en" ? "/en" : ""
+  const home = base || "/"
 
-const links = [
-  { href: `${base}/services`, label: t("header.nav.services") },
-  { href: `${home}#portfolio`, label: t("header.nav.portfolio") },
-  { href: `${home}#process`, label: t("header.nav.process") },
-  { href: `${home}#pricing`, label: t("header.nav.pricing") },
-  { href: `${base}/examples`, label: t("header.nav.case") },
-  { href: "#contact", label: t("header.nav.contact") },
-]
+  const links = [
+    { href: `${base}/services`, label: t("header.nav.services") },
+    { href: `${home}#portfolio`, label: t("header.nav.portfolio") },
+    { href: `${home}#process`, label: t("header.nav.process") },
+    { href: `${home}#pricing`, label: t("header.nav.pricing") },
+    { href: `${base}/examples`, label: t("header.nav.case") },
+    { href: "#contact", label: t("header.nav.contact") },
+  ]
 
   return (
     <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
@@ -34,7 +34,7 @@ const links = [
             className="rounded-full w-9 h-9 sm:w-11 sm:h-11"
             priority
           />
-          <span className="font-display font-700 text-lg sm:text-xl text-ink tracking-tight whitespace-nowrap">
+          <span className="font-display font-bold text-lg sm:text-xl text-ink tracking-tight whitespace-nowrap">
             {t("header.brand")}
           </span>
         </a>
@@ -88,7 +88,7 @@ const links = [
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-body font-700 text-ink/85 py-2.5 focus-ring"
+              className="font-body font-bold text-ink/85 py-2.5 focus-ring"
             >
               {l.label}
             </a>

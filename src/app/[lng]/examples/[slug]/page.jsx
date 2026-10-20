@@ -7,7 +7,7 @@ import { localizedPath, pageMetadata } from "@/lib/seo"
 import { VIDEOS } from "@/lib/videos"
 import { resolveVideos } from "@/lib/videoData"
 import PricingCta from "@/components/PricingCta"
-import { FORMATS, NICHES } from "@/lib/pages"   // замість імпорту лише NICHES
+import { FORMATS, NICHES } from "@/lib/pages" // замість імпорту лише NICHES
 
 function findNiche(slug, c) {
   const niche = NICHES.find((n) => n.slug === slug && n.page)
@@ -53,7 +53,7 @@ export default async function NichePage({ params }) {
   return (
     <PageShell lng={lng} crumbs={crumbs}>
       <div className="max-w-2xl">
-        <h1 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">{page.h1}</h1>
+        <h1 className="font-display font-extrabold text-cream text-3xl sm:text-4xl leading-tight">{page.h1}</h1>
         <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">{page.lead}</p>
         <p className="mt-3 font-body text-cream/90 text-base antialiased">{c.demoNote}</p>
         <PricingCta
@@ -73,7 +73,7 @@ export default async function NichePage({ params }) {
           <li key={n.slug}>
             <a
               href={localizedPath(lng, `/examples/${n.slug}`)}
-              className="inline-block bg-cream text-ink font-body font-700 px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
+              className="inline-block bg-cream text-ink font-body font-bold px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
             >
               {c.niches[n.slug].name}
             </a>

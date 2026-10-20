@@ -8,8 +8,8 @@ export default function ExecutionOptions({ title, options, hint }) {
 
   return (
     <div className="mt-10">
-      <p className="font-body font-700 text-cream text-lg mb-1">{title}</p>
-      {hint && <p className="font-body text-sm text-cream/60 mb-4">{hint}</p>}
+      <p className="font-body font-bold text-cream text-lg mb-1">{title}</p>
+      {hint && <p className="font-body text-sm text-cream/70 mb-4">{hint}</p>}
       <div className="flex flex-col gap-2">
         {options.map((o, i) => {
           const isOpen = openIndex === i
@@ -24,7 +24,7 @@ export default function ExecutionOptions({ title, options, hint }) {
                 aria-expanded={isOpen}
                 className="w-full flex items-center justify-between gap-3 px-5 py-3.5 text-left focus-ring"
               >
-                <span className="font-display font-700 text-base sm:text-lg text-ink">{o.title}</span>
+                <span className="font-display font-bold text-base sm:text-lg text-ink">{o.title}</span>
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"
@@ -42,7 +42,7 @@ export default function ExecutionOptions({ title, options, hint }) {
                   />
                 </svg>
               </button>
-              {isOpen && <p className="px-5 pb-4 font-body text-base text-ink/70 leading-relaxed">{o.desc}</p>}
+              {isOpen && <p className="px-5 pb-4 font-body text-base text-ink/80 leading-relaxed">{o.desc}</p>}
             </div>
           )
         })}

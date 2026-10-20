@@ -20,13 +20,13 @@ export default async function PrivacyPage({ params }) {
   return (
     <PageShell lng={lng} crumbs={crumbs}>
       <div className="max-w-3xl">
-        <h1 className="font-display font-800 text-cream text-2xl sm:text-4xl leading-tight">{p.h1}</h1>
-        <p className="mt-2 font-body text-cream/70 text-sm">
+        <h1 className="font-display font-extrabold text-cream text-2xl sm:text-4xl leading-tight">{p.h1}</h1>
+        <p className="mt-2 font-body text-cream/80 text-sm">
           {p.updatedLabel}: {p.updated}
         </p>
         {p.sections.map((s) => (
           <section key={s.h} className="mt-6">
-            <h2 className="font-display font-700 text-cream text-xl">{s.h}</h2>
+            <h2 className="font-display font-bold text-cream text-xl">{s.h}</h2>
             {s.p.map((text) => (
               <p key={text} className="mt-2 font-body text-cream/90 text-base leading-relaxed">
                 {text}

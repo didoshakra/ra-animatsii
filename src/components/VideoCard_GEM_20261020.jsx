@@ -58,17 +58,17 @@ export default function VideoCard({
       {(badge || aspectLabel || runtime) && (
         <div className="flex flex-wrap items-center gap-2 mb-3">
           {badge && (
-            <span className="inline-block bg-meadow/15 text-meadow-deep font-body font-700 text-xs px-3 py-1 rounded-full">
+            <span className="inline-block bg-meadow/15 text-meadow-deep font-body font-bold text-xs px-3 py-1 rounded-full">
               {badge}
             </span>
           )}
           {aspectLabel && (
-            <span className="inline-block bg-clay/15 text-clay-deep font-body font-700 text-xs px-3 py-1 rounded-full">
+            <span className="inline-block bg-clay/15 text-clay-deep font-body font-bold text-xs px-3 py-1 rounded-full">
               {aspectLabel}
             </span>
           )}
           {runtime && (
-            <span className="inline-block bg-ink/10 text-ink/70 font-body font-700 text-xs px-3 py-1 rounded-full">
+            <span className="inline-block bg-ink/10 text-ink/80 font-body font-bold text-xs px-3 py-1 rounded-full">
               ▶ {runtime}
             </span>
           )}
@@ -127,11 +127,11 @@ export default function VideoCard({
 
       {(title || desc || duration) && (
         <div className="mt-5">
-          {title && <h3 className="font-display font-700 text-xl text-ink">{title}</h3>}
-          {meta && <p className="font-body text-sm text-ink/50 mt-1">{meta}</p>}
-          {duration && <p className="font-body text-base text-clay-deep font-700 mt-1">{duration}</p>}
-          {desc && <p className="font-body text-lg text-ink/70 mt-1 leading-relaxed">{desc}</p>}
-          {structure && <p className="font-body text-sm text-meadow-deep font-700 mt-3">{structure}</p>}
+          {title && <h3 className="font-display font-bold text-xl text-ink">{title}</h3>}
+          {meta && <p className="font-body text-sm text-ink/60 mt-1">{meta}</p>}
+          {duration && <p className="font-body text-base text-clay-deep font-bold mt-1">{duration}</p>}
+          {desc && <p className="font-body text-lg text-ink/80 mt-1 leading-relaxed">{desc}</p>}
+          {structure && <p className="font-body text-sm text-meadow-deep font-bold mt-3">{structure}</p>}
           {suitableFor && <p className="font-body text-sm text-ink/55 mt-1 leading-relaxed">{suitableFor}</p>}
         </div>
       )}
@@ -145,7 +145,7 @@ export default function VideoCard({
                 ? t("contactForm.prefillVideo", { name: ctaVideoName, interpolation: { escapeValue: false } })
                 : ""
             }
-            className="inline-flex items-center justify-center rounded-full border-2 border-clay-deep text-clay-deep font-body font-700 text-sm px-4 py-2 hover:bg-clay hover:text-cream hover:border-clay transition-colors focus-ring"
+            className="inline-flex items-center justify-center rounded-full border-2 border-clay-deep text-clay-deep font-body font-bold text-sm px-4 py-2 hover:bg-clay hover:text-cream hover:border-clay transition-colors focus-ring"
           >
             {t("videoCard.wantSimilar")}
           </PricingCta>

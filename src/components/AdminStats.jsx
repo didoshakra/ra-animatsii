@@ -26,7 +26,7 @@ export default function AdminStats() {
   const adminHref = /^[a-z]{2}$/.test(first) ? `/${first}/admin` : "/admin"
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-cream/10 pt-4 text-xs text-cream/60">
+    <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-cream/10 pt-4 text-xs text-cream/70">
       <span>
         👁 {stats.total} переглядів · 👤 {stats.visitors} відвідувачів · сьогодні {stats.today} · 7 днів {stats.week}
       </span>

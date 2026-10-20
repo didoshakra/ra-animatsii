@@ -20,7 +20,7 @@ const sectionName = (id) => SECTION_NAMES[id] || id
 
 function Card({ label, value }) {
   return (
-    <div className="rounded-xl border border-black/10 bg-white/70 p-4">
+    <div className="rounded-xl border border-black/10 bg-white/80 p-4">
       <div className="text-xs opacity-60">{label}</div>
       <div className="mt-1 text-2xl font-semibold">{value ?? "—"}</div>
     </div>
@@ -29,7 +29,7 @@ function Card({ label, value }) {
 
 function Section({ title, children }) {
   return (
-    <section className="rounded-xl border border-black/10 bg-white/70 p-4">
+    <section className="rounded-xl border border-black/10 bg-white/80 p-4">
       <h2 className="mb-3 text-sm font-semibold">{title}</h2>
       {children}
     </section>
@@ -51,7 +51,7 @@ function BarList({ rows, extra }) {
             </span>
           </div>
           <div className="mt-1 h-1.5 rounded bg-black/10">
-            <div className="h-1.5 rounded bg-black/50" style={{ width: `${(r.views / max) * 100}%` }} />
+            <div className="h-1.5 rounded bg-black/60" style={{ width: `${(r.views / max) * 100}%` }} />
           </div>
         </li>
       ))}
@@ -74,7 +74,7 @@ function SectionsList({ rows }) {
             </span>
           </div>
           <div className="mt-1 h-1.5 rounded bg-black/10">
-            <div className="h-1.5 rounded bg-black/50" style={{ width: `${(r.views / max) * 100}%` }} />
+            <div className="h-1.5 rounded bg-black/60" style={{ width: `${(r.views / max) * 100}%` }} />
           </div>
         </li>
       ))}
@@ -96,7 +96,7 @@ function VideosList({ rows }) {
             </span>
           </div>
           <div className="mt-1 h-1.5 rounded bg-black/10">
-            <div className="h-1.5 rounded bg-black/50" style={{ width: `${(r.views / max) * 100}%` }} />
+            <div className="h-1.5 rounded bg-black/60" style={{ width: `${(r.views / max) * 100}%` }} />
           </div>
         </li>
       ))}
@@ -149,7 +149,7 @@ function Sessions({ sessions }) {
   return (
     <ul className="space-y-3">
       {sessions.map((s) => (
-        <li key={s.session_id} className="rounded-lg border border-black/5 bg-white/60 p-3 text-xs">
+        <li key={s.session_id} className="rounded-lg border border-black/5 bg-white/70 p-3 text-xs">
           <div className="flex flex-wrap justify-between gap-2 opacity-70">
             <span>
               {new Date(s.last_at).toLocaleString("uk-UA")} · {s.country || "—"} · браузер{" "}
@@ -240,7 +240,7 @@ export default function AdminDashboard() {
                 key={key}
                 onClick={() => setFilter(key)}
                 className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
-                  filter === key ? "bg-black text-white" : "bg-white/70"
+                  filter === key ? "bg-black text-white" : "bg-white/80"
                 }`}
               >
                 {label}
@@ -253,7 +253,7 @@ export default function AdminDashboard() {
                 key={p}
                 onClick={() => setDays(p)}
                 className={`rounded-lg border border-black/10 px-3 py-1 text-sm ${
-                  days === p ? "bg-black text-white" : "bg-white/70"
+                  days === p ? "bg-black text-white" : "bg-white/80"
                 }`}
               >
                 {p} днів

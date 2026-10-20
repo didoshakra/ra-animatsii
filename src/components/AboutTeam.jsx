@@ -9,7 +9,9 @@ export default async function AboutTeam() {
     <section id="about-team" className="bg-sky-200 py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">{t("aboutTeam.title")}</h2>
+          <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
+            {t("aboutTeam.title")}
+          </h2>
           <p className="mt-3 sm:mt-4 font-body text-base sm:text-lg text-ink/75 leading-relaxed">
             {t("aboutTeam.description")}
           </p>

@@ -11,12 +11,12 @@ import { CONTACT_EMAIL, TELEGRAM_URL } from "@/lib/contacts"
 // ID мають збігатися з formId у pages.js і formatId у Pricing.jsx
 const FORMATS = [{ id: "short_advertisement" }, { id: "commercial" }, { id: "brand_card" }, { id: "video_story" }]
 
-const labelCls = "font-body font-700 text-sm text-cream block mb-0.5"
-const optionalCls = "font-400 text-cream/50 text-xs"
+const labelCls = "font-body font-bold text-sm text-cream block mb-0.5"
+const optionalCls = "font-400 text-cream/60 text-xs"
 const fieldCls =
-  "w-full rounded-xl border-2 bg-cream/5 text-cream px-3.5 py-2 font-body text-base focus-ring placeholder:text-cream/40"
+  "w-full rounded-xl border-2 bg-cream/5 text-cream px-3.5 py-2 font-body text-base focus-ring placeholder:text-cream/50"
 const directBtnCls =
-  "flex items-center justify-center rounded-full px-5 py-3 font-body font-700 text-base transition-colors focus-ring"
+  "flex items-center justify-center rounded-full px-5 py-3 font-body font-bold text-base transition-colors focus-ring"
 
 function ContactFormInner() {
   const { t, i18n } = useT("common")
@@ -147,7 +147,7 @@ function ContactFormInner() {
   return (
     <section id="contact" className="bg-ink py-8 sm:py-10">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
-        <h2 className="font-display font-800 text-cream text-2xl sm:text-3xl text-center">
+        <h2 className="font-display font-extrabold text-cream text-2xl sm:text-3xl text-center">
           {t("contactForm.heading")}
         </h2>
 
@@ -158,24 +158,26 @@ function ContactFormInner() {
         ) : (
           <>
             {/* Прямий зв'язок */}
-            <div className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-3
-            ">
+            <div
+              className="mt-3 flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-3
+            "
+            >
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body font-700 text-sun text-xl sm:text-xl py-1 hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
+                className="font-body font-bold text-sun text-xl sm:text-xl py-1 hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
               >
                 ✈️{t("contactForm.directTelegram")}
               </a>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="font-body font-700 text-sun text-xl sm:text-2xl py-1 break-all hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
+                className="font-body font-bold text-sun text-xl sm:text-2xl py-1 break-all hover:text-sun-light hover:underline underline-offset-4 transition-colors focus-ring"
               >
                 📧{CONTACT_EMAIL}
               </a>
             </div>
-            <h3 className="mt-8 font-display font-700 text-cream text-xl sm:text-xl text-center">
+            <h3 className="mt-8 font-display font-bold text-cream text-xl sm:text-xl text-center">
               {t("contactForm.orDivider")}
             </h3>
             {/* Коротка форма */}
@@ -226,7 +228,7 @@ function ContactFormInner() {
                 onClick={() => setMoreOpen((v) => !v)}
                 aria-expanded={moreOpen}
                 aria-controls="contact-more"
-                className="justify-self-start font-body font-700 text-sm text-sun hover:text-sun-light underline underline-offset-4 focus-ring"
+                className="justify-self-start font-body font-bold text-sm text-sun hover:text-sun-light underline underline-offset-4 focus-ring"
               >
                 {moreOpen
                   ? t("contactForm.lessToggle")
@@ -299,7 +301,7 @@ function ContactFormInner() {
                 <p
                   ref={errorRef}
                   role="alert"
-                  className="flex items-start gap-2 rounded-xl bg-red-500/15 border border-red-400/40 px-4 py-2.5 font-body font-700 text-red-300 text-sm sm:text-base"
+                  className="flex items-start gap-2 rounded-xl bg-red-500/15 border border-red-400/50 px-4 py-2.5 font-body font-bold text-red-300 text-sm sm:text-base"
                 >
                   <span aria-hidden="true">⚠</span>
                   {errorText}
@@ -309,11 +311,11 @@ function ContactFormInner() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="font-display font-700 text-base sm:text-lg bg-sun text-ink rounded-full py-2.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
+                className="font-display font-bold text-base sm:text-lg bg-sun text-ink rounded-full py-2.5 hover:bg-sun-light transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none disabled:opacity-60"
               >
                 {status === "sending" ? t("contactForm.sendingButton") : t("contactForm.submitButton")}
               </button>
-              <p className="font-body text-xs text-cream/60 text-center leading-snug">
+              <p className="font-body text-xs text-cream/70 text-center leading-snug">
                 {t("contactForm.consentPrefix")}{" "}
                 <a
                   href={i18n.language === "en" ? "/en/privacy" : "/privacy"}

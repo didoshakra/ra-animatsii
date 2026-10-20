@@ -45,7 +45,7 @@ export default async function ExamplesPage({ params }) {
           <li key={n.slug}>
             <a
               href={localizedPath(lng, `/examples/${n.slug}`)}
-              className="inline-block bg-cream text-ink font-body font-700 px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
+              className="inline-block bg-cream text-ink font-body font-bold px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
             >
               {c.niches[n.slug].name}
             </a>

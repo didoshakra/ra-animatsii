@@ -54,19 +54,19 @@ export default async function FormatPage({ params }) {
     <PageShell lng={lng} crumbs={crumbs}>
       <div className="grid md:grid-cols-[1.5fr_1fr] gap-5 md:gap-10 items-start">
         <div>
-          <h1 className="font-display font-800 text-cream text-2xl sm:text-4xl leading-tight">{page.h1}</h1>
+          <h1 className="font-display font-extrabold text-cream text-2xl sm:text-4xl leading-tight">{page.h1}</h1>
           <p className="mt-3 font-body text-cream/90 text-lg leading-relaxed">{text.desc}</p>
-          <p className="mt-3 font-body text-cream/80 text-base leading-relaxed">
-            <span className="font-700 text-cream">{text.structure}</span> · {text.suitableFor}
+          <p className="mt-3 font-body text-cream/90 text-base leading-relaxed">
+            <span className="font-bold text-cream">{text.structure}</span> · {text.suitableFor}
           </p>
         </div>
 
         <div className="bg-cream rounded-3xl p-5 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-          <p className="font-display font-800 text-ink text-2xl">{tier.price}</p>
-          <p className="mt-1 font-body font-700 text-clay-deep text-sm">
+          <p className="font-display font-extrabold text-ink text-2xl">{tier.price}</p>
+          <p className="mt-1 font-body font-bold text-clay-deep text-sm">
             {durationLabel} {tier.days}
           </p>
-          <p className="mt-2 font-body text-ink/60 text-xs leading-snug">{c.priceNote}</p>
+          <p className="mt-2 font-body text-ink/70 text-xs leading-snug">{c.priceNote}</p>
           <PricingCta
             formatId={fmt.formId}
             source={`service:${slug}`}
@@ -77,17 +77,17 @@ export default async function FormatPage({ params }) {
         </div>
       </div>
 
-      <h2 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl">{c.examplesOfFormat}</h2>
+      <h2 className="mt-8 font-display font-bold text-cream text-xl sm:text-2xl">{c.examplesOfFormat}</h2>
       <p className="mt-1 font-body text-cream/90 text-sm antialiased">{c.demoNote}</p>
       <VideoGrid videos={videos} badge={c.exampleBadge} />
 
-      <h2 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl">{c.otherFormats}</h2>
+      <h2 className="mt-8 font-display font-bold text-cream text-xl sm:text-2xl">{c.otherFormats}</h2>
       <ul className="mt-3 flex flex-wrap gap-2">
         {others.map((f) => (
           <li key={f.slug}>
             <a
               href={localizedPath(lng, `/services/${f.slug}`)}
-              className="inline-block bg-cream text-ink font-body font-700 text-sm px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
+              className="inline-block bg-cream text-ink font-body font-bold text-sm px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
             >
               {t(`portfolio.formats.${f.key}.label`)}
             </a>

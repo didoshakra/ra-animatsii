@@ -1,4 +1,3 @@
-
 // components/StudioVideo.jsx
 "use client"
 
@@ -48,7 +47,7 @@ export default function StudioVideo() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }} />
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl leading-tight">
+          <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
             {t("studioVideo.title")}
           </h2>
           <p className="mt-2 sm:mt-4 font-body text-base sm:text-lg text-ink/75 leading-relaxed">
@@ -103,15 +102,15 @@ export default function StudioVideo() {
 
           {/* Чесна CTA-кнопка, не імітація плеєра */}
           <div className="flex flex-col items-start gap-2 sm:gap-4">
-            <p className="font-display font-700 text-ink text-lg sm:text-2xl leading-snug">
+            <p className="font-display font-bold text-ink text-lg sm:text-2xl leading-snug">
               {t("studioVideo.ctaTitle")}
             </p>
-            <p className="hidden sm:block font-body text-base text-ink/70 leading-relaxed">
+            <p className="hidden sm:block font-body text-base text-ink/80 leading-relaxed">
               {t("studioVideo.ctaDescription")}
             </p>
             <a
               href="#contact"
-              className="font-display font-700 text-cream bg-meadow-deep px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-full text-base sm:text-lg text-center hover:bg-meadow-deep/90 transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.ink)] active:translate-y-[3px] active:shadow-none"
+              className="font-display font-bold text-cream bg-meadow-deep px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-full text-base sm:text-lg text-center hover:bg-meadow-deep/90 transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.ink)] active:translate-y-[3px] active:shadow-none"
             >
               {t("studioVideo.ctaButton")}
             </a>

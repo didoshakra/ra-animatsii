@@ -61,7 +61,7 @@ export default function StickyOrderButton() {
       >
         <PricingCta
           source="sticky"
-          className="flex w-full items-center justify-center rounded-full bg-sun text-ink font-display font-700 text-base py-3 shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none focus-ring"
+          className="flex w-full items-center justify-center rounded-full bg-sun text-ink font-display font-bold text-base py-3 shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none focus-ring"
         >
           {t("stickyCta.label")}
         </PricingCta>

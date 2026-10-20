@@ -9,7 +9,7 @@ export default async function RealCase() {
     <section id="real-case" className="bg-meadow py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl">
-          <h2 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">
+          <h2 className="font-display font-extrabold text-cream text-3xl sm:text-4xl leading-tight">
             {t("realCase.heading")}
           </h2>
           <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">{t("realCase.description")}</p>

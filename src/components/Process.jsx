@@ -107,7 +107,7 @@ export default async function Process() {
   return (
     <section id="process" className="bg-cream py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <p className="font-display font-700 text-clay-deep text-center uppercase tracking-wide text-sm">
+        <p className="font-display font-bold text-clay-deep text-center uppercase tracking-wide text-sm">
           {t("process.whyLabel")}
         </p>
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
@@ -120,14 +120,14 @@ export default async function Process() {
                   <WhyIcon type={point.icon} />
                 </svg>
               </div>
-              <p className="font-body font-700 text-sm sm:text-base text-ink/85 leading-snug max-w-[10rem]">
+              <p className="font-body font-bold text-sm sm:text-base text-ink/85 leading-snug max-w-[10rem]">
                 {point.title}
               </p>
             </div>
           ))}
         </div>
 
-        <h2 className="font-display font-800 text-ink text-3xl sm:text-4xl text-center mt-16">
+        <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl text-center mt-16">
           {t("process.pathHeading")}
         </h2>
 
@@ -135,7 +135,7 @@ export default async function Process() {
           {/* дорога, що з'єднує етапи — відсилає до звивистої стежки на банері студії */}
           <div
             aria-hidden="true"
-            className="hidden md:block absolute top-[26px] left-[12.5%] right-[12.5%] h-0 border-t-4 border-dashed border-clay/40"
+            className="hidden md:block absolute top-[26px] left-[12.5%] right-[12.5%] h-0 border-t-4 border-dashed border-clay/50"
           />
           <div className="grid md:grid-cols-4 gap-10 md:gap-6">
             {steps.map((s) => (
@@ -145,7 +145,7 @@ export default async function Process() {
                     <StepIcon type={s.icon} />
                   </svg>
                 </div>
-                <h3 className="font-display font-700 text-xl text-ink mt-5">{s.title}</h3>
+                <h3 className="font-display font-bold text-xl text-ink mt-5">{s.title}</h3>
                 <p className="font-body text-lg text-ink/75 mt-2 leading-relaxed">{s.desc}</p>
               </div>
             ))}

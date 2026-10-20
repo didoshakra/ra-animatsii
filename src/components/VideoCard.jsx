@@ -70,7 +70,7 @@ export default function VideoCard({
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-cream shadow-[0_5px_0_0_theme(colors.meadow.deep)]">
       {popularBadge && (
-        <span className="absolute left-4 top-4 z-10 rounded-full bg-sun px-3 py-1 text-xs font-700 text-ink shadow-sm">
+        <span className="absolute left-4 top-4 z-10 rounded-full bg-sun px-3 py-1 text-xs font-bold text-ink shadow-sm">
           {popularBadge}
         </span>
       )}
@@ -124,7 +124,7 @@ export default function VideoCard({
           )}
 
           {runtime && (
-            <span className="absolute bottom-3 right-3 rounded-lg bg-ink/85 px-2 py-1 text-xs font-700 text-cream">
+            <span className="absolute bottom-3 right-3 rounded-lg bg-ink/85 px-2 py-1 text-xs font-bold text-cream">
               {runtime}
             </span>
           )}
@@ -133,17 +133,17 @@ export default function VideoCard({
 
       <div className="flex flex-1 flex-col p-5">
         {packageLabel && (
-          <p className="mb-2 text-xs font-700 uppercase tracking-wide text-meadow-deep">{packageLabel}</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-meadow-deep">{packageLabel}</p>
         )}
 
         {title && (
-          <h3 className="font-display text-xl font-700 leading-snug text-ink">{title.replace(/^\d+\.\s*/, "")}</h3>
+          <h3 className="font-display text-xl font-bold leading-snug text-ink">{title.replace(/^\d+\.\s*/, "")}</h3>
         )}
 
-        {price && <p className="mt-3 font-display text-2xl font-800 leading-tight text-ink">{price}</p>}
+        {price && <p className="mt-3 font-display text-2xl font-extrabold leading-tight text-ink">{price}</p>}
 
         {(duration || executionTime) && (
-          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-700 text-clay-deep">
+          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-bold text-clay-deep">
             {duration && <span>{duration}</span>}
 
             {duration && executionTime && <span aria-hidden="true">·</span>}
@@ -156,17 +156,17 @@ export default function VideoCard({
           </div>
         )}
 
-        {meta && <p className="mt-2 text-sm text-ink/50">{meta}</p>}
+        {meta && <p className="mt-2 text-sm text-ink/60">{meta}</p>}
 
         {desc && <p className="mt-4 text-sm leading-relaxed text-ink/75">{desc}</p>}
 
         {structure && (
-          <p className="mt-4 rounded-xl bg-meadow/10 px-3 py-3 text-sm font-700 leading-relaxed text-meadow-deep">
+          <p className="mt-4 rounded-xl bg-meadow/10 px-3 py-3 text-sm font-bold leading-relaxed text-meadow-deep">
             {structure}
           </p>
         )}
 
-        {suitableFor && <p className="mt-3 text-sm leading-relaxed text-ink/60">{suitableFor}</p>}
+        {suitableFor && <p className="mt-3 text-sm leading-relaxed text-ink/70">{suitableFor}</p>}
 
         <div className="mt-auto pt-5">
           {ctaSource && (
@@ -181,7 +181,7 @@ export default function VideoCard({
                     })
                   : ""
               }
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-center text-sm font-700 text-cream transition-colors hover:bg-meadow-deep focus-ring"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-center text-sm font-bold text-cream transition-colors hover:bg-meadow-deep focus-ring"
             >
               {ctaLabel || t("videoCard.wantSimilar")}
               <span aria-hidden="true">→</span>
