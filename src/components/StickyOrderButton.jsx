@@ -1,17 +1,171 @@
-// src/components/StickyOrderButton.jsx
+//GP 20261020// src/components/StickyOrderButton.jsx
 "use client"
 
-import { useEffect, useState } from "react"
+
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useT } from "next-i18next/client"
+import { TELEGRAM_URL, CONTACT_EMAIL } from "@/lib/contacts"
 import PricingCta from "./PricingCta"
 
-// Липка кнопка «Замовити» лише на мобільному.
-// Ховається в адмінці та поки форма #contact видна на екрані.
+// Номер WhatsApp у міжнародному форматі без +, пробілів і дужок.
+// Наприклад: 380XXXXXXXXX
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""
+
+// function EagleIcon() {
+//   return (
+//     <svg viewBox="0 0 64 48" width="38" height="30" fill="none" aria-hidden="true">
+//       <path
+//         d="M32 8 25 2 22 12 4 7 13 19 2 17 15 29 7 31 23 36 29 43 32 38 35 43 41 36 57 31 49 29 62 17 51 19 60 7 42 12 39 2 32 8Z"
+//         fill="currentColor"
+//       />
+//       <path d="M32 13 27 22 32 20 37 22 32 13Z" fill="#171717" />
+//       <path d="M24 24 17 21 23 29 30 32 32 38 34 32 41 29 47 21 40 24 35 27 32 25 29 27 24 24Z" fill="#171717" />
+//       <path d="M29 32 32 35 35 32 32 29 29 32Z" fill="currentColor" />
+//     </svg>
+//   )
+// }
+
+function EagleIcon() {
+  return (
+    <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={48} height={48} className="rounded-full" />
+    // <img
+    //   src="/brand/RASpark_eagle.png"
+    //   alt=""
+    //   aria-hidden="true"
+    //   width="48"
+    //   height="48"
+    //   className="h-12 w-12 shrink-0 rounded-full object-cover"
+    // />
+  )
+}
+
+
+function TelegramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true">
+      <path d="M21.7 4.4 18.5 20c-.2 1.1-.8 1.4-1.7.9l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.2L6.4 14.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.2 3.5c.9-.3 1.7.2 1.5.9Z" />
+    </svg>
+  )
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="21"
+      height="21"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20.2 11.8a8.2 8.2 0 0 1-12.1 7.2L3 20l1.1-4.9a8.2 8.2 0 1 1 16.1-3.3Z" />
+      <path d="M8.5 8.1c.3-.5.6-.5.9-.5h.4c.2 0 .4.1.5.4l.8 1.9c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4 0 .6.5.9 1.2 1.6 2.1 2.1.3.2.5.2.7 0l.8-.9c.2-.2.4-.3.7-.2l1.8.9c.3.1.4.3.4.5 0 .4-.2 1.1-.7 1.5-.5.4-1.1.6-1.8.5-1.1-.2-2.5-.8-3.9-2-1.1-1-2.1-2.4-2.4-3.4-.3-1 .1-1.8.4-2.3Z" />
+    </svg>
+  )
+}
+
+function MailIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="21"
+      height="21"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  )
+}
+
+function OrderIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="21"
+      height="21"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Z" />
+      <path d="m8.5 12 2.3 2.3 4.7-4.7" />
+    </svg>
+  )
+}
+
+function MenuItem({ icon, title, description, href, onClick, disabled }) {
+  const content = (
+    <>
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cream/[0.06] text-sun">
+        {icon}
+      </span>
+
+      <span className="min-w-0 flex-1 text-left">
+        <span className="block font-body text-sm font-bold text-cream">{title}</span>
+        <span className="mt-0.5 block font-body text-xs leading-snug text-cream/55">{description}</span>
+      </span>
+
+      {!disabled && (
+        <svg
+          viewBox="0 0 24 24"
+          width="17"
+          height="17"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          aria-hidden="true"
+          className="shrink-0 text-cream/40"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      )}
+    </>
+  )
+
+  const cls =
+    "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors " +
+    (disabled ? "cursor-not-allowed opacity-45" : "hover:bg-cream/[0.06] focus-ring")
+
+  if (href && !disabled) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={cls}>
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <button type="button" onClick={onClick} disabled={disabled} className={cls}>
+      {content}
+    </button>
+  )
+}
+
 export default function StickyOrderButton() {
-  const { t } = useT("common")
+  const { t, i18n } = useT("common")
   const pathname = usePathname() || ""
   const [formVisible, setFormVisible] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const rootRef = useRef(null)
+
+  const isEnglish = i18n.language?.startsWith("en")
+  const whatsappUrl = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}` : ""
 
   const cleanPath = pathname.replace(/^\/en(?=\/|$)/, "")
   const isHidden = cleanPath.startsWith("/admin") || cleanPath.startsWith("/exclude-me")
@@ -25,20 +179,24 @@ export default function StickyOrderButton() {
     const attach = () => {
       const target = document.getElementById("contact")
       if (!target) return false
-      io = new IntersectionObserver(([entry]) => setFormVisible(entry.isIntersecting), {
-        threshold: 0.1,
-      })
+
+      io = new IntersectionObserver(([entry]) => setFormVisible(entry.isIntersecting), { threshold: 0.05 })
+
       io.observe(target)
       return true
     }
 
-    // Якщо форми ще немає в DOM (Suspense), чекаємо її появи
     if (!attach()) {
       setFormVisible(false)
+
       mo = new MutationObserver(() => {
         if (attach()) mo.disconnect()
       })
-      mo.observe(document.body, { childList: true, subtree: true })
+
+      mo.observe(document.body, {
+        childList: true,
+        subtree: true,
+      })
     }
 
     return () => {
@@ -47,25 +205,198 @@ export default function StickyOrderButton() {
     }
   }, [pathname, isHidden])
 
-  if (isHidden) return null
+  // Закриття меню натисканням поза ним або клавішею Escape.
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const onPointerDown = (e) => {
+      if (!rootRef.current?.contains(e.target)) {
+        setMenuOpen(false)
+      }
+    }
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setMenuOpen(false)
+    }
+
+    document.addEventListener("pointerdown", onPointerDown)
+    document.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown)
+      document.removeEventListener("keydown", onKeyDown)
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname, formVisible])
+
+  if (isHidden || formVisible) return null
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <>
-      {/* Відступ, щоб смуга не перекривала низ футера */}
-      <div aria-hidden="true" className="h-20 bg-ink sm:hidden" />
-      <div
-        className={`fixed inset-x-0 bottom-0 z-40 sm:hidden px-4 pt-3 bg-gradient-to-t from-ink/90 to-transparent transition-transform duration-200 ${
-          formVisible ? "translate-y-full" : "translate-y-0"
-        }`}
-        style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
-      >
-        <PricingCta
-          source="sticky"
-          className="flex w-full items-center justify-center rounded-full bg-sun text-ink font-display font-bold text-base py-3 shadow-[0_4px_0_0_theme(colors.clay.deep)] active:translate-y-[3px] active:shadow-none focus-ring"
+    <div
+      ref={rootRef}
+      className="fixed bottom-4 right-3 z-50 flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-2 sm:bottom-6 sm:right-6"
+      style={{
+        paddingBottom: "env(safe-area-inset-bottom)",
+      }}
+    >
+      {/* Випадаюче меню */}
+      {menuOpen && (
+        <div
+          id="ra-contact-menu"
+          role="dialog"
+          aria-label={isEnglish ? "Contact RA Spark" : "Контакти RA Spark"}
+          className="w-[320px] max-w-[calc(100vw-1.5rem)] origin-bottom-right rounded-2xl border border-cream/15 bg-ink p-3 shadow-2xl shadow-black/40"
         >
-          {t("stickyCta.label")}
-        </PricingCta>
-      </div>
-    </>
+          <div className="flex items-start justify-between gap-3 px-2 pb-3 pt-1">
+            <div>
+              <h3 className="font-display text-base font-bold text-cream">
+                {isEnglish ? "Contact RA Spark" : "Зв'язатися з RA Spark"}
+              </h3>
+              <p className="mt-1 font-body text-xs text-cream/55">
+                {isEnglish ? "Choose a convenient way to reach us" : "Оберіть зручний спосіб зв'язку"}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={closeMenu}
+              aria-label={isEnglish ? "Close menu" : "Закрити меню"}
+              className="rounded-lg p-1.5 text-cream/60 hover:bg-cream/10 hover:text-cream focus-ring"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="19"
+                height="19"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="m18 6-12 12M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="grid gap-1">
+            <MenuItem
+              icon={<TelegramIcon />}
+              title="Telegram"
+              description={isEnglish ? "Send us a message" : "Написати повідомлення"}
+              href={TELEGRAM_URL}
+              onClick={closeMenu}
+            />
+
+            <MenuItem
+              icon={<WhatsAppIcon />}
+              title="WhatsApp"
+              description={
+                whatsappUrl
+                  ? isEnglish
+                    ? "Chat with us on WhatsApp"
+                    : "Написати у WhatsApp"
+                  : isEnglish
+                    ? "Add your WhatsApp number to enable"
+                    : "Потрібно додати номер WhatsApp"
+              }
+              href={whatsappUrl || undefined}
+              disabled={!whatsappUrl}
+              onClick={closeMenu}
+            />
+
+            <MenuItem
+              icon={<MailIcon />}
+              title="Email"
+              description={CONTACT_EMAIL}
+              href={`mailto:${CONTACT_EMAIL}`}
+              onClick={closeMenu}
+            />
+
+            <div className="my-1 h-px bg-cream/10" />
+
+            <div onClick={closeMenu}>
+              <PricingCta
+                source="sticky"
+                className="flex w-full items-center gap-3 rounded-xl bg-sun px-3 py-3 text-left font-body transition-colors hover:bg-sun-light focus-ring"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink/10 text-ink">
+                  <OrderIcon />
+                </span>
+
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-bold text-ink">
+                    {isEnglish ? "Order a video" : "Замовити ролик"}
+                  </span>
+                  <span className="mt-0.5 block text-xs text-ink/70">
+                    {isEnglish ? "Tell us about your project" : "Розкажіть про свій проєкт"}
+                  </span>
+                </span>
+
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </PricingCta>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Плаваюча кнопка з емблемою орла */}
+      <button
+        type="button"
+        aria-expanded={menuOpen}
+        aria-controls="ra-contact-menu"
+        onClick={() => setMenuOpen((v) => !v)}
+        className="flex max-w-full items-center gap-2.5 rounded-full border border-sun/40 bg-ink py-2 pl-2.5 pr-4 text-left shadow-lg shadow-black/30 transition-all hover:border-sun hover:shadow-xl focus-ring"
+      >
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sun text-ink">
+          <EagleIcon />
+        </span>
+
+        <span className="min-w-0">
+          <span className="block max-w-[220px] font-body text-xs font-bold leading-snug text-cream sm:max-w-none sm:text-sm">
+            {isEnglish ? "Contact us or order a video" : "Зв'яжіться з нами або"}
+          </span>
+
+          {!isEnglish && (
+            <span className="block font-body text-xs font-bold leading-snug text-sun sm:text-sm">Замовте ролик</span>
+          )}
+
+          {isEnglish && (
+            <span className="block font-body text-xs font-bold leading-snug text-sun sm:text-sm">
+              Let's discuss your project
+            </span>
+          )}
+        </span>
+
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          className={`ml-0.5 shrink-0 text-sun transition-transform ${menuOpen ? "rotate-180" : ""}`}
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+    </div>
   )
 }
