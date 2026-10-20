@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,jsx,mdx}",
-    "./src/components/**/*.{js,jsx,mdx}",
-    "./src/app/**/*.{js,jsx,mdx}",
-  ],
+  content: ["./src/pages/**/*.{js,jsx,mdx}", "./src/components/**/*.{js,jsx,mdx}", "./src/app/**/*.{js,jsx,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -30,8 +26,10 @@ module.exports = {
         ink: "#2F2416",
       },
       fontFamily: {
-        display: ["var(--font-baloo)", "sans-serif"],
-        body: ["var(--font-nunito)", "sans-serif"],
+        // display: ["var(--font-baloo)", "sans-serif"],
+        // body: ["var(--font-nunito)", "sans-serif"],
+        display: ["var(--font-dm-serif)", "Georgia", "serif"],
+        body: ["var(--font-manrope)", "sans-serif"],
       },
       borderRadius: {
         blob: "42% 58% 61% 39% / 45% 42% 58% 55%",
@@ -39,4 +37,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

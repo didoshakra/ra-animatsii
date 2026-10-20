@@ -9,7 +9,7 @@ import AttributionCapture from "../../components/AttributionCapture"
 import StickyOrderButton from "@/components/StickyOrderButton"
 import { siteUrl, siteName } from "@/lib/site"
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }) {  
   const { lng } = await params
   const { t } = await getT("common")
 
