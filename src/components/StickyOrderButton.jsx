@@ -1,7 +1,6 @@
 //GP 20261020// src/components/StickyOrderButton.jsx
 "use client"
 
-
 "use client"
 
 import { useEffect, useRef, useState } from "react"
@@ -30,19 +29,8 @@ const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""
 // }
 
 function EagleIcon() {
-  return (
-    <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={48} height={48} className="rounded-full" />
-    // <img
-    //   src="/brand/RASpark_eagle.png"
-    //   alt=""
-    //   aria-hidden="true"
-    //   width="48"
-    //   height="48"
-    //   className="h-12 w-12 shrink-0 rounded-full object-cover"
-    // />
-  )
+  return <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={48} height={48} className="rounded-full" />
 }
-
 
 function TelegramIcon() {
   return (
@@ -162,6 +150,7 @@ export default function StickyOrderButton() {
   const pathname = usePathname() || ""
   const [formVisible, setFormVisible] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [emailCopied, setEmailCopied] = useState(false)
   const rootRef = useRef(null)
 
   const isEnglish = i18n.language?.startsWith("en")
@@ -236,6 +225,31 @@ export default function StickyOrderButton() {
 
   const closeMenu = () => setMenuOpen(false)
 
+  async function copyEmail() {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(CONTACT_EMAIL)
+      } else {
+        const textarea = document.createElement("textarea")
+        textarea.value = CONTACT_EMAIL
+        textarea.style.position = "fixed"
+        textarea.style.opacity = "0"
+        document.body.appendChild(textarea)
+        textarea.select()
+
+        const copied = document.execCommand("copy")
+        textarea.remove()
+
+        if (!copied) throw new Error("Copy failed")
+      }
+
+      setEmailCopied(true)
+      window.setTimeout(() => setEmailCopied(false), 2000)
+    } catch {
+      window.prompt(isEnglish ? "Copy email address:" : "Скопіюйте адресу пошти:", CONTACT_EMAIL)
+    }
+  }
+
   return (
     <div
       ref={rootRef}
@@ -309,13 +323,67 @@ export default function StickyOrderButton() {
               onClick={closeMenu}
             />
 
-            <MenuItem
-              icon={<MailIcon />}
-              title="Email"
-              description={CONTACT_EMAIL}
-              href={`mailto:${CONTACT_EMAIL}`}
-              onClick={closeMenu}
-            />
+            <div className="flex items-center gap-1 rounded-xl transition-colors hover:bg-cream/[0.06]">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                onClick={closeMenu}
+                className="flex min-w-0 flex-1 items-center gap-3 rounded-xl px-3 py-2.5 text-left focus-ring"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cream/[0.06] text-sun">
+                  <MailIcon />
+                </span>
+
+                <span className="min-w-0 flex-1">
+                  <span className="block font-body text-sm font-bold text-cream">Email</span>
+                  <span className="block break-all font-body text-xs text-cream/55">{CONTACT_EMAIL}</span>
+                </span>
+              </a>
+
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="mr-2 flex shrink-0 items-center gap-1.5 rounded-lg px-2 py-2 font-body text-xs font-semibold text-sun transition-colors hover:bg-sun/10 focus-ring"
+                aria-label={emailCopied ? "Email copied" : "Copy email address"}
+                title={emailCopied ? "Скопійовано" : "Копіювати email"}
+              >
+                {emailCopied ? (
+                  <>
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="17"
+                      height="17"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m5 12 4 4L19 6" />
+                    </svg>
+                    <span>{isEnglish ? "Copied!" : "Скопійовано!"}</span>
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="17"
+                      height="17"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="8" y="8" width="12" height="12" rx="2" />
+                      <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+                    </svg>
+                    <span>{isEnglish ? "Copy" : "Копіювати"}</span>
+                  </>
+                )}
+              </button>
+            </div>
 
             <div className="my-1 h-px bg-cream/10" />
 
