@@ -35,7 +35,7 @@ export default async function Hero() {
 
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-[1.1fr_0.9fr] gap-4 md:gap-10 items-center">
         <div>
-          <h1 className="font-display font-extrabold text-ink text-[2.1rem] sm:text-5xl lg:text-[3.4rem] leading-[1.12] sm:leading-[1.08] tracking-tight">
+          <h1 className="font-display font-extrabold text-ink text-[2.1rem] sm:text-4xl lg:text-[3.4rem] leading-[1.12] sm:leading-[1.08] tracking-tight">
             {t("hero.titleLine1")}
             <br />
             {t("hero.titleLine2")}
