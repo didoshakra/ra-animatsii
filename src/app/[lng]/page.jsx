@@ -17,7 +17,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <HillDivider fromColor="#211C19" toColor="#FBF6E9" />
+        {/* <HillDivider fromColor="#211C19" toColor="#FBF6E9" /> */}
         <StudioVideo />
         <HillDivider fromColor="#B96F45" toColor="#5FA653" />
         <Portfolio />
