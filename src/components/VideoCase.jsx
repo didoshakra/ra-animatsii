@@ -61,7 +61,7 @@ export default function VideoCase() {
             videoUrl={c.VIDEO_URL}
             posterUrl={c.POSTER_URL}
             badge={`${badgePrefix} ${c.title}`}
-            aspectLabel={c.aspect}
+            aspect={c.aspect}
             runtime={formatRuntime(c.durationSeconds)}
             meta={`${c.visualStyle} · ${c.soundType}`}
             ctaFormatId={c.formId}

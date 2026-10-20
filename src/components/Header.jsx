@@ -1,4 +1,4 @@
-// components/Header.jsx
+//GP20261020// components/Header.jsx
 "use client"
 
 import { useState } from "react"
@@ -8,8 +8,8 @@ import LanguageSwitcher from "./LanguageSwitcher"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  //   const { t } = useT("common")
   const { t, i18n } = useT("common")
+
   const base = i18n.language === "en" ? "/en" : ""
   const home = base || "/"
 
@@ -19,42 +19,49 @@ export default function Header() {
     { href: `${home}#process`, label: t("header.nav.process") },
     { href: `${home}#pricing`, label: t("header.nav.pricing") },
     { href: `${base}/examples`, label: t("header.nav.case") },
-    { href: "#contact", label: t("header.nav.contact") },
+    { href: `${home}#contact`, label: t("header.nav.contact") },
   ]
 
   return (
-    <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-sm border-b border-clay/15">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
-        <a href={home} className="flex items-center gap-2.5 shrink-0 focus-ring" onClick={() => setOpen(false)}>
+    <header className="sticky top-0 z-40 border-b border-cream/10 bg-ink/95 text-cream backdrop-blur-md">
+      <div className="mx-auto flex h-[64px] max-w-7xl items-center justify-between px-5 sm:h-[72px] sm:px-8">
+        <a
+          href={home}
+          className="flex shrink-0 items-center gap-2.5 focus-ring"
+          onClick={() => setOpen(false)}
+        >
           <Image
             src="/brand/RASpark_eagle.png"
             alt={t("header.brand")}
-            width={40}
-            height={40}
-            className="rounded-full w-9 h-9 sm:w-11 sm:h-11"
+            width={44}
+            height={44}
+            sizes="(max-width: 640px) 36px, 44px"
+            className="h-9 w-9 object-contain sm:h-11 sm:w-11"
             priority
           />
-          <span className="font-display font-bold text-lg sm:text-xl text-ink tracking-tight whitespace-nowrap">
+          <span className="font-display text-lg tracking-tight text-cream sm:text-xl">
             {t("header.brand")}
           </span>
         </a>
-        <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 md:ml-6">
-          {links.map((l) => (
+
+        <nav className="ml-6 hidden items-center gap-3 md:flex lg:gap-5 xl:gap-6">
+          {links.map((link) => (
             <a
-              key={l.href}
-              href={l.href}
-              className="font-body font-bold text-sm lg:text-base text-ink hover:text-clay-deep transition-colors focus-ring whitespace-nowrap"
+              key={link.href}
+              href={link.href}
+              className="whitespace-nowrap font-body text-sm font-medium text-cream/80 transition-colors hover:text-sun focus-ring lg:text-[15px]"
             >
-              {l.label}
+              {link.label}
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3 shrink-0">
+
+        <div className="flex shrink-0 items-center gap-3">
           <LanguageSwitcher />
 
           <a
-            href="#contact"
-            className="hidden xl:inline-block whitespace-nowrap font-display font-600 text-sm bg-clay text-cream px-4 py-2 rounded-full hover:bg-clay-deep transition-colors focus-ring shadow-[0_3px_0_0_theme(colors.clay.deep)] active:translate-y-[2px] active:shadow-none"
+            href={`${home}#contact`}
+            className="hidden whitespace-nowrap rounded-full border border-clay/70 bg-clay px-4 py-2 font-body text-sm font-semibold text-cream transition-colors hover:border-clay hover:bg-clay-deep focus-ring xl:inline-block"
           >
             {t("header.cta")}
           </a>
@@ -63,18 +70,23 @@ export default function Header() {
             type="button"
             aria-label={open ? t("header.menuClose") : t("header.menuOpen")}
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-[5px] focus-ring rounded-lg"
+            aria-controls="mobile-navigation"
+            onClick={() => setOpen((value) => !value)}
+            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-lg focus-ring md:hidden"
           >
             <span
-              className={`block w-6 h-[3px] bg-ink rounded-full transition-transform ${
-                open ? "translate-y-[8px] rotate-45" : ""
+              className={`block h-[2px] w-6 rounded-full bg-cream transition-transform ${
+                open ? "translate-y-[7px] rotate-45" : ""
               }`}
             />
-            <span className={`block w-6 h-[3px] bg-ink rounded-full transition-opacity ${open ? "opacity-0" : ""}`} />
             <span
-              className={`block w-6 h-[3px] bg-ink rounded-full transition-transform ${
-                open ? "-translate-y-[8px] -rotate-45" : ""
+              className={`block h-[2px] w-6 rounded-full bg-cream transition-opacity ${
+                open ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-6 rounded-full bg-cream transition-transform ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
               }`}
             />
           </button>
@@ -82,25 +94,31 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-clay/15 bg-cream px-5 py-4 flex flex-col gap-1">
-          {links.map((l) => (
+        <nav
+          id="mobile-navigation"
+          className="border-t border-cream/10 bg-ink px-5 py-4 md:hidden"
+        >
+          <div className="mx-auto flex max-w-7xl flex-col gap-1">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-lg py-3 font-body text-[15px] font-medium text-cream/85 transition-colors hover:bg-cream/5 hover:text-sun focus-ring"
+              >
+                {link.label}
+              </a>
+            ))}
+
             <a
-              key={l.href}
-              href={l.href}
+              href={`${home}#contact`}
               onClick={() => setOpen(false)}
-              className="font-body font-bold text-ink/85 py-2.5 focus-ring"
+              className="mt-3 rounded-full bg-clay px-5 py-3 text-center font-body text-sm font-semibold text-cream transition-colors hover:bg-clay-deep focus-ring"
             >
-              {l.label}
+              {t("header.cta")}
             </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="mt-2 text-center font-display font-600 bg-clay text-cream px-5 py-3 rounded-full focus-ring"
-          >
-            {t("header.cta")}
-          </a>
-        </div>
+          </div>
+        </nav>
       )}
     </header>
   )

@@ -123,11 +123,19 @@ export default function VideoCard({
             </>
           )}
 
-          {runtime && (
-            <span className="absolute bottom-3 right-3 rounded-lg bg-ink/85 px-2 py-1 text-xs font-bold text-cream">
-              {runtime}
-            </span>
-          )}
+          <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2">
+            {aspect && (
+              <span className="rounded-md bg-ink/85 px-2 py-1 text-xs font-semibold text-cream backdrop-blur-sm">
+                {aspect}
+              </span>
+            )}
+
+            {runtime && (
+              <span className="rounded-md bg-ink/85 px-2 py-1 text-xs font-semibold text-cream backdrop-blur-sm">
+                {runtime}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 

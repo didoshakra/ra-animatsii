@@ -139,7 +139,7 @@ export default async function Portfolio() {
                 duration={f.duration}
                 runtime={formatRuntime(f.durationSeconds)}
                 color={f.color}
-                playAspect={f.aspect}
+                aspect={f.aspect}
                 ctaFormatId={f.ctaFormatId}
                 ctaSource={f.ctaSource}
                 price={f.price}
