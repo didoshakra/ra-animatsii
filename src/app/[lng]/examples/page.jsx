@@ -32,12 +32,14 @@ export default async function ExamplesPage({ params }) {
   return (
     <PageShell lng={lng} crumbs={crumbs}>
       <div className="max-w-2xl">
-        <h1 className="font-display font-800 text-cream text-3xl sm:text-4xl leading-tight">{c.examples.h1}</h1>
-        <p className="mt-4 font-body text-cream/90 text-xl leading-relaxed">{c.examples.intro}</p>
-        <p className="mt-3 font-body text-cream/80 text-base">{c.demoNote}</p>
+        <h1 className="font-display font-extrabold text-cream text-3xl sm:text-4xl leading-tight antialiased">
+          {c.examples.h1}
+        </h1>
+        <p className="mt-4 font-body text-cream text-xl leading-relaxed antialiased">{c.examples.intro}</p>
+        <p className="mt-3 font-body text-cream/90 text-base antialiased">{c.demoNote}</p>
       </div>
 
-      <h2 className="mt-8 font-display font-700 text-cream text-2xl">{c.examples.byNiche}</h2>
+      <h2 className="mt-8 font-display font-bold text-cream text-2xl antialiased">{c.examples.byNiche}</h2>
       <ul className="mt-4 flex flex-wrap gap-3">
         {nicheLinks.map((n) => (
           <li key={n.slug}>

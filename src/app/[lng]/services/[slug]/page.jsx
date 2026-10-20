@@ -78,7 +78,7 @@ export default async function FormatPage({ params }) {
       </div>
 
       <h2 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl">{c.examplesOfFormat}</h2>
-      <p className="mt-1 font-body text-cream/80 text-sm">{c.demoNote}</p>
+      <p className="mt-1 font-body text-cream/90 text-sm antialiased">{c.demoNote}</p>
       <VideoGrid videos={videos} badge={c.exampleBadge} />
 
       <h2 className="mt-8 font-display font-700 text-cream text-xl sm:text-2xl">{c.otherFormats}</h2>
