@@ -26,7 +26,7 @@ export default async function Hero() {
 
           {/* <h1 className="max-w-2xl font-display text-[2.65rem] font-normal leading-[1.08] tracking-tight text-cream sm:text-5xl lg:text-[4.25rem]"> */}
           {/* <h1 className="max-w-xl font-display text-[2rem] font-normal leading-[1.08] tracking-tight text-cream sm:text-5xl lg:text-[4.25rem]"> */}
-            <h1 className="max-w-2xl font-display text-[2rem] font-normal leading-[1.12] tracking-tight text-cream sm:text-[2.7rem] lg:text-[3.5rem]">
+          <h1 className="max-w-2xl font-display text-[1.9rem] font-normal leading-[1.12] tracking-tight text-cream sm:text-[2.7rem] lg:text-[3.5rem]">
             {t("hero.titleLine1")}
             <br />
             <span className="text-[#E5B783]">{t("hero.titleLine2")}</span>
