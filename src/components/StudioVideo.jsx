@@ -1,4 +1,4 @@
-// components/StudioVideo.jsx
+//GEM20261020//components/StudioVideo.jsx
 "use client"
 
 import { useRef, useState } from "react"
@@ -110,9 +110,12 @@ export default function StudioVideo() {
             </p>
             <a
               href="#contact"
-              className="font-display font-bold text-cream bg-meadow-deep px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-full text-base sm:text-lg text-center hover:bg-meadow-deep/90 transition-colors focus-ring shadow-[0_4px_0_0_theme(colors.ink)] active:translate-y-[3px] active:shadow-none"
+              className="mt-1 inline-flex min-h-12 items-center justify-center rounded-full bg-[#B96F45] px-6 py-3 font-body text-sm font-bold text-white transition-colors hover:bg-[#A75D35] focus-ring sm:px-7 sm:text-base"
             >
               {t("studioVideo.ctaButton")}
+              <span aria-hidden="true" className="ml-2 text-lg">
+                →
+              </span>
             </a>
           </div>
         </div>

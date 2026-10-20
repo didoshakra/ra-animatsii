@@ -17,18 +17,16 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <HillDivider fromColor="#6FC3E8" toColor="#FBF6E9" />
+        <HillDivider fromColor="#211C19" toColor="#FBF6E9" />
         <StudioVideo />
-        <HillDivider fromColor="#FBF6E9" toColor="#5FA653" />
+        <HillDivider fromColor="#B96F45" toColor="#5FA653" />
         <Portfolio />
-        {/* <HillDivider fromColor="#3F7A38" toColor="#FBF6E9" /> */}
-        <HillDivider fromColor="#3F7A38" toColor="#bae6fd" />
+        <HillDivider fromColor="#B96F45" toColor="#D9A879" />
         <Process />
         <AboutTeam />
-        {/* <HillDivider fromColor="#FBF6E9" toColor="#CDEBF9" /> */}
         <HillDivider fromColor="#bae6fd" toColor="#5FA653" />
         {/* <Pricing /> */}
-        <HillDivider fromColor="#FBF6E9" toColor="#5FA653" />
+        {/* <HillDivider fromColor="#FBF6E9" toColor="#5FA653" /> */}
         <RealCase />
         <HillDivider fromColor="#5FA653" toColor="#2F2416" />
         <ContactForm />

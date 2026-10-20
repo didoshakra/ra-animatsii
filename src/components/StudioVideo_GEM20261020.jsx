@@ -1,0 +1,125 @@
+//GEM20261020//components/StudioVideo.jsx
+"use client"
+
+import { useRef, useState } from "react"
+import { useT } from "next-i18next/client"
+import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
+import ukCommon from "../../public/locales/uk/common.json"
+import { useVideoTracking } from "@/lib/useVideoTracking"
+import { siteUrl } from "@/lib/site"
+
+const VIDEO_DURATION_SECONDS = 66
+
+export default function StudioVideo() {
+  const { t } = useT("common")
+  const VIDEO_SRC = t("studioVideo.videoSrc") || ukCommon.studioVideo.videoSrc
+  const POSTER_SRC = getCloudinaryPoster(VIDEO_SRC)
+  const videoRef = useRef(null)
+  useVideoTracking(videoRef, VIDEO_SRC, t("studioVideo.title")) // новий рядок
+  const [playing, setPlaying] = useState(false)
+  const [error, setError] = useState(false)
+
+  function handlePlay() {
+    setPlaying(true)
+    const el = videoRef.current
+    if (!el) return
+    const result = el.play()
+    if (result && typeof result.catch === "function") {
+      result.catch(() => setError(true))
+    }
+  }
+
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: t("studioVideo.title"),
+    description: t("studioVideo.description"),
+    thumbnailUrl: [POSTER_SRC],
+    uploadDate: getCloudinaryUploadDate(VIDEO_SRC),
+    duration: secondsToIsoDuration(VIDEO_DURATION_SECONDS),
+    contentUrl: VIDEO_SRC,
+    embedUrl: `${siteUrl}/#studio-video`,
+    publisher: { "@id": `${siteUrl}/#organization` },
+  }
+
+  return (
+    <section id="studio-video" className="bg-cream py-14 sm:py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }} />
+      <div className="max-w-5xl mx-auto px-5 sm:px-8">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
+            {t("studioVideo.title")}
+          </h2>
+          <p className="mt-2 sm:mt-4 font-body text-base sm:text-lg text-ink/75 leading-relaxed">
+            {t("studioVideo.description")}
+          </p>
+        </div>
+
+        <div className="mt-6 sm:mt-10 grid md:grid-cols-[1.3fr_0.7fr] gap-4 md:gap-8 items-center">
+          {/* Реальний відеоплеєр */}
+          <div className="relative aspect-video rounded-3xl overflow-hidden bg-ink shadow-[0_8px_0_0_theme(colors.clay.deep)]">
+            {error ? (
+              <a
+                href={VIDEO_SRC}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-ink text-cream text-center px-4 focus-ring"
+              >
+                <span className="w-14 h-14 rounded-full bg-cream/90 flex items-center justify-center">
+                  <span className="ml-1 w-0 h-0 border-y-[10px] border-y-transparent border-l-[16px] border-l-ink" />
+                </span>
+                <span className="font-body text-sm">{t("studioVideo.videoFallback")}</span>
+              </a>
+            ) : (
+              <>
+                <video
+                  ref={videoRef}
+                  poster={POSTER_SRC}
+                  controls={playing}
+                  playsInline
+                  preload="none"
+                  className="w-full h-full object-cover"
+                  onPause={() => setPlaying(false)}
+                  onError={() => setError(true)}
+                >
+                  <source src={VIDEO_SRC} type="video/mp4" />
+                </video>
+                {!playing && (
+                  <button
+                    type="button"
+                    onClick={handlePlay}
+                    aria-label={t("studioVideo.playAriaLabel")}
+                    className="absolute inset-0 flex items-center justify-center bg-ink/20 hover:bg-ink/30 transition-colors focus-ring"
+                  >
+                    <span className="w-16 h-16 rounded-full bg-cream/90 flex items-center justify-center">
+                      <span className="ml-1 w-0 h-0 border-y-[11px] border-y-transparent border-l-[17px] border-l-ink" />
+                    </span>
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+
+          {/* Чесна CTA-кнопка, не імітація плеєра */}
+          <div className="flex flex-col items-start gap-2 sm:gap-4">
+            <p className="font-display font-bold text-ink text-lg sm:text-2xl leading-snug">
+              {t("studioVideo.ctaTitle")}
+            </p>
+            <p className="hidden sm:block font-body text-base text-ink/80 leading-relaxed">
+              {t("studioVideo.ctaDescription")}
+            </p>
+            <a
+              href="#contact"
+              className="mt-1 inline-flex min-h-12 items-center justify-center rounded-full bg-[#B96F45] px-6 py-3 font-body text-sm font-bold text-white transition-colors hover:bg-[#A75D35] focus-ring sm:px-7 sm:text-base"
+            >
+              {t("studioVideo.ctaButton")}
+              <span aria-hidden="true" className="ml-2 text-lg">
+                →
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
