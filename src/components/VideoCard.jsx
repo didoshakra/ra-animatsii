@@ -30,6 +30,8 @@ export default function VideoCard({
   packageLabel,
   popularBadge,
   ctaLabel,
+  detailsHref,
+  detailsLabel,
 }) {
   const { t } = useT("common")
   const videoRef = useRef(null)
@@ -148,8 +150,7 @@ export default function VideoCard({
           <h3 className="font-display text-xl font-bold leading-snug text-ink">{title.replace(/^\d+\.\s*/, "")}</h3>
         )}
 
-        {price && <p className="mt-3 font-display text-2xl font-extrabold leading-tight text-ink">{price}</p>}
-
+        {price && <div className="mt-3">{price}</div>}
         {(duration || executionTime) && (
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-bold text-clay-deep">
             {duration && <span>{duration}</span>}
@@ -166,7 +167,7 @@ export default function VideoCard({
 
         {meta && <p className="mt-2 text-sm text-ink/60">{meta}</p>}
 
-        {desc && <p className="mt-4 text-sm leading-relaxed text-ink/75">{desc}</p>}
+        {desc && <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink/90">{desc}</p>}
 
         {structure && (
           <p className="mt-4 rounded-xl bg-meadow/10 px-3 py-3 text-sm font-bold leading-relaxed text-meadow-deep">
@@ -174,9 +175,9 @@ export default function VideoCard({
           </p>
         )}
 
-        {suitableFor && <p className="mt-3 text-sm leading-relaxed text-ink/70">{suitableFor}</p>}
+        {suitableFor && <p className="mt-3 text-[15px] font-medium leading-relaxed text-ink/80">{suitableFor}</p>}
 
-        <div className="mt-auto pt-5">
+        <div className="mt-auto flex flex-col gap-2 pt-5">
           {ctaSource && (
             <PricingCta
               formatId={ctaFormatId}
@@ -194,6 +195,15 @@ export default function VideoCard({
               {ctaLabel || t("videoCard.wantSimilar")}
               <span aria-hidden="true">→</span>
             </PricingCta>
+          )}
+
+          {detailsHref && (
+            <a
+              href={detailsHref}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-meadow-deep px-4 py-2.5 text-center text-sm font-bold text-meadow-deep transition-colors hover:bg-meadow-deep hover:text-cream focus-ring"
+            >
+              {detailsLabel} <span aria-hidden="true">→</span>
+            </a>
           )}
         </div>
       </div>

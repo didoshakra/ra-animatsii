@@ -2,9 +2,7 @@
   "header": {
     "brand": "RA Spark",
     "nav": {
-      "portfolio": "Portfolio",
       "process": "How We Work",
-      "pricing": "Pricing",
       "case": "Examples",
       "contact": "Contact",
       "services": "Services"
@@ -52,6 +50,8 @@
     "durationLabel": "Execution time:",
     "popularBadge": "Popular Choice",
     "ctaButton": "Discuss Project",
+    "from": "from",
+    "currency": "$",
     "tiers": {
       "base": {
         "name": "Base",
@@ -100,9 +100,11 @@
   },
   "portfolio": {
     "eyebrow": "Select a service",
-    "formatsHeading": "Choose a video ad format",
-    "formatsSubheading": "From short social media ads to a narrative video about your brand. Compare formats, pricing, and turnaround times.",
-    "storyPackageLabel": "Story format",
+    "formatsHeading": "Choose a type of video ad",
+    "formatsSubheading": "From short social ads to story-driven brand videos. Compare types, pricing and turnaround.",
+    "detailsCta": "Learn more",
+    "allServices": "All services",
+    "storyPackageLabel": "Story",
     "formatCta": "Discuss: {{format}}",
     "priceNote": "Starting prices. The final cost is agreed upon before work begins. More complex animation, extra scenes, voiceovers, and alternative versions may affect the budget.",
     "executionEyebrow": "Add-ons",
@@ -327,5 +329,6 @@
     "description": "AI video ads for businesses, including 2D, 3D and character animation. Promotional videos for TikTok, Instagram, YouTube and digital campaigns.",
     "ogDescription": "Creative AI video ads for businesses, featuring 2D, 3D and character animation by RA Spark.",
     "ogImageAlt": "RA Spark — AI video advertising for businesses"
-  }
+  },
+  "promo": { "text": "{{percent}}% discount until December 31, 2026", "until": "until December 31" }
 }

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { getT } from "next-i18next/server"
 import PageShell from "@/components/PageShell"
 import VideoGrid from "@/components/VideoGrid"
+import Price from "@/components/Price"
 import { getContent } from "@/lib/content"
 import { FORMATS } from "@/lib/pages"
 import { localizedPath, pageMetadata } from "@/lib/seo"
@@ -62,7 +63,13 @@ export default async function FormatPage({ params }) {
         </div>
 
         <div className="bg-cream rounded-3xl p-5 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-          <p className="font-display font-extrabold text-ink text-2xl">{tier.price}</p>
+          <Price
+            prices={fmt.price}
+            from={t("pricing.from")}
+            currency={t("pricing.currency")}
+            until={t("promo.until")}
+            lng={lng}
+          />
           <p className="mt-1 font-body font-bold text-clay-deep text-sm">
             {durationLabel} {tier.days}
           </p>

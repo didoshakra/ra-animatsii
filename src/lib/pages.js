@@ -4,12 +4,19 @@
 // Оновлюйте дату вручну, коли реально змінили контент сайту
 export const SITE_LAST_UPDATE = "2026-10-15"
 
+// Базові ціни (до знижки): uk — гривні, en — долари.
+const TIER_PRICES = {
+  base: { uk: 4000, en: 100 },
+  standard: { uk: 9000, en: 220 },
+  premium: { uk: 15000, en: 370 },
+}
+
 // key = ключ у portfolio.formats, tier = ключ у pricing.tiers
 export const FORMATS = [
-  { slug: "short-ad", key: "short", tier: "base", formId: "short_advertisement" },
-  { slug: "ad-video", key: "ad", tier: "standard", formId: "commercial" },
-  { slug: "brand-video", key: "brand", tier: "premium", formId: "brand_card" },
-  { slug: "story-video", key: "story", tier: "premium", formId: "video_story" },
+  { slug: "short-ad", key: "short", tier: "base", formId: "short_advertisement", price: TIER_PRICES.base },
+  { slug: "ad-video", key: "ad", tier: "standard", formId: "commercial", price: TIER_PRICES.standard },
+  { slug: "brand-video", key: "brand", tier: "premium", formId: "brand_card", price: TIER_PRICES.premium },
+  { slug: "story-video", key: "story", tier: "premium", formId: "video_story", price: TIER_PRICES.premium },
 ]
 
 // page: true = окрема сторінка /examples/<slug>. Потрібен запис у content.js (niches).

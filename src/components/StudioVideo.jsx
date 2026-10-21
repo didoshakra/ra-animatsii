@@ -50,7 +50,7 @@ export default function StudioVideo() {
           <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
             {t("studioVideo.title")}
           </h2>
-          <p className="mt-2 sm:mt-4 font-body text-base sm:text-lg text-ink/75 leading-relaxed">
+          <p className="mt-2 sm:mt-4 font-body text-base sm:text-lg text-ink/90 leading-relaxed">
             {t("studioVideo.description")}
           </p>
         </div>

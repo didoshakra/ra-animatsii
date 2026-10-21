@@ -1,6 +1,7 @@
 // src/app/[lng]/services/page.jsx
 import { getT } from "next-i18next/server"
 import PageShell from "@/components/PageShell"
+import Price from "@/components/Price"
 import { getContent } from "@/lib/content"
 import { FORMATS } from "@/lib/pages"
 import { localizedPath, pageMetadata } from "@/lib/seo"
@@ -21,6 +22,10 @@ export default async function ServicesPage({ params }) {
   const c = getContent(lng)
   const { t } = await getT("common")
 
+  const priceFrom = t("pricing.from")
+  const priceCurrency = t("pricing.currency")
+  const promoUntil = t("promo.until")
+
   const crumbs = [
     { label: c.crumbs.home, path: "" },
     { label: c.crumbs.services, path: "/services" },
@@ -36,7 +41,6 @@ export default async function ServicesPage({ params }) {
       <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {FORMATS.map((f) => {
           const text = t(`portfolio.formats.${f.key}`, { returnObjects: true })
-          const tier = t(`pricing.tiers.${f.tier}`, { returnObjects: true })
           return (
             <a
               key={f.slug}
@@ -44,10 +48,16 @@ export default async function ServicesPage({ params }) {
               className="group bg-cream rounded-3xl p-5 flex flex-col shadow-[0_6px_0_0_theme(colors.meadow.deep)] hover:-translate-y-0.5 transition-transform focus-ring"
             >
               <h2 className="font-display font-bold text-lg text-ink leading-snug">{text.title}</h2>
-              <p className="mt-1 font-body text-sm text-clay-deep font-bold">
-                {text.duration} · {tier.price}
-              </p>
-              <p className="mt-2 font-body text-base text-ink/80 leading-relaxed line-clamp-3">{text.desc}</p>
+              <p className="mt-1 font-body text-sm text-clay-deep font-bold">{text.duration}</p>
+              <Price
+                prices={f.price}
+                from={priceFrom}
+                currency={priceCurrency}
+                until={promoUntil}
+                lng={lng}
+                className="mt-3"
+              />
+              <p className="mt-3 font-body text-base text-ink/80 leading-relaxed line-clamp-3">{text.desc}</p>
               <span className="mt-auto pt-4">
                 <span className="flex w-full items-center justify-center rounded-full bg-meadow text-cream font-body font-bold text-sm px-4 py-2.5 group-hover:bg-meadow-deep transition-colors">
                   {c.moreLabel} →

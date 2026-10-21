@@ -226,7 +226,8 @@ function ContactFormInner() {
     }
   }
   return (
-    <section id="contact" className="bg-ink py-7 sm:py-9">
+    // <section id="contact" className="bg-ink py-7 sm:py-9">
+        <section id="contact" className="bg-[#211C19] py-7 sm:py-9">
       <div className="mx-auto max-w-xl px-4 sm:px-6">
         <h2 className="text-center font-display text-2xl font-extrabold text-cream sm:text-3xl">
           {t("contactForm.heading")}

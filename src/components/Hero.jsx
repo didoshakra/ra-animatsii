@@ -8,13 +8,7 @@ export default async function Hero() {
   const perks = t("hero.perks", { returnObjects: true })
 
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-[#211C19] text-cream">
-      {/* Тепле кінематографічне світло */}
-      {/* <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -right-32 -top-40 h-[420px] w-[420px] rounded-full bg-clay/15 blur-[100px] sm:h-[560px] sm:w-[560px]" />
-        <div className="absolute -bottom-48 left-[15%] h-[360px] w-[360px] rounded-full bg-sun/5 blur-[100px]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#211C19] via-[#211C19]/95 to-[#211C19]/65" />
-      </div> */}
+    <section id="top" className="relative isolate overflow-hidden bg-[#211C19]/10 text-cream">
       {/* Фонове зображення — кіноплівка */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <Image
@@ -23,18 +17,19 @@ export default async function Hero() {
           fill
           priority
           sizes="100vw"
-          className="-translate-x-76 -translate-y-8 scale-150 object-cover opacity-[0.9]"
+          className="-translate-x-76 -translate-y-8 scale-150 object-cover opacity-100"
         />
 
         {/* Темне тонування */}
-        <div className="absolute inset-0 bg-[#211C19]/70" />
+        <div className="absolute inset-0 bg-[#211C19]/30    " />
 
         {/* Тепле кінематографічне світло */}
         <div className="absolute -right-32 -top-40 h-[420px] w-[420px] rounded-full bg-clay/15 blur-[100px] sm:h-[560px] sm:w-[560px]" />
 
         <div className="absolute -bottom-48 left-[15%] h-[360px] w-[360px] rounded-full bg-sun/5 blur-[100px]" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#211C19]/95 via-[#211C19]/80 to-[#211C19]/65" />
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-[#211C19]/95 via-[#211C19]/80 to-[#211C19]/65" /> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#211C19]/80 via-[#211C19]/60 to-[#211C19]/40" />
       </div>
 
       {/* <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-12 pt-8 sm:px-8 sm:pb-20 sm:pt-12 md:grid-cols-[1.05fr_0.95fr] md:gap-8 lg:gap-14 lg:py-20"> */}
@@ -104,10 +99,8 @@ export default async function Hero() {
         </div>
 
         {/* Фірмовий орел */}
-        {/* <div className="relative order-first flex justify-center md:order-last md:justify-end">
-          <div className="relative aspect-square w-[156px] sm:w-[230px] md:w-full md:max-w-[430px] lg:max-w-[490px]"> */}
-        {/* <div className="relative order-first flex justify-center md:order-last md:-translate-y-4 md:justify-end lg:-translate-y-6"> */}
-        <div className="relative order-first flex justify-center md:order-last md:-translate-y-12 md:justify-end lg:-translate-y-14">
+
+        <div className="relative order-first flex justify-center md:order-last md:-translate-y-20 md:justify-end lg:-translate-y-24">
           <div className="relative aspect-square w-[120px] sm:w-[190px] md:w-full md:max-w-[360px] lg:max-w-[420px]">
             {/* М'яке світіння замість декоративної плями */}
             <div

@@ -9,7 +9,8 @@
   /* --font-baloo: "Baloo 2", sans-serif;
   --font-nunito: "Nunito Sans", sans-serif; */
   --font-dm-serif: "DM Serif Display", Georgia, serif;
-  --font-manrope: "Manrope", sans-serif;
+  /* --font-manrope: "Manrope", sans-serif; */
+  --font-manrope: "Inter", sans-serif;
 }
 
 html {

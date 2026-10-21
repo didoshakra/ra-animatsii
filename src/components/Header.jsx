@@ -15,10 +15,8 @@ export default function Header() {
 
   const links = [
     { href: `${base}/services`, label: t("header.nav.services") },
-    { href: `${home}#portfolio`, label: t("header.nav.portfolio") },
-    { href: `${home}#process`, label: t("header.nav.process") },
-    { href: `${home}#pricing`, label: t("header.nav.pricing") },
     { href: `${base}/examples`, label: t("header.nav.case") },
+    { href: `${home}#process`, label: t("header.nav.process") },
     { href: `${home}#contact`, label: t("header.nav.contact") },
   ]
 

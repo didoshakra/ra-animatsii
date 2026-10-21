@@ -1,13 +1,14 @@
-// GP 20261020
-// GP 20261020// src/components/Portfolio.jsx
+// src/components/Portfolio.jsx
 import VideoCard from "./VideoCard"
 import ExecutionOptions from "./ExecutionOptions"
+import Price from "./Price"
 import { getT } from "next-i18next/server"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 import { siteUrl } from "@/lib/site"
 import { videosFrom, formatRuntime } from "@/lib/videos"
 import ukCommon from "../../public/locales/uk/common.json"
 import { FORMATS } from "@/lib/pages"
+import { localizedPath } from "@/lib/seo"
 
 const FORMAT_COLORS = {
   short: "bg-sky-light",
@@ -16,7 +17,7 @@ const FORMAT_COLORS = {
   story: "bg-sky-light",
 }
 
-// Зв'язуємо чотири формати з наявними тарифами.
+// Зв'язуємо чотири типи з наявними тарифами.
 // Story використовує стартову ціну та термін преміумпакета.
 const FORMAT_TIERS = {
   short: "base",
@@ -26,24 +27,21 @@ const FORMAT_TIERS = {
 }
 
 export default async function Portfolio() {
-  const { t } = await getT("common")
+  const { t, i18n } = await getT("common")
+  const lng = i18n?.language === "en" ? "en" : "uk"
 
   const formatsText = t("portfolio.formats", { returnObjects: true })
-  const voiceoverOptions = t("portfolio.voiceoverOptions", {
-    returnObjects: true,
-  })
-  const styleOptions = t("portfolio.styleOptions", {
-    returnObjects: true,
-  })
-  const aspectOptions = t("portfolio.aspectOptions", {
-    returnObjects: true,
-  })
+  const voiceoverOptions = t("portfolio.voiceoverOptions", { returnObjects: true })
+  const styleOptions = t("portfolio.styleOptions", { returnObjects: true })
+  const aspectOptions = t("portfolio.aspectOptions", { returnObjects: true })
 
   const accordionHint = t("portfolio.accordionHint")
   const tiersText = t("pricing.tiers", { returnObjects: true })
   const popularBadge = t("pricing.popularBadge")
   const durationLabel = t("pricing.durationLabel")
-  const promoText = t("promo.text", { percent: 25 })
+  const priceFrom = t("pricing.from")
+  const priceCurrency = t("pricing.currency")
+  const promoUntil = t("promo.until")
 
   const ukFormats = ukCommon.portfolio.formats
 
@@ -61,7 +59,7 @@ export default async function Portfolio() {
       color: FORMAT_COLORS[v.key],
       VIDEO_URL: videoUrl,
       POSTER_URL: getCloudinaryPoster(videoUrl),
-      price: tier.price || "",
+      price: <Price prices={format?.price} from={priceFrom} currency={priceCurrency} until={promoUntil} lng={lng} />,
       executionTime: tier.days || "",
       packageLabel: v.key === "story" ? t("portfolio.storyPackageLabel") : tier.name || "",
       isPopular: v.key === "ad",
@@ -70,6 +68,7 @@ export default async function Portfolio() {
       }),
       ctaFormatId: format?.formId ?? null,
       ctaSource: `format:${v.key}`,
+      detailsHref: format ? localizedPath(lng, `/services/${format.slug}`) : null,
     }
   })
 
@@ -100,29 +99,21 @@ export default async function Portfolio() {
 
       <div className="bg-meadow-light py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
-            <div className="max-w-2xl">
-              <p className="font-body font-bold text-sm uppercase tracking-wider text-meadow-deep">
-                {t("portfolio.eyebrow")}
-              </p>
+          <div className="max-w-2xl">
+            <p className="font-body font-bold text-sm uppercase tracking-wider text-meadow-deep">
+              {t("portfolio.eyebrow")}
+            </p>
 
-              <h2 className="mt-2 font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
-                {t("portfolio.formatsHeading")}
-              </h2>
+            <h2 className="mt-2 font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">
+              {t("portfolio.formatsHeading")}
+            </h2>
 
-              <p className="mt-4 font-body text-ink/80 text-base sm:text-lg leading-relaxed">
-                {t("portfolio.formatsSubheading")}
-              </p>
-            </div>
-
-            <div className="shrink-0">
-              <div className="inline-flex rounded-2xl bg-white/90 px-4 py-3 text-sm text-ink/75 shadow-sm">
-                {promoText}
-              </div>
-            </div>
+            <p className="mt-4 font-body text-ink/80 text-base sm:text-lg leading-relaxed">
+              {t("portfolio.formatsSubheading")}
+            </p>
           </div>
 
-          {/* Об'єднана секція форматів і тарифів */}
+          {/* Об'єднана секція типів і тарифів */}
           <div
             id="pricing"
             className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch scroll-mt-24"
@@ -148,8 +139,19 @@ export default async function Portfolio() {
                 packageLabel={f.packageLabel}
                 popularBadge={f.isPopular ? popularBadge : ""}
                 ctaLabel={f.ctaLabel}
+                detailsHref={f.detailsHref}
+                detailsLabel={t("portfolio.detailsCta")}
               />
             ))}
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <a
+              href={localizedPath(lng, "/services")}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-meadow-deep px-6 py-3 font-body text-sm font-bold text-meadow-deep transition-colors hover:bg-meadow-deep hover:text-cream focus-ring"
+            >
+              {t("portfolio.allServices")} <span aria-hidden="true">→</span>
+            </a>
           </div>
 
           <p className="mt-5 text-sm leading-relaxed text-ink/65">{t("portfolio.priceNote")}</p>
