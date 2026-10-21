@@ -1,6 +1,6 @@
 // src/components/VideoCase.jsx
 "use client"
-
+console.log("VideoCase.jsx LOADED")
 import VideoCard from "./VideoCard"
 import { useT } from "next-i18next/client"
 import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
@@ -42,7 +42,12 @@ export default function VideoCase() {
     embedUrl: `${siteUrl}/#real-case`,
     publisher: { "@id": `${siteUrl}/#organization` },
   }))
-
+  console.table(
+    cases.map((c) => ({
+      id: c.id,
+      aspect: c.aspect,
+    })),
+  )
   return (
     <div className="mt-8 bg-ink rounded-3xl p-6 sm:p-8">
       {videoSchemas.map((schema, i) => (

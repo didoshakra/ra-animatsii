@@ -14,7 +14,7 @@ export default function VideoGrid({ videos, badge }) {
             videoUrl={v.VIDEO_URL}
             posterUrl={v.POSTER_URL}
             badge={badge}
-            aspectLabel={v.aspect}
+            aspect={v.aspect}
             runtime={formatRuntime(v.durationSeconds)}
             meta={v.meta}
             ctaFormatId={FORMATS.find((f) => f.key === v.format)?.formId ?? null}

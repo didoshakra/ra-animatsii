@@ -1,4 +1,4 @@
-//GP_20231020//src/components/VideoCard.jsx
+//GP_20261021// src/components/VideoCard.jsx
 "use client"
 
 import { useRef, useState } from "react"
@@ -43,11 +43,13 @@ export default function VideoCard({
   const [realAspectRatio, setRealAspectRatio] = useState(null)
 
   const defaultAspectRatio = aspect.replace(":", " / ")
-  const explicitPlayAspectRatio = playAspect ? playAspect.replace(":", " / ") : null
+  const explicitPlayAspectRatio = playAspect
+    ? playAspect.replace(":", " / ")
+    : null
 
   const containerAspectRatio = playing
     ? explicitPlayAspectRatio || realAspectRatio || defaultAspectRatio
-    : defaultAspectRatio
+    : "1 / 1"
 
   function handlePlay() {
     setPlaying(true)
@@ -92,7 +94,9 @@ export default function VideoCard({
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-cream/90">
                 <span className="ml-1 h-0 w-0 border-y-[9px] border-y-transparent border-l-[14px] border-l-ink" />
               </span>
-              <span className="font-body text-sm">{t("videoCard.playFallback")}</span>
+              <span className="font-body text-sm">
+                {t("videoCard.playFallback")}
+              </span>
             </a>
           ) : (
             <>
@@ -126,9 +130,9 @@ export default function VideoCard({
           )}
 
           <div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2">
-            {aspect && (
+            {(aspectLabel || aspect) && (
               <span className="rounded-md bg-ink/85 px-2 py-1 text-xs font-semibold text-cream backdrop-blur-sm">
-                {aspect}
+                {aspectLabel || aspect}
               </span>
             )}
 
@@ -143,20 +147,23 @@ export default function VideoCard({
 
       <div className="flex flex-1 flex-col p-5">
         {packageLabel && (
-          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-meadow-deep">{packageLabel}</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-wide text-meadow-deep">
+            {packageLabel}
+          </p>
         )}
 
         {title && (
-          <h3 className="font-display text-xl font-bold leading-snug text-ink">{title.replace(/^\d+\.\s*/, "")}</h3>
+          <h3 className="font-display text-xl font-bold leading-snug text-ink">
+            {title.replace(/^\d+\.\s*/, "")}
+          </h3>
         )}
 
         {price && <div className="mt-3">{price}</div>}
+
         {(duration || executionTime) && (
           <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-bold text-clay-deep">
             {duration && <span>{duration}</span>}
-
             {duration && executionTime && <span aria-hidden="true">·</span>}
-
             {executionTime && (
               <span>
                 {durationLabel} {executionTime}
@@ -167,7 +174,11 @@ export default function VideoCard({
 
         {meta && <p className="mt-2 text-sm text-ink/60">{meta}</p>}
 
-        {desc && <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink/90">{desc}</p>}
+        {desc && (
+          <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink/90">
+            {desc}
+          </p>
+        )}
 
         {structure && (
           <p className="mt-4 rounded-xl bg-meadow/10 px-3 py-3 text-sm font-bold leading-relaxed text-meadow-deep">
@@ -175,7 +186,11 @@ export default function VideoCard({
           </p>
         )}
 
-        {suitableFor && <p className="mt-3 text-[15px] font-medium leading-relaxed text-ink/80">{suitableFor}</p>}
+        {suitableFor && (
+          <p className="mt-3 text-[15px] font-medium leading-relaxed text-ink/80">
+            {suitableFor}
+          </p>
+        )}
 
         <div className="mt-auto flex flex-col gap-2 pt-5">
           {ctaSource && (

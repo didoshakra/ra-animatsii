@@ -24,7 +24,7 @@ export const VIDEOS = [
     key: "brand",
     niche: "furniture",
     format: "brand",
-    aspect: "9:16",
+    aspect: "16:9",
     durationSeconds: 35,
   },
   { id: "pekari", from: "formats", key: "story", niche: "cafe", format: "story", aspect: "9:16", durationSeconds: 34 },
