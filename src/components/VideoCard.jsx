@@ -15,6 +15,7 @@ export default function VideoCard({
   badge,
   meta,
   aspect = "16:9",
+  idleAspect = "1:1",
   playAspect,
   structure,
   suitableFor,
@@ -47,6 +48,7 @@ export default function VideoCard({
         title={title || badge}
         color={color}
         aspect={aspect}
+        idleAspect={idleAspect}
         playAspect={playAspect}
         runtime={runtime}
       />

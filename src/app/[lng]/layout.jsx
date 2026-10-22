@@ -9,7 +9,7 @@ import AttributionCapture from "../../components/AttributionCapture"
 import StickyOrderButton from "@/components/StickyOrderButton"
 import { siteUrl, siteName } from "@/lib/site"
 
-export async function generateMetadata({ params }) {  
+export async function generateMetadata({ params }) {
   const { lng } = await params
   const { t } = await getT("common")
 
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }) {
 
 initServerI18next(i18nConfig)
 
-export async function generateStaticParams() {
+export async function generateStaticParams() { 
   return generateI18nStaticParams()
 }
 
