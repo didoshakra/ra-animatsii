@@ -8,13 +8,14 @@ const chipCls =
   "inline-block bg-white text-ink font-body font-bold text-sm px-4 py-2 rounded-full hover:bg-sun-light transition-colors focus-ring"
 
 // Блок «для кого» і внутрішні посилання на типи роликів та приклади за сферами
-export default async function HomeHub({ lng }) {
+export default async function HomeHub() {
+  const { t, i18n } = await getT("common")
+  const lng = i18n.language === "en" ? "en" : "uk"
   const c = getContent(lng)
-  const { t } = await getT("common")
   const niches = NICHES.filter((n) => n.page && c.niches[n.slug])
 
   return (
-    <section id="explore" className="bg-cream py-8 sm:py-10">
+    <section id="explore" className="bg-[#F0E8DA] py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-2xl">
           <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">

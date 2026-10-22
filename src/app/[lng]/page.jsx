@@ -5,11 +5,10 @@ import StudioVideo from "@/components/StudioVideo"
 import Portfolio from "@/components/Portfolio"
 import Process from "@/components/Process"
 import AboutTeam from "@/components/AboutTeam"
-// import Pricing from "@/components/Pricing"
 import RealCase from "@/components/RealCase"
 import ContactForm from "@/components/ContactForm"
 import Footer from "@/components/Footer"
-// import HomeHub from "@/components/HomeHub"
+import HomeHub from "@/components/HomeHub"
 
 export default function Home() {
   return (
@@ -21,12 +20,11 @@ export default function Home() {
         <StudioVideo />
         <HillDivider fromColor="#FBF6E9" toColor="#477A58" />
         <Portfolio />
-        <HillDivider fromColor="#477A58" toColor="#FBF6E9" />
+        <HillDivider fromColor="#477A58" toColor="[#F0E8DA]" />
+        <HomeHub />
         <Process />
         <AboutTeam />
         <HillDivider fromColor="#F0E8DA" toColor="#477A58" />
-        {/* <Pricing /> */}
-        {/* <HillDivider fromColor="#FBF6E9" toColor="#5FA653" /> */}
         <RealCase />
         <HillDivider fromColor="#477A58" toColor="#211C19" />
         <ContactForm />

@@ -12,6 +12,15 @@ const uk = {
   exampleBadge: "Демо-приклад",
   demoNote:
     "Це демо-приклади, створені студією RA Spark, а не виконані замовлення клієнтів. Так може виглядати ваша реклама.",
+  home: {
+    forWhomHeading: "Для якого бізнесу ми робимо ролики",
+    forWhomIntro:
+      "Оберіть тип ролика за завданням або подивіться приклади для вашої сфери: пекарня, зоомагазин, салон краси та інші.",
+    typesHeading: "Типи роликів",
+    allServices: "Усі послуги",
+    nichesHeading: "Приклади за сферами бізнесу",
+    allExamples: "Усі приклади",
+  },
   services: {
     metaTitle: "Послуги: AI-реклама й анімаційні ролики для бізнесу | RA Spark",
     metaDescription:
@@ -22,8 +31,8 @@ const uk = {
   },
   formats: {
     short: {
-      h1: "     ",
-      metaTitle: "Рекламний ролик для бізнесу, 16–30 секунд | RA Spark",
+      h1: "Коротка реклама для Reels, TikTok і Shorts",
+      metaTitle: "Рекламний ролик для бізнесу, 8–20 секунд | RA Spark",
       metaDescription:
         "Короткі рекламні відео до 20 секунд: зачіпка, товар, вигода й заклик до дії. 2D і 3D анімація, перша розкадровка за 48 годин.",
     },
@@ -108,6 +117,15 @@ const en = {
   exampleBadge: "Demo example",
   demoNote:
     "These are demo examples created by RA Spark, not completed client projects. This is how your ad could look.",
+  home: {
+    forWhomHeading: "Which businesses we make videos for",
+    forWhomIntro:
+      "Choose a video type by goal, or browse examples for your type of business: a bakery, pet shop, beauty salon and more.",
+    typesHeading: "Video types",
+    allServices: "All services",
+    nichesHeading: "Examples by type of business",
+    allExamples: "All examples",
+  },
   services: {
     metaTitle: "Services: AI Video Ads and Animated Videos for Business | RA Spark",
     metaDescription:
@@ -119,7 +137,7 @@ const en = {
   formats: {
     short: {
       h1: "Short video ads for Reels, TikTok and Shorts",
-      metaTitle: "Animated Video Ad for Business, 16–30 sec | RA Spark",
+      metaTitle: "Animated Video Ad for Business, 8–20 sec | RA Spark",
       metaDescription:
         "Short video ads up to 20 seconds: a hook, the product, the benefit and a call to action. 2D and 3D animation, first storyboard within 48 hours.",
     },
