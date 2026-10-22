@@ -1,76 +1,26 @@
 // src/components/Portfolio.jsx
 import VideoCard from "./VideoCard"
 import ExecutionOptions from "./ExecutionOptions"
-import Price from "./Price"
 import { getT } from "next-i18next/server"
-import { getCloudinaryPoster, getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
+import { getCloudinaryUploadDate, secondsToIsoDuration } from "@/lib/cloudinaryVideo"
 import { siteUrl } from "@/lib/site"
-import { videosFrom, formatRuntime } from "@/lib/videos"
-import ukCommon from "../../public/locales/uk/common.json"
-import { FORMATS } from "@/lib/pages"
+import { formatRuntime } from "@/lib/videos"
+import { getFormatCards } from "@/lib/formatCards"
 import { localizedPath } from "@/lib/seo"
-
-const FORMAT_COLORS = {
-  short: "bg-sky-light",
-  ad: "bg-sun-light",
-  brand: "bg-meadow-light",
-  story: "bg-sky-light",
-}
-
-// Зв'язуємо чотири типи з наявними тарифами.
-// Story використовує стартову ціну та термін преміумпакета.
-const FORMAT_TIERS = {
-  short: "base",
-  ad: "standard",
-  brand: "premium",
-  story: "premium",
-}
 
 export default async function Portfolio() {
   const { t, i18n } = await getT("common")
   const lng = i18n?.language === "en" ? "en" : "uk"
 
-  const formatsText = t("portfolio.formats", { returnObjects: true })
   const voiceoverOptions = t("portfolio.voiceoverOptions", { returnObjects: true })
   const styleOptions = t("portfolio.styleOptions", { returnObjects: true })
   const aspectOptions = t("portfolio.aspectOptions", { returnObjects: true })
 
   const accordionHint = t("portfolio.accordionHint")
-  const tiersText = t("pricing.tiers", { returnObjects: true })
   const popularBadge = t("pricing.popularBadge")
   const durationLabel = t("pricing.durationLabel")
-  const priceFrom = t("pricing.from")
-  const priceCurrency = t("pricing.currency")
-  const promoUntil = t("promo.until")
 
-  const ukFormats = ukCommon.portfolio.formats
-
-  const formats = videosFrom("formats").map((v) => {
-    const text = formatsText[v.key] || {}
-    const videoUrl = text.videoUrl || ukFormats[v.key]?.videoUrl || ""
-    const tierId = FORMAT_TIERS[v.key]
-    const tier = tiersText[tierId] || {}
-
-    const format = FORMATS.find((item) => item.key === v.key)
-
-    return {
-      ...v,
-      ...text,
-      color: FORMAT_COLORS[v.key],
-      VIDEO_URL: videoUrl,
-      POSTER_URL: getCloudinaryPoster(videoUrl),
-      price: <Price prices={format?.price} from={priceFrom} currency={priceCurrency} until={promoUntil} lng={lng} />,
-      executionTime: tier.days || "",
-      packageLabel: v.key === "story" ? t("portfolio.storyPackageLabel") : tier.name || "",
-      isPopular: v.key === "ad",
-      ctaLabel: t("portfolio.formatCta", {
-        format: text.label || text.title || "",
-      }),
-      ctaFormatId: format?.formId ?? null,
-      ctaSource: `format:${v.key}`,
-      detailsHref: format ? localizedPath(lng, `/services/${format.slug}`) : null,
-    }
-  })
+  const formats = await getFormatCards(lng)
 
   const videoSchemas = formats.map((f) => ({
     "@context": "https://schema.org",
