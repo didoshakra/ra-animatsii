@@ -14,9 +14,6 @@ import PricingCta from "./PricingCta"
 // Наприклад: 380XXXXXXXXX
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""
 
-// function EagleIcon() {
-//   return <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={48} height={48} className="rounded-full" />
-// }
 function EagleIcon() {
   return (
     <Image src="/brand/RASpark_eagle.png" alt="RA Spark" fill sizes="80px" className="rounded-full object-contain" />
@@ -414,13 +411,6 @@ export default function StickyOrderButton() {
       )}
 
       {/* Плаваюча кнопка з емблемою орла */}
-      {/* <button
-        type="button"
-        aria-expanded={menuOpen}
-        aria-controls="ra-contact-menu"
-        onClick={() => setMenuOpen((v) => !v)}
-        className="flex max-w-full items-center gap-2.5 rounded-full border border-sun/40 bg-ink py-2 pl-2.5 pr-4 text-left shadow-lg shadow-black/30 transition-all hover:border-sun hover:shadow-xl focus-ring"
-      > */}
       <button
         type="button"
         aria-expanded={menuOpen}
@@ -457,9 +447,6 @@ export default function StickyOrderButton() {
             </span>
           )}
         </span>
-        {/* <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sun text-ink">
-          <EagleIcon />
-        </span> */}
         <span className="absolute -right-1 top-1/2 aspect-square h-[130%] -translate-y-1/2 rounded-full bg-sun text-ink shadow-lg shadow-black/30">
           <EagleIcon />
         </span>
