@@ -105,7 +105,8 @@ export default async function Process() {
   }))
 
   return (
-    <section id="process" className="bg-cream py-8 sm:py-10">
+    // <section id="process" className="bg-cream py-8 sm:py-10">
+    <section id="process" className="bg-[#F0E8DA] py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         {/* <p className="font-display font-bold text-clay-deep text-center uppercase tracking-wide text-sm"> */}
         <p className="font-display font-bold text-clay-deep text-center uppercase tracking-wide text-3xl">

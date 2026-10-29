@@ -20,11 +20,11 @@ export default function Home() {
         <StudioVideo />
         <HillDivider fromColor="#FBF6E9" toColor="#477A58" />
         <Portfolio />
-        <HillDivider fromColor="#477A58" toColor="[#F0E8DA]" />
+        <HillDivider fromColor="#477A58" toColor="#FBF6E9" />
         <HomeHub />
         <Process />
         <AboutTeam />
-        <HillDivider fromColor="#F0E8DA" toColor="#477A58" />
+        <HillDivider fromColor="#E8DCC4" toColor="#477A58" />
         <RealCase />
         <HillDivider fromColor="#477A58" toColor="#211C19" />
         <ContactForm />

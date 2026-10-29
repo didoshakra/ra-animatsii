@@ -7,7 +7,8 @@ export default async function AboutTeam() {
 
   return (
     // <section id="about-team" className="bg-sky-200 py-8 sm:py-10">
-        <section id="about-team" className="bg-[#F0E8DA] py-8 sm:py-10">
+    // <section id="about-team" className="bg-[#F0E8DA] py-8 sm:py-10">
+    <section id="about-team" className="bg-[#E8DCC4] py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">

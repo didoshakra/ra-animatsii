@@ -15,21 +15,12 @@ import PricingCta from "./PricingCta"
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""
 
 // function EagleIcon() {
-//   return (
-//     <svg viewBox="0 0 64 48" width="38" height="30" fill="none" aria-hidden="true">
-//       <path
-//         d="M32 8 25 2 22 12 4 7 13 19 2 17 15 29 7 31 23 36 29 43 32 38 35 43 41 36 57 31 49 29 62 17 51 19 60 7 42 12 39 2 32 8Z"
-//         fill="currentColor"
-//       />
-//       <path d="M32 13 27 22 32 20 37 22 32 13Z" fill="#171717" />
-//       <path d="M24 24 17 21 23 29 30 32 32 38 34 32 41 29 47 21 40 24 35 27 32 25 29 27 24 24Z" fill="#171717" />
-//       <path d="M29 32 32 35 35 32 32 29 29 32Z" fill="currentColor" />
-//     </svg>
-//   )
+//   return <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={48} height={48} className="rounded-full" />
 // }
-
 function EagleIcon() {
-  return <Image src="/brand/RASpark_eagle.png" alt="RA Spark" width={48} height={48} className="rounded-full" />
+  return (
+    <Image src="/brand/RASpark_eagle.png" alt="RA Spark" fill sizes="80px" className="rounded-full object-contain" />
+  )
 }
 
 function TelegramIcon() {
@@ -423,17 +414,34 @@ export default function StickyOrderButton() {
       )}
 
       {/* Плаваюча кнопка з емблемою орла */}
-      <button
+      {/* <button
         type="button"
         aria-expanded={menuOpen}
         aria-controls="ra-contact-menu"
         onClick={() => setMenuOpen((v) => !v)}
         className="flex max-w-full items-center gap-2.5 rounded-full border border-sun/40 bg-ink py-2 pl-2.5 pr-4 text-left shadow-lg shadow-black/30 transition-all hover:border-sun hover:shadow-xl focus-ring"
+      > */}
+      <button
+        type="button"
+        aria-expanded={menuOpen}
+        aria-controls="ra-contact-menu"
+        onClick={() => setMenuOpen((v) => !v)}
+        className="relative flex max-w-full items-center gap-2.5 rounded-full border border-sun/40 bg-ink py-2 pl-2.5 pr-[78px] text-left shadow-lg shadow-black/30 transition-all hover:border-sun hover:shadow-xl focus-ring"
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sun text-ink">
-          <EagleIcon />
-        </span>
-
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          className={`ml-0.5 shrink-0 text-sun transition-transform ${menuOpen ? "rotate-180" : ""}`}
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>{" "}
         <span className="min-w-0">
           <span className="block max-w-[220px] font-body text-xs font-bold leading-snug text-cream sm:max-w-none sm:text-sm">
             {isEnglish ? "Contact us or order a video" : "Зв'яжіться з нами або"}
@@ -449,21 +457,12 @@ export default function StickyOrderButton() {
             </span>
           )}
         </span>
-
-        <svg
-          viewBox="0 0 24 24"
-          width="16"
-          height="16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-          className={`ml-0.5 shrink-0 text-sun transition-transform ${menuOpen ? "rotate-180" : ""}`}
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        {/* <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sun text-ink">
+          <EagleIcon />
+        </span> */}
+        <span className="absolute -right-1 top-1/2 aspect-square h-[130%] -translate-y-1/2 rounded-full bg-sun text-ink shadow-lg shadow-black/30">
+          <EagleIcon />
+        </span>
       </button>
     </div>
   )

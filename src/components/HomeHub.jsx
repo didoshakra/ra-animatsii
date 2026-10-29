@@ -15,7 +15,8 @@ export default async function HomeHub() {
   const niches = NICHES.filter((n) => n.page && c.niches[n.slug])
 
   return (
-    <section id="explore" className="bg-[#F0E8DA] py-8 sm:py-10">
+    // <section id="explore" className="bg-[#F0E8DA] py-8 sm:py-10">
+    <section id="explore" className="bg-cream py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-2xl">
           <h2 className="font-display font-extrabold text-ink text-3xl sm:text-4xl leading-tight">

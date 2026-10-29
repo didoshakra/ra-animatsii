@@ -203,6 +203,14 @@
       }
     ]
   },
+  "hub": {
+    "heading": "Who our videos are for",
+    "intro": "For bakeries, pet shops, beauty salons, stores, pools and other local businesses that need bright social media ads without expensive filming.",
+    "typesHeading": "Video types",
+    "nichesHeading": "Examples by business type",
+    "allServices": "All services",
+    "allExamples": "All examples"
+  },
   "realCase": {
     "heading": "Examples of our work",
     "description": "Demo videos for different types of business: this is how your ad could look.",
