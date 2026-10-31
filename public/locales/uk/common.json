@@ -37,6 +37,23 @@
     "imageAlt": "Команда персонажів студії RA Spark разом із засновником в мультяшному офісі",
     "imageSrc": "/brand/SEO-OG-RASparkUA.jpg"
   },
+   "stickyOrder": {
+      "menuTitle": "Зв'язатися з RA Spark",
+      "menuSubtitle": "Оберіть зручний спосіб зв'язку",
+      "close": "Закрити меню",
+      "telegramDesc": "Написати повідомлення",
+      "whatsappDesc": "Написати у WhatsApp",
+      "whatsappMissing": "Потрібно додати номер WhatsApp",
+      "copy": "Копіювати",
+      "copied": "Скопійовано!",
+      "copyLabel": "Копіювати email",
+      "copiedLabel": "Скопійовано",
+      "copyPrompt": "Скопіюйте адресу пошти:",
+      "orderTitle": "Замовити ролик",
+      "orderDesc": "Розкажіть про свій проєкт",
+      "triggerLine1": "Зв'яжіться з нами або",
+      "triggerLine2": "Замовте ролик"
+    },
   "footer": {
     "rights": "Усі права захищено.",
     "contactTitle": "Пишіть нам напряму",

@@ -37,6 +37,23 @@
     "imageAlt": "RA Spark studio character team together with the founder in a cartoon office",
     "imageSrc": "/brand/SEO-OG-RASparkEN.jpg"
   },
+  "stickyOrder": {
+    "menuTitle": "Contact RA Spark",
+    "menuSubtitle": "Choose a convenient way to reach us",
+    "close": "Close menu",
+    "telegramDesc": "Send us a message",
+    "whatsappDesc": "Chat with us on WhatsApp",
+    "whatsappMissing": "Add your WhatsApp number to enable",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "copyLabel": "Copy email address",
+    "copiedLabel": "Email copied",
+    "copyPrompt": "Copy email address:",
+    "orderTitle": "Order a video",
+    "orderDesc": "Tell us about your project",
+    "triggerLine1": "Contact us or order a video",
+    "triggerLine2": "Let's discuss your project"
+  },
   "footer": {
     "rights": "All rights reserved.",
     "contactTitle": "Contact us directly",

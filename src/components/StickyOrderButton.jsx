@@ -1,8 +1,6 @@
 //GP 20261020// src/components/StickyOrderButton.jsx
 "use client"
 
-"use client"
-
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -134,14 +132,13 @@ function MenuItem({ icon, title, description, href, onClick, disabled }) {
 }
 
 export default function StickyOrderButton() {
-  const { t, i18n } = useT("common")
+  const { t } = useT("common")
   const pathname = usePathname() || ""
   const [formVisible, setFormVisible] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [emailCopied, setEmailCopied] = useState(false)
   const rootRef = useRef(null)
 
-  const isEnglish = i18n.language?.startsWith("en")
   const whatsappUrl = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}` : ""
 
   const cleanPath = pathname.replace(/^\/en(?=\/|$)/, "")
@@ -231,10 +228,10 @@ export default function StickyOrderButton() {
         if (!copied) throw new Error("Copy failed")
       }
 
-      setEmailCopied(true) 
+      setEmailCopied(true)
       window.setTimeout(() => setEmailCopied(false), 2000)
     } catch {
-      window.prompt(isEnglish ? "Copy email address:" : "Скопіюйте адресу пошти:", CONTACT_EMAIL)
+      window.prompt(t("stickyOrder.copyPrompt"), CONTACT_EMAIL)
     }
   }
 
@@ -251,23 +248,19 @@ export default function StickyOrderButton() {
         <div
           id="ra-contact-menu"
           role="dialog"
-          aria-label={isEnglish ? "Contact RA Spark" : "Контакти RA Spark"}
+          aria-label={t("stickyOrder.menuTitle")}
           className="w-[320px] max-w-[calc(100vw-1.5rem)] origin-bottom-right rounded-2xl border border-cream/15 bg-ink p-3 shadow-2xl shadow-black/40"
         >
           <div className="flex items-start justify-between gap-3 px-2 pb-3 pt-1">
             <div>
-              <h3 className="font-display text-base font-bold text-cream">
-                {isEnglish ? "Contact RA Spark" : "Зв'язатися з RA Spark"}
-              </h3>
-              <p className="mt-1 font-body text-xs text-cream/55">
-                {isEnglish ? "Choose a convenient way to reach us" : "Оберіть зручний спосіб зв'язку"}
-              </p>
+              <h3 className="font-display text-base font-bold text-cream">{t("stickyOrder.menuTitle")}</h3>
+              <p className="mt-1 font-body text-xs text-cream/55">{t("stickyOrder.menuSubtitle")}</p>
             </div>
 
             <button
               type="button"
               onClick={closeMenu}
-              aria-label={isEnglish ? "Close menu" : "Закрити меню"}
+              aria-label={t("stickyOrder.close")}
               className="rounded-lg p-1.5 text-cream/60 hover:bg-cream/10 hover:text-cream focus-ring"
             >
               <svg
@@ -289,7 +282,7 @@ export default function StickyOrderButton() {
             <MenuItem
               icon={<TelegramIcon />}
               title="Telegram"
-              description={isEnglish ? "Send us a message" : "Написати повідомлення"}
+              description={t("stickyOrder.telegramDesc")}
               href={TELEGRAM_URL}
               onClick={closeMenu}
             />
@@ -297,15 +290,7 @@ export default function StickyOrderButton() {
             <MenuItem
               icon={<WhatsAppIcon />}
               title="WhatsApp"
-              description={
-                whatsappUrl
-                  ? isEnglish
-                    ? "Chat with us on WhatsApp"
-                    : "Написати у WhatsApp"
-                  : isEnglish
-                    ? "Add your WhatsApp number to enable"
-                    : "Потрібно додати номер WhatsApp"
-              }
+              description={whatsappUrl ? t("stickyOrder.whatsappDesc") : t("stickyOrder.whatsappMissing")}
               href={whatsappUrl || undefined}
               disabled={!whatsappUrl}
               onClick={closeMenu}
@@ -331,8 +316,8 @@ export default function StickyOrderButton() {
                 type="button"
                 onClick={copyEmail}
                 className="mr-2 flex shrink-0 items-center gap-1.5 rounded-lg px-2 py-2 font-body text-xs font-semibold text-sun transition-colors hover:bg-sun/10 focus-ring"
-                aria-label={emailCopied ? "Email copied" : "Copy email address"}
-                title={emailCopied ? "Скопійовано" : "Копіювати email"}
+                aria-label={emailCopied ? t("stickyOrder.copiedLabel") : t("stickyOrder.copyLabel")}
+                title={emailCopied ? t("stickyOrder.copiedLabel") : t("stickyOrder.copyLabel")}
               >
                 {emailCopied ? (
                   <>
@@ -349,7 +334,7 @@ export default function StickyOrderButton() {
                     >
                       <path d="m5 12 4 4L19 6" />
                     </svg>
-                    <span>{isEnglish ? "Copied!" : "Скопійовано!"}</span>
+                    <span>{t("stickyOrder.copied")}</span>
                   </>
                 ) : (
                   <>
@@ -367,7 +352,7 @@ export default function StickyOrderButton() {
                       <rect x="8" y="8" width="12" height="12" rx="2" />
                       <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
                     </svg>
-                    <span>{isEnglish ? "Copy" : "Копіювати"}</span>
+                    <span>{t("stickyOrder.copy")}</span>
                   </>
                 )}
               </button>
@@ -385,12 +370,8 @@ export default function StickyOrderButton() {
                 </span>
 
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-bold text-ink">
-                    {isEnglish ? "Order a video" : "Замовити ролик"}
-                  </span>
-                  <span className="mt-0.5 block text-xs text-ink/70">
-                    {isEnglish ? "Tell us about your project" : "Розкажіть про свій проєкт"}
-                  </span>
+                  <span className="block text-sm font-bold text-ink">{t("stickyOrder.orderTitle")}</span>
+                  <span className="mt-0.5 block text-xs text-ink/70">{t("stickyOrder.orderDesc")}</span>
                 </span>
 
                 <svg
@@ -434,18 +415,12 @@ export default function StickyOrderButton() {
         </svg>{" "}
         <span className="min-w-0">
           <span className="block max-w-[220px] font-body text-xs font-bold leading-snug text-cream sm:max-w-none sm:text-sm">
-            {isEnglish ? "Contact us or order a video" : "Зв'яжіться з нами або"}
+            {t("stickyOrder.triggerLine1")}
           </span>
 
-          {!isEnglish && (
-            <span className="block font-body text-xs font-bold leading-snug text-sun sm:text-sm">Замовте ролик</span>
-          )}
-
-          {isEnglish && (
-            <span className="block font-body text-xs font-bold leading-snug text-sun sm:text-sm">
-              Let's discuss your project
-            </span>
-          )}
+          <span className="block font-body text-xs font-bold leading-snug text-sun sm:text-sm">
+            {t("stickyOrder.triggerLine2")}
+          </span>
         </span>
         <span className="absolute -right-1 top-1/2 aspect-square h-[130%] -translate-y-1/2 rounded-full bg-sun text-ink shadow-lg shadow-black/30">
           <EagleIcon />
