@@ -6,8 +6,6 @@ export default async function AboutTeam() {
   const { t } = await getT("common")
 
   return (
-    // <section id="about-team" className="bg-sky-200 py-8 sm:py-10">
-    // <section id="about-team" className="bg-[#F0E8DA] py-8 sm:py-10">
     <section id="about-team" className="bg-[#E8DCC4] py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-xl mx-auto text-center">
@@ -22,7 +20,8 @@ export default async function AboutTeam() {
         <div className="mt-6 sm:mt-10 rounded-3xl overflow-hidden shadow-[0_8px_0_0_theme(colors.clay.deep)]">
           <Image
             // src="/brand/og-image.jpg"
-            src="/brand/SEO-OG-RASpark.jpg"
+            // src="/brand/SEO-OG-RASpark.jpg"
+            src={t("aboutTeam.imageSrc")}
             alt={t("aboutTeam.imageAlt")}
             width={1424}
             height={752}

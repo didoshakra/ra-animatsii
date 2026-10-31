@@ -231,7 +231,7 @@ export default function StickyOrderButton() {
         if (!copied) throw new Error("Copy failed")
       }
 
-      setEmailCopied(true)
+      setEmailCopied(true) 
       window.setTimeout(() => setEmailCopied(false), 2000)
     } catch {
       window.prompt(isEnglish ? "Copy email address:" : "Скопіюйте адресу пошти:", CONTACT_EMAIL)
