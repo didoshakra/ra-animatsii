@@ -89,14 +89,14 @@
       },
       "standard": {
         "name": "Standard",
-        "price": "220",
+        "price": "200",
         "tagline": "Most popular choice",
         "days": "10 business days",
         "features": ["2D, 3D animation", "Voiceover", "Video ad, 16–30 sec", "For social media, YouTube, Meta Ads"]
       },
       "premium": {
         "name": "Premium",
-        "price": "370",
+        "price": "300", 
         "tagline": "Emotional, premium level",
         "days": "15 business days",
         "features": [
