@@ -5,23 +5,13 @@ import { CONTACT_EMAIL } from "@/lib/contacts"
 
 const contactEmail = CONTACT_EMAIL
 
-// Витягує перше число з тексту ціни ("від 4 000 грн" -> "4000").
-// Повертає null, якщо чисел немає (напр. "За запитом").
-function extractPriceDigits(priceText) {
-  const digits = String(priceText || "").replace(/[^\d]/g, "")
-  return digits.length > 0 ? digits : null
-}
-
-// Визначає валюту за текстом ціни: "from 99 $" -> USD, "від 4 000 грн" -> UAH.
-function detectCurrency(priceText) {
-  return String(priceText || "").includes("$") ? "USD" : "UAH"
-}
-
 const TIER_IDS = ["base", "standard", "premium", "custom"]
 
 export default async function StructuredData() {
   const { t } = await getT("common")
   const tiersText = t("pricing.tiers", { returnObjects: true })
+  // Код валюти (UAH, USD…) береться з перекладів, а не вгадується за символом.
+  const currencyCode = t("pricing.currencyCode")
 
   const organizationSchema = {
     "@type": "Organization",
@@ -52,7 +42,9 @@ export default async function StructuredData() {
     const tier = tiersText[id]
     if (!tier) return null
 
-    const priceDigits = extractPriceDigits(tier.price)
+    // price тепер просто число в рядку ("4000"); для custom це текст — тоді ціну не додаємо.
+    const price = String(tier.price || "").replace(/\s/g, "")
+    const isNumber = /^\d+(\.\d+)?$/.test(price)
 
     const offer = {
       "@type": "Offer",
@@ -61,12 +53,13 @@ export default async function StructuredData() {
       url: `${siteUrl}/#pricing`,
     }
 
-    if (priceDigits) {
+    if (isNumber) {
+      // У схему йде базова ціна без знижки.
       offer.priceSpecification = {
         "@type": "UnitPriceSpecification",
-        price: priceDigits,
-        priceCurrency: detectCurrency(tier.price),
-        minPrice: priceDigits,
+        price,
+        priceCurrency: currencyCode,
+        minPrice: price,
       }
     }
 

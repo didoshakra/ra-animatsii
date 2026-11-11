@@ -63,13 +63,7 @@ export default async function FormatPage({ params }) {
         </div>
 
         <div className="bg-cream rounded-3xl p-5 shadow-[0_6px_0_0_theme(colors.meadow.deep)]">
-          <Price
-            prices={fmt.price}
-            from={t("pricing.from")}
-            currency={t("pricing.currency")}
-            until={t("promo.until")}
-            lng={lng}
-          />
+          <Price tier={fmt.tier} />
           <p className="mt-1 font-body font-bold text-clay-deep text-sm">
             {durationLabel} {tier.days}
           </p>

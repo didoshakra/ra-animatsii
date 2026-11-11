@@ -3,6 +3,7 @@ import { ManicureIllustration, CafeIllustration, OfficeIllustration, CustomIllus
 import PricingCta from "./PricingCta"
 import { getT } from "next-i18next/server"
 import PromoNote from "./PromoNote"
+import Price from "./Price"
 
 // Структурна конфігурація тарифів (ілюстрація, підсвітка, формат для автопідсвічування
 // у формі контактів) — не текст, тому лишається поза перекладами.
@@ -65,11 +66,7 @@ export default async function Pricing() {
                   <p className={`font-body text-sm mt-1 ${tier.highlight ? "text-cream/80" : "text-ink/70"}`}>
                     {tier.tagline}
                   </p>
-                  <p
-                    className={`font-display font-extrabold text-3xl mt-4 ${tier.highlight ? "text-cream" : "text-ink"}`}
-                  >
-                    {tier.price}
-                  </p>
+                  <Price tier={tier.id} large dark={tier.highlight} className="mt-4" />
                   <p
                     className={`font-body text-sm mt-1 font-bold ${tier.highlight ? "text-cream/90" : "text-clay-deep"}`}
                   >

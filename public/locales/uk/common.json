@@ -70,10 +70,14 @@
     "ctaButton": "Обговорити проєкт",
     "from": "від",
     "currency": "грн",
+    "priceFormat": "{{from}} {{amount}} {{currency}}",
+    "roundTo": "10",
+    "numberLocale": "uk-UA",
+    "currencyCode": "UAH",
     "tiers": {
       "base": {
         "name": "Базовий",
-        "price": "від 4 000 грн",
+        "price": "4000",
         "tagline": "Швидкий старт для соцмереж",
         "days": "5 робочих днів",
         "features": [
@@ -85,7 +89,7 @@
       },
       "standard": {
         "name": "Стандарт",
-        "price": "від 9 000 грн",
+        "price": "9000",
         "tagline": "Найпопулярніший вибір",
         "days": "10 робочих днів",
         "features": [
@@ -97,7 +101,7 @@
       },
       "premium": {
         "name": "Преміум",
-        "price": "від 15 000 грн",
+        "price": "15000",
         "tagline": "Емоційний, преміальний рівень",
         "days": "15 робочих днів",
         "features": [

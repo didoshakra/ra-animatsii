@@ -29,9 +29,6 @@ export async function getFormatCards(lng) {
 
   const formatsText = t("portfolio.formats", { returnObjects: true })
   const tiersText = t("pricing.tiers", { returnObjects: true })
-  const priceFrom = t("pricing.from")
-  const priceCurrency = t("pricing.currency")
-  const promoUntil = t("promo.until")
   const ukFormats = ukCommon.portfolio.formats
 
   return videosFrom("formats").map((v) => {
@@ -47,7 +44,7 @@ export async function getFormatCards(lng) {
       VIDEO_URL: videoUrl,
       POSTER_URL: getCloudinaryPoster(videoUrl),
       runtime: formatRuntime(v.durationSeconds),
-      price: <Price prices={format?.price} from={priceFrom} currency={priceCurrency} until={promoUntil} lng={lng} />,
+      price: <Price tier={FORMAT_TIERS[v.key]} />,
       executionTime: tier.days || "",
       packageLabel: v.key === "story" ? t("portfolio.storyPackageLabel") : tier.name || "",
       isPopular: v.key === "ad",
